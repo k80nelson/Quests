@@ -40,3 +40,108 @@ Scenario Start:
 	P4 turns in 5 shields and Ranks up: P4 is now a Knight
 
 	P1 discards cards used for Quest and draws 8 cards (5 cards played and 1 per each stage): P1 discards 3 cards	
+
+=========================================================
+Senario 3: Player drops and game continues with AI
+
+Assume:
+	- Game is set up for 3 playets
+	- Player 1 recieves:
+		Sword
+		Sword
+		Saxon Knight
+		Thieves
+		Battle-Axe
+		Evil Knight
+		Test of Valor
+		Sir Lancelot
+		Horse
+		Dagger
+		Lance
+		Thieves
+	-Player 2 recieves:
+		Robber Knight
+		King Arthur
+		Sir Gawain
+		Horse
+		Excalibur
+		Robber Knight
+		Black Knight
+		Saxons
+		Green knight
+		Boar
+		Thieves
+		Thieves
+	-Player 3 recieves:
+		Dragon
+		Giant
+		Sword
+		Horse
+		Evil Knight
+		Boar
+		Green Knight
+		Black Knight
+		Lance
+		Dagger
+		Excalibur
+		Robber Knight
+
+Scenario Start:
+	-All players plays 4 rounds.
+	-Player 2 drops out of the game during their turn.
+	-AI continues to play the game in player 2 spot.
+
+=========================================================	
+
+Senario 4: Player drops and game continues with  players
+
+Assume:
+	- Game is set up for 3 playets
+	- Player 1 recieves:
+		Sword
+		Sword
+		Saxon Knight
+		Thieves
+		Battle-Axe
+		Evil Knight
+		Test of Valor
+		Sir Lancelot
+		Horse
+		Dagger
+		Lance
+		Thieves
+	-Player 2 recieves:
+		Robber Knight
+		King Arthur
+		Sir Gawain
+		Horse
+		Excalibur
+		Robber Knight
+		Black Knight
+		Saxons
+		Green knight
+		Boar
+		Thieves
+		Thieves
+	-Player 3 recieves:
+		Dragon
+		Giant
+		Sword
+		Horse
+		Evil Knight
+		Boar
+		Green Knight
+		Black Knight
+		Lance
+		Dagger
+		Excalibur
+		Robber Knight
+
+Scenario Start:
+	-All players plays 4 rounds.
+	-Player 2 drops out of the game during their turn.
+	-Player 2 discarded all cards in their respected discard piles.
+	-Cards are back in play when discard pile are re-shuffled.
+	-Game continues as 2-players.
+
+=========================================================
