@@ -1,0 +1,42 @@
+Scenario 2: Testing a 3 stage quest
+
+Assume:
+	All players are Squire Rank
+	P4 has 2 Shields
+	It is P4's turn
+	Players Hands: //Change these to actual cards soon//
+		P1: 12 cards
+		P2: 10 cards <Sword
+		P3: 8 cards
+		P4: 12 cards <King Arthur, Excalibur, Horse, Lance, Sir Galahad
+
+Scenario Start:
+	Quest "Slay the Dragon" is drawn by P4 who declines setting it up
+	P1 accepts setting it up
+		Stage 1: <Saxons -> BP = 10>
+		Stage 2: <Test of Temptation>
+		Stage 3: <Dragon, Sword, Horse -> BP = 90>
+
+	P2 is asked if he participates and accepts
+	P3 is asked if she participates and accepts
+	P4 is asked if he participates and accepts
+
+	P2 gets one adventure card: plays Sword Card -> BP = 15: P2 passes Stage 1
+	P3 gets one adventure card: plays nothing: P3 does not pass Stage 1
+	P4 gets one adventure card which gives him 13 cards: P4 discards one card: plays King Arthur -> BP = 15: P4 passes Stage 1
+
+	P2 discards Weapon card played: P2 gets one adventure card
+	P4 gets one adventure card
+
+	P2 bids minimum bid of 1 card
+	P4 bids 3 cards
+	P2 bids 4 cards
+	P4 bids 5 cards
+	P2 drops out
+	P4 discards 3 cards (gets 2 free bids because of King Arthur): P4 passes stage 2
+
+	P4 gets one adventure card: P4 plays Sir Galahad, Excalibur, Lance, Horse -> BP = 90: P4 passes Stage 3 and Completes the Quest
+	P4 earns 3 shields giving him 5 shields total
+	P4 turns in 5 shields and Ranks up: P4 is now a Knight
+
+	P1 discards cards used for Quest and draws 8 cards (5 cards played and 1 per each stage): P1 discards 3 cards	
