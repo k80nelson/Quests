@@ -10,8 +10,8 @@ Katie
    - ~~"Test of the Questing Beast" is one stage~~
 
 Bert
- - Unit testing scenario
-   - Someone leaves game midway
+ - ~~Unit testing scenario~~
+   - ~~Someone leaves game midway~~
 
 Jeremy
  - Unit testing tournament scenarios
