@@ -27,3 +27,4 @@ Jeremy
 - mordred foe ability
 - KICK ASS GUI
 - 2 player game
+- Sounds/Sound Effects
