@@ -1,4 +1,4 @@
-Scenario 2: Testing a 3 stage quest
+Scenario 1: Testing a 3 stage quest
 
 Assume:
 	All players are Squire Rank
@@ -42,7 +42,65 @@ Scenario Start:
 	P1 discards cards used for Quest and draws 8 cards (5 cards played and 1 per each stage): P1 discards 3 cards	
 
 =========================================================
-Senario 3: Player drops and game continues with AI
+Scenario 2: Testing a 4-Stage Failed Quest with a special ability
+
+Assumptions:
+    All players are Squire rank
+	It is P1's turn
+	The game is set up for 4 players
+	P1: 12 cards <Thieves, Dagger, Robber Knight, Test of the Questing Beast, Giant>
+	P2: 12 cards <Dagger, Sword, Sword>
+	P3: 12 cards <Sir Percival, Dagger>
+	P4: 12 cards
+
+Scenario start:
+	P1 draws Quest: "Search for the Questing Beast"
+	P1 sponsors Quest and plays:
+	    Stage 1: <Thieves, Dagger> -- 10 BP
+		Stage 2: <Robber Knight> -- 15 BP
+		Stage 3: <Test of the Questing Beast> -- 4 minimum bids as it is the Search for the Questing Beast.
+		Stage 4: <Giant> -- 40 BP
+	
+	P2 is asked to participate and accepts
+	P3 is asked to participate and accepts
+	P4 is asked to participate and declines
+
+	P2 draws one adventure card
+		P2 now has 13 cards
+		P2 discards a card
+		P2 plays Dagger -- 10 BP total
+		P2 passes Stage 1
+		Dagger is discarded
+	P3 draws one adventure card
+		P3 now has 13 cards
+		P3 discards a card
+		P3 plays Sir Percival -- 10 BP total
+		P3 passes Stage 1
+
+	P2 draws one adventure card
+		P2 plays Sword -- 15 BP total
+		P2 passes Stage 2 
+	P3 draws one adventure card
+		P2 plays Dagger -- 15 BP total
+		P3 passes Stage 2
+
+	P2 draws one adventure card
+		P2 bids 4 cards
+	P3 draws one adventure card
+		P3 bids 5 cards
+	P2 bids 6 cards
+	P3 drops out
+	P2 passes stage 3
+
+	P2 draws one adventure card
+		P2 plays Sword -- 15 BP total
+		P2 fails Stage 3
+	
+	P1 discards all cards used in the quest and draws 9 cards
+		P1 discards 4 cards
+
+=========================================================
+Scenario 3: Player drops and game continues with AI
 
 Assume:
 	- Game is set up for 3 playets

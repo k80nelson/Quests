@@ -17,3 +17,12 @@ Jeremy
  - Unit testing tournament scenarios
    - 1 person entering
    - x many people entering
+
+# Project Backlog
+- game rulebook
+
+# Stretch Goals
+- Leaving the game at anytime
+- mordred foe ability
+- KICK ASS GUI
+- 2 player game
