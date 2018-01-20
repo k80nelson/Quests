@@ -100,7 +100,29 @@ Scenario start:
 		P1 discards 4 cards
 
 =========================================================
-Scenario 3: Player drops and game continues with AI
+
+
+Scenario 3: Testing the event "Prosperity Throughout the Realm"
+
+Assumptions:
+    P1 has 7 cards
+	P2 has 12 cards
+	P3 has 11 cards
+
+Scenario start:
+	P1 draws Event "Prosperity Throughout the Realm"
+	
+	P1 draws two adventure cards
+	P2 draws two adventure cards
+		P2 discards two cards
+	P3 draws two adventure cards
+		P3 discards one card
+
+	It is now P2's turn
+
+=========================================================
+
+Scenario 4: Player drops and game continues with AI
 
 Assume:
 	- Game is set up for 3 playets
@@ -151,7 +173,7 @@ Scenario Start:
 
 =========================================================	
 
-Senario 4: Player drops and game continues with  players
+Senario 5: Player drops and game continues with  players
 
 Assume:
 	- Game is set up for 3 playets
@@ -203,21 +225,3 @@ Scenario Start:
 	-Game continues as 2-players.
 
 =========================================================
-
-Scenario 2: Testing a 4-Stage Failed Quest with a special ability
-
-Assumptions:
-    P1 has 7 cards
-	P2 has 12 cards
-	P3 has 11 cards
-
-Scenario start:
-	P1 draws Event "Prosperity Throughout the Realm"
-	
-	P1 draws two adventure cards
-	P2 draws two adventure cards
-		P2 discards two cards
-	P3 draws two adventure cards
-		P3 discards one card
-
-	It is now P2's turn
