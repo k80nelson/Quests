@@ -225,3 +225,111 @@ Scenario Start:
 	-Game continues as 2-players.
 
 =========================================================
+
+
+Scenario 4: Tournament
+Assume:
+	All players are "Knight" rank
+	Players Hands: TODO: Change to full cards
+		P1: has <Horse, Horse, Mordred, Theif, Test of Valor, Dagger, Sword, Sword, Evil Knight, Saxon Knight, Lance>, has <King Arthur> ally card in play, and has 2 Shield cards
+		P2: has <Dagger, Boar, Battle-Axe, Test of Temptation, Sword, Black Knight, Dragon>, and has 1 Shield cards
+		P3: has <> cards and has <>
+		P4: has <> cards and has <>
+
+Scenario A (Win, No tie, Multiple Players):
+	Tournament card "At Camelot" is drawn by P3
+	First, P3 who drew the card decides to select that she is joining the tournament.
+		P4 is asked if he wants to join the tournament and accepts
+		P1 is asked if he wants to join the tournament and accepts
+		P2 is asked if he wants to join the tournemant and declines
+	
+	P3 draws one <Horse> card from the adventure deck
+	P4 draws one <Dagger> card from the adventure deck
+	P1 draws one <Saxons> card from the adventure deck
+
+	P3 chooses <Horse, Sword, Sir Percival> cards to be played in the tournament
+	P4 chooses <Battle-Axe, Lance, Excalibur> cards to be played in the tournament
+	P1 chooses <none> cards to be played in the tournament
+
+	At the same time, P3, P4, and P1's chosen cards are revealled to all players.
+
+	P3 now has <Sir Perical> Ally card in play
+	
+	Battle points are now calculated from each players newly played cards, as well as ally cards already in play.
+	P3 total points: Knight Rank(10) + Horse(10) + Sword(10) + Sir Percival(5)    total = 35
+	P4 total points: Knight Rank(10) + Battle-Axe(15) + Lance(20) + Excalibur(30) total = 75
+	P1 total points: Knight Rank(10) + King Arthur(10)                            total = 20
+
+	P4 totals 75 points and has the highest score in the tournament
+	P4 wins the tournament
+	P4 recieves 3 Shield cards for all those in play + 3 bonus Shields from the cards for 6 total Shield cards recieved.
+
+	P3 discards <Horse, Sword> cards that were played during the tournament
+	P4 discards <Battle-Axe, Lance, Excalibur> cards that were played during the tournament
+
+	The Tournemant concludes and P4 takes his turn
+	
+	
+Scenario B (Only 1 Player Joins):
+	Tournament card "At Camelot" is drawn by P3
+	First, P3 who drew the card decides to select that she is joining the tournament.
+		P4 is asked if he wants to join the tournament and declines
+		P1 is asked if he wants to join the tournament and declines
+		P2 is asked if he wants to join the tournemant and declines
+	
+	P3 wins the tournament, due to being the only player to join
+	P3 recieves 1 Shield cards for attending the tournement + 2 Bonus Shields from the "At Orkney" card
+
+	The Tournemant concludes and P4 takes his turn
+
+
+Scenario C (Win, First Round Tie, Multiple Players):
+	Tournament card "At Camelot" is drawn by P3
+	First, P3 who drew the card decides to select that she is joining the tournament.
+		P4 is asked if he wants to join the tournament and accepts
+		P1 is asked if he wants to join the tournament and accepts
+		P2 is asked if he wants to join the tournemant and declines
+	
+	P3 draws one <Horse> card from the adventure deck
+	P4 draws one <Dagger> card from the adventure deck
+	P1 draws one <Saxons> card from the adventure deck
+
+	P3 chooses <Horse, Sword, Dagger, Sir Percival> cards to be played in the tournament
+	P4 chooses <Excalibur> cards to be played in the tournament
+	P1 chooses <none> cards to be played in the tournament
+
+	At the same time, P3, P4, and P1's chosen cards are revealled to all players.
+
+	P3 now has <Sir Perical> Ally card in play
+	
+	Battle points are now calculated from each players newly played cards, as well as ally cards already in play.
+	P3 total points: Knight Rank(10) + Horse(10) + Sword(10) + Dagger(5) + Sir Percival(5)    total = 40
+	P4 total points: Knight Rank(10) + Excalibur(30)                                          total = 40
+	P1 total points: Knight Rank(10) + King Arthur(10)                                        total = 20
+
+	P3 and P4 total to the same amount of points. 
+	P1 is eliminated from the tournament.
+
+	P3 discards <Horse, Sword> cards that were played during the tournament
+	P4 discards <Battle-Axe, Lance, Excalibur> cards that were played during the tournament
+
+	Tie-breaking round is started with P4 and P3.
+
+	P3 draws one <Dagger> card from the adventure deck
+	P4 draws one <Sword> card from the adventure deck
+
+	P3 chooses <none> cards to be played in the tournament
+	P4 chooses <Battle-Axe> cards to be played in the tournament
+
+	At the same time, P3 and P4's chosen cards are revealled to all players.
+	
+	Battle points are now calculated from each players newly played cards, as well as ally cards already in play.
+	P3 total points: Knight Rank(10) + Sir Percival(5)    total = 15
+	P4 total points: Knight Rank(10) + Battle-Axe(15)     total = 25
+
+	P4 totals 25 points and has the highest score in the tournament
+	P4 wins the tournament
+	P4 recieves 3 Shield cards for all those in play + 3 bonus Shields from the cards for 6 total Shield cards recieved.
+
+
+	The Tournemant concludes and P4 takes his turn
