@@ -1,3 +1,4 @@
+THIS IS A CHAT ROOM
 this is a test file - andrew
 
 that I am adding to! - K
@@ -6,4 +7,4 @@ I got this thing to work!!
 
 k thx
 
-THIS IS A CHAT ROOM
+
