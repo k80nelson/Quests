@@ -122,119 +122,15 @@ Scenario start:
 
 =========================================================
 
-Scenario 4: Player drops and game continues with AI
-
-Assume:
-	- Game is set up for 3 playets
-	- Player 1 recieves:
-		Sword
-		Sword
-		Saxon Knight
-		Thieves
-		Battle-Axe
-		Evil Knight
-		Test of Valor
-		Sir Lancelot
-		Horse
-		Dagger
-		Lance
-		Thieves
-	-Player 2 recieves:
-		Robber Knight
-		King Arthur
-		Sir Gawain
-		Horse
-		Excalibur
-		Robber Knight
-		Black Knight
-		Saxons
-		Green knight
-		Boar
-		Thieves
-		Thieves
-	-Player 3 recieves:
-		Dragon
-		Giant
-		Sword
-		Horse
-		Evil Knight
-		Boar
-		Green Knight
-		Black Knight
-		Lance
-		Dagger
-		Excalibur
-		Robber Knight
-
-Scenario Start:
-	-All players plays 4 rounds.
-	-Player 2 drops out of the game during their turn.
-	-AI continues to play the game in player 2 spot.
-
-=========================================================	
-
-Senario 5: Player drops and game continues with  players
-
-Assume:
-	- Game is set up for 3 playets
-	- Player 1 recieves:
-		Sword
-		Sword
-		Saxon Knight
-		Thieves
-		Battle-Axe
-		Evil Knight
-		Test of Valor
-		Sir Lancelot
-		Horse
-		Dagger
-		Lance
-		Thieves
-	-Player 2 recieves:
-		Robber Knight
-		King Arthur
-		Sir Gawain
-		Horse
-		Excalibur
-		Robber Knight
-		Black Knight
-		Saxons
-		Green knight
-		Boar
-		Thieves
-		Thieves
-	-Player 3 recieves:
-		Dragon
-		Giant
-		Sword
-		Horse
-		Evil Knight
-		Boar
-		Green Knight
-		Black Knight
-		Lance
-		Dagger
-		Excalibur
-		Robber Knight
-
-Scenario Start:
-	-All players plays 4 rounds.
-	-Player 2 drops out of the game during their turn.
-	-Player 2 discarded all cards in their respected discard piles.
-	-Cards are back in play when discard pile are re-shuffled.
-	-Game continues as 2-players.
-
-=========================================================
-
 
 Scenario 4: Tournament
 Assume:
 	All players are "Knight" rank
 	Players Hands: TODO: Change to full cards
-		P1: has <Horse, Horse, Mordred, Theif, Test of Valor, Dagger, Sword, Sword, Evil Knight, Saxon Knight, Lance>, has <King Arthur> ally card in play, and has 2 Shield cards
+		P1: has <Horse, Horse, Theif, Test of Valor, Dagger, Sword, Sword, Evil Knight, Saxon Knight, Lance>, has <King Arthur> ally card in play, and has 2 Shield cards
 		P2: has <Dagger, Boar, Battle-Axe, Test of Temptation, Sword, Black Knight, Dragon>, and has 1 Shield cards
-		P3: has <> cards and has <>
-		P4: has <> cards and has <>
+		P3: has <Boar, Dagger, Sword, Mordred, Sir Percival, Horse> cards and has 2 Shield Cards
+		P4: has <Excalibur, Battle-Axe, Lance, Sword, Dagger, Amour> cards and has 1 Shield Card
 
 Scenario A (Win, No tie, Multiple Players):
 	Tournament card "At Camelot" is drawn by P3
@@ -333,3 +229,110 @@ Scenario C (Win, First Round Tie, Multiple Players):
 
 
 	The Tournemant concludes and P4 takes his turn
+
+	=======================================================================
+
+Scenario 5: Player drops and game continues with AI
+
+Assume:
+	- Game is set up for 3 playets
+	- Player 1 recieves:
+		Sword
+		Sword
+		Saxon Knight
+		Thieves
+		Battle-Axe
+		Evil Knight
+		Test of Valor
+		Sir Lancelot
+		Horse
+		Dagger
+		Lance
+		Thieves
+	-Player 2 recieves:
+		Robber Knight
+		King Arthur
+		Sir Gawain
+		Horse
+		Excalibur
+		Robber Knight
+		Black Knight
+		Saxons
+		Green knight
+		Boar
+		Thieves
+		Thieves
+	-Player 3 recieves:
+		Dragon
+		Giant
+		Sword
+		Horse
+		Evil Knight
+		Boar
+		Green Knight
+		Black Knight
+		Lance
+		Dagger
+		Excalibur
+		Robber Knight
+
+Scenario Start:
+	-All players plays 4 rounds.
+	-Player 2 drops out of the game during their turn.
+	-AI continues to play the game in player 2 spot.
+
+=========================================================	
+
+Senario 6: Player drops and game continues with  players
+
+Assume:
+	- Game is set up for 3 playets
+	- Player 1 recieves:
+		Sword
+		Sword
+		Saxon Knight
+		Thieves
+		Battle-Axe
+		Evil Knight
+		Test of Valor
+		Sir Lancelot
+		Horse
+		Dagger
+		Lance
+		Thieves
+	-Player 2 recieves:
+		Robber Knight
+		King Arthur
+		Sir Gawain
+		Horse
+		Excalibur
+		Robber Knight
+		Black Knight
+		Saxons
+		Green knight
+		Boar
+		Thieves
+		Thieves
+	-Player 3 recieves:
+		Dragon
+		Giant
+		Sword
+		Horse
+		Evil Knight
+		Boar
+		Green Knight
+		Black Knight
+		Lance
+		Dagger
+		Excalibur
+		Robber Knight
+
+Scenario Start:
+	-All players plays 4 rounds.
+	-Player 2 drops out of the game during their turn.
+	-Player 2 discarded all cards in their respected discard piles.
+	-Cards are back in play when discard pile are re-shuffled.
+	-Game continues as 2-players.
+
+=========================================================
+

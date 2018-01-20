@@ -14,9 +14,10 @@ Bert
    - ~~Someone leaves game midway~~
 
 Jeremy
- - Unit testing tournament scenarios
-   - 1 person entering
-   - x many people entering
+ - ~~Unit testing tournament scenarios~~
+   - ~~1 person entering~~
+   - ~~x many people entering~~
+   - ~~x many people and there is a tie~~
 
 # Project Backlog
 - game rulebook button
