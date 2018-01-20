@@ -203,3 +203,21 @@ Scenario Start:
 	-Game continues as 2-players.
 
 =========================================================
+
+Scenario 2: Testing a 4-Stage Failed Quest with a special ability
+
+Assumptions:
+    P1 has 7 cards
+	P2 has 12 cards
+	P3 has 11 cards
+
+Scenario start:
+	P1 draws Event "Prosperity Throughout the Realm"
+	
+	P1 draws two adventure cards
+	P2 draws two adventure cards
+		P2 discards two cards
+	P3 draws two adventure cards
+		P3 discards one card
+
+	It is now P2's turn

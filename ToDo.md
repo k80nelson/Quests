@@ -4,10 +4,10 @@ Andrew
  - Unit testing scenario "Chivalrous Deed"
 
 Katie 
- - Unit testing scenario "Prosperity throughout the Kingdom"
- - Unit testing scenario 
-   - 4 stage quest, no winners, "Search for the questing beast"
-   - "Test of the questing beast" is one stage
+ - ~~Unit testing scenario "Prosperity throughout the Realm"~~
+ - ~~Unit testing scenario~~
+   - ~~4 stage quest, no winners, "Search for the Questing Beast"~~
+   - ~~"Test of the Questing Beast" is one stage~~
 
 Bert
  - Unit testing scenario
@@ -19,7 +19,7 @@ Jeremy
    - x many people entering
 
 # Project Backlog
-- game rulebook
+- game rulebook button
 
 # Stretch Goals
 - Leaving the game at anytime
