@@ -9,5 +9,11 @@ Authors:
 Purpose:
 
 Development:
+		Unity Game Engine 2017.3.0f3
+		Microsoft Visual Studio Enterprise 2017 (Version 15.5.4)
+		Microsoft .NET Framework (Version 4.7.02556)
+
 
 Testing environments:
+		Tested using Unity Game Engine
+		Created test scenarios for all possible game functions
