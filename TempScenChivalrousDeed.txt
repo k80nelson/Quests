@@ -1,0 +1,16 @@
+Scenario ?: Testing "Chivalrous Deed
+
+Assume:
+	P1 and P2 are Squire Rank
+	P3 and P4 are Knight Rank
+	All players have 2 shields
+	It is P3's turn
+	
+Scenario Start:
+	Event "Chivalrous Deed" is drawn
+	P1 and P2 are tied for lowest rank and lowest number of shields
+	P1 and P2 recieve 3 shields
+	P1 and P2 both have 5 shields
+	P1 ranks up to Knight
+	P2 ranks up to Knight
+	P3 ends their turn
