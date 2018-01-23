@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-private class Game {
+public class Game {
     //Player[] players;     //total players in the game
     public int numPlayers;  //size of players Array
 
@@ -13,10 +13,10 @@ private class Game {
     
 
     //total turns taken so far (for progress)
-    int turns;
+    private int turns;
 
     //setup for game
-	public void Game () {
+	private Game() {
         /*
          * Call script for asking the number of players playing
          * Then, I/O from script is returned and numPLayers is set to it

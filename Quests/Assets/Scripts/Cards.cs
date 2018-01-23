@@ -22,20 +22,8 @@ public abstract class AdventureCard : Card
 {
     protected int bp;
     protected int bids;
-    public int BP
-    {
-        get
-        {
-            return bp;
-        }
-    }
-    public int Bids
-    {
-        get
-        {
-            return bids;
-        }
-    }
+    public virtual int BP { get; }
+    public virtual int Bids { get; }
 
     protected AdventureCard(string name, int bp, int bids) 
         : base(name)
@@ -55,7 +43,7 @@ public class Foe : AdventureCard
     private int specialBP;
     private string specialQuest;
 
-    public int SpecialBP
+    public override int BP
     {
         get
         {
@@ -77,14 +65,14 @@ public class Ally : AdventureCard
     private int specialBids;
     private string specialQuest;
 
-    public int SpecialBP
+    public override int BP
     {
         get
         {
             return specialBP;
         }
     }
-    public int SpecialBids
+    public override int Bids
     {
         get
         {
@@ -105,31 +93,11 @@ public class Amour : AdventureCard
 {
     public Amour(string name, int bp, int bids)
         : base(name, bp, bids) { }
+    
 }
 
 public class Weapon : AdventureCard
 {
     public Weapon(string name, int bp, int bids)
         : base(name, bp, bids) { }
-}
-
-public class test : AdventureCard
-{
-    private int specialBids;
-    private string specialQuest;
-
-    public int SpecialBids
-    {
-        get
-        {
-            return specialBids;
-        }
-    }
-
-    public test(string name, int bp, int bids, int specialBids, string specialQuest)
-        : base(name, bp, bids)
-    {
-        this.specialBids = specialBids;
-        this.specialQuest = specialQuest;
-    }
 }
