@@ -18,12 +18,12 @@ public abstract class Card {
 public abstract class AdventureCard : Card {
     protected int bp;
     protected int bids;
-    public virtual int BP { 
+    public int BP { 
         get {
             return bp;
         }
     }
-    public virtual int Bids {
+    public int Bids {
         get {
             return bids;
         }
@@ -40,9 +40,8 @@ public class Foe : AdventureCard {
     private int specialBP;
     private string specialQuest;
 
-    public override int BP {
+    public int SpecialBP {
         get {
-            // (game.quest == specialQuest) ? return specialBP : return bp;
             return specialBP;
         }
     }
@@ -52,6 +51,31 @@ public class Foe : AdventureCard {
         this.specialBP = specialBP;
         this.specialQuest = specialQuest;
     }
+
+    public bool hasSpecial(){
+        return (specialQuest != null);
+    }
+}
+
+public class Test : AdventureCard {
+    private int specialBids;
+    private string specialQuest;
+
+    public int SpecialBids {
+        get {
+            return specialBids;
+        }
+    }
+
+    public Test(string name, int bp, int bids, int specialBids, string specialQuest)
+        : base(name, bp, bids) {
+        this.specialBids = specialBids;
+        this.specialQuest = specialQuest;
+    }
+
+    public bool hasSpecial(){
+        return (specialQuest != null);
+    }
 }
 
 public class Ally : AdventureCard {
@@ -59,18 +83,20 @@ public class Ally : AdventureCard {
     private int specialBids;
     private string specialQuest;
 
-    public override int BP {
+    public int SpecialBP {
         get
         {
-            // (game.quest == specialquest) ? return specialBP : return bp;
             return specialBP;
         }
     }
-    public override int Bids {
+    public int SpecialBids {
         get {
-            // (game.quest == specialquest) ? return specialBP : return bp;
             return specialBids;
         }
+    }
+
+    public bool hasSpecial(){
+        return (specialQuest != null);
     }
 
     public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialQuest)
