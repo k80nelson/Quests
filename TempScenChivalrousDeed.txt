@@ -1,4 +1,4 @@
-Scenario ?: Testing "Chivalrous Deed
+Scenario 4: Testing "Chivalrous Deed
 
 Assume:
 	P1 and P2 are Squire Rank

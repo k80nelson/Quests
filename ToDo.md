@@ -1,7 +1,7 @@
 # To do
 
 Andrew 
- - Unit testing scenario "Chivalrous Deed"
+ - ~~Unit testing scenario "Chivalrous Deed"
 
 Katie 
  - ~~Unit testing scenario "Prosperity throughout the Realm"~~
