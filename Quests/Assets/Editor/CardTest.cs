@@ -19,5 +19,6 @@ public class CardTest : IPrebuildSetup {
     public void Test()
     {
         Assert.AreEqual(expected: "Hello", actual: card.Name);
+        Assert.AreNotEqual(expected: "World", actual: card.Name);
     }
 }

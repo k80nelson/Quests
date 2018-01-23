@@ -14,7 +14,7 @@ public abstract class Card
         get
         {
             return name;
-         }
+        }
     }
 }
 
