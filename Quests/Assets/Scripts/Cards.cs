@@ -34,26 +34,26 @@ public abstract class AdventureCard : Card {
         this.bp = bp;
         this.bids = bids;
     }
+
+    virtual public int getBP(Quest currQuest) {
+        return bp;
+    }
+
+    virtual public int getBids(Quest currQuest) {
+        return bids;
+    }
+
 }
 
 public class Foe : AdventureCard {
     private int specialBP;
     private string specialQuest;
 
-    public int SpecialBP {
-        get {
-            return specialBP;
-        }
-    }
 
     public Foe(string name, int bp, int bids, int specialBP, string specialQuest)
         : base(name, bp, bids) {
         this.specialBP = specialBP;
         this.specialQuest = specialQuest;
-    }
-
-    public bool hasSpecial(){
-        return (specialQuest != null);
     }
 }
 
@@ -61,11 +61,6 @@ public class Test : AdventureCard {
     private int specialBids;
     private string specialQuest;
 
-    public int SpecialBids {
-        get {
-            return specialBids;
-        }
-    }
 
     public Test(string name, int bp, int bids, int specialBids, string specialQuest)
         : base(name, bp, bids) {
@@ -73,9 +68,10 @@ public class Test : AdventureCard {
         this.specialQuest = specialQuest;
     }
 
-    public bool hasSpecial(){
-        return (specialQuest != null);
+    public override int getBids(Quest currQuest){
+        return (currQuest.Name == specialQuest) ? specialBids : bids;
     }
+
 }
 
 public class Ally : AdventureCard {
@@ -83,34 +79,26 @@ public class Ally : AdventureCard {
     private int specialBids;
     private string specialQuest;
 
-    public int SpecialBP {
-        get
-        {
-            return specialBP;
-        }
-    }
-    public int SpecialBids {
-        get {
-            return specialBids;
-        }
-    }
-
-    public bool hasSpecial(){
-        return (specialQuest != null);
-    }
-
     public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialQuest)
         : base(name, bp, bids) {
         this.specialBP = specialBP;
         this.specialBids = specialBids;
         this.specialQuest = specialQuest;
     }
+
+    public override int getBP(Quest currQuest){
+        return (currQuest.Name == specialQuest) ? specialBP : bp;
+    }
+
+    public override int getBids(Quest currQuest){
+        return (currQuest.Name == specialQuest) ? specialBids : bids;
+    }
 }
 
 public class Amour : AdventureCard {
     public Amour(string name, int bp, int bids)
         : base(name, bp, bids) { }
-    
+
 }
 
 public class Weapon : AdventureCard {
@@ -120,16 +108,48 @@ public class Weapon : AdventureCard {
 
 public abstract class StoryCard : Card {
     protected StoryCard(string name) : base(name) { }
+
 }
 
-public class Event : StoryCard {
+public abstract class Event : StoryCard {
+
     public Event(string name) : base(name) { }
+
+    public abstract void play();
+}
+
+public class ChivalrousDeed : Event {
+
+    public ChivalrousDeed() : base("Chivalrous Deed") { }
+
+    public override void play(){
+
+    }
 }
 
 public class Tournament : StoryCard {
-    public Tournament(string name) : base(name) { }
+    private int shields;
+    public int Shields{
+        get{
+            return shields;
+        }
+    }
+
+    public Tournament(string name, int shields) 
+        : base(name) { 
+         this.shields = shields;
+    }
 }
 
 public class Quest : StoryCard {
-    public Quest(string name) : base(name) { }
+    private int stages;
+    public int Stages {
+        get {
+            return stages;
+        }
+    }
+
+    public Quest(string name, int stages) : base(name) {
+        this.stages = stages;
+    }
 }
