@@ -1,4 +1,4 @@
-# Quests of the round table
+# Quests of the round table - Team 18
 
 ### Authors:
 * 100915003 Bertholin Destinvil
@@ -6,7 +6,9 @@
 * 101008617 Jeremy Crinson
 * 101012786 Katie Nelson
 
-### Purpose:
+### Description:
+A turn-based card game based off the 1995 card game [Quests of the Round Table](https://boardgamegeek.com/boardgame/360/quests-round-table "Boardgame Geek Webpage").  
+
 
 ### Development:
 * Unity Game Engine 2017.3.0f3
