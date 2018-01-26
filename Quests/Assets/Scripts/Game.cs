@@ -24,7 +24,7 @@ public class Game {
     }
 	
 	// Loop is called once per frame, AKA game loop
-	public void Loop () {
-		
+	public void gameLoop () {
+
 	}
 }
