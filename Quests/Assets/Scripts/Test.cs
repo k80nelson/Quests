@@ -16,10 +16,7 @@ namespace QuestOTRT
             this.specialQuest = specialQuest;
         }
 
-        public override int getBids(Quest currQuest)
-        {
-            return (currQuest.Name == specialQuest) ? specialBids : bids;
-        }
+        
 
     }
 }

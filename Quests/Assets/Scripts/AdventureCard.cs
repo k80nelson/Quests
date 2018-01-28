@@ -5,36 +5,40 @@ namespace QuestOTRT
 
     public abstract class AdventureCard : Card
     {
+        private int bp;
+        private int bids;
+
         //basic contstructor
         public AdventureCard(string name, int bp, int bids): base(name)
         {
             this.bp = bp;
             this.bids = bids;
         }
-
-        //set the bp for an adventure card
-        public setBP(int bp)
+        
+        public int BP
         {
-            this.bp = bp;
+            // Adventure card BP getters and setters using C# Properties
+            get
+            {
+                return this.bp;
+            }
+            set
+            {
+                this.bp = value;
+            }
         }
 
-        //get the bp for an adventure card
-        public int getBP()
+        public int Bids
         {
-            return bp;
+            // Adventure card Bids getters and setters using C# Properties
+            get 
+            {
+                return this.bids;
+            }
+            set
+            {
+                this.bids = value;
+            }
         }
-
-        //set the bids for an adventure card
-        public setBids(int bids)
-        {
-            this.bids = bids;
-        }
-
-        //get the bids for an adventure card
-        public int getBids()
-        {
-            return bids;
-        }
-
     }
 }

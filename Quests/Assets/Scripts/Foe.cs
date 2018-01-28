@@ -12,10 +12,5 @@ namespace QuestOTRT
            
         }
 
-        public void questCheck()
-        {
-            //check to see what quest is currently playing
-            //if the proper quest is playing for this foe then change bp
-        }
     }
 }

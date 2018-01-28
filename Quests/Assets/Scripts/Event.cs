@@ -8,6 +8,7 @@ namespace QuestOTRT
         //Constructor
         public Event(string name) : base(name){}
 
+        /* Need to rework this--breaks both polymorphism and MVC design patterns 
         //A switch statement which calls the card that was drawn, THESE NAMES NEED TO BE EXACTLY WHAT THE CARDS ARE CALLED
         public void play(string name)
         {
@@ -90,7 +91,7 @@ namespace QuestOTRT
         public void queensFavor()
         {
             //Lowest ranked player(s) immediately recieve 2 Adventure Cards
-        }
+        }*/
     }
 }
 
