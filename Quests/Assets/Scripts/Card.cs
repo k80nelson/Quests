@@ -3,6 +3,8 @@
 namespace QuestOTRT
 {
 
+    //OUR CARDS NEED TO HAVE THE EXACT NAMES AS THE EVENT CLASS NAMES
+
     public abstract class Card
     {
         protected string name;
