@@ -5,36 +5,33 @@ namespace QuestOTRT
 
     public abstract class AdventureCard : Card
     {
-        protected int bp;
-        protected int bids;
-        public int BP
-        {
-            get
-            {
-                return bp;
-            }
-        }
-        public int Bids
-        {
-            get
-            {
-                return bids;
-            }
-        }
-
-        protected AdventureCard(string name, int bp, int bids)
-            : base(name)
+        //basic contstructor
+        public AdventureCard(string name, int bp, int bids): base(name)
         {
             this.bp = bp;
             this.bids = bids;
         }
 
-        virtual public int getBP(Quest currQuest)
+        //set the bp for an adventure card
+        public setBP(int bp)
+        {
+            this.bp = bp;
+        }
+
+        //get the bp for an adventure card
+        public int getBP()
         {
             return bp;
         }
 
-        virtual public int getBids(Quest currQuest)
+        //set the bids for an adventure card
+        public setBids(int bids)
+        {
+            this.bids = bids;
+        }
+
+        //get the bids for an adventure card
+        public int getBids()
         {
             return bids;
         }

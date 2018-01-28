@@ -2,29 +2,27 @@
 
 namespace QuestOTRT
 {
-
+    //basic contstructor
     public class Ally : AdventureCard
     {
-        private int specialBP;
-        private int specialBids;
-        private string specialQuest;
 
-        public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialQuest)
-            : base(name, bp, bids)
+        public Ally(string name, int bp, int bids)
+            : base(name, bp, bids){}
+
+
+        public void specialAbility()
         {
-            this.specialBP = specialBP;
-            this.specialBids = specialBids;
-            this.specialQuest = specialQuest;
+            /* switch between ally names
+             * to modify bp and bids
+             * 
+             * exmaple
+             * if on X quest
+             *     then X bid
+             * 
+             */
         }
 
-        public override int getBP(Quest currQuest)
-        {
-            return (currQuest.Name == specialQuest) ? specialBP : bp;
-        }
 
-        public override int getBids(Quest currQuest)
-        {
-            return (currQuest.Name == specialQuest) ? specialBids : bids;
-        }
+        //add functions for each ally
     }
 }

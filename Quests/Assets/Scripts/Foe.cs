@@ -5,15 +5,17 @@ namespace QuestOTRT
 
     public class Foe : AdventureCard
     {
-        private int specialBP;
-        private string specialQuest;
 
-
-        public Foe(string name, int bp, int bids, int specialBP, string specialQuest)
-            : base(name, bp, bids)
+        //basic contstructor
+        public Foe(string name, int bp): base(name, bp, bids=0)
         {
-            this.specialBP = specialBP;
-            this.specialQuest = specialQuest;
+           
+        }
+
+        public void questCheck()
+        {
+            //check to see what quest is currently playing
+            //if the proper quest is playing for this foe then change bp
         }
     }
 }

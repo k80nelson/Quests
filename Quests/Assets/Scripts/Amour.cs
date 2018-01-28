@@ -1,5 +1,5 @@
 ﻿using System;
-
+/*
 namespace QuestOTRT
 {
 
@@ -10,3 +10,5 @@ namespace QuestOTRT
 
     }
 }
+/*
+// molded this class into adventure card
