@@ -15,29 +15,29 @@ namespace QuestOTRT
             this.bids = bids;
         }
         
+        public virtual int getBP(string currQuest)
+        {
+            return this.bp;
+        }
+
+        public virtual int getBids(string currQuest)
+        {
+            return this.bids;
+        }
+
         public int BP
         {
-            // Adventure card BP getters and setters using C# Properties
             get
             {
                 return this.bp;
-            }
-            set
-            {
-                this.bp = value;
             }
         }
 
         public int Bids
         {
-            // Adventure card Bids getters and setters using C# Properties
-            get 
+            get
             {
                 return this.bids;
-            }
-            set
-            {
-                this.bids = value;
             }
         }
     }
