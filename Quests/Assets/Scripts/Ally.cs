@@ -19,12 +19,12 @@ namespace QuestOTRT
 
         public override int getBP(string currQuest)
         {
-            return (currQuest == this.specialQuest) ? this.specialBP : this.BP;
+            return (currQuest == this.specialQuest) ? this.specialBP : this.bp;
         }
 
         public override int getBids(string currQuest)
         {
-            return (currQuest == this.specialQuest) ? this.specialBids : this.Bids;
+            return (currQuest == this.specialQuest) ? this.specialBids : this.bids;
         }
 
     }

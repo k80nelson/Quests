@@ -5,8 +5,8 @@ namespace QuestOTRT
 
     public abstract class AdventureCard : Card
     {
-        private int bp;
-        private int bids;
+        protected int bp;
+        protected int bids;
 
         //basic contstructor
         public AdventureCard(string name, int bp, int bids): base(name)
@@ -25,20 +25,5 @@ namespace QuestOTRT
             return this.bids;
         }
 
-        public int BP
-        {
-            get
-            {
-                return this.bp;
-            }
-        }
-
-        public int Bids
-        {
-            get
-            {
-                return this.bids;
-            }
-        }
     }
 }

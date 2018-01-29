@@ -18,7 +18,7 @@ namespace QuestOTRT
 
         public override int getBP(string currQuest)
         {
-            return (currQuest == this.specialQuest) ? this.specialBP : this.BP;
+            return (currQuest == this.specialQuest) ? this.specialBP : this.bp;
         }
 
     }
