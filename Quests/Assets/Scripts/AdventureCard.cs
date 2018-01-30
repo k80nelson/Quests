@@ -15,12 +15,12 @@ namespace QuestOTRT
             this.bids = bids;
         }
         
-        public virtual int getBP(string currQuest)
+        public virtual int getBP(string[] currState)
         {
             return this.bp;
         }
 
-        public virtual int getBids(string currQuest)
+        public virtual int getBids(string[] currState)
         {
             return this.bids;
         }

@@ -16,9 +16,9 @@ namespace QuestOTRT
             this.specialQuest = specialQuest;
         }
 
-        public override int getBids(string currQuest)
+        public override int getBids(string[] currState)
         {
-            return (currQuest == specialQuest) ? this.specialBids : this.bids;
+            //return (currQuest == specialQuest) ? this.specialBids : this.bids;
         }
 
     }
