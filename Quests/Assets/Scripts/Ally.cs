@@ -7,24 +7,23 @@ namespace QuestOTRT
     {
         private int specialBP;
         private int specialBids;
-        private string specialQuest;
+        private string specialCards;
 
-        public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialQuest)
+        public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialCard)
             : base(name, bp, bids)
         {
             this.specialBP = specialBP;
             this.specialBids = specialBids;
-            this.specialQuest = specialQuest;
         }
 
-        public override int getBP(string currQuest)
+        public override int getBP(string[] currState)
         {
-            return (currQuest == this.specialQuest) ? this.specialBP : this.bp;
+            //return (this.specialCard in currState) ? this.specialBP : this.bp;
         }
 
-        public override int getBids(string currQuest)
+        public override int getBids(string[] currState)
         {
-            return (currQuest == this.specialQuest) ? this.specialBids : this.bids;
+            //return (currQuest == this.specialQuest) ? this.specialBids : this.bids;
         }
 
     }
