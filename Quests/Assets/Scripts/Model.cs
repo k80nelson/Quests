@@ -1,25 +1,26 @@
 ﻿using System;
 
-namespace QuestOTRT {
+namespace QuestOTRT
+{
     /*
-     * View of MVC
+     * Model of MVC
      */
-    public class View
+    public class Model
     {
-        int size;
-        public Renderables[] renderables;
+        int size;   //of updateables array
+        public Updateables[] updateables;
 
         //Render function contrained and called by all renderable objects
         //this will (most likely) call the .cs sripts from unity.
-	    public render(Model model)
-	    {
+        public update()
+        {
             /* 
              * this is where we will have a loop for the renderables of the MVC
              */
             for (int i = 0; i < size; i++)
             {
-                renderables[i].draw();
+                updateables[i].update();
             }
-	    }
+        }
     }
 }
