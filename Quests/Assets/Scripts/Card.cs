@@ -5,7 +5,7 @@ namespace QuestOTRT
 
     //OUR CARDS NEED TO HAVE THE EXACT NAMES AS THE EVENT CLASS NAMES
 
-    public abstract class Card
+    public abstract class Card : Renderables
     {
         protected string name;
 
