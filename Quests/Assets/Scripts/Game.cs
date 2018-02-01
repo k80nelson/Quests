@@ -6,6 +6,7 @@ namespace QuestOTRT {
         //Player[] players;     //total players in the game
         public int numPlayers;  //size of players Array
 
+        
 
         //winlse is for finally of game, playerleft is for when AI or conclude game needs to be chosen
         private enum state{menu, game, pause, playerLeft, winlose};

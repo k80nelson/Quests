@@ -5,7 +5,7 @@ using UnityEngine;
 namespace QuestOTRT{
     public class AllyScript : MonoBehaviour {
 
-        Ally allycard =  new Ally("temp",1,1,1,1,"temp");
+        Ally card =  new Ally("temp",1,1,1,1,"temp");
 
 	    // Use this for initialization
 	    void Start () {
@@ -25,7 +25,8 @@ namespace QuestOTRT{
 
         private void OnMouseOver()
         {
-            //print(allycard.getBP());
+            string[] temp = { "hey", "howareyou" };
+            print(card.getBP(temp));
         }
     }
 }
