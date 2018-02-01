@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace QuestOTRT
 {
@@ -18,7 +19,7 @@ namespace QuestOTRT
 
         public override int getBids(string[] currState)
         {
-            //return (currQuest == specialQuest) ? this.specialBids : this.bids;
+            return (currState.Contains(this.specialQuest)) ? this.specialBids : this.bids;
         }
 
     }

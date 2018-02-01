@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace QuestOTRT
 {
@@ -6,24 +8,29 @@ namespace QuestOTRT
     public class Foe : AdventureCard
     {
         private int specialBP;
-        private string[] specialCards;
+        private List<string> specialCards;
 
         //basic contstructor
         public Foe(string name, int bp, int bids, int specialBP, string[] specialCards)
             : base(name, bp, bids)
         {
             this.specialBP = specialBP;
-            this.specialCards[0] = "Defend the Queens Honor";
+            this.specialCards = new List<string>();
+            this.specialCards.Add("Defend the Queen's Honor");
             foreach (string special in specialCards)
             {
-                // add to specialCards[]
+                this.specialCards.Add(special);
             }
             
         }
 
         public override int getBP(string[] currState)
         {
-            // return (this.specialCard in currState) ? this.specialBP : this.bp;
+            foreach (string card in this.specialCards)
+            {
+                if (currState.Contains(card)) return this.specialBP;
+            }
+            return this.bp;
         }
 
     }

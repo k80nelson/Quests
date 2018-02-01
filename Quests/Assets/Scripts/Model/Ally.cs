@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace QuestOTRT
 {
@@ -7,23 +8,24 @@ namespace QuestOTRT
     {
         private int specialBP;
         private int specialBids;
-        private string specialCards;
+        private string specialCard;
 
         public Ally(string name, int bp, int bids, int specialBP, int specialBids, string specialCard)
             : base(name, bp, bids)
         {
             this.specialBP = specialBP;
             this.specialBids = specialBids;
+            this.specialCard = specialCard;
         }
 
         public override int getBP(string[] currState)
         {
-            //return (this.specialCard in currState) ? this.specialBP : this.bp;
+            return (currState.Contains(specialCard)) ? this.specialBP : this.bp;
         }
 
         public override int getBids(string[] currState)
         {
-            //return (currQuest == this.specialQuest) ? this.specialBids : this.bids;
+            return (currState.Contains(specialCard)) ? this.specialBids : this.bids;
         }
 
     }
