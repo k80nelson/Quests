@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuestOTRT{
+namespace QuestOTRT {
 
     public class Game {
         //Player[] players;     //total players in the game
@@ -13,9 +13,6 @@ namespace QuestOTRT{
 
         //total turns taken so far (for progress)
         private int turns;
-        public View view;
-        public Controller controller;
-        public Model model;
 
         //setup for game
 	    private Game() {
@@ -30,10 +27,6 @@ namespace QuestOTRT{
 	
 	    // Loop is called once per frame, AKA game loop
 	    public void gameLoop () {
-            
-            controller.input(model, view);
-            view.render(model);
-            model.update();
 
 	    }
     }

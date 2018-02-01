@@ -15,13 +15,17 @@ namespace QuestOTRT
             : base(name, bp, bids)
         {
             this.specialBP = specialBP;
-            this.specialCards = new List<string>();
-            this.specialCards.Add("Defend the Queen's Honor");
-            foreach (string special in specialCards)
+            this.specialCards = new List<string>
             {
-                this.specialCards.Add(special);
+                "Defend the Queen's Honor"
+            };
+            if (specialCards != null)
+            {
+                foreach (string special in specialCards)
+                {
+                    this.specialCards.Add(special);
+                }
             }
-            
         }
 
         public override int getBP(string[] currState)
