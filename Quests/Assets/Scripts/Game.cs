@@ -15,7 +15,7 @@ namespace QuestOTRT{
         private int turns;
         public View view;
         public Controller controller;
-
+        public Model model;
 
         //setup for game
 	    private Game() {
@@ -30,8 +30,11 @@ namespace QuestOTRT{
 	
 	    // Loop is called once per frame, AKA game loop
 	    public void gameLoop () {
-            view.render();
-            controller.input();
+            
+            controller.input(model, view);
+            view.render(model);
+            model.update();
+
 	    }
     }
 }

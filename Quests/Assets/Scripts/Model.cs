@@ -12,7 +12,7 @@ namespace QuestOTRT
 
         //Render function contrained and called by all renderable objects
         //this will (most likely) call the .cs sripts from unity.
-        public update()
+        public void update()
         {
             /* 
              * this is where we will have a loop for the renderables of the MVC

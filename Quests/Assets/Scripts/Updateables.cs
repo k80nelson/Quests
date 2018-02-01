@@ -6,11 +6,10 @@ namespace QuestOTRT
     {
         //SPRITE VARIABLE IF NEEDED
 
-        protected Update(); 
+        protected abstract void Update(); 
         /*
             Link to call CS script in unity!!
             Later this update function will take in deltatime
         */
-
     }
 }

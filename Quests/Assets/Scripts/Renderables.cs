@@ -6,7 +6,7 @@ namespace QuestOTRT
     {
         //SPRITE VARIABLE IF NEEDED
 
-        protected Draw();  /*Link to call CS script in unity!!*/
+        protected abstract void Draw();  /*Link to call CS script in unity!!*/
           
     }
 }
