@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ally
+  - Amour
+  - Foe
+  - TestCard
+  - Weapon
+  - Card
   layers:
   - Default
   - TransparentFX
