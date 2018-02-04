@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuestOTRT
 {
@@ -98,12 +100,12 @@ namespace QuestOTRT
             AdventureDeckAmount.Add(29, 1);
             AdventureDeckAmount.Add(30, 1);
 
+            
             //The index is the int, lists the Quests, then Tournaments, then Events
             Dictionary<int, string> StoryDeckList = new Dictionary<int, string>();
 
             //Index is the same as the other dictionary, second into represents the number of that kind of cards left
             Dictionary<int, int> StoryDeckAmount = new Dictionary<int, int>();
-
 
             //Quests
             StoryDeckList.Add(0, "Search for the Holy Grail");
