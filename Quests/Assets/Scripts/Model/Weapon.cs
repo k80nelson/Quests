@@ -1,5 +1,5 @@
 ﻿using System;
-/*
+
 namespace QuestOTRT
 {
 
@@ -9,6 +9,6 @@ namespace QuestOTRT
             : base(name, bp, bids) { }
     }
 }
-*/
+
 
 // molded this class into adventure card
