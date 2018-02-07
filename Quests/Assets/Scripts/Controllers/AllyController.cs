@@ -5,7 +5,7 @@ using UnityEngine;
 namespace QuestOTRT{
     public class AllyController : GameElement {
 
-        public Ally card;
+        public Ally card = null;
 
 
 	    // Use this for initialization
@@ -19,12 +19,12 @@ namespace QuestOTRT{
 
         public void initialize(string name, int bp, int bids, int sbp, int sbids, string squest)
         {
-            card = new Ally(name, bp, bids, sbp, sbids, squest);
+            if (card == null) card = new Ally(name, bp, bids, sbp, sbids, squest);
         }
 
         public void initialize(Ally ally)
         {
-            card = ally;
+            if (card == null) card = ally;
         }
 
         //When card is clicked, only on 

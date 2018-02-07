@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4567976532172718}
   - component: {fileID: 212177536671948584}
   - component: {fileID: 61114135532681786}
+  - component: {fileID: 114165159618879346}
   m_Layer: 0
   m_Name: King Pellinore
   m_TagString: Untagged
@@ -66,6 +67,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.77, y: 5.07}
   m_EdgeRadius: 0
+--- !u!114 &114165159618879346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1093572095215032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212177536671948584
 SpriteRenderer:
   m_ObjectHideFlags: 1

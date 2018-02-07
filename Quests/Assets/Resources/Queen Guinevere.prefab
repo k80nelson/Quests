@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4825915644855888}
   - component: {fileID: 212799223101446718}
   - component: {fileID: 61196771117933656}
+  - component: {fileID: 114322935669021894}
   m_Layer: 0
   m_Name: Queen Guinevere
   m_TagString: Untagged
@@ -66,6 +67,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.79, y: 5.19}
   m_EdgeRadius: 0
+--- !u!114 &114322935669021894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355044764675948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212799223101446718
 SpriteRenderer:
   m_ObjectHideFlags: 1

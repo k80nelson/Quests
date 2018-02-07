@@ -10,6 +10,7 @@ TagManager:
   - TestCard
   - Weapon
   - Card
+  - King Arthur
   layers:
   - Default
   - TransparentFX
