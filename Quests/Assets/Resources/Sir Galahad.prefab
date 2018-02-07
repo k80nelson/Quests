@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212368787481379192}
   - component: {fileID: 61866538341646128}
   - component: {fileID: 114281469025465260}
+  - component: {fileID: 114454866805352690}
   m_Layer: 0
   m_Name: Sir Galahad
   m_TagString: Untagged
@@ -78,6 +79,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114454866805352690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787593164113094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212368787481379192
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a4481a62d9111e34e9057fac12ee2114, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 775fcaec1b19f5e41a87e4ba230ebabf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

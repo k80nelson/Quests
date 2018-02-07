@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212177536671948584}
   - component: {fileID: 61114135532681786}
   - component: {fileID: 114165159618879346}
+  - component: {fileID: 114633078125680220}
   m_Layer: 0
   m_Name: King Pellinore
   m_TagString: Untagged
@@ -78,6 +79,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114633078125680220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1093572095215032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212177536671948584
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a4e5c2a11b781f446a7ee82994ea9e5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8e671a4d6f5f9b48802f98971ca00af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

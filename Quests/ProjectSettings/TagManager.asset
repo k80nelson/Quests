@@ -51,3 +51,6 @@ TagManager:
   - name: Background
     uniqueID: 2301347737
     locked: 0
+  - name: Cards
+    uniqueID: 793925405
+    locked: 0

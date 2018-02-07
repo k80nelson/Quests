@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 897952776}
   - component: {fileID: 897952778}
   - component: {fileID: 897952777}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: bgImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1759262463}
+      - m_Target: {fileID: 102900000, guid: 367b74d04aa64ae439eba1de18c368d8, type: 3}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:

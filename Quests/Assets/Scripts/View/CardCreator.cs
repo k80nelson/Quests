@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardCreator : MonoBehaviour {
-
-
+    
 
     public static void createAlly(string name, int bp, int bids, int sBP, int sBids, string sQuest)
     {
