@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace QuestOTRT
             //Index is the same as the other dictionary, second into represents the number of that kind of cards left
             Dictionary<int, int> AdventureDeckAmount = new Dictionary<int, int>();
 
+
+            Dictionary<string, int> AdventureDeck = new Dictionary<string, int>();
 
             //Weapons
             AdventureDeckList.Add(0, "Excalibur");
@@ -179,5 +182,12 @@ namespace QuestOTRT
             RankDeckAmount.Add(1, 4);
             RankDeckAmount.Add(2, 4);
         }
+
+        //Holds the random number
+
+    }
+}
+public void Draw(Deck drawPile, int numCards, int options)
+        { }
     }
 }
