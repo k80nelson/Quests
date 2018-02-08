@@ -18,13 +18,7 @@ namespace QuestOTRT
 
         public Hand()
         {
-            this.maxSize = 20;
-            /*changed max size to 20 --> I dont know if u want to do it this way or have another variable.
-            You can have more than 12 cards in your hand but u will have to 
-            select all cards > 12 and remove the ones you dont want.
-
-            ex if I have 15 cards in hand. I can remove the 3 cards I dont want so that I can get back to 12 cards.
-            */
+            this.maxSize = 12;
             this.numCards = 0;
             this.cards = new List<AdventureCard>();
         }
