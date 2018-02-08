@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CardCreator : MonoBehaviour {
 
-
-
     public static void createAlly(string name, int bp, int bids, int sBP, int sBids, string sQuest)
     {
         GameObject prefab = Object.Instantiate(Resources.Load(name)) as GameObject;
@@ -19,9 +17,4 @@ public class CardCreator : MonoBehaviour {
         QuestOTRT.AllyController someCard = prefab.GetComponent<QuestOTRT.AllyController>();
         someCard.initialize(ally);
     }
-
-
-
-
-
 }
