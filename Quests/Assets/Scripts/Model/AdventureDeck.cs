@@ -1,10 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace QuestOTRT
 {
     public class AdventureDeck : Deck
     {
+        //This should return a card
+        public override string draw()
+        {
+            int index;
+            bool check = true;
+            string card;
+            System.Random rnd = new System.Random();
+            {
+                while (check)
+                {
+                    index = rnd.Next(0, 30);
+
+                    int validity = this.DeckAmount.ToList()[index];
+                    if (validity > 0)
+                    {
+                        card = this.DeckList.ToList()[index];
+                        check = false;
+                        return card;
+                        
+                    }  
+
+                }
+            }
+        }
+
         public override void initialize()
         {
             this.DeckList = new Dictionary<int, string>();

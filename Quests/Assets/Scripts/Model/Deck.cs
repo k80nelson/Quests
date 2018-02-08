@@ -9,5 +9,7 @@ namespace QuestOTRT
         protected Dictionary<int, int> DeckAmount;
 
         public abstract void initialize();
+
+        public abstract string draw();
     }
 }

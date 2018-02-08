@@ -5,6 +5,31 @@ namespace QuestOTRT
 {
     public class StoryDeck : Deck
     {
+
+        public override string draw()
+        {
+            int index;
+            bool check = true;
+            string card;
+            System.Random rnd = new System.Random();
+            {
+                while (check)
+                {
+                    index = rnd.Next(0, 30);
+
+                    int validity = this.DeckAmount.ToList()[index];
+                    if (validity > 0)
+                    {
+                        card = this.DeckList.ToList()[index];
+                        check = false;
+                        return card;
+
+                    }
+
+                }
+            }
+        }
+
         public override void initialize()
         {
             //The index is the int, lists the Quests, then Tournaments, then Events
