@@ -15,7 +15,7 @@ namespace QuestOTRT
             {
                 while (check)
                 {
-                    index = rnd.Next(0, 30);
+                    index = rnd.Next(0, 21);
 
                     int validity = this.DeckAmount.ToList()[index];
                     if (validity > 0)
