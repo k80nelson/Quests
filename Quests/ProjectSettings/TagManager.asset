@@ -10,6 +10,7 @@ TagManager:
   - TestCard
   - Weapon
   - Card
+  - King Arthur
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Menufg
+  - Menubg
   - 
   - 
   - 
@@ -46,4 +47,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2301347737
+    locked: 0
+  - name: Cards
+    uniqueID: 793925405
     locked: 0

@@ -18,14 +18,21 @@ public class Game : MonoBehaviour {
     //total turns taken so far (for progress)
     private int turns;
 
+    
     void Start()
+    {
+        //CardCreator.createAlly("King Arthur", 1, 1, 10, 2, "Hello");
+        //QuestOTRT.Ally all = new QuestOTRT.Ally("Sir Galahad", 1, 1, 10, 2, "Hello");
+        //CardCreator.createAlly(all);
+        
+    }
+        
+    public void tempClick()
     {
         CardCreator.createAlly("King Arthur", 1, 1, 10, 2, "Hello");
         QuestOTRT.Ally all = new QuestOTRT.Ally("Sir Galahad", 1, 1, 10, 2, "Hello");
         CardCreator.createAlly(all);
-        
     }
-        
     void Update()
     {
             

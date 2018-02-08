@@ -3,7 +3,7 @@
 namespace QuestOTRT
 {
 
-    public abstract class Card 
+    public abstract class Card : IEquatable<Card>, IEquatable<string>
     {
         protected string name;
 
@@ -18,6 +18,16 @@ namespace QuestOTRT
             {
                 return name;
             }
+        }
+
+        public bool Equals(Card other)
+        {
+            return this.Name == other.Name;
+        }
+
+        public bool Equals(string name)
+        {
+            return this.Name == name;
         }
     }
 }

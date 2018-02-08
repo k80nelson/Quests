@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4825915644855888}
   - component: {fileID: 212799223101446718}
   - component: {fileID: 61196771117933656}
+  - component: {fileID: 114322935669021894}
+  - component: {fileID: 114933879576683340}
   m_Layer: 0
   m_Name: Queen Guinevere
   m_TagString: Untagged
@@ -66,6 +68,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.79, y: 5.19}
   m_EdgeRadius: 0
+--- !u!114 &114322935669021894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355044764675948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114933879576683340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355044764675948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212799223101446718
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e54f53536cebe841ab8aa4e550e4b13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 747988f2f9176584dbe478db600209c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

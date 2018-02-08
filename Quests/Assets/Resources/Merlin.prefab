@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4641352409250132}
   - component: {fileID: 212550035649804830}
   - component: {fileID: 61723731942055100}
+  - component: {fileID: 114592416386440366}
+  - component: {fileID: 114029754767166662}
   m_Layer: 0
   m_Name: Merlin
   m_TagString: Untagged
@@ -66,6 +68,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.73, y: 5.23}
   m_EdgeRadius: 0
+--- !u!114 &114029754767166662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909432267836786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114592416386440366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909432267836786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212550035649804830
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 297361a698a84714ba72a5971a587713, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ed0cd23b37da804da799a528af8b702, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
