@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212107470367201754}
   - component: {fileID: 61670336941986550}
   - component: {fileID: 114483202700642002}
+  - component: {fileID: 114809575149694526}
   m_Layer: 0
   m_Name: Sir Percival
   m_TagString: Untagged
@@ -78,6 +79,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114809575149694526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495037441145056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212107470367201754
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04fbf25b19f7c314ca402927aa46b61e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0800f8a75e58cd647b07f9a2cde32587, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

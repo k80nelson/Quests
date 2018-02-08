@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4579222916085284}
   - component: {fileID: 212232366401609410}
   - component: {fileID: 61786030335466284}
-  - component: {fileID: 114250628199222392}
+  - component: {fileID: 114827495638730086}
   m_Layer: 0
   m_Name: King Arthur
   m_TagString: Untagged
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.77, y: 5.23}
   m_EdgeRadius: 0
---- !u!114 &114250628199222392
+--- !u!114 &114827495638730086
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323437342111914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c1d7013d6fe894b9cd79f221583b2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d62c241bb2409a4785cdff76fb46527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212232366401609410
@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2162f2d14771cd34a8e91cd39b9bcc1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b8d7450e50588848a4839a7868995d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
