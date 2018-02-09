@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuestOTRT
 {
@@ -17,11 +18,11 @@ namespace QuestOTRT
                 while (check)
                 {
                     index = rnd.Next(0, 30);
-
-                    int validity = this.DeckAmount.ToList()[index];
+                   
+                    int validity = this.DeckAmount[index];//.ToList()[index];
                     if (validity > 0)
                     {
-                        card = this.DeckList.ToList()[index];
+                        card = this.DeckList[index];//.ToList()[index];
                         check = false;
                         return card;
                         
@@ -29,6 +30,7 @@ namespace QuestOTRT
 
                 }
             }
+            return "";
         }
 
         public override void initialize()

@@ -17,16 +17,17 @@ namespace QuestOTRT
                 {
                     index = rnd.Next(0, 21);
 
-                    int validity = this.DeckAmount.ToList()[index];
+                    int validity = this.DeckAmount[index];//.ToList()[index];
                     if (validity > 0)
                     {
-                        card = this.DeckList.ToList()[index];
+                        card = this.DeckList[index];//.ToList()[index];
                         check = false;
                         return card;
 
                     }
 
                 }
+                return "";
             }
         }
 
