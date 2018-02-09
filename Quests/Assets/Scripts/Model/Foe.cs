@@ -28,6 +28,21 @@ namespace QuestOTRT
             }
         }
 
+        //Overridde function for creating a new foe without special powers, IE just a blank string
+        public Foe(string name, int bp, int bids, int specialBP, string specialCard)
+            : base(name, bp, bids)
+        {
+            this.specialBP = specialBP;
+            this.specialCards = new List<string>
+            {
+                "Defend the Queen's Honor"
+            };
+            if (specialCards != null)
+            {
+             this.specialCards.Add(specialCard);   
+            }
+        }
+
         public override int getBP(string[] currState)
         {
             foreach (string card in this.specialCards)

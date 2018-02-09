@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuestOTRT
 {
@@ -12,95 +13,97 @@ namespace QuestOTRT
             //adding Excalibur
             QuestOTRT.Weapon excalibur = new QuestOTRT.Weapon("Excalibur", 30, 0);
             for (int i = 0; i < 2; ++i)
-                adventurecards.add(excalibur);
+                adventurecards.Add(excalibur);
 
             //adding Lance
             QuestOTRT.Weapon lance = new QuestOTRT.Weapon("Lance", 20, 0);
             for (int i = 0; i < 6; ++i)
-                adventurecards.add(lance);
+                adventurecards.Add(lance);
 
             //adding Battle-ax
             QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-ax", 15, 0);
             for (int i = 0; i < 8; ++i)
-                adventurecards.add(battleAx);
+                adventurecards.Add(battleAx);
 
             //adding Sword
             QuestOTRT.Weapon sword = new QuestOTRT.Weapon("Sword",10,0);
             for (int i = 0; i < 5; ++i)
-                adventurecards.add(sword);
+                adventurecards.Add(sword);
 
             //adding Horse
             QuestOTRT.Weapon horse = new QuestOTRT.Weapon("Horse", 10, 0);
             for (int i = 0; i < 11; ++i)
-                adventurecards.add(horse);
+                adventurecards.Add(horse);
 
             //adding Dagger
             QuestOTRT.Weapon dagger = new QuestOTRT.Weapon("Dagger", 5, 0);
             for (int i = 0; i < 5; ++i)
-                adventurecards.add(dagger);
+                adventurecards.Add(dagger);
+
+
 
 
             /* Foes */
             //adding Dragon
             QuestOTRT.Foe dragon = new QuestOTRT.Foe("Dragon", 50, 0, 70, "");
             for (int i = 0; i < 1; ++i)
-                adventurecards.add(dragon);
+                adventurecards.Add(dragon);
 
             //adding Giant
             QuestOTRT.Foe giant = new QuestOTRT.Foe("Giant", 40, 0, 0, "");
             for (int i = 0; i < 2; ++i)
-                adventurecards.add(giant);
+                adventurecards.Add(giant);
 
             //adding Mordred
             QuestOTRT.Foe mordred = new QuestOTRT.Foe("Mordred", 30, 0, 0, "Use as a Foe or sacrifice at any time to remove any player's Ally from play");
             for (int i = 0; i < 4; ++i)
-                adventurecards.add(mordred);
+                adventurecards.Add(mordred);
 
             //adding Green Knight
             QuestOTRT.Foe greenKnight = new QuestOTRT.Foe("Green Knight", 25, 0, 40, "");
             for (int i = 0; i < 2; ++i)
-                adventurecards.add(greenKnight);
+                adventurecards.Add(greenKnight);
 
             //adding Black Knight
             QuestOTRT.Foe blackKnight = new QuestOTRT.Foe("Black Knight", 25, 0, 35, "");
             for (int i = 0; i < 3; ++i)
-                adventurecards.add(blackKnight);
+                adventurecards.Add(blackKnight);
 
             //adding Evil Knight
             QuestOTRT.Foe evilKnight = new QuestOTRT.Foe("Evil Knight", 20, 0, 30, "");
             for (int i = 0; i < 6; ++i)
-                adventurecards.add(evilKnight);
+                adventurecards.Add(evilKnight);
 
             //adding Saxon Knight
             QuestOTRT.Foe saxonKnight = new QuestOTRT.Foe("Saxon Knight", 15, 0, 25, "");
             for (int i = 0; i < 8; ++i)
-                adventurecards.add(saxonKnight);
+                adventurecards.Add(saxonKnight);
 
             //adding Robber Knight
             QuestOTRT.Foe robberKnight = new QuestOTRT.Foe("Robber Knight", 15, 0, 0, "");
             for (int i = 0; i < 7; ++i)
-                adventurecards.add(robberKnight);
+                adventurecards.Add(robberKnight);
 
             //adding Saxon
             QuestOTRT.Foe saxon = new QuestOTRT.Foe("Saxon", 10, 0, 20, "");
             for (int i = 0; i < 5; ++i)
-                adventurecards.add(saxon);
+                adventurecards.Add(saxon);
 
             //adding Boar
             QuestOTRT.Foe boar = new QuestOTRT.Foe("Boar", 5, 0, 15, "");
             for (int i = 0; i < 4; ++i)
-                adventurecards.add(boar);
+                adventurecards.Add(boar);
 
             //adding Thieves
             QuestOTRT.Foe thieves = new QuestOTRT.Foe("Thieves", 5, 0, 0, "");
             for (int i = 0; i < 8; ++i)
-                adventurecards.add(thieves);
+                adventurecards.Add(thieves);
 
             /* Amours */
             //adding Amours
             QuestOTRT.Foe amours = new QuestOTRT.Foe("Amours", 10, 1, 0, "");
             for (int i = 0; i < 8; ++i)
-                adventurecards.add(amours);
+                adventurecards.Add(amours);
 
             /* Test */
 
