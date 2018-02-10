@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+using System;
 
 public class CardTesting : IPrebuildSetup{
     private QuestOTRT.Foe foeCard;
@@ -63,12 +64,11 @@ public class CardTesting : IPrebuildSetup{
     [Test]
     public void testDeck()
     {
-        for (int i = 0; i<10;i++) {
-            string tempCard = advDeck.Draw();
+        for (int i = 0; i<20;i++) {
+            string tempCard = advDeck.draw();
             Console.Write(tempCard);
-            bool checkAdjust = advDeck.adjust(tempcard);
-            Console.Write(checkAdjust);
-            console.Write("\n");
+            bool checkAdjust = advDeck.adjust(tempCard);
+            Console.Write("\n");
         }
     }
 }

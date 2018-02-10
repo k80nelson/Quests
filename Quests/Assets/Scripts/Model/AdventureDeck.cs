@@ -15,27 +15,36 @@ namespace QuestOTRT
         //This should return a card
         public override string draw()
         {
-            int index;
+            
             bool check = true;
-            string card;
+            string card = "";
+            int index = -1;
             System.Random rnd = new System.Random();
             {
                 while (check)
                 {
-                    index = rnd.Next(0, 30);
-                   
+                    index = -1;
+
+                    for (int i = 0; i < 10; ++i)
+                    {
+                        index = rnd.Next(0, 30);
+                        Console.WriteLine("rndInt: " + index + " ");
+                    }
                     int validity = this.DeckAmount[index];//.ToList()[index];
+                    Console.WriteLine("Validity is " + validity);
                     if (validity > 0)
                     {
                         card = this.DeckList[index];//.ToList()[index];
-                        check = false;
                         return card;
-                        
-                    }  
+                    }
+                    else
+                    {
+                        Console.Write("The Validity of the card failed");
+                    }
 
                 }
             }
-            return "";
+            return card;
         }
 
         public override bool adjust(string name)
@@ -47,11 +56,11 @@ namespace QuestOTRT
                 {
                     int cardKey = cardCheck.Key;
                     DeckAmount[cardKey] = DeckAmount[cardKey] - 1;
-                    return 1;
+                    return true;
                 }
             }
 
-            return 0;
+            return false;
         }
 
         public override void initialize()

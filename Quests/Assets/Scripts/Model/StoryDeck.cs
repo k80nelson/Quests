@@ -1,10 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuestOTRT
 {
     public class StoryDeck : Deck
     {
+        public override bool adjust(string name)
+        {
+            for (int index = 0; index < this.DeckList.Count; index++)
+            {
+                var cardCheck = DeckList.ElementAt(index);
+                if (name == cardCheck.Value)
+                {
+                    int cardKey = cardCheck.Key;
+                    DeckAmount[cardKey] = DeckAmount[cardKey] - 1;
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         public override string draw()
         {
