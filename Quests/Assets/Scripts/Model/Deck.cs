@@ -11,5 +11,7 @@ namespace QuestOTRT
         public abstract void initialize();
 
         public abstract string draw();
+
+        public abstract bool adjust(string name);
     }
 }

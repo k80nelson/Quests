@@ -10,6 +10,7 @@ public class CardTesting : IPrebuildSetup{
     private QuestOTRT.Test testCard;
     private QuestOTRT.Quest quest1;
     private QuestOTRT.Quest quest2;
+    private QuestOTRT.AdventureDeck advDeck;
 
 	[SetUp]
     public void Setup()
@@ -19,6 +20,7 @@ public class CardTesting : IPrebuildSetup{
         this.testCard = new QuestOTRT.Test("Test of the Questing Beast", 0, 1, 3, "Search for the Questing Beast");
         this.quest1 = new QuestOTRT.Quest("Search for the Questing Beast", 3);
         this.quest2 = new QuestOTRT.Quest("Quest for the Holy Grail", 4);
+        this.advDeck = new QuestOTRT.AdventureDeck();
 
     }
 
@@ -56,5 +58,17 @@ public class CardTesting : IPrebuildSetup{
         Assert.AreEqual(1, testCard.getBids(new string[] { quest2.Name }));
         Assert.AreEqual(3, testCard.getBids(new string[] { quest1.Name, "Defend the Queen's Honor" }));
         Assert.AreEqual(0, testCard.getBP(new string[] { quest2.Name }));
+    }
+
+    [Test]
+    public void testDeck()
+    {
+        for (int i = 0; i<10;i++) {
+            string tempCard = advDeck.Draw();
+            Console.Write(tempCard);
+            bool checkAdjust = advDeck.adjust(tempcard);
+            Console.Write(checkAdjust);
+            console.Write("\n");
+        }
     }
 }

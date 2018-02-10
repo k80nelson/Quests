@@ -7,6 +7,11 @@ namespace QuestOTRT
 {
     public class AdventureDeck : Deck
     {
+
+        public AdventureDeck()
+        {
+            this.initialize();
+        }
         //This should return a card
         public override string draw()
         {
@@ -31,6 +36,22 @@ namespace QuestOTRT
                 }
             }
             return "";
+        }
+
+        public override bool adjust(string name)
+        {
+            for (int index = 0; index < this.DeckList.Count; index++)
+            {
+                var cardCheck = DeckList.ElementAt(index);
+                if (name == cardCheck.Value)
+                {
+                    int cardKey = cardCheck.Key;
+                    DeckAmount[cardKey] = DeckAmount[cardKey] - 1;
+                    return 1;
+                }
+            }
+
+            return 0;
         }
 
         public override void initialize()
