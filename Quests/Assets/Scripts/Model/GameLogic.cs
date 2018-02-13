@@ -40,9 +40,6 @@ namespace QuestOTRT
             for (int i = 0; i < 5; ++i)
                 adventurecards.Add(dagger);
 
-
-
-
             /* Foes */
             //adding Dragon
             QuestOTRT.Foe dragon = new QuestOTRT.Foe("Dragon", 50, 0, 70, "");
@@ -101,12 +98,11 @@ namespace QuestOTRT
 
             /* Amours */
             //adding Amours
-            QuestOTRT.Foe amours = new QuestOTRT.Foe("Amours", 10, 1, 0, "");
+            QuestOTRT.Amour amours = new QuestOTRT.Amour("Amours", 10, 1);
             for (int i = 0; i < 8; ++i)
                 adventurecards.Add(amours);
 
             /* Test */
-
 
 
             /*

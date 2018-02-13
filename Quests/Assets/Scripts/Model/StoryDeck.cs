@@ -6,12 +6,13 @@ namespace QuestOTRT
 {
     public class StoryDeck : Deck
     {
+        System.Random rnd = new System.Random();
         public override bool adjust(string name)
         {
             for (int index = 0; index < this.DeckList.Count; index++)
             {
                 var cardCheck = DeckList.ElementAt(index);
-                if (name == cardCheck.Value)
+                if (name == cardCheck.Value.Name)
                 {
                     int cardKey = cardCheck.Key;
                     DeckAmount[cardKey] = DeckAmount[cardKey] - 1;
@@ -22,14 +23,11 @@ namespace QuestOTRT
             return false;
         }
 
-        public override string draw()
+        public override QuestOTRT.Card draw()
         {
             int index;
-            bool check = true;
-            string card;
-            System.Random rnd = new System.Random();
-            {
-                while (check)
+            QuestOTRT.Card card;
+                while (true)
                 {
                     index = rnd.Next(0, 21);
 
@@ -37,25 +35,21 @@ namespace QuestOTRT
                     if (validity > 0)
                     {
                         card = this.DeckList[index];//.ToList()[index];
-                        check = false;
                         return card;
-
                     }
-
                 }
-                return "";
-            }
         }
 
         public override void initialize()
         {
             //The index is the int, lists the Quests, then Tournaments, then Events
-            this.DeckList = new Dictionary<int, string>();
+            this.DeckList = new Dictionary<int, QuestOTRT.Card>();
 
             //Index is the same as the other dictionary, second into represents the number of that kind of cards left
             this.DeckAmount = new Dictionary<int, int>();
 
             //Quests
+            /*
             DeckList.Add(0, "Search for the Holy Grail");
             DeckList.Add(1, "Test of the Green Knight");
             DeckList.Add(2, "Search for the Questing Beast");
@@ -81,7 +75,7 @@ namespace QuestOTRT
             DeckList.Add(18, "Plague");
             DeckList.Add(19, "Chivalrous Deed");
             DeckList.Add(20, "Properity Throughout the Realm");
-            DeckList.Add(21, "King's Call to Arms");
+            DeckList.Add(21, "King's Call to Arms");*/
 
             //Adding the amounts of each card to the Dictionary
             //Quests

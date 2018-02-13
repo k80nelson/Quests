@@ -65,9 +65,9 @@ public class CardTesting : IPrebuildSetup{
     public void testDeck()
     {
         for (int i = 0; i<20;i++) {
-            string tempCard = advDeck.draw();
-            Console.Write(tempCard);
-            bool checkAdjust = advDeck.adjust(tempCard);
+            QuestOTRT.Card tempCard = advDeck.draw();
+            Console.Write(tempCard.Name);
+            bool checkAdjust = advDeck.adjust(tempCard.Name);
             Console.Write("\n");
         }
     }

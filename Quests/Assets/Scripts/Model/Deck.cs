@@ -5,12 +5,12 @@ namespace QuestOTRT
 {
     public abstract class Deck
     {
-        protected Dictionary<int, string> DeckList;
+        protected Dictionary<int, QuestOTRT.Card> DeckList;
         protected Dictionary<int, int> DeckAmount;
 
         public abstract void initialize();
 
-        public abstract string draw();
+        public abstract QuestOTRT.Card draw();
 
         public abstract bool adjust(string name);
     }
