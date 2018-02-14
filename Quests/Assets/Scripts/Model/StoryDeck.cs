@@ -8,7 +8,7 @@ namespace QuestOTRT
     {
         public StoryDeck()
         {
-            this.DeckList = new Dictionary<QuestOTRT.Card, int>();
+            this.DeckList = new Dictionary<Card, int>();
             this.currCards = 28;
             this.initialize();
             this.ValidCards = DeckList.Keys.ToList();
@@ -18,32 +18,32 @@ namespace QuestOTRT
         {
             
             //Quests
-            QuestOTRT.Quest questSFTHG = new QuestOTRT.Quest("Search for the Holy Grail", 5);
-            QuestOTRT.Quest questTOTGK = new QuestOTRT.Quest("Test of the Green Knight", 4);
-            QuestOTRT.Quest questSFTQB = new QuestOTRT.Quest("Search for the Questing Beast", 4);
-            QuestOTRT.Quest questDTQH = new QuestOTRT.Quest("Defend the Queen's Honor", 4);
-            QuestOTRT.Quest questRTFM = new QuestOTRT.Quest("Rescue the Fair Maiden", 3);
-            QuestOTRT.Quest questJTTEF = new QuestOTRT.Quest("Journey Through the Enchanted Forest", 3);
-            QuestOTRT.Quest questVKAE = new QuestOTRT.Quest("Vanquish King Arthur's Enemies", 3);
-            QuestOTRT.Quest questSTD = new QuestOTRT.Quest("Slay the Dragon", 3);
-            QuestOTRT.Quest questBH = new QuestOTRT.Quest("Boar Hunt", 2);
-            QuestOTRT.Quest questRTSR = new QuestOTRT.Quest("Repel the Saxon Raiders", 2);
+            Quest questSFTHG = new Quest("Search for the Holy Grail", 5);
+            Quest questTOTGK = new Quest("Test of the Green Knight", 4);
+            Quest questSFTQB = new Quest("Search for the Questing Beast", 4);
+            Quest questDTQH = new Quest("Defend the Queen's Honor", 4);
+            Quest questRTFM = new Quest("Rescue the Fair Maiden", 3);
+            Quest questJTTEF = new Quest("Journey Through the Enchanted Forest", 3);
+            Quest questVKAE = new Quest("Vanquish King Arthur's Enemies", 3);
+            Quest questSTD = new Quest("Slay the Dragon", 3);
+            Quest questBH = new Quest("Boar Hunt", 2);
+            Quest questRTSR = new Quest("Repel the Saxon Raiders", 2);
 
             //Tournament
-            QuestOTRT.Tournament tournamentCamelot = new QuestOTRT.Tournament("Tournament at Camelot", 3);
-            QuestOTRT.Tournament tournamentOrkney = new QuestOTRT.Tournament("Tournament at Orkney", 2);
-            QuestOTRT.Tournament tournamentTintagel = new QuestOTRT.Tournament("Tournament at Tintagel", 1);
-            QuestOTRT.Tournament tournamentYork = new QuestOTRT.Tournament("Tournament at York", 0);
+            Tournament tournamentCamelot = new Tournament("Tournament at Camelot", 3);
+            Tournament tournamentOrkney = new Tournament("Tournament at Orkney", 2);
+            Tournament tournamentTintagel = new Tournament("Tournament at Tintagel", 1);
+            Tournament tournamentYork = new Tournament("Tournament at York", 0);
 
             //Events
-            QuestOTRT.Event eventKingRecognition = new QuestOTRT.Event("King's Recognition");
-            QuestOTRT.Event eventQueensFavor = new QuestOTRT.Event("Queen's Favor");
-            QuestOTRT.Event eventCCTC = new QuestOTRT.Event("Court Called to Camelot");
-            QuestOTRT.Event eventPox = new QuestOTRT.Event("Pox");
-            QuestOTRT.Event eventPlague = new QuestOTRT.Event("Plague");
-            QuestOTRT.Event eventChivalrousDeed = new QuestOTRT.Event("Chivalrous Deed");
-            QuestOTRT.Event eventPTTR = new QuestOTRT.Event("Properity Throughout the Realm");
-            QuestOTRT.Event eventKingsCallToArms = new QuestOTRT.Event("King's Call to Arms");
+            Event eventKingRecognition = new Event("King's Recognition");
+            Event eventQueensFavor = new Event("Queen's Favor");
+            Event eventCCTC = new Event("Court Called to Camelot");
+            Event eventPox = new Event("Pox");
+            Event eventPlague = new Event("Plague");
+            Event eventChivalrousDeed = new Event("Chivalrous Deed");
+            Event eventPTTR = new Event("Properity Throughout the Realm");
+            Event eventKingsCallToArms = new Event("King's Call to Arms");
 
             //Quests 
             DeckList.Add(questSFTHG, 1);
@@ -72,6 +72,7 @@ namespace QuestOTRT
             DeckList.Add(eventChivalrousDeed, 1);
             DeckList.Add(eventPTTR, 1);
             DeckList.Add(eventKingsCallToArms, 1);
+
         }
     }
 }

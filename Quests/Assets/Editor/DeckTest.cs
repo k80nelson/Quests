@@ -42,6 +42,13 @@ public class DeckTesting : IPrebuildSetup
         {
             temp.Add(adv.draw() as QuestOTRT.AdventureCard);
         }
-
+        Assert.AreEqual(125, temp.Count);
+        Assert.AreEqual(0, adv.Count);
+        List<QuestOTRT.AdventureCard> swords = temp.FindAll(i => i.Name == "Sword");
+        List<QuestOTRT.AdventureCard> thieves = temp.FindAll(i => i.Name == "Thieves");
+        List<QuestOTRT.AdventureCard> merlins = temp.FindAll(i => i.Name == "Merlin");
+        Assert.AreEqual(16, swords.Count);
+        Assert.AreEqual(8, thieves.Count);
+        Assert.AreEqual(1, merlins.Count);
     }
 }
