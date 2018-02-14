@@ -5,11 +5,11 @@ using System;
 
 namespace QuestOTRT
 {
-    public abstract class Deck
+    public abstract class Deck<T> where T : Card
     {
         protected static System.Random rnd = new System.Random();
-        protected Dictionary<QuestOTRT.Card, int> DeckList;
-        protected List<QuestOTRT.Card> ValidCards;
+        protected Dictionary<T, int> DeckList;
+        protected List<T> ValidCards;
         protected int currCards;
         public int Count
         {
@@ -21,16 +21,15 @@ namespace QuestOTRT
 
         public abstract void initialize();
         
-        
-        public virtual QuestOTRT.Card draw()
+        public virtual T draw()
         {
             /* Returns null when deck is empty */
             if (currCards == 0) return null;
 
             // Weighted randomness -> swords return more often than merlins, for example
             int rand = rnd.Next(0, currCards);
-            QuestOTRT.Card selected = null;
-            foreach(QuestOTRT.Card card in ValidCards)
+            T selected = null;
+            foreach(T card in ValidCards)
             {
                 if (rand < DeckList[card])
                 {
@@ -40,29 +39,39 @@ namespace QuestOTRT
                 rand -= DeckList[card];
             }
 
-            if(!adjust(selected)) throw new Exception("Something went wrong while removing from the deck");
+            adjust(selected);
             return selected;
         }
 
-        public virtual QuestOTRT.Card draw(string name)
+        public virtual T draw(string name)
         {
             if (currCards == 0) return null;
 
             // Checks that we can actually return that card
             if (!ValidCards.Exists(i => i.Name == name)) return null;
-            QuestOTRT.Card card = ValidCards.Find(i => i.Name == name);
+            T card = ValidCards.Find(i => i.Name == name);
             adjust(card);
             return card;
+        }
+
+        public virtual List<T> drawAll()
+        {
+            List<T> tmp = new List<T>();
+            while (currCards > 0)
+            {
+                tmp.Add(draw());
+            }
+            return tmp;
         }
 
         public virtual bool adjust(string name)
         {
             // finds the card and uses the already-established function below
-            QuestOTRT.Card card = DeckList.Keys.ToList().Find(i => i.Name == name);
+            T card = DeckList.Keys.ToList().Find(i => i.Name == name);
             return adjust(card);
         }
 
-        public virtual bool adjust(QuestOTRT.Card card)
+        public virtual bool adjust(T card)
         {
             // Shouldn't ever get here
             if (DeckList[card] <= 0) return false;
@@ -74,15 +83,39 @@ namespace QuestOTRT
             return true;
         }
 
-        public override string ToString()
+
+        public virtual int getNumCard(string name)
         {
-            // convenience function for debugging
-            string tmp = "";
-            foreach (QuestOTRT.Card card in ValidCards)
-            {
-                tmp += card.Name + " " + DeckList[card] + ",  ";
-            }
-            return tmp;
+            // returns the number of that specific card in the deck //
+            T card = DeckList.Keys.ToList().Find(i => i.Name == name);
+            return DeckList[card];
         }
+
+        public bool AddCards(List<T> cards)
+        {
+            // adds a collection of cards by list //
+            if (!cards.TrueForAll(i => DeckList.ContainsKey(i))) return false;
+            else cards.ForEach(i => add(i, 1));
+            return true;
+        }
+
+        public bool AddCards(Dictionary<T, int> cards)
+        {
+            // adds a collection of cards by dict //
+            List<T> temp = cards.Keys.ToList();
+            if (! temp.TrueForAll(i => DeckList.ContainsKey(i))) return false;
+            else temp.ForEach(i => add(i, cards[i]));
+            return true;
+        }
+
+        protected void add(T card, int num)
+        {
+            // adds num cards to deck //
+            DeckList[card] += num;
+            currCards += num;
+            if (!ValidCards.Contains(card)) ValidCards.Add(card);
+        }
+
+        
     }
 }

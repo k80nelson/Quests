@@ -4,19 +4,19 @@ using System.Linq;
 
 namespace QuestOTRT
 {
-    public class StoryDeck : Deck
+    public class StoryDeck : Deck<StoryCard>
     {
         public StoryDeck()
         {
-            this.DeckList = new Dictionary<Card, int>();
+            CardComparer<StoryCard> comparer = new CardComparer<StoryCard>();
+            this.DeckList = new Dictionary<StoryCard, int>(comparer);
             this.currCards = 28;
             this.initialize();
             this.ValidCards = DeckList.Keys.ToList();
         }
-        
+
         public override void initialize()
         {
-            
             //Quests
             Quest questSFTHG = new Quest("Search for the Holy Grail", 5);
             Quest questTOTGK = new Quest("Test of the Green Knight", 4);
@@ -72,7 +72,6 @@ namespace QuestOTRT
             DeckList.Add(eventChivalrousDeed, 1);
             DeckList.Add(eventPTTR, 1);
             DeckList.Add(eventKingsCallToArms, 1);
-
         }
     }
 }

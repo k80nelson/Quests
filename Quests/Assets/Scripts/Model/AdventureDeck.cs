@@ -5,11 +5,12 @@ using System.Linq;
 
 namespace QuestOTRT
 {
-    public class AdventureDeck : Deck
+    public class AdventureDeck : Deck<AdventureCard>
     {
         public AdventureDeck()
         {
-            this.DeckList = new Dictionary<Card, int>();
+            CardComparer<AdventureCard> comparer = new CardComparer<AdventureCard>();
+            this.DeckList = new Dictionary<AdventureCard, int>(comparer);
             this.currCards = 125;
             this.initialize();
             this.ValidCards = DeckList.Keys.ToList();
@@ -100,10 +101,8 @@ namespace QuestOTRT
 
             //~Amour~
             DeckList.Add(amours, 8);
-            
         }
-
-
+        
     }
 }
 
