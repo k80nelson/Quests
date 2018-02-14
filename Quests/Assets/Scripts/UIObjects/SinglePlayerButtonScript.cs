@@ -15,6 +15,6 @@ public class SinglePlayerButtonScript : MonoBehaviour {
     }
     public void OnClick()
     {
-        Application.LoadLevel("GameScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
     }
 }
