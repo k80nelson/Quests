@@ -47,35 +47,61 @@ namespace QuestOTRT
 
             //Index is the same as the other dictionary, second into represents the number of that kind of cards left
             this.DeckAmount = new Dictionary<int, int>();
-
             //Quests
-            /*
-            DeckList.Add(0, "Search for the Holy Grail");
-            DeckList.Add(1, "Test of the Green Knight");
-            DeckList.Add(2, "Search for the Questing Beast");
-            DeckList.Add(3, "Defend the Queen's Honor");
-            DeckList.Add(4, "Rescue the Fair Maiden");
-            DeckList.Add(5, "Journey Through the Enchanted Forest");
-            DeckList.Add(6, "Vanquish King Arthur's Enemies");
-            DeckList.Add(7, "Slay the Dragon");
-            DeckList.Add(8, "Boar Hunt");
-            DeckList.Add(9, "Repel the Saxon Raiders");
+            QuestOTRT.Quest questSFTHG = new QuestOTRT.Quest("Search for the Holy Grail", 5);
+            QuestOTRT.Quest questTOTGK = new QuestOTRT.Quest("Test of the Green Knight", 4);
+            QuestOTRT.Quest questSFTHG = new QuestOTRT.Quest("Search for the Questing Beast", 4);
+            QuestOTRT.Quest questDTQH = new QuestOTRT.Quest("Defend the Queen's Honor", 4);
+            QuestOTRT.Quest questRTFM = new QuestOTRT.Quest("Rescue the Fair Maiden", 3);
+            QuestOTRT.Quest questJTTEF = new QuestOTRT.Quest("Journey Through the Enchanted Forest", 3);
+            QuestOTRT.Quest questVKAE = new QuestOTRT.Quest("Vanquish King Arthur's Enemies", 3);
+            QuestOTRT.Quest questSTD = new QuestOTRT.Quest("Slay the Dragon", 3);
+            QuestOTRT.Quest questBH = new QuestOTRT.Quest("Boar Hunt", 2);
+            QuestOTRT.Quest questRTSR = new QuestOTRT.Quest("Repel the Saxon Raiders", 2);
+
+            //Tournament
+            QuestOTRT.Tournament tournamentCamelot = new QuestOTRT.Tournament("Tournament at Camelot", 3);
+            QuestOTRT.Tournament tournamentOrkney = new QuestOTRT.Tournament("Tournament at Orkney", 2);
+            QuestOTRT.Tournament tournamentTintagel = new QuestOTRT.Tournament("Tournament at Tintagel", 1);
+            QuestOTRT.Tournament tournamentYork = new QuestOTRT.Tournament("Tournament at York", 0);
+
+            //Tournament
+            QuestOTRT.Event eventKingRecognition = new QuestOTRT.Event("King's Recognition");
+            QuestOTRT.Event eventQueensFavor = new QuestOTRT.Event("Queen's Favor");
+            QuestOTRT.Event eventCCTC = new QuestOTRT.Event("Court Called to Camelot");
+            QuestOTRT.Event eventPox = new QuestOTRT.Event("Pox");
+            QuestOTRT.Event eventPlague = new QuestOTRT.Event("Plague");
+            QuestOTRT.Event eventChivalrousDeed = new QuestOTRT.Event("Chivalrous Deed");
+            QuestOTRT.Event eventPTTR = new QuestOTRT.Event("Properity Throughout the Realm");
+            QuestOTRT.Event eventKingsCallToArms = new QuestOTRT.Event("King's Call to Arms");
+
+            //Quests 
+            DeckList.Add(0, questSFTHG);
+            DeckList.Add(1, questTOTGK);
+            DeckList.Add(2, questSFTHG);
+            DeckList.Add(3, questDTQH);
+            DeckList.Add(4, questRTFM);
+            DeckList.Add(5, questJTTEF);
+            DeckList.Add(6, questVKAE);
+            DeckList.Add(7, questSTD);
+            DeckList.Add(8, questBH);
+            DeckList.Add(9, questRTSR);
 
             //Tournaments
-            DeckList.Add(10, "Tournament at Camelot");
-            DeckList.Add(11, "Tournament at Orkney");
-            DeckList.Add(12, "Tournament at Tintagel");
-            DeckList.Add(13, "Tournament at York");
+            DeckList.Add(10, tournamentCamelot);
+            DeckList.Add(11, tournamentOrkney);
+            DeckList.Add(12, tournamentTintagel);
+            DeckList.Add(13, tournamentYork);
 
             //Events
-            DeckList.Add(14, "King's Recognition");
-            DeckList.Add(15, "Queen's Favor");
-            DeckList.Add(16, "Court Called to Camelot");
-            DeckList.Add(17, "Pox");
-            DeckList.Add(18, "Plague");
-            DeckList.Add(19, "Chivalrous Deed");
-            DeckList.Add(20, "Properity Throughout the Realm");
-            DeckList.Add(21, "King's Call to Arms");*/
+            DeckList.Add(14, eventKingRecognition);
+            DeckList.Add(15, eventQueensFavor);
+            DeckList.Add(16, eventCCTC);
+            DeckList.Add(17, eventPox);
+            DeckList.Add(18, eventPlague);
+            DeckList.Add(19, eventChivalrousDeed);
+            DeckList.Add(20, eventPTTR);
+            DeckList.Add(21, eventKingsCallToArms);
 
             //Adding the amounts of each card to the Dictionary
             //Quests
