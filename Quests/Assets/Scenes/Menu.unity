@@ -825,7 +825,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 741272700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad05ff24558e6ca419c0d1365ca4383f, type: 3}
+  m_Script: {fileID: 11500000, guid: 708c719baccdc0d46b0582c77cc45f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &827281851
@@ -2806,7 +2806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1445740362
 RectTransform:
   m_ObjectHideFlags: 0
