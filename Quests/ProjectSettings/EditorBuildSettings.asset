@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Scenes: []
+=======
   m_Scenes:
   - enabled: 0
     path: Assets/__DELETED_GUID_Trash/aaa8a27b3a25e024eb3edf3ad0968d9c
@@ -20,3 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4pGame.unity
     guid: 4ea423563cccde149ad16fdfe4ea2fd2
+>>>>>>> 3906a06f9cb4f1f9fc8b0fc2999296d13f6cdd78
