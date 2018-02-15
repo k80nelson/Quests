@@ -630,12 +630,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: ecc51ad2-5a45-4d5c-89e9-ced2601537e0
-  projectName: Quests
-  organizationId: royald11
+  cloudProjectId: 593b0ceb-98f4-4044-b3a4-1e3ec4ed1ed3
+  projectName: Quests (2)
+  organizationId: k80nelson
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
