@@ -204,6 +204,7 @@ PlayerSettings:
   tvOSSmallIconLayers: []
   tvOSSmallIconLayers2x: []
   tvOSLargeIconLayers: []
+  tvOSLargeIconLayers2x: []
   tvOSTopShelfImageLayers: []
   tvOSTopShelfImageLayers2x: []
   tvOSTopShelfImageWideLayers: []
@@ -634,9 +635,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 593b0ceb-98f4-4044-b3a4-1e3ec4ed1ed3
-  projectName: Quests (2)
-  organizationId: k80nelson
+  cloudProjectId: 46dd369b-cb3a-4f24-a194-96f476ee84db
+  projectName: Quests
+  organizationId: unity_7kgsj2alygexcw
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
