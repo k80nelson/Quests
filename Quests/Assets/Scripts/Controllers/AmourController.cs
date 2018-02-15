@@ -37,7 +37,7 @@ namespace QuestOTRT
 
         public int getBP()
         {
-            return card.getBP(gameState.currCards);
+            return 0;
         }
 
     }

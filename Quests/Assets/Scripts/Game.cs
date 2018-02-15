@@ -6,35 +6,28 @@ public class GameElement : MonoBehaviour
     public Game gameState { get { return GameObject.FindObjectOfType<Game>(); } }
 }
 
-public class Game : MonoBehaviour {
+public class Game : MonoBehaviour
+{
+    private int numPlayers;
+    public int NumPlayers { get { return numPlayers; } }
 
-    public int numPlayers;
-    public string[] currCards;
+    public GameObject CardFact;
 
-    //winlse is for finally of game, playerleft is for when AI or conclude game needs to be chosen
-    private enum state{menu, game, pause, playerLeft, winlose};
-    
-
-    //total turns taken so far (for progress)
-    private int turns;
-
-    
     void Start()
     {
-        //CardCreator.createAlly("King Arthur", 1, 1, 10, 2, "Hello");
-        //QuestOTRT.Ally all = new QuestOTRT.Ally("Sir Galahad", 1, 1, 10, 2, "Hello");
-        //CardCreator.createAlly(all);
-        
+
     }
-        
-    public void tempClick()
-    {
-        CardCreator.createAlly("King Arthur", 1, 1, 10, 2, "Hello");
-        QuestOTRT.Ally all = new QuestOTRT.Ally("Sir Galahad", 1, 1, 10, 2, "Hello");
-        CardCreator.createAlly(all);
-    }
+
     void Update()
     {
-            
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CardFactory cc = CardFact.GetComponent<CardFactory>();
+            QuestOTRT.AdventureCard ally = new QuestOTRT.Ally("Sir Galahad", 0, 0, 0, 0, "1");
+            cc.create(ally);
+            cc.create(new QuestOTRT.Amour("Amour", 0, 1));
+
+        }
     }
+    
 }

@@ -16,6 +16,11 @@ namespace QuestOTRT
             }
         }
 
+        public bool overMax()
+        {
+            return numCards > maxSize;
+        }
+
         public Hand()
         {
             this.maxSize = 12;
@@ -30,12 +35,11 @@ namespace QuestOTRT
             this.cards = new List<AdventureCard>(cards);
         }
         
-        public bool add(AdventureCard card)
+        public void add(AdventureCard card)
         {
             // Returns true when you've gone over max capacity 
             cards.Add(card);
             numCards++;
-            return (numCards > maxSize);
         }
 
         public void remove(AdventureCard card)

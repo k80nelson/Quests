@@ -60,10 +60,10 @@ namespace QuestOTRT
             this.shields += numToAdd;
         }
 
-        public bool addCard(AdventureCard card)
+        public void addCard(AdventureCard card)
         {
             // returns true when hand gone over max capacity
-            return this.hand.add(card);
+            this.hand.add(card);
         }
 
         public void removeCard(AdventureCard card)
@@ -99,7 +99,7 @@ namespace QuestOTRT
                     }
                     return false;
                 default:
-                    throw new System.Exception();
+                    throw new System.Exception("Trying to rank up past the end game");
             }
         }
 
@@ -122,11 +122,8 @@ namespace QuestOTRT
 
         public void removeAlly(Ally toRemove)
         {
-            // this works as you can only ever have one 
-            // ally with the name 'name'
-            allies.RemoveAll(ally => ally.Name == toRemove.Name);
+            allies.Remove(toRemove);
         }
-
-
+        
     }
 }

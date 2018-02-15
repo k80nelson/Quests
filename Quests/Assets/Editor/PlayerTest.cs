@@ -77,7 +77,7 @@ public class PlayerTesting : IPrebuildSetup
     public void testAddCard()
     {
         QuestOTRT.Weapon newCard = new QuestOTRT.Weapon("Excalibur", 10, 1);
-        Assert.False(player2.addCard(newCard));
+        player2.addCard(newCard);
         Assert.Contains(newCard, player2.getCards());
     }
 
@@ -85,9 +85,9 @@ public class PlayerTesting : IPrebuildSetup
     public void testAddTooManyCards()
     {
         QuestOTRT.Weapon newCard = new QuestOTRT.Weapon("Excalibur", 10, 1);
-        Assert.False(player2.addCard(newCard));
+        player2.addCard(newCard);
         QuestOTRT.Test newTest = new QuestOTRT.Test("some", 23, 23, 23, "BODY");
-        Assert.True(player2.addCard(newTest));
+        player2.addCard(newTest);
         Assert.AreEqual(4, player2.getCards().Count);
     }
     

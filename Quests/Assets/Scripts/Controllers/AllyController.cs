@@ -31,12 +31,11 @@ namespace QuestOTRT{
         private void OnMouseDown()
         {
             if (card != null) print(card.Name);
-            print(getBP());
         }
 
-        public int getBP()
+        public int getBP(List<QuestOTRT.Card> currCards)
         {
-            return card.getBP(gameState.currCards);
+            return 0;
         }
 
     }
