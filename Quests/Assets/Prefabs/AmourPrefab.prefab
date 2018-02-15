@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4985215971464112}
   - component: {fileID: 212731135372516446}
   - component: {fileID: 61453600231543334}
-  - component: {fileID: 114302386464068968}
+  - component: {fileID: 114928646578327580}
   m_Layer: 0
   m_Name: AmourPrefab
   m_TagString: Untagged
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.77, y: 5.17}
   m_EdgeRadius: 0
---- !u!114 &114302386464068968
+--- !u!114 &114928646578327580
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581505882049742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56b5b47a49baeae4a932d683d18ec953, type: 3}
+  m_Script: {fileID: 11500000, guid: e89ce7e27fd10164ea0ede67c15dad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212731135372516446
