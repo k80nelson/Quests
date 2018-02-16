@@ -15,6 +15,6 @@ public class VolumeScript : MonoBehaviour
         volumeAudio.volume = volumeSlider.value;
 
     }
-
+        
 
 }
