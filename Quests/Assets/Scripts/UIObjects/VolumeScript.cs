@@ -6,21 +6,15 @@ public class VolumeScript : MonoBehaviour
 {
 
     // Use this for initialization
-    void Start()
-    {
-
-    }
+    public UnityEngine.UI.Slider volumeSlider;
+    public AudioSource volumeAudio;
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public UnityEngine.UI.Slider volumeSlider;
-    public AudioSource volumeAudio;
-    public void VolumeController()
-    {
         volumeAudio.volume = volumeSlider.value;
+
     }
+
+
 }
