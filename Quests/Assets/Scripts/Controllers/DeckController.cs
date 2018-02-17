@@ -29,5 +29,10 @@ public class DeckController : MonoBehaviour {
     {
         return AdvDeck.draw(num);
     }
+
+    public int numAdvCards()
+    {
+        return AdvDeck.Count;
+    }
     
 }

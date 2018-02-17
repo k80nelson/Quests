@@ -30,7 +30,9 @@ public class Game : MonoBehaviour
         foreach (GameObject player in Players)
         {
             ctrl = player.GetComponent<PlayerController>();
-            ctrl.player.addCards(Deck.DrawAdventureCards(12));
+            ctrl.addCards(Deck.DrawAdventureCards(12));
         }
+
+        Debug.Log(Deck.numAdvCards());
     }
 }
