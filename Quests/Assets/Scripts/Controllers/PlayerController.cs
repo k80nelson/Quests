@@ -13,14 +13,14 @@ public class PlayerController : GameElement {
         
     }
     // When first enabled
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        player = new QuestOTRT.Player();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
 
-    
 }

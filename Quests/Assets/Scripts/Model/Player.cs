@@ -27,6 +27,21 @@ namespace QuestOTRT
             }
         }
 
+        public int NumCards
+        {
+            get
+            {
+                return hand.numCards;
+            }
+        }
+
+        public List<AdventureCard> Cards {
+            get
+            {
+                return hand.Cards;
+            }
+        }
+
         public Player()
         {
             this.shields = 0;
@@ -64,6 +79,11 @@ namespace QuestOTRT
         {
             // returns true when hand gone over max capacity
             this.hand.add(card);
+        }
+
+        public void addCards(List<AdventureCard> cards)
+        {
+            this.hand.addMany(cards);
         }
 
         public void removeCard(AdventureCard card)
@@ -124,6 +144,7 @@ namespace QuestOTRT
         {
             allies.Remove(toRemove);
         }
+        
         
     }
 }

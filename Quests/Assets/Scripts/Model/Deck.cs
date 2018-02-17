@@ -43,6 +43,16 @@ namespace QuestOTRT
             return selected;
         }
 
+        public virtual List<T> draw(int numToDraw)
+        {
+            List<T> ret = new List<T>();
+            for(int i=0; i<numToDraw; i++)
+            {
+                ret.Add(draw());
+            }
+            return ret;
+        }
+
         public virtual T draw(string name)
         {
             if (currCards == 0) return null;
