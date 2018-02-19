@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class twoPlayerButtonSCript : MonoBehaviour
+public class To2PlayerGame : MonoBehaviour
 {
 
     // Use this for initialization
