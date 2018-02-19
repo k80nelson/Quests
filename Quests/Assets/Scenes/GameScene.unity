@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b7b94869da4d84a9c498100cc61e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 1811736604}
   volumeAudio: {fileID: 467123568}
 --- !u!82 &467123568
 AudioSource:
@@ -767,7 +767,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ae830aab4b7850146afdf4f6c9e84b75, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fb5d6bbb8e2eb104d8e2321ccbfc1807, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
