@@ -8,27 +8,31 @@ public class GameElement : MonoBehaviour
 
 public class Game : MonoBehaviour
 {
-    private int numPlayers;
-    public int NumPlayers { get { return numPlayers; } }
-
-    public GameObject CardFact;
+    public int numPlayers;
+    public int numControlled;
+    public GameObject[] Players;
+    public DeckController Deck;
 
     void Start()
     {
-
+        Deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
+        initPlayers();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CardFactory cc = CardFact.GetComponent<CardFactory>();
-            QuestOTRT.AdventureCard ally = new QuestOTRT.Ally("Sir Galahad", 0, 0, 0, 0, "1");
-            cc.create(ally);
-            cc.create(new QuestOTRT.Amour("Amour", 0, 1));
-
-        }
+        
     }
-    
 
+    void initPlayers()
+    {
+        PlayerController ctrl;
+        foreach (GameObject player in Players)
+        {
+            ctrl = player.GetComponent<PlayerController>();
+            ctrl.addCards(Deck.DrawAdventureCards(12));
+        }
+
+        Debug.Log(Deck.numAdvCards());
+    }
 }

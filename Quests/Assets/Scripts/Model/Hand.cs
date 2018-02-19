@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace QuestOTRT
@@ -6,7 +7,7 @@ namespace QuestOTRT
     public class Hand
     {
         private int maxSize;
-        private int numCards;
+        public int numCards;
         private List<AdventureCard> cards;
         public List<AdventureCard> Cards
         {
@@ -14,6 +15,31 @@ namespace QuestOTRT
             {
                 return cards;
             }
+        }
+
+        public List<Ally> getAllies()
+        {
+            return cards.OfType<Ally>().ToList();
+        }
+
+        public List<Amour> getAmours()
+        {
+            return cards.OfType<Amour>().ToList();
+        }
+
+        public List<Foe> getFoes()
+        {
+            return cards.OfType<Foe>().ToList();
+        }
+
+        public List<Test> getTests()
+        {
+            return cards.OfType<Test>().ToList();
+        }
+
+        public List<Weapon> getWeapons()
+        {
+            return cards.OfType<Weapon>().ToList();
         }
 
         public bool overMax()
@@ -37,9 +63,16 @@ namespace QuestOTRT
         
         public void add(AdventureCard card)
         {
-            // Returns true when you've gone over max capacity 
             cards.Add(card);
             numCards++;
+        }
+
+        public void addMany(List<AdventureCard> cards)
+        {
+            foreach(AdventureCard card in cards)
+            {
+                add(card);
+            }
         }
 
         public void remove(AdventureCard card)

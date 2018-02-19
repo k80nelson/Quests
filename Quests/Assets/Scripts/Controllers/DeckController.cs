@@ -22,10 +22,17 @@ public class DeckController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-        }
+        
     }
 
+    public List<AdventureCard> DrawAdventureCards(int num)
+    {
+        return AdvDeck.draw(num);
+    }
+
+    public int numAdvCards()
+    {
+        return AdvDeck.Count;
+    }
     
 }
