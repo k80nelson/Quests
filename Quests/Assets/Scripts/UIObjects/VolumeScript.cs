@@ -12,7 +12,7 @@ public class VolumeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //volumeAudio.volume = volumeSlider.value;
+        volumeAudio.volume = volumeSlider.value;
 
     }
         
