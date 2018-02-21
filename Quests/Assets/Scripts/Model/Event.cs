@@ -113,7 +113,7 @@ namespace QuestOTRT
         {
             //All players can immediately draw 2 Adventure Cards
             int i = 0;
-            while (i < 4)
+            while (i < players.Length)
             {
                 //add a card and add 1 to the amount of players who have drawn 2 cards
                 players[i].addCards(d.DrawAdventureCards(2));
@@ -129,7 +129,7 @@ namespace QuestOTRT
 
             //loop through the passed in Player[] players
             int i = 0;
-            while(i<4){ 
+            while(i<players.Length){ 
 
                 //checks if the current players rank is <= to current lowest rank being checked
                 if ((int)players[i].getRank() <= curLowestRank){
