@@ -75,6 +75,16 @@ namespace QuestOTRT
             this.shields += numToAdd;
         }
 
+        //Specifically for events where a shield or shields need to be removed
+        public void removeShields(int numToAdd)
+        {
+            this.shields -= numToAdd;
+            if (this.shields < 0)
+            {
+                shields = 0;
+            }
+        }
+
         public void addCard(AdventureCard card)
         {
             // returns true when hand gone over max capacity
