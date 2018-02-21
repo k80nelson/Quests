@@ -6,7 +6,13 @@ namespace QuestOTRT
     public class Tournament : StoryCard
     {
         private int shields;
+        private List<AdventureCard> hand;
+        private List<AdventureCard> cardDrawn;
+        private bool inProgress = true;
+
+
         public int numPlayers;
+
 
         public int Shields
         {
@@ -36,7 +42,7 @@ namespace QuestOTRT
          * returns: nothing
          *  
          */
-        public void playTournement(Player[] players, int bonus)
+        public void playTournement(Player[] players, int bonus, DeckController AD_Deck)
         {
            
             //Gets the number of players involved in the tournement
@@ -53,9 +59,14 @@ namespace QuestOTRT
             //each player entering draws one adventure card
             for (int i = 0; i< numPlayers; i++)
             {
-                List < AdventureCard > hand = players[i].getCards();
-                List<AdventureCard> cardDrawn = Deck<AdventureCard>.draw(1); //Need to talk to Katie, draw does not work 
+                hand = players[i].getCards();
+                cardDrawn = AD_Deck.DrawAdventureCards(1); //Need to talk to Katie, how does this work
                 players[i].addCard(cardDrawn[0]);
+            }
+
+            while (inProgress)
+            {
+
             }
 
 
@@ -69,9 +80,10 @@ namespace QuestOTRT
 
 /* Timeline of a Tournement
  * 
- * card is drawn
- * 
+ * //happens outside of tournement class
+ * tournement card is drawn
  * starting with person drawing card, then following turn order
+ *
  * 
  * players decide what cards they want to play from their hand (if they want to play any cards)
  * 
