@@ -7,7 +7,8 @@ namespace QuestOTRT
     {
         private int shields;
         private List<AdventureCard> hand;
-        List<AdventureCard> cardDrawn;
+        private List<AdventureCard> cardDrawn;
+        private bool inProgress = true;
 
 
         public int numPlayers;
@@ -63,6 +64,11 @@ namespace QuestOTRT
                 players[i].addCard(cardDrawn[0]);
             }
 
+            while (inProgress)
+            {
+
+            }
+
 
 
 
@@ -74,9 +80,10 @@ namespace QuestOTRT
 
 /* Timeline of a Tournement
  * 
- * card is drawn
- * 
+ * //happens outside of tournement class
+ * tournement card is drawn
  * starting with person drawing card, then following turn order
+ *
  * 
  * players decide what cards they want to play from their hand (if they want to play any cards)
  * 
