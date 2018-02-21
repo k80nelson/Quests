@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuestOTRT
 {
@@ -25,16 +26,42 @@ namespace QuestOTRT
         //Game logic for tournements
         /*
          * 
-         * input: reference to the players joining the tourney
+         * input: array of players (only players joining the tournement will be passed, this will be deternimed in game)
+         *              array needs to be in this order: 
+         *                      1st person to say they joined: 0
+         *                      next: 1
+         *                      etc.
+         *        int bonus, the number of shieds that are offered as a bonus
+         * 
          * returns: nothing
          *  
          */
-        public void playTournement(Player[] players)
+        public void playTournement(Player[] players, int bonus)
         {
            
             //Gets the number of players involved in the tournement
             numPlayers = players.Length;
 
+            //If only one person enters they win 1 shield + bonus
+            if (numPlayers == 1)
+            {
+                players[0].addShields(numPlayers + bonus);
+                return;
+            }
+
+            //Loop through each player for them to draw a card.
+            //each player entering draws one adventure card
+            for (int i = 0; i< numPlayers; i++)
+            {
+                List < AdventureCard > hand = players[i].getCards();
+                List<AdventureCard> cardDrawn = Deck<AdventureCard>.draw(1); //Need to talk to Katie, draw does not work 
+                players[i].addCard(cardDrawn[0]);
+            }
+
+
+
+
+            //Default in case something went wrong
             return;
         }
     }
@@ -44,12 +71,7 @@ namespace QuestOTRT
  * 
  * card is drawn
  * 
- * players decide who wants to be part of the tournement
- *      starting with person drawing card, then following turn order
- *   
- *   If only one person enters they win 1 shield + bonus
- *   
- * each player entering draws one adventure card
+ * starting with person drawing card, then following turn order
  * 
  * players decide what cards they want to play from their hand (if they want to play any cards)
  * 
