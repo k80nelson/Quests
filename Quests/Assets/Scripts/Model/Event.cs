@@ -72,12 +72,15 @@ namespace QuestOTRT
         {
             //Next player(s) to complete a Quest reicieve 2 extra shields
         }
-
-        public void plague()
+        */
+        public void plague(Player p)
         {
             //Drawer loses 2 shields, if possible
+            p.removeShields(2);
+
         }
 
+            /*
         public void pox()
         {
             //All other players lose one shield(if possible), drawer of this card is exempt
