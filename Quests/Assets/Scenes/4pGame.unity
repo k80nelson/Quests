@@ -1024,7 +1024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324, y: 348}
+  m_AnchoredPosition: {x: 737, y: 437}
   m_SizeDelta: {x: 82.6, y: 56.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431485252
@@ -1059,7 +1059,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P1
+  m_Text: 'P1:'
 --- !u!222 &431485253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3839,7 +3839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324, y: 348}
+  m_AnchoredPosition: {x: 737, y: 437}
   m_SizeDelta: {x: 82.6, y: 56.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389450766
@@ -3874,7 +3874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P2
+  m_Text: 'P2:'
 --- !u!222 &1389450767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4925,7 +4925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1626784270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4941,7 +4941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324, y: 348}
+  m_AnchoredPosition: {x: 737, y: 437}
   m_SizeDelta: {x: 82.6, y: 56.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626784271
@@ -4976,7 +4976,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P3
+  m_Text: 'P3:'
 --- !u!222 &1626784272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5284,7 +5284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1724639753}
   m_Layer: 5
-  m_Name: Player1
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5965,7 +5965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954755577}
   m_Layer: 5
-  m_Name: Player2
+  m_Name: Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6679,7 +6679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324, y: 348}
+  m_AnchoredPosition: {x: 737, y: 437}
   m_SizeDelta: {x: 82.6, y: 56.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044252179
@@ -6714,7 +6714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P4
+  m_Text: 'P4:'
 --- !u!222 &2044252180
 CanvasRenderer:
   m_ObjectHideFlags: 0
