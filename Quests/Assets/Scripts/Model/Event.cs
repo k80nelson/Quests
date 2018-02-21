@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace QuestOTRT
 {
@@ -50,18 +50,41 @@ namespace QuestOTRT
                     break;
             }
         }
-
+        */
         //Functions for all the functionality of our events
-        public void chivalrousDeed()
-        {
-            //Player(s) with lowest rank and least amount of shields gains 3 shields
-        }
+        public void chivalrousDeed(Player[] players)
+        { 
+            //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
+            int cur = 1;
+            Player lowestPlayer = players[cur - 1];
 
+            //find the lowest rank
+            for(int i = 0; i < players.Length; ++i){
+                if(Player[cur].getRank() < lowestPlayer.getRank()){
+                    lowestPlayer = players[cur];
+                }else if (players[cur].getRank() == lowestPlayer.getRank()){
+                    //found the lowest rank now find out how many player have that Rank
+                    if(players[cur].Shields < lowestPlayer.Shields){
+                        //replaces the lowest player with the one with lowest rank and shields
+                        lowestPlayer = players[cur];
+                    }
+                }
+            }
+
+            //adds 3 shields to the lowest player
+            lowestPlayer.addShields(3);
+          
+        }
+        
         public void courtCalled()
         {
             //All Allies in play are discarded
+            for(int i = 0; i < players.Length; ++i){
+        
+            }
+            
         }
-
+        /*
         public void kingCall()
         {
             //Highest ranked player(s) must place 1 weapon in the discard
@@ -92,7 +115,7 @@ namespace QuestOTRT
         {
             //Lowest ranked player(s) immediately recieve 2 Adventure Cards
             int cur=20;
-            index = 0;
+            int index = 0;
             for(int i=0;i<4;i++){
                 if (Players[i].rank<cur){
                     index=i;
