@@ -88,18 +88,18 @@ namespace QuestOTRT
             //All players can immediately draw 2 Adventure Cards
         }*/
 
-        public void queensFavor()
+        public void queensFavor(Player[] players)
         {
             //Lowest ranked player(s) immediately recieve 2 Adventure Cards
             int cur=20;
-            index = 0;
+            int index = 0;
             for(int i=0;i<4;i++){
-                if (Players[i].rank<cur){
+                if (players[i].getRank()<cur){
                     index=i;
-                    cur=Players[i].rank;
+                    cur=players[i].rank;
                 }
             }
-            Players[i].addCards(Deck.DrawAdventureCards(2));
+            players[i].addCards(Deck.DrawAdventureCards(2));
         }
     }
 }
