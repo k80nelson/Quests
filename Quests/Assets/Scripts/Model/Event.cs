@@ -60,7 +60,7 @@ namespace QuestOTRT
 
             //find the lowest rank
             for(int i = 0; i < players.Length; ++i){
-                if(Player[cur].getRank() < lowestPlayer.getRank()){
+                if(players[cur].getRank() < lowestPlayer.getRank()){
                     lowestPlayer = players[cur];
                 }else if (players[cur].getRank() == lowestPlayer.getRank()){
                     //found the lowest rank now find out how many player have that Rank
@@ -73,10 +73,9 @@ namespace QuestOTRT
 
             //adds 3 shields to the lowest player
             lowestPlayer.addShields(3);
-          
         }
         
-        public void courtCalled()
+        public void courtCalled(Player[] players)
         {
             //All Allies in play are discarded
             for(int i = 0; i < players.Length; ++i){
