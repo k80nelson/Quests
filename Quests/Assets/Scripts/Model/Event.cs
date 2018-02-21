@@ -86,12 +86,21 @@ namespace QuestOTRT
         public void prosperityTtR()
         {
             //All players can immediately draw 2 Adventure Cards
-        }
+        }*/
 
         public void queensFavor()
         {
             //Lowest ranked player(s) immediately recieve 2 Adventure Cards
-        }*/
+            int cur=20;
+            index = 0;
+            for(int i=0;i<4;i++){
+                if (Players[i].rank<cur){
+                    index=i;
+                    cur=Players[i].rank;
+                }
+            }
+            Players[i].addCards(Deck.DrawAdventureCards(2));
+        }
     }
 }
 
