@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace QuestOTRT
 {
@@ -50,18 +50,41 @@ namespace QuestOTRT
                     break;
             }
         }
-
+        */
         //Functions for all the functionality of our events
-        public void chivalrousDeed()
-        {
-            //Player(s) with lowest rank and least amount of shields gains 3 shields
-        }
+        public void chivalrousDeed(Player[] players)
+        { 
+            //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
+            int cur = 1;
+            Player lowestPlayer = players[cur - 1];
 
+            //find the lowest rank
+            for(int i = 0; i < players.Length; ++i){
+                if(Player[cur].getRank() < lowestPlayer.getRank()){
+                    lowestPlayer = players[cur];
+                }else if (players[cur].getRank() == lowestPlayer.getRank()){
+                    //found the lowest rank now find out how many player have that Rank
+                    if(players[cur].Shields < lowestPlayer.Shields){
+                        //replaces the lowest player with the one with lowest rank and shields
+                        lowestPlayer = players[cur];
+                    }
+                }
+            }
+
+            //adds 3 shields to the lowest player
+            lowestPlayer.addShields(3);
+          
+        }
+        
         public void courtCalled()
         {
             //All Allies in play are discarded
+            for(int i = 0; i < players.Length; ++i){
+        
+            }
+            
         }
-
+        /*
         public void kingCall()
         {
             //Highest ranked player(s) must place 1 weapon in the discard
@@ -72,12 +95,15 @@ namespace QuestOTRT
         {
             //Next player(s) to complete a Quest reicieve 2 extra shields
         }
-
-        public void plague()
+        */
+        public void plague(Player p)
         {
             //Drawer loses 2 shields, if possible
+            p.removeShields(2);
+
         }
 
+            /*
         public void pox()
         {
             //All other players lose one shield(if possible), drawer of this card is exempt
