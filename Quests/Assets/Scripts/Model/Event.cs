@@ -81,12 +81,19 @@ namespace QuestOTRT
         public void pox()
         {
             //All other players lose one shield(if possible), drawer of this card is exempt
-        }
+        }*/
 
-        public void prosperityTtR()
+        public void prosperityTtR(Player[] players, DeckController d)
         {
             //All players can immediately draw 2 Adventure Cards
-        }*/
+            int i = 0;
+            while (i < 4)
+            {
+                //add a card and add 1 to the amount of players who have drawn 2 cards
+                players[i].addCards(d.DrawAdventureCards(2));
+                i++;
+            }
+        }
 
         public void queensFavor(Player[] players, DeckController d)
         {
@@ -110,6 +117,7 @@ namespace QuestOTRT
                     curLowestRank++;
                     i = 0;
                 }
+                i++;
             }
             
         }
