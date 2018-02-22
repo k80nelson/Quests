@@ -132,7 +132,7 @@ namespace QuestOTRT
                     return;
                 }
 
-                //numPlayers = winner.Count; need to make another variable for this, changing num players isnt good 
+                //numPlayers = winner.Count; need to make another variable for this, changing num players isnt good
                 //discard all weapons and amour cards played
 
 
