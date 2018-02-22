@@ -108,9 +108,11 @@ namespace QuestOTRT
         {
             //All other players lose one shield(if possible), drawer of this card is exempt
             for(int i = 0; i < players.Length; ++i){
+                //if the player is the one who drew the card then he doesnt lose a sheild
                 if(players[i] == p){
                     continue;
                 }
+                //all other players lose one shield
                 else{
                     players[i].removeShields(1);
                 }
