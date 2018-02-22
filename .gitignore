@@ -5,7 +5,10 @@
 [Bb]uild/
 Assets/AssetStoreTools*
 
+.vs/
 /.vs/
+Quests/.vs/
+
 
 ExportedObj/
 .consulo/
@@ -31,10 +34,5 @@ Quests/TheRoyalBuild_Data/boot.config
 Quests/TheRoyalBuild_Data/globalgamemanagers
 
 *_Data/
-*.ide-shm
-*.ide-shm
-Quests/.vs/Quests/v15/Server/sqlite3/storage.ide-shm
-*.ide-shm
-*.ide-wal
-*.ide
-*.ide-wal
+
+Quests/.vs/
