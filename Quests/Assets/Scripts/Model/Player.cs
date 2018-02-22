@@ -75,6 +75,12 @@ namespace QuestOTRT
             this.shields += numToAdd;
         }
 
+        //Used to change the bp value of each player
+        public void setBP(int change)
+        {
+            this.bp = change;
+        }
+
         //Specifically for events where a shield or shields need to be removed
         public void removeShields(int numToAdd)
         {

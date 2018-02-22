@@ -36,3 +36,5 @@ Quests/TheRoyalBuild_Data/globalgamemanagers
 Quests/.vs/Quests/v15/Server/sqlite3/storage.ide-shm
 *.ide-shm
 *.ide-wal
+*.ide
+*.ide-wal

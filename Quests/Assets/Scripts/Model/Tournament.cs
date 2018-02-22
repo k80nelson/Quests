@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace QuestOTRT
@@ -9,9 +10,15 @@ namespace QuestOTRT
         private List<AdventureCard> hand;
         private List<AdventureCard> cardDrawn;
         private bool inProgress = true;
+        private int bpChange;
 
+        //Variables used to check who is currently winning tournement, array will hold the index of the winning player
+        private int currentBP = 0;
+        private int highestBP = 0;
+        
 
         public int numPlayers;
+        
 
 
         public int Shields
@@ -44,9 +51,14 @@ namespace QuestOTRT
          */
         public void playTournement(Player[] players, int bonus, DeckController AD_Deck)
         {
-           
+            //resets the variables used to check winner
+            currentBP = 0;
+            highestBP = 0;
+
             //Gets the number of players involved in the tournement
             numPlayers = players.Length;
+
+            ArrayList winner = new ArrayList();
 
             //If only one person enters they win 1 shield + bonus
             if (numPlayers == 1)
@@ -66,6 +78,41 @@ namespace QuestOTRT
 
             while (inProgress)
             {
+                //players decide what cards they want to play from their hand (if they want to play any cards)
+
+                //All cards are shown at the same time
+                //Adjust BP for each player
+                for(int i = 0; i < numPlayers; i++)
+                {
+                    //bpChange = bp of cards played by player[i] + players[i].BP;
+                    //players[i].setBP(bpChange);
+
+                    //First person automatically is set to the winner
+                    if (i == 0)
+                    {
+                        currentBP = players[i].BP;
+                        highestBP = players[i].BP;
+                        winner.Add(i);
+                    }
+                    else
+                    {
+                        currentBP = players[i].BP;
+                        if (currentBP > highestBP)
+                        {
+                            highestBP = currentBP;
+                            winner.Clear();
+                            winner.Add(i);
+                        }
+                        else if (currentBP == highestBP)
+                        {
+                            winner.Add(i);
+                        }
+                        else if(currentBP < highestBP)
+                        {
+                            continue;
+                        }
+                    }
+                }
 
             }
 
@@ -83,11 +130,6 @@ namespace QuestOTRT
  * //happens outside of tournement class
  * tournement card is drawn
  * starting with person drawing card, then following turn order
- *
- * 
- * players decide what cards they want to play from their hand (if they want to play any cards)
- * 
- * All cards are shown at the same time
  * 
  * Person with hiest BP wins
  * 
