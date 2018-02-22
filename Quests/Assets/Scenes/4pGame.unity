@@ -1977,7 +1977,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1639623384521744, guid: faf4679d404ca604bab1ffeeea25b039, type: 2}
-  sprites: []
+  sprites:
+  - {fileID: 21300000, guid: bc05642d43f52f14793cf1940521849d, type: 3}
 --- !u!114 &792459001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,16 +1992,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1639623384521744, guid: faf4679d404ca604bab1ffeeea25b039, type: 2}
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1267fbdb0d8900343b4987176e12d024, type: 3}
+  - {fileID: 21300000, guid: 60edd70ebd44b80418a9fd5e1e72b5e3, type: 3}
+  - {fileID: 21300000, guid: 32df360922c94304da64e936a653ca25, type: 3}
+  - {fileID: 21300000, guid: 30f7cc2351f3bcc449248ea507f871ff, type: 3}
+  - {fileID: 21300000, guid: 9b5aaf91c111c044181669f42fbeb252, type: 3}
+  - {fileID: 21300000, guid: 04c7b4bb9a9aad9488ea10daf21de1d6, type: 3}
+  - {fileID: 21300000, guid: 1da84838ca506ab4883d3953d95a3ce3, type: 3}
+  - {fileID: 21300000, guid: 5c715552a757e674aa034923e29527d3, type: 3}
+  - {fileID: 21300000, guid: 257933d76fb6a154587de041f88d80a4, type: 3}
+  - {fileID: 21300000, guid: 53f65577f4f9a2f4bb1393542c6f21b9, type: 3}
 --- !u!114 &792459002
 MonoBehaviour:
   m_ObjectHideFlags: 0
