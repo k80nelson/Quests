@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class TestController : GameElement
+    public class EventController : GameElement
     {
 
-        public Test card;
+        public Event card;
 
 
         // Use this for initialization
@@ -20,26 +20,26 @@ namespace QuestOTRT
         {
         }
 
-        public void initialize(string name, int bp, int bids, int specialBids, string specialQuest)
+        public void initialize(string name)
         {
-            card = new Test(name, bp, bids, specialBids, specialQuest);
+            card = new Event(name);
         }
 
-        public void initialize(Test test)
+        public void initialize(Event eventC)
         {
-            card = test;
+            card = eventC;
         }
 
         //When card is clicked, only on 
         private void OnMouseDown()
         {
             if (card != null) print(card.Name);
-            print(getBP());
+            print(getName());
         }
 
-        public int getBP()
+        public string getName()
         {
-            return 0;
+            return card.Name;
         }
 
 
