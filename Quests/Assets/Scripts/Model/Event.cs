@@ -86,7 +86,7 @@ namespace QuestOTRT
             
         }
        
-        public void kingCall()
+        public void kingCall(Player[] players)
         {
             //Highest ranked player(s) must place 1 weapon in the discard
                 //If unable to do so, 2 foe cards must be discarded

@@ -8,7 +8,11 @@ public class DeckController : MonoBehaviour {
     public AdventureDeck AdvDeck;
     public StoryDeck StrDeck;
 
-    
+    public DeckController()
+    {
+        AdvDeck = new AdventureDeck();
+        StrDeck = new StoryDeck();
+    }
     void Awake()
     {
         AdvDeck = new AdventureDeck();
