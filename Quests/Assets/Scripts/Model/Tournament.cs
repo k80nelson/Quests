@@ -135,6 +135,8 @@ namespace QuestOTRT
                 //numPlayers = winner.Count; need to make another variable for this, changing num players isnt good
                 //discard all weapons and amour cards played
 
+                //Still need to figure out how to loop if theres a tie and keep functionality working
+
 
             }
 
