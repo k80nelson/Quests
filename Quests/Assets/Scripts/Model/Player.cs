@@ -82,9 +82,9 @@ namespace QuestOTRT
         }
 
         //Specifically for events where a shield or shields need to be removed
-        public void removeShields(int numToAdd)
+        public void removeShields(int numToRemove)
         {
-            this.shields -= numToAdd;
+            this.shields -= numToRemove;
             if (this.shields < 0)
             {
                 shields = 0;
@@ -161,6 +161,12 @@ namespace QuestOTRT
             allies.Remove(toRemove);
         }
         
+        public void removeAllies()
+        {
+            //removes all allies for the player
+            this.getAllies().Clear();
+            
+        }
         
     }
 }

@@ -78,8 +78,9 @@ namespace QuestOTRT
         public void courtCalled(Player[] players)
         {
             //All Allies in play are discarded
+            //loops through all allies and find their allies
             for(int i = 0; i < players.Length; ++i){
-        
+                players[i].removeAllies();
             }
             
         }
@@ -102,11 +103,20 @@ namespace QuestOTRT
 
         }
 
-            /*
-        public void pox()
+            
+        public void pox(Player p, Player[] players)
         {
             //All other players lose one shield(if possible), drawer of this card is exempt
-        }*/
+            for(int i = 0; i < players.Length; ++i){
+                if(players[i] == p){
+                    continue;
+                }
+                else{
+                    players[i].removeShields(1);
+                }
+            }
+
+        }
 
         public void prosperityTtR(Player[] players, DeckController d)
         {
