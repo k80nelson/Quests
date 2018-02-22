@@ -79,8 +79,8 @@ namespace QuestOTRT
             while (inProgress)
             {
                 //players decide what cards they want to play from their hand (if they want to play any cards)
-
                 //All cards are shown at the same time
+
                 //Adjust BP for each player
                 for(int i = 0; i < numPlayers; i++)
                 {
@@ -94,25 +94,47 @@ namespace QuestOTRT
                         highestBP = players[i].BP;
                         winner.Add(i);
                     }
+
+                    //Compares other players to the current winner
                     else
                     {
                         currentBP = players[i].BP;
+
+                        //if current player is greater clear the winners list and make them the current winner
                         if (currentBP > highestBP)
                         {
                             highestBP = currentBP;
                             winner.Clear();
                             winner.Add(i);
                         }
+
+                        //if its a tie, add that player to the winners list
                         else if (currentBP == highestBP)
                         {
                             winner.Add(i);
                         }
-                        else if(currentBP < highestBP)
+
+                        //player is less than current winner, so continue.
+                        else
                         {
                             continue;
                         }
                     }
                 }
+
+                
+                //If there is no tie
+                if(winner.Count == 1)
+                {
+                    //discard all weapons and amour cards played
+                    int index = (int)winner[0];
+                    players[index].addShields(numPlayers + bonus);
+                    return;
+                }
+
+                //numPlayers = winner.Count; need to make another variable for this, changing num players isnt good 
+                //discard all weapons and amour cards played
+
 
             }
 
@@ -130,8 +152,7 @@ namespace QuestOTRT
  * //happens outside of tournement class
  * tournement card is drawn
  * starting with person drawing card, then following turn order
- * 
- * Person with hiest BP wins
+ *
  * 
  *      If there is a tie:
  *         Weapons are discarded
