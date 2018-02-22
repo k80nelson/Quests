@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class AllyCreator : CreatorBase<QuestOTRT.Ally>
-{
-    public override void create(QuestOTRT.Ally card)
+public class TestCreator : CreatorBase<QuestOTRT.Test>
+{ 
+
+    public override void create(QuestOTRT.Test card)
     {
         Sprite display = sprites[0];
         GameObject newcard = Instantiate(prefab);
