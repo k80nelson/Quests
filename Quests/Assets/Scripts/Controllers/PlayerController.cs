@@ -22,7 +22,7 @@ public class PlayerController : GameElement {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        player.displayHand();
 	}
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)
@@ -32,6 +32,10 @@ public class PlayerController : GameElement {
         {
             view.createCard(card.Name);
         }
+    }
+    public void onSponsorQuest()
+    {
+
     }
 
 }
