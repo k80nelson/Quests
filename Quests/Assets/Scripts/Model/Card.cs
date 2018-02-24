@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuestOTRT
 {
 
-    public abstract class Card : IEquatable<Card>, IEquatable<string>
+    public abstract class Card : MonoBehaviour, IEquatable<Card>, IEquatable<string>
     {
         protected string name;
 

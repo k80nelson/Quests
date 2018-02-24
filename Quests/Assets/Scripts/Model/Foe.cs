@@ -52,5 +52,20 @@ namespace QuestOTRT
             return this.bp;
         }
 
+        public List<string> getSpecialCard()
+        {
+            List<string> possibleCards = null;
+
+            if (specialCards != null)
+            {
+                foreach (string special in specialCards)
+                {
+                    possibleCards.Add(special);
+                }
+            }
+
+            return possibleCards;
+        }
+
     }
 }

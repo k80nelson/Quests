@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class Hand
+    public class Hand : MonoBehaviour 
     {
         private int maxSize;
         public int numCards;
