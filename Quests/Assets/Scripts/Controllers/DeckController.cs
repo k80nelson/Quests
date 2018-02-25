@@ -8,10 +8,6 @@ public class DeckController : MonoBehaviour {
     AdventureDeck AdvDeck; 
     StoryDeck StrDeck; 
 
-    public DeckController()
-    {
-        
-    }
     void Awake()
     {
        

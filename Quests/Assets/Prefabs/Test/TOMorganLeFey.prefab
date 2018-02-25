@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114525260943715338}
   m_Layer: 0
   m_Name: TOMorganLeFey
-  m_TagString: Untagged
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

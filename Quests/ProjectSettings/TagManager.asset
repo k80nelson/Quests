@@ -7,11 +7,12 @@ TagManager:
   - Ally
   - Amour
   - Foe
-  - TestCard
+  - Test
   - Weapon
-  - Card
-  - King Arthur
-  - Deck
+  - Event
+  - Quest
+  - Tournament
+  - Rank
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114669120622632970}
   m_Layer: 0
   m_Name: JourneyThroughTEF
-  m_TagString: Untagged
+  m_TagString: Quest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

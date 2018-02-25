@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114705902341619110}
   m_Layer: 0
   m_Name: SaxonKnight
-  m_TagString: Untagged
+  m_TagString: Foe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

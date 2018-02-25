@@ -10,7 +10,7 @@ namespace QuestOTRT
         protected static System.Random rnd = new System.Random();
         protected Dictionary<T, int> DeckList;
         protected List<T> ValidCards;
-        protected int currCards;
+        protected int currCards = -1;
         public int Count
         {
             get
@@ -121,6 +121,11 @@ namespace QuestOTRT
         protected void add(T card, int num)
         {
             // adds num cards to deck //
+
+            //setting the currCards to 0 on first add
+            if (currCards == -1)
+                currCards = 0;
+
             DeckList[card] += num;
             currCards += num;
             if (!ValidCards.Contains(card)) ValidCards.Add(card);
