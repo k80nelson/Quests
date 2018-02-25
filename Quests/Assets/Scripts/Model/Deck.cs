@@ -19,6 +19,11 @@ namespace QuestOTRT
             }
         }
 
+        public void Start()
+        {
+
+        }
+
         public abstract void initialize();
         
         public virtual T draw()
