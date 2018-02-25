@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class Hand : MonoBehaviour 
+    public class Hand
     {
         private int maxSize;
         public int numCards;

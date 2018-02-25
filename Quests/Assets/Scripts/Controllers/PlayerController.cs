@@ -6,6 +6,7 @@ using QuestOTRT;
 public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
+    public QuestOTRT.Hand hand;
     public PlayerView view;
 
     // When absolutely first loaded
@@ -18,6 +19,7 @@ public class PlayerController : GameElement {
     {
         player = new QuestOTRT.Player();
         view = GetComponent<PlayerView>();
+        hand = new Hand(); 
     }
 	
 	// Update is called once per frame

@@ -5,23 +5,23 @@ using QuestOTRT;
 
 public class DeckController : MonoBehaviour {
 
-    public AdventureDeck AdvDeck;
-    public StoryDeck StrDeck;
+    AdventureDeck AdvDeck; 
+    StoryDeck StrDeck; 
 
     public DeckController()
     {
-        AdvDeck = new AdventureDeck();
-        StrDeck = new StoryDeck();
+        
     }
     void Awake()
     {
-        AdvDeck = new AdventureDeck();
-        StrDeck = new StoryDeck();
+       
     }
 
     void Start()
     {
-        
+        //must create the decks in the start to avoid unity errors
+        AdvDeck = new AdventureDeck();
+        StrDeck = new StoryDeck();
     }
 
     void Update()

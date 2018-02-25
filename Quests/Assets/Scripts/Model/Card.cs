@@ -5,7 +5,7 @@ using UnityEngine;
 namespace QuestOTRT
 {
 
-    public abstract class Card : MonoBehaviour, IEquatable<Card>, IEquatable<string>
+    public abstract class Card : GameElement, IEquatable<Card>, IEquatable<string>
     {
         protected new string name;
 
