@@ -20,7 +20,9 @@ namespace QuestOTRT
             Debug.Log("Game Start");
             //Deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
             deck = new DeckController();
+
             players = GameObject.FindGameObjectsWithTag("Player");
+                            
             initPlayers();
             
          
@@ -37,7 +39,7 @@ namespace QuestOTRT
             Debug.Log("Game initPlayer");
             PlayerController ctrl;
             Debug.Log("before player loop");
-            Debug.Log("There are " + players.Length + "Amount of players");
+            Debug.Log("There are " + players.Length + " numbers of players");
             foreach (GameObject player in players)
             {
                 Debug.Log("Init player loop");
