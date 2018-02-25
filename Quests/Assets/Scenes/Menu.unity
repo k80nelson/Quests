@@ -1348,7 +1348,6 @@ GameObject:
   - component: {fileID: 441096098}
   - component: {fileID: 441096097}
   - component: {fileID: 441096096}
-  - component: {fileID: 441096099}
   m_Layer: 0
   m_Name: ChoosePlayersButton
   m_TagString: Untagged
@@ -1471,17 +1470,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 441096094}
---- !u!114 &441096099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441096094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5eae2b2a595b5846a142fdffd08c0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &479158863
 GameObject:
   m_ObjectHideFlags: 0

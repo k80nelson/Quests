@@ -17,17 +17,14 @@ namespace QuestOTRT
 
         void Start()
         {
-            Debug.Log("Game Start");
             //Deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
             deck = new DeckController();
-
-            players = GameObject.FindGameObjectsWithTag("Player");
-                            
-            initPlayers();
             
-         
-            Debug.Log("Just finished the Game Start");
-        }
+            //gets the number of player object from the current gameMode and then create any array with those objects
+            players = GameObject.FindGameObjectsWithTag("Player");
+            //runs the init player method with players having a count of 4 in 4pGame
+            initPlayers();
+            }
 
         void Update()
         {
@@ -38,14 +35,17 @@ namespace QuestOTRT
         {
             Debug.Log("Game initPlayer");
             PlayerController ctrl;
-            Debug.Log("before player loop");
-            Debug.Log("There are " + players.Length + " numbers of players");
+            //loops though the number of players that are playing
             foreach (GameObject player in players)
             {
                 Debug.Log("Init player loop");
                 ctrl = player.GetComponent<PlayerController>();
+                //game throws error when trying to draw cards
                 ctrl.addCards(deck.DrawAdventureCards(12));
+                Debug.Log(ctrl.player.NumCards); 
             }
+
+            //Debug.Log("The number of cards for " + ctrl.player.name + " is " + ctrl.player.NumCards);
             Debug.Log("after player loop");
             Debug.Log(deck.numAdvCards());
         }
