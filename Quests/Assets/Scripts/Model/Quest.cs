@@ -129,6 +129,9 @@ namespace QuestOTRT
                 if (playCards)
                 {
                     AdventureCard cardPlayed; // = play a card
+
+                    //have to add a way to change the boolean if they played a weapon they dont have in play yet
+
                     if (cardPlayed is Foe)
                     {
                         //put the card back in their hand
