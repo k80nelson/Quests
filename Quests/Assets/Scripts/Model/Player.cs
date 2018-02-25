@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class Player
+    public class Player : MonoBehaviour
     {
         private int shields;
         private int bp;
