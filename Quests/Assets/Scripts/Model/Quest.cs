@@ -94,17 +94,17 @@ namespace QuestOTRT
 
             bool amourInPlay;
 
-            bool excaliburInPlay;
-            bool horseInPlay;
-            bool lanceInPlay;
-            bool swordInPlay;
-            bool axInPlay;
-            bool daggerInPlay;
+            bool excaliburInPlay = false;
+            bool horseInPlay = false;
+            bool lanceInPlay = false;
+            bool swordInPlay = false;
+            bool axInPlay = false;
+            bool daggerInPlay = false;
 
             bool playCards;
 
             int playerBP = p.BP;
-            int stageBP = 0;
+            int foeBP = 0;
 
             //Figure out how to tell if they have an amour card in play
             //set the amourInPlay bool to true or false depending on the check
@@ -113,7 +113,7 @@ namespace QuestOTRT
 
             for (int i = 0; i < numCards; i++)
             {
-                stageBP = stageBP + foe[i].getBP(new string[] { foe[i].Name });
+                foeBP = foeBP + foe[i].getBP(new string[] { foe[i].Name });
             }
 
             while (onGoing)
@@ -138,7 +138,37 @@ namespace QuestOTRT
                     else if (cardPlayed is Weapon && axInPlay)
                     {
                         //put the card back in their hand
-                        //display prompt to say they cant do that
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && daggerInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && swordInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && horseInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && lanceInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && excaliburInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
                         continue;
                     }
 
