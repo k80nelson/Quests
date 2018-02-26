@@ -101,7 +101,7 @@ namespace QuestOTRT
             bool axInPlay = false;
             bool daggerInPlay = false;
 
-            bool playCards;
+            bool playCards=false;
 
             int playerBP = p.BP;
             int foeBP = 0;
@@ -128,16 +128,20 @@ namespace QuestOTRT
 
                 if (playCards)
                 {
-                    AdventureCard cardPlayed; // = play a card
+                    AdventureCard cardPlayed = new Test("test", 0, 0, 0, "test"); // = play a card
+                    //@ list of cards passed in list[i]? 
 
                     //have to add a way to change the boolean if they played a weapon they dont have in play yet
 
+                    
                     if (cardPlayed is Foe)
                     {
                         //put the card back in their hand
                         //display prompt to say they cant do that
                         continue;
                     }
+                    
+
                     else if (cardPlayed is Weapon && axInPlay)
                     {
                         //put the card back in their hand
