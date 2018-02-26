@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 33283601}
   m_Layer: 0
   m_Name: Player 3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 141583604}
   m_Layer: 0
   m_Name: Player 4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,6 +643,10 @@ Prefab:
     - target: {fileID: 1733508661433636, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
       propertyPath: m_Name
       value: Player4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733508661433636, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
@@ -3126,7 +3130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733508661433636, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
@@ -3745,7 +3749,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733508661433636, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
@@ -5692,7 +5696,7 @@ GameObject:
   - component: {fileID: 1724639754}
   m_Layer: 5
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5891,7 +5895,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733508661433636, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3a32411a7d551e42a1fb6cfee202d3a, type: 2}
@@ -6456,7 +6460,7 @@ GameObject:
   - component: {fileID: 1954755578}
   m_Layer: 5
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine;
 
 namespace QuestOTRT
 {
@@ -23,6 +24,7 @@ namespace QuestOTRT
         
         public virtual T draw()
         {
+            Debug.Log("Inside of Draw() method");
             /* Returns null when deck is empty */
             if (currCards == 0) return null;
 
@@ -45,6 +47,7 @@ namespace QuestOTRT
 
         public virtual List<T> draw(int numToDraw)
         {
+            Debug.Log("Inside of Draw(num) method");
             List<T> ret = new List<T>();
             for(int i=0; i<numToDraw; i++)
             {
