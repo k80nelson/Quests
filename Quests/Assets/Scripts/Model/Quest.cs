@@ -24,7 +24,7 @@ namespace QuestOTRT
         /*Input: the array of players joining the quest
          *       the quest they are on
          * 
-         * 
+         *THIS NEEDS A LOT OF WORK 
          */ 
         public void playQuest(Player[] players, Quest quest)
         {
@@ -42,76 +42,45 @@ namespace QuestOTRT
             {
                 for(int i = 0; i < numStages; i++)
                 {
+                    for (int j = 0; j < numPlayers; j++) {
+                        //Gets the specific stage that is currently being played
+                        switch (i)
+                        {
+                            case 0:
+                                //Get component from unity, stage 1 will always be in one specific location on the screen
+                                //card = getCOmponent
 
-                    //Gets the specific stage that is currently being played
-                    switch (i)
-                    {
-                        case 0:
-                            //Get component from unity, stage 1 will always be in one specific location on the screen
-                            //card = getCOmponent
+                                stageAction(players[j], card);
+                                break;
 
-                            //THink about making a helper function for this part since it is repeated code throughout
-                            if (card is QuestOTRT.Foe)
-                            {
-                                //loop through players and call combat function
-                            }
-                            else if (card is QuestOTRT.Test)
-                            {
-                                //loop through players and call testRunner function
-                            }
-                            break;
+                            case 1:
+                                //Get component from unity, stage 2 will always be in one specific location on the screen
+                                //card = getCOmponent
 
-                        case 1:
-                            //Get component from unity, stage 2 will always be in one specific location on the screen
-                            //card = getCOmponent
-                            if (card is QuestOTRT.Foe)
-                            {
-                                //loop through players and call combat function
-                            }
-                            else if (card is QuestOTRT.Test)
-                            {
-                                //loop through players and call testRunner function
-                            }
-                            break;
+                                stageAction(players[j], card);
+                                break;
 
-                        case 2:
-                            //Get component from unity, stage 3 will always be in one specific location on the screen
-                            //card = getCOmponent
-                            if (card is QuestOTRT.Foe)
-                            {
-                                //loop through players and call combat function
-                            }
-                            else if (card is QuestOTRT.Test)
-                            {
-                                //loop through players and call testRunner function
-                            }
-                            break;
+                            case 2:
+                                //Get component from unity, stage 3 will always be in one specific location on the screen
+                                //card = getCOmponent
 
-                        case 3:
-                            //Get component from unity, stage 4 will always be in one specific location on the screen
-                            //card = getCOmponent
-                            if (card is QuestOTRT.Foe)
-                            {
-                                //loop through players and call combat function
-                            }
-                            else if (card is QuestOTRT.Test)
-                            {
-                                //loop through players and call testRunner function
-                            }
-                            break;
+                                stageAction(players[j], card);
+                                break;
 
-                        case 4:
-                            //Get component from unity, stage 5 will always be in one specific location on the screen
-                            //card = getCOmponent
-                            if (card is QuestOTRT.Foe)
-                            {
-                                //loop through players and call combat function
-                            }
-                            else if (card is QuestOTRT.Test)
-                            {
-                                //loop through players and call testRunner function
-                            }
-                            break;
+                            case 3:
+                                //Get component from unity, stage 4 will always be in one specific location on the screen
+                                //card = getCOmponent
+
+                                stageAction(players[j], card);
+                                break;
+
+                            case 4:
+                                //Get component from unity, stage 5 will always be in one specific location on the screen
+                                //card = getCOmponent
+
+                                stageAction(players[j], card);
+                                break;
+                        }
                     }
                 }
             }
@@ -119,9 +88,118 @@ namespace QuestOTRT
         }
 
         //Returns boolean if the player passed or failed the combat
-        public bool combat(Foe foe, Player[] players, int stageBP)
+        public bool combat(List<AdventureCard> foe, Player p, int stageBP)
         {
+            bool onGoing = true;
+
+            bool amourInPlay;
+
+            bool excaliburInPlay = false;
+            bool horseInPlay = false;
+            bool lanceInPlay = false;
+            bool swordInPlay = false;
+            bool axInPlay = false;
+            bool daggerInPlay = false;
+
+            bool playCards=false;
+
+            int playerBP = p.BP;
+            int foeBP = 0;
+
+            //Figure out how to tell if they have an amour card in play
+            //set the amourInPlay bool to true or false depending on the check
+
+            int numCards = foe.Count;
+
+            for (int i = 0; i < numCards; i++)
+            {
+                foeBP = foeBP + foe[i].getBP(new string[] { foe[i].Name });
+            }
+
+            while (onGoing)
+            {
+                if (playerBP > stageBP)
+                {
+                    //display "you've beaten the stage"
+                    return true;
+                }
+
+                //Ask if they want to play cards, save to play cards
+
+                if (playCards)
+                {
+                    AdventureCard cardPlayed = new Test("test", 0, 0, 0, "test"); // = play a card
+                    //@ list of cards passed in list[i]? 
+
+                    //have to add a way to change the boolean if they played a weapon they dont have in play yet
+
+                    
+                    if (cardPlayed is Foe)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they cant do that
+                        continue;
+                    }
+                    
+
+                    else if (cardPlayed is Weapon && axInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && daggerInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && swordInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && horseInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && lanceInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+                    else if (cardPlayed is Weapon && excaliburInPlay)
+                    {
+                        //put the card back in their hand
+                        //display prompt to say they already have that card in play
+                        continue;
+                    }
+
+                    playerBP += cardPlayed.getBP(new string[] { cardPlayed.Name });
+                }
+                else break;
+            }
+
+            //Display youve failed the stage and have been removed from the quest
             return false;
+        }
+
+        public void stageAction(Player p, AdventureCard card)
+        {
+            if (card is QuestOTRT.Foe)
+            {
+                //loop through players and call combat function
+                //Get the list of cards nexrt to that foe and pass a list
+                //Like if there are weapons placed next to the foe, they will be part of the list
+            }
+            else if (card is QuestOTRT.Test)
+            {
+                //loop through players and call testRunner function
+            }
         }
 
         //Returns the index of the player that won the test, players are ordered in the order that their turns should be
