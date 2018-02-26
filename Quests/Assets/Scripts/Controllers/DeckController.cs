@@ -10,14 +10,14 @@ public class DeckController : MonoBehaviour {
 
     void Awake()
     {
-       
+        //must create the decks in the start to avoid unity errors
+        AdvDeck = new AdventureDeck();
+        StrDeck = new StoryDeck();
     }
 
     void Start()
     {
-        //must create the decks in the start to avoid unity errors
-        AdvDeck = new AdventureDeck();
-        StrDeck = new StoryDeck();
+        
     }
 
     void Update()
