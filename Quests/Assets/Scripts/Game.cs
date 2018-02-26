@@ -35,14 +35,18 @@ namespace QuestOTRT
         {
             Debug.Log("Game initPlayer");
             PlayerController ctrl;
+            int i = 1;
             //loops though the number of players that are playing
             foreach (GameObject player in players)
             {
                 Debug.Log("Init player loop");
-                ctrl = player.GetComponent<PlayerController>();
+                GameObject tempPlayer = GameObject.Find("Player "+i);
+                //ctrl = player.GetComponent<PlayerController>();
+                ctrl = tempPlayer.GetComponent<PlayerController>();
                 //game throws error when trying to draw cards
                 ctrl.addCards(deck.DrawAdventureCards(12));
-                Debug.Log(ctrl.player.NumCards); 
+                Debug.Log(ctrl.player.NumCards);
+                i++;
             }
 
             //Debug.Log("The number of cards for " + ctrl.player.name + " is " + ctrl.player.NumCards);
