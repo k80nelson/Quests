@@ -28,7 +28,7 @@ namespace QuestOTRT
 
         void Update()
         {
-            Debug.Log("Game update");
+           // Debug.Log("Game update");
         }
 
         void initPlayers()
@@ -57,7 +57,7 @@ namespace QuestOTRT
         //Late Update runs whatever is inside it at the end of the loop, it updates last, so anythign that needs to be done at the end should be done here
         void LateUpdate()
         {
-            Debug.Log("Game Late Update");
+           // Debug.Log("Game Late Update");
         }
     }
 }
