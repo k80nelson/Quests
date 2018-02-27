@@ -7,7 +7,7 @@ namespace QuestOTRT
 
     public abstract class Card : IEquatable<Card>, IEquatable<string>
     {
-        protected new string name;
+        protected string name;
 
         protected Card(string name)
         {
