@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224240665744028898}
   - component: {fileID: 222432930841048622}
   - component: {fileID: 114440943702585198}
-  - component: {fileID: 114095923036633822}
   - component: {fileID: 114776108430211880}
   m_Layer: 0
   m_Name: King Arthur
@@ -30,17 +29,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114095923036633822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1377469844030436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c64de6f24e38240a533fa8ab9ffd7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114440943702585198
 MonoBehaviour:
   m_ObjectHideFlags: 1

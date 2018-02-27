@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 224181458512212828}
   - component: {fileID: 222443772069435238}
   - component: {fileID: 114112735001955424}
-  - component: {fileID: 114666520139793608}
   - component: {fileID: 114521254010395330}
+  - component: {fileID: 61834080585915606}
   m_Layer: 0
   m_Name: Sir Tristan
   m_TagString: Ally
@@ -30,6 +30,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &61834080585915606
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071636523569528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114112735001955424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,17 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d7a334f1bdddf4096a2e10016559eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114666520139793608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071636523569528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c64de6f24e38240a533fa8ab9ffd7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222443772069435238
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -100,6 +114,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -278.06995}
+  m_AnchoredPosition: {x: -1211.5, y: -929.56995}
   m_SizeDelta: {x: 204.95, y: 258.95}
   m_Pivot: {x: 0.5, y: 0.5}

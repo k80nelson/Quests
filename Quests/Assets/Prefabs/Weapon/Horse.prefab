@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 224216220845451866}
   - component: {fileID: 222841525685605940}
   - component: {fileID: 114040903944326798}
-  - component: {fileID: 114195051710217770}
   - component: {fileID: 114448705305251416}
+  - component: {fileID: 61320120273530864}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Weapon
@@ -30,6 +30,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &61320120273530864
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563274348206552}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114040903944326798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,17 +82,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114195051710217770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563274348206552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93304b3311561844d89040ab7864a35a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114448705305251416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026633cd319b69144ac39df31762cf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
 --- !u!222 &222841525685605940
 CanvasRenderer:
   m_ObjectHideFlags: 1
