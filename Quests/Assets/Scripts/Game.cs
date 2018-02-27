@@ -31,7 +31,7 @@ namespace QuestOTRT
 
         void initPlayers()
         {
-            Debug.Log("Game initPlayer");
+            Debug.Log("Initiating Players in game...");
             PlayerController ctrl;
             foreach (GameObject player in this.players)
             {
@@ -40,8 +40,7 @@ namespace QuestOTRT
             }
 
             //Debug.Log("The number of cards for " + ctrl.player.name + " is " + ctrl.player.NumCards);
-            Debug.Log("after player loop");
-            Debug.Log(deck.numAdvCards());
+            Debug.Log(deck.numAdvCards()+" Adventure Cards initialized");
         }
 
         //Late Update runs whatever is inside it at the end of the loop, it updates last, so anythign that needs to be done at the end should be done here
