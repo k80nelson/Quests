@@ -29,6 +29,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.exe
+*.ide
 Quests/TheRoyalBuild_Data/app.info
 Quests/TheRoyalBuild_Data/boot.config
 Quests/TheRoyalBuild_Data/globalgamemanagers
