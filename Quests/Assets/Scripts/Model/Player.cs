@@ -168,17 +168,6 @@ namespace QuestOTRT
             this.getAllies().Clear();
             
         }
-        public void displayHand()
-        {
-            //loops through the players current hand
-            foreach(Card c in hand.Cards)
-            {
-                CreatorBase<Card> temp = new CreatorBase<Card>();
-                temp.create(c);
-                //This is where we need to print cards from sprite. 
-                //i asume it has to do with creatorbase and cardcreators, but i dont know which to use or how it works
-            }
-        }
         
     }
 }

@@ -6,7 +6,7 @@ using QuestOTRT;
 public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
-    //public PlayerView view;
+    public PlayerView view;
 
     // When absolutely first loaded
     void Awake()
