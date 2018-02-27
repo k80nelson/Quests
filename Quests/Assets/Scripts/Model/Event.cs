@@ -1,4 +1,5 @@
 ﻿ using System;
+using System.Collections.Generic;
 
 namespace QuestOTRT
 {
@@ -8,73 +9,58 @@ namespace QuestOTRT
         //Constructor
         public Event(string name) : base(name){}
 
-        /* Need to rework this--breaks both polymorphism and MVC design patterns 
-        //A switch statement which calls the card that was drawn, THESE NAMES NEED TO BE EXACTLY WHAT THE CARDS ARE CALLED
-        public void play(string name)
-        {
-            switch (name)
-            {
-                case "Chivalrous Deed":
-                    chivalrousDeed();
-                    break;
-
-                case "Court Called to Camelot":
-                    courtCalled();
-                    break;
-
-                case "King's Call to Arms":
-                    kingCall();
-                    break;
-
-                case "King's Recognition":
-                    kingRecognition();
-                    break;
-
-                case "Plague":
-                    plague();
-                    break;
-
-                case "Pox":
-                    pox();
-                    break;
-
-                case "Prosperity Throughout the Realm":
-                    prosperityTtR();
-                    break;
-
-                case "Queen's Favor":
-                    queensFavor();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-        */
         //Functions for all the functionality of our events
+
+        //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
         public void chivalrousDeed(Player[] players)
-        { 
-            //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
-            int cur = 1;
-            Player lowestPlayer = players[cur - 1];
+        {
+            List<Player> lowest = new List<Player>();
+            Player lowestPlayer = players[0];
+
+            //Adds the first player in the list automatically
+            lowest.Add(lowestPlayer);
 
             //find the lowest rank
-            for(int i = 0; i < players.Length; ++i){
+            for(int cur = 1; cur < players.Length; ++cur){
+               
                 //if rank is lower than the current lowest player
                 if(players[cur].getRank() < lowestPlayer.getRank()){
+
+                    //set the new lowest player
                     lowestPlayer = players[cur];
-                }else if (players[cur].getRank() == lowestPlayer.getRank()){
+
+                    //clear the list and re-add the newest lowest player
+                    lowest.Clear();
+                    lowest.Add(lowestPlayer);
+
+                }
+                else if (players[cur].getRank() == lowestPlayer.getRank()){
+                    
                     //if the ranks are the same then you have to find out who has the lowest Rank
                     if(players[cur].Shields < lowestPlayer.Shields){
+                       
                         //replaces the lowest player with the one with lowest rank and shields
                         lowestPlayer = players[cur];
+
+                        //clear the list and re-add the newest lowest player
+                        lowest.Clear();
+                        lowest.Add(lowestPlayer);
+                    }
+
+                    else if(players[cur].Shields == lowestPlayer.Shields)
+                    {
+                        lowest.Add(players[cur]);
                     }
                 }
             }
 
             //adds 3 shields to the lowest player
-            lowestPlayer.addShields(3);
+            for (int i = 0; i < lowest.Count; i++)
+            {
+                lowest[i].addShields(3);
+            }
         }
+
         
         public void courtCalled(Player[] players)
         {
@@ -160,15 +146,14 @@ namespace QuestOTRT
 
         }
 
+        //All players can immediately draw 2 Adventure Cards
         public void prosperityTtR(Player[] players, DeckController d)
         {
-            //All players can immediately draw 2 Adventure Cards
-            int i = 0;
-            while (i < players.Length)
+            //Loop through all players to add cards to their hands
+           for(int i = 0; i<players.Length; i++)
             {
                 //add a card and add 1 to the amount of players who have drawn 2 cards
                 players[i].addCards(d.DrawAdventureCards(2));
-                i++;
             }
         }
 
