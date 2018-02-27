@@ -24,7 +24,6 @@ namespace QuestOTRT
         
         public virtual T draw()
         {
-            Debug.Log("Inside of Draw() method");
             /* Returns null when deck is empty */
             if (currCards == 0) return null;
 

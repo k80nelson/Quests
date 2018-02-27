@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
+public abstract class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
 {
     public GameObject[] prefabs;
 
@@ -15,6 +15,7 @@ public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
             {
                 ret = Instantiate(prefab);
                 ret.name = prefab.name;
+                initCard(ret, card);
                 break;
             }
         }
@@ -24,4 +25,6 @@ public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
         }
         return ret;
     }
+
+    protected abstract void initCard(GameObject obj, T card);
 }

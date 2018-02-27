@@ -6,7 +6,6 @@ public class CardFactory : MonoBehaviour {
 
     public GameObject create(QuestOTRT.AdventureCard card)
     {
-        Debug.Log("creating " + card.Name);
         if (card is QuestOTRT.Ally) return GetComponent<AllyCreator>().create(card as QuestOTRT.Ally);
         if (card is QuestOTRT.Amour) return GetComponent<AmourCreator>().create(card as QuestOTRT.Amour);
         if (card is QuestOTRT.Foe) return GetComponent<FoeCreator>().create(card as QuestOTRT.Foe);

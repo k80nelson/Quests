@@ -30,7 +30,6 @@ namespace QuestOTRT
 
         void initPlayers()
         {
-            Debug.Log("Initiating Players in game...");
             PlayerController ctrl;
             foreach (GameObject player in this.players)
             {
@@ -38,9 +37,6 @@ namespace QuestOTRT
                 ctrl.player.addCards(deck.DrawAdventureCards(12));
                 ctrl.initCards();
             }
-            
-            Debug.Log("after player loop");
-            Debug.Log(deck.numAdvCards()+" Adventure Cards initialized");
 
             
         }
