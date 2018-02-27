@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 224251768777811888}
   - component: {fileID: 222748884544766856}
   - component: {fileID: 114314057354278040}
-  - component: {fileID: 114417324919990580}
   - component: {fileID: 114143179474858028}
+  - component: {fileID: 61139666808879962}
   m_Layer: 0
   m_Name: Queen Iseult
   m_TagString: Ally
@@ -30,6 +30,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &61139666808879962
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872055784155894}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114143179474858028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,17 +93,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114417324919990580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c64de6f24e38240a533fa8ab9ffd7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222748884544766856
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -100,6 +114,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -453.6, y: -278}
+  m_AnchoredPosition: {x: -1165.1, y: -929.5}
   m_SizeDelta: {x: 204.9, y: 258.9}
   m_Pivot: {x: 0.5, y: 0.5}

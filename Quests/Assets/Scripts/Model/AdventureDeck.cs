@@ -35,7 +35,7 @@ namespace QuestOTRT
             Foe evilKnight = new Foe("Evil Knight", 20, 1, 30, new string[]{ "Search for the Holy Grail", "Journey Through the Enchanted Forest", "Defend the Queen's Honor" });
             Foe saxonKnight = new Foe("Saxon Knight", 15, 1, 25, new string[] { "Search for the Holy Grail", "Repel the Saxon Raiders", "Defend the Queen's Honor" });
             Foe robberKnight = new Foe("Robber Knight", 15, 1, 15, new string[] { "Search for the Holy Grail", "Defend the Queen's Honor" });
-            Foe saxons = new Foe("Saxon", 10, 1, 20, new string[] { "Search for the Holy Grail", "Repel the Saxon Raiders", "Defend the Queen's Honor" });
+            Foe saxons = new Foe("Saxons", 10, 1, 20, new string[] { "Search for the Holy Grail", "Repel the Saxon Raiders", "Defend the Queen's Honor" });
             Foe boar = new Foe("Boar", 5, 1, 15, new string[] { "Search for the Holy Grail", "Boar Hunt", "Defend the Queen's Honor" });
             Foe thieves = new Foe("Thieves", 5, 1, 5, new string[] { "Search for the Holy Grail", "Defend the Queen's Honor" });
             

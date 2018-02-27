@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 224432182328854094}
   - component: {fileID: 222183380831788586}
   - component: {fileID: 114470829864048602}
-  - component: {fileID: 114034199171766082}
   - component: {fileID: 114754263849375076}
+  - component: {fileID: 61741780584736492}
   m_Layer: 0
   m_Name: Dagger
   m_TagString: Weapon
@@ -30,17 +30,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114034199171766082
-MonoBehaviour:
+--- !u!61 &61741780584736492
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595428884428866}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93304b3311561844d89040ab7864a35a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114470829864048602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026633cd319b69144ac39df31762cf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
 --- !u!222 &222183380831788586
 CanvasRenderer:
   m_ObjectHideFlags: 1
