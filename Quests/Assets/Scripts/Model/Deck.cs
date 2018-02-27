@@ -47,7 +47,6 @@ namespace QuestOTRT
 
         public virtual List<T> draw(int numToDraw)
         {
-            Debug.Log("Inside of Draw(num) method");
             List<T> ret = new List<T>();
             for(int i=0; i<numToDraw; i++)
             {
@@ -86,16 +85,13 @@ namespace QuestOTRT
 
         public virtual bool adjust(T card)
         {
-            /*
             // Shouldn't ever get here
-            Debug.Log("Decklist before false");
-            //if (DeckList[card] <= 0) { return false; }
-            //Debug.Log("Decklist after false");
+            if (DeckList[card] <= 0) { return false; }
 
             // Last card, remove it from the list of valid cards
-            //if (DeckList[card] == 1) ValidCards.Remove(card);
+            if  (DeckList[card] == 1) ValidCards.Remove(card);
             DeckList[card] -= 1;
-            currCards -= 1;*/
+            currCards -= 1;
             return true;
         }
 

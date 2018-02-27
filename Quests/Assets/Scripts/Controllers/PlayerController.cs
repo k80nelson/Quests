@@ -11,12 +11,12 @@ public class PlayerController : GameElement {
     // When absolutely first loaded
     void Awake()
     {
-        
+        player = new QuestOTRT.Player();
     }
     // When first enabled
     void Start ()
     {
-        player = new QuestOTRT.Player();
+        
     }
 	
 	// Update is called once per frame

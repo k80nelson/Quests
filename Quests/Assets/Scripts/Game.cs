@@ -18,8 +18,8 @@ namespace QuestOTRT
         void Start()
         {
             //Deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
-            deck = new DeckController();
-            
+            deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
+
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
             }
@@ -38,8 +38,7 @@ namespace QuestOTRT
                 ctrl = player.GetComponent<PlayerController>();
                 ctrl.player.addCards(deck.DrawAdventureCards(12));
             }
-
-            //Debug.Log("The number of cards for " + ctrl.player.name + " is " + ctrl.player.NumCards);
+            
             Debug.Log("after player loop");
             Debug.Log(deck.numAdvCards());
         }
