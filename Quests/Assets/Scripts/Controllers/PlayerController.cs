@@ -39,6 +39,7 @@ public class PlayerController : GameElement {
         {
             view.createCard(card);
         }
+        view.adjustHand();
     }
 
 }
