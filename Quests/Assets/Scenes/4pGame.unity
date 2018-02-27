@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTransform: {fileID: 301172380}
   factory: {fileID: 792459002}
+  cardPrefabs: []
 --- !u!1 &58987167
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTransform: {fileID: 2070370201}
   factory: {fileID: 792459002}
+  cardPrefabs: []
 --- !u!1 &160855392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2712,7 @@ GameObject:
   - component: {fileID: 1076836032}
   - component: {fileID: 1076836031}
   - component: {fileID: 1076836030}
+  - component: {fileID: 1076836033}
   m_Layer: 5
   m_Name: Draw Story Card
   m_TagString: Untagged
@@ -2821,6 +2824,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076836028}
+--- !u!114 &1076836033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076836028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893251f0f7a16a04694dbbaa72c49a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 978989410}
+  btn: {fileID: 1076836030}
 --- !u!1 &1084724645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5380,6 +5396,7 @@ GameObject:
   - component: {fileID: 1713361994}
   - component: {fileID: 1713361993}
   - component: {fileID: 1713361992}
+  - component: {fileID: 1713361995}
   m_Layer: 5
   m_Name: Draw Story Card
   m_TagString: Untagged
@@ -5491,6 +5508,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1713361990}
+--- !u!114 &1713361995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713361990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893251f0f7a16a04694dbbaa72c49a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 978989410}
+  btn: {fileID: 1713361992}
 --- !u!1 &1716471104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5569,6 +5599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTransform: {fileID: 1084724645}
   factory: {fileID: 792459002}
+  cardPrefabs: []
 --- !u!114 &1724639755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6277,6 +6308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTransform: {fileID: 1182876466}
   factory: {fileID: 792459002}
+  cardPrefabs: []
 --- !u!114 &1954755579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6702,6 +6734,7 @@ GameObject:
   - component: {fileID: 1984208107}
   - component: {fileID: 1984208106}
   - component: {fileID: 1984208105}
+  - component: {fileID: 1984208108}
   m_Layer: 5
   m_Name: Draw Story Card
   m_TagString: Untagged
@@ -6813,6 +6846,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984208103}
+--- !u!114 &1984208108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1984208103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893251f0f7a16a04694dbbaa72c49a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 978989410}
+  btn: {fileID: 1984208105}
 --- !u!1 &1987461027
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,6 +7151,7 @@ GameObject:
   - component: {fileID: 2047122822}
   - component: {fileID: 2047122821}
   - component: {fileID: 2047122820}
+  - component: {fileID: 2047122823}
   m_Layer: 5
   m_Name: Draw Story Card
   m_TagString: Untagged
@@ -7216,6 +7263,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2047122818}
+--- !u!114 &2047122823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047122818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893251f0f7a16a04694dbbaa72c49a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 978989410}
+  btn: {fileID: 2047122820}
 --- !u!1 &2070370201
 GameObject:
   m_ObjectHideFlags: 0

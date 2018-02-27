@@ -37,8 +37,6 @@ namespace QuestOTRT
                 ctrl.player.addCards(deck.DrawAdventureCards(12));
                 ctrl.initCards();
             }
-
-            
         }
 
         //Late Update runs whatever is inside it at the end of the loop, it updates last, so anythign that needs to be done at the end should be done here

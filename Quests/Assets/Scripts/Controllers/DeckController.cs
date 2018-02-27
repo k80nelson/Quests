@@ -29,9 +29,18 @@ public class DeckController : MonoBehaviour {
         return AdvDeck.draw(num);
     }
 
+    public StoryCard DrawStoryCard()
+    {
+        return StrDeck.draw();
+    }
+
     public int numAdvCards()
     {
         return AdvDeck.Count;
     }
     
+    public void drawStory()
+    {
+
+    }
 }
