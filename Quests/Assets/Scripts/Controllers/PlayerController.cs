@@ -33,4 +33,12 @@ public class PlayerController : GameElement {
 
     }
 
+    public void initCards()
+    {
+        foreach (AdventureCard card in player.hand.Cards)
+        {
+            view.createCard(card);
+        }
+    }
+
 }

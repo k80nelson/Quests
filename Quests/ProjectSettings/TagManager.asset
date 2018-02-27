@@ -13,6 +13,9 @@ TagManager:
   - Quest
   - Tournament
   - Rank
+  - Deck
+  - CardFactory
+  - DisplayHand
   layers:
   - Default
   - TransparentFX

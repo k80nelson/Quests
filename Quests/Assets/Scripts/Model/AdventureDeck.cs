@@ -21,7 +21,7 @@ namespace QuestOTRT
             //Weapons
             Weapon excalibur = new Weapon("Excalibur", 30, 0);
             Weapon lance = new Weapon("Lance", 20, 0);
-            Weapon battleAx = new Weapon("Battle-ax", 15, 0);
+            Weapon battleAx = new Weapon("Battle-axe", 15, 0);
             Weapon sword = new Weapon("Sword", 10, 0);
             Weapon horse = new Weapon("Horse", 10, 0);
             Weapon dagger = new Weapon("Dagger", 5, 0);
@@ -40,7 +40,7 @@ namespace QuestOTRT
             Foe thieves = new Foe("Thieves", 5, 1, 5, new string[] { "Search for the Holy Grail", "Defend the Queen's Honor" });
             
             //Amours
-            Amour amours = new Amour("Amours", 10, 1);
+            Amour amours = new Amour("Amour", 10, 1);
             
             //Allies
             Ally sirGalahad = new Ally("Sir Galahad", 15, 1, 15, 1, null);

@@ -9,33 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1090331516861548}
+  m_RootGameObject: {fileID: 1377469844030436}
   m_IsPrefabParent: 1
---- !u!1 &1090331516861548
+--- !u!1 &1377469844030436
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224458233091129080}
-  - component: {fileID: 222115154695646698}
-  - component: {fileID: 114922169084653986}
-  - component: {fileID: 114987004817002614}
-  - component: {fileID: 114996875089763352}
+  - component: {fileID: 224240665744028898}
+  - component: {fileID: 222432930841048622}
+  - component: {fileID: 114440943702585198}
+  - component: {fileID: 114095923036633822}
+  - component: {fileID: 114776108430211880}
   m_Layer: 0
-  m_Name: EvilKnight
-  m_TagString: Foe
+  m_Name: King Arthur
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114922169084653986
+--- !u!114 &114095923036633822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090331516861548}
+  m_GameObject: {fileID: 1377469844030436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c64de6f24e38240a533fa8ab9ffd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114440943702585198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377469844030436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -49,7 +60,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4a4bd7edd643ebd449d09b9be4315003, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4c546e0a61295248a8749c8f09a49c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57,41 +68,29 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114987004817002614
+--- !u!114 &114776108430211880
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090331516861548}
+  m_GameObject: {fileID: 1377469844030436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121409c8fe76ce4468c95d7a2b56b539, type: 3}
+  m_Script: {fileID: 11500000, guid: 83d7a334f1bdddf4096a2e10016559eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114996875089763352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090331516861548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833243bfa6b850c4b9d82c6136761a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 0}
---- !u!222 &222115154695646698
+--- !u!222 &222432930841048622
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090331516861548}
---- !u!224 &224458233091129080
+  m_GameObject: {fileID: 1377469844030436}
+--- !u!224 &224240665744028898
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090331516861548}
+  m_GameObject: {fileID: 1377469844030436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 17.615088}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -101,6 +100,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -278.05}
+  m_AnchoredPosition: {x: -453.6, y: -278}
   m_SizeDelta: {x: 204.9, y: 258.9}
   m_Pivot: {x: 0.5, y: 0.5}

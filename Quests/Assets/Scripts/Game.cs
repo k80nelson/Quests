@@ -36,10 +36,13 @@ namespace QuestOTRT
             {
                 ctrl = player.GetComponent<PlayerController>();
                 ctrl.player.addCards(deck.DrawAdventureCards(12));
+                ctrl.initCards();
             }
             
             Debug.Log("after player loop");
             Debug.Log(deck.numAdvCards()+" Adventure Cards initialized");
+
+            
         }
 
         //Late Update runs whatever is inside it at the end of the loop, it updates last, so anythign that needs to be done at the end should be done here

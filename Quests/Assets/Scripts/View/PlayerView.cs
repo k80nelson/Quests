@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour
 {
+    public GameObject CardTransform;
+    public CardFactory factory;
+
     // Use this for initialization
     void Start()
     {
@@ -16,9 +19,10 @@ public class PlayerView : MonoBehaviour
 
     }
 
-    public void createCard(string name)
+    public void createCard(QuestOTRT.AdventureCard card)
     {
-
+        GameObject newCard = factory.create(card);
+        newCard.transform.parent = CardTransform.transform;
     }
 
 }

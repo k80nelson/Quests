@@ -9,45 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1872055784155894}
+  m_RootGameObject: {fileID: 1080663647796676}
   m_IsPrefabParent: 1
---- !u!1 &1872055784155894
+--- !u!1 &1080663647796676
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224251768777811888}
-  - component: {fileID: 222748884544766856}
-  - component: {fileID: 114314057354278040}
-  - component: {fileID: 114417324919990580}
-  - component: {fileID: 114143179474858028}
+  - component: {fileID: 224908827024426132}
+  - component: {fileID: 222153065625997874}
+  - component: {fileID: 114683547903756900}
+  - component: {fileID: 114982522947258896}
+  - component: {fileID: 114856452267880082}
   m_Layer: 0
-  m_Name: QueenIseult
-  m_TagString: Ally
+  m_Name: Test of Temptation
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114143179474858028
+--- !u!114 &114683547903756900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83d7a334f1bdddf4096a2e10016559eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 0}
---- !u!114 &114314057354278040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
+  m_GameObject: {fileID: 1080663647796676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -61,7 +49,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9b5aaf91c111c044181669f42fbeb252, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbd8932ebe7df9c4d8494530fbe3fa40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -69,29 +57,40 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114417324919990580
+--- !u!114 &114856452267880082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
+  m_GameObject: {fileID: 1080663647796676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c64de6f24e38240a533fa8ab9ffd7b, type: 3}
+  m_Script: {fileID: 11500000, guid: d8db20f1f753ff04985bea6e0f6b4fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!222 &222748884544766856
+--- !u!114 &114982522947258896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080663647796676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e792969e6680441b31019898887cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &222153065625997874
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
---- !u!224 &224251768777811888
+  m_GameObject: {fileID: 1080663647796676}
+--- !u!224 &224908827024426132
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872055784155894}
+  m_GameObject: {fileID: 1080663647796676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 17.615088}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -101,6 +100,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -453.6, y: -278}
+  m_AnchoredPosition: {x: -206, y: -278.05}
   m_SizeDelta: {x: 204.9, y: 258.9}
   m_Pivot: {x: 0.5, y: 0.5}
