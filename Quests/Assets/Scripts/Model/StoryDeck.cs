@@ -46,7 +46,7 @@ namespace QuestOTRT
             Event eventKingsCallToArms = new Event("King's Call to Arms");
 
             //Quests 
-            DeckList.Add(questSFTHG, 1);
+            DeckList.Add(questSFTHG, 1);/*
             DeckList.Add(questTOTGK, 1);
             DeckList.Add(questSFTQB, 1);
             DeckList.Add(questDTQH, 1);
@@ -72,6 +72,7 @@ namespace QuestOTRT
             DeckList.Add(eventChivalrousDeed, 1);
             DeckList.Add(eventPTTR, 1);
             DeckList.Add(eventKingsCallToArms, 1);
+            */
         }
     }
 }

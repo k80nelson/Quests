@@ -61,7 +61,7 @@ namespace QuestOTRT
             Test testOfQuestingBeast = new Test("Test of the Questing Beast", 0, 1, 4, "Search for the Questing Beast");
 
             //Weapons
-            DeckList.Add(excalibur, 2);
+            DeckList.Add(excalibur, 2);/*
             DeckList.Add(lance, 6);
             DeckList.Add(battleAx, 8);
             DeckList.Add(sword, 16);
@@ -100,7 +100,8 @@ namespace QuestOTRT
             DeckList.Add(merlin, 1);
 
             //~Amour~
-            DeckList.Add(amours, 8);
+            DeckList.Add(amours, 8);   
+            */
         }
         
     }

@@ -7,7 +7,7 @@ public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
     public QuestOTRT.Hand hand;
-    public PlayerView view;
+    //public PlayerView view;
 
     // When absolutely first loaded
     void Awake()
@@ -18,7 +18,7 @@ public class PlayerController : GameElement {
     void Start ()
     {
         player = new QuestOTRT.Player();
-        view = GetComponent<PlayerView>();
+        //view = GetComponent<PlayerView>();
         hand = new Hand(); 
     }
 	
@@ -30,10 +30,12 @@ public class PlayerController : GameElement {
     public void addCards(List<QuestOTRT.AdventureCard> cards)
     {
         player.addCards(cards);
+        /*
         foreach (AdventureCard card in cards)
         {
             view.createCard(card.Name);
         }
+        */
     }
     public void onSponsorQuest()
     {

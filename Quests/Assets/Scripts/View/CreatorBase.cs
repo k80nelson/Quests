@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
+public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
 {
     public GameObject prefab;
     public Sprite[] sprites;
@@ -18,7 +18,7 @@ public abstract class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
                 break;
             }
         }
-
+        Debug.Log(card.name);
         GameObject newcard = Instantiate(prefab);
         SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
         sr.sprite = display;

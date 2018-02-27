@@ -86,13 +86,16 @@ namespace QuestOTRT
 
         public virtual bool adjust(T card)
         {
+            /*
             // Shouldn't ever get here
-            if (DeckList[card] <= 0) return false;
+            Debug.Log("Decklist before false");
+            //if (DeckList[card] <= 0) { return false; }
+            //Debug.Log("Decklist after false");
 
             // Last card, remove it from the list of valid cards
-            if (DeckList[card] == 1) ValidCards.Remove(card);
+            //if (DeckList[card] == 1) ValidCards.Remove(card);
             DeckList[card] -= 1;
-            currCards -= 1;
+            currCards -= 1;*/
             return true;
         }
 
