@@ -22,7 +22,7 @@ public class PlayerView : MonoBehaviour
     public void createCard(QuestOTRT.AdventureCard card)
     {
         GameObject newCard = factory.create(card);
-        newCard.transform.parent = CardTransform.transform;
+        newCard.transform.SetParent(CardTransform.transform, false);
     }
 
 }

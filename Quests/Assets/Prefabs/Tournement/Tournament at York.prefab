@@ -9,33 +9,58 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1539771089752120}
+  m_RootGameObject: {fileID: 1518261386972544}
   m_IsPrefabParent: 1
---- !u!1 &1539771089752120
+--- !u!1 &1518261386972544
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224733846846160378}
-  - component: {fileID: 222190483826851874}
-  - component: {fileID: 114639950858035878}
-  - component: {fileID: 114998198916965568}
-  - component: {fileID: 114830698597072116}
+  - component: {fileID: 224302298750599796}
+  - component: {fileID: 222414938837272708}
+  - component: {fileID: 114815462105669756}
+  - component: {fileID: 114859998377863570}
+  - component: {fileID: 61379168072818314}
   m_Layer: 0
-  m_Name: TourYork
+  m_Name: Tournament at York
   m_TagString: Tournament
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114639950858035878
+--- !u!61 &61379168072818314
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518261386972544}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &114815462105669756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539771089752120}
+  m_GameObject: {fileID: 1518261386972544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -57,42 +82,29 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114830698597072116
+--- !u!114 &114859998377863570
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539771089752120}
+  m_GameObject: {fileID: 1518261386972544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a7a12a47ae36b49bc68f47a71a034a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
---- !u!114 &114998198916965568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539771089752120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca774e42e2afcd048bdadb809024a765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numPlayers: 0
---- !u!222 &222190483826851874
+--- !u!222 &222414938837272708
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539771089752120}
---- !u!224 &224733846846160378
+  m_GameObject: {fileID: 1518261386972544}
+--- !u!224 &224302298750599796
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539771089752120}
+  m_GameObject: {fileID: 1518261386972544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 17.615088}
   m_LocalScale: {x: 1, y: 1, z: 1}
