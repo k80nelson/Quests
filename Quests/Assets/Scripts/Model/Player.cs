@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class Player : MonoBehaviour
+    public class Player 
     {
         private int shields;
         private int bp;

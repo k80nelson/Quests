@@ -18,7 +18,7 @@ public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
                 break;
             }
         }
-        Debug.Log(card.name);
+        Debug.Log(card.Name);
         GameObject newcard = Instantiate(prefab);
         SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
         sr.sprite = display;

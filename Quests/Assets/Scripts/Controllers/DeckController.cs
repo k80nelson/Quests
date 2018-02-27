@@ -9,16 +9,9 @@ public class DeckController : MonoBehaviour {
     StoryDeck StrDeck = new StoryDeck();
 
     void Awake()
-    {
-        
-        //must create the decks in the start to avoid unity errors
+    { 
         AdvDeck = new AdventureDeck();
         StrDeck = new StoryDeck();
-        /*
-        GameObject tempdeck = GameObject.Find("DeckObject");
-        AdvDeck = tempdeck.GetComponent<DeckController>().AdvDeck;
-        StrDeck = tempdeck.GetComponent<DeckController>().StrDeck;
-        */
     }
 
     void Start()

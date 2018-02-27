@@ -6,7 +6,6 @@ using QuestOTRT;
 public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
-    public QuestOTRT.Hand hand;
     //public PlayerView view;
 
     // When absolutely first loaded
@@ -18,25 +17,17 @@ public class PlayerController : GameElement {
     void Start ()
     {
         player = new QuestOTRT.Player();
-        //view = GetComponent<PlayerView>();
-        hand = new Hand(); 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        player.displayHand();
 	}
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)
     {
         player.addCards(cards);
-        /*
-        foreach (AdventureCard card in cards)
-        {
-            view.createCard(card.Name);
-        }
-        */
     }
+
     public void onSponsorQuest()
     {
 
