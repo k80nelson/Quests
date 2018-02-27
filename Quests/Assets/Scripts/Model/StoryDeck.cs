@@ -36,17 +36,17 @@ namespace QuestOTRT
             Tournament tournamentYork = new Tournament("Tournament at York", 0);
 
             //Events
-            Event eventKingRecognition = new Event("King's Recognition");
-            Event eventQueensFavor = new Event("Queen's Favor");
+            Event eventKingRecognition = new Event("Kings Recognition");
+            Event eventQueensFavor = new Event("Queens Favor");
             Event eventCCTC = new Event("Court Called to Camelot");
             Event eventPox = new Event("Pox");
             Event eventPlague = new Event("Plague");
             Event eventChivalrousDeed = new Event("Chivalrous Deed");
             Event eventPTTR = new Event("Properity Throughout the Realm");
-            Event eventKingsCallToArms = new Event("King's Call to Arms");
+            Event eventKingsCallToArms = new Event("Kings Call to Arms");
 
             //Quests 
-            DeckList.Add(questSFTHG, 1);/*
+            DeckList.Add(questSFTHG, 1);
             DeckList.Add(questTOTGK, 1);
             DeckList.Add(questSFTQB, 1);
             DeckList.Add(questDTQH, 1);
@@ -72,7 +72,7 @@ namespace QuestOTRT
             DeckList.Add(eventChivalrousDeed, 1);
             DeckList.Add(eventPTTR, 1);
             DeckList.Add(eventKingsCallToArms, 1);
-            */
+            
         }
     }
 }
