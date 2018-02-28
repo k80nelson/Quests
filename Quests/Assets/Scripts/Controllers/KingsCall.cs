@@ -28,7 +28,7 @@ namespace QuestOTRT
             Player highestPlayer = players[0];
 
             //find the highest rank
-            for (int i = 1; i < players.Length; ++i)
+            for (int i = 1; i < players.Count; ++i)
             {
                 //if rank is higher than current highest player
                 if (players[i].getRank() > highestPlayer.getRank())
