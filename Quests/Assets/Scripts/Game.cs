@@ -18,6 +18,9 @@ namespace QuestOTRT
         public gameState state;
         public Turn turn;
 
+        //This will hold the current player
+        public GameObject current;
+
         void Start()
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
