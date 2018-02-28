@@ -20,7 +20,8 @@ public class StoryDeckBehaviour : GameElement {
 
     public void TaskOnClick()
     {
-        if (game.state==Game.gameState.startTurn) {
+        //Can only draw a story card if youre in the startTurn state and have an appropriate hand size
+        if (game.state==Game.gameState.startTurn && game.current.GetComponent<PlayerController>().player.NumCards <= 12) {
             game.state=deck.DrawStoryCard();
         }
     }

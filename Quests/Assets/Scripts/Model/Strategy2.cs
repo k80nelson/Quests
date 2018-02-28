@@ -9,29 +9,29 @@ namespace QuestOTRT
         {
         }
 
-        public void doIParticipationInTournament()
+        public override void doIParticipationInTournament()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void DoISponsorAQuest()
+        public override void DoISponsorAQuest()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void doIParticipateInQuest()
+        public override void doIParticipateInQuest()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void nextBid()
+        public override void nextBid()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void discardAfterWinningTest(Hand hand)
+        public override void discardAfterWinningTest()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

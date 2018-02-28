@@ -9,27 +9,9 @@ namespace QuestOTRT
         //Constructor
         public Event(string name) : base(name){}
 
-
-        public void plague(Player p)
-        {
-        }
-
-            
-        public void pox(Player p, Player[] players)
-        {
-           
-
-        }
-
-        //All players can immediately draw 2 Adventure Cards
         public void prosperityTtR(Player[] players, DeckController d)
         {
-            //Loop through all players to add cards to their hands
-           for(int i = 0; i<players.Length; i++)
-            {
-                //add a card and add 1 to the amount of players who have drawn 2 cards
-                players[i].addCards(d.DrawAdventureCards(2));
-            }
+   
         }
 
         public void queensFavor(Player[] players, DeckController d)
