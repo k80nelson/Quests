@@ -3,7 +3,7 @@
 
 namespace QuestOTRT
 {
-    public class Strategy2
+    public class Strategy2 : Strategy
     {
         public Strategy2()
         {
@@ -31,6 +31,7 @@ namespace QuestOTRT
 
         public void discardAfterWinningTest(Hand hand)
         {
+
         }
     }
 }
