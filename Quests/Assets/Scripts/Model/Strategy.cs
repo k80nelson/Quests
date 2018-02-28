@@ -9,7 +9,7 @@ namespace QuestOTRT
         {
         }
 
-        public abstract void doIParticipationInTournament();
+        public abstract void doIParticipationInTournament(Player p);
 
         public abstract void DoISponsorAQuest();
 
@@ -17,6 +17,6 @@ namespace QuestOTRT
 
         public abstract void nextBid();
 
-        public abstract void discardAfterWinningTest();
+        public abstract void discardAfterWinningTest(Hand hand);
     }
 }

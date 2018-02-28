@@ -18,13 +18,13 @@ namespace QuestOTRT
             //find the proper strategy by what the user selected
             switch (option)
             {
-               // case "":
+               // case "strat1":
                    // AIStrategy = new Strategy1();
                    // break;
-                case "":
+                case "strat2":
                     AIStrategy = new Strategy2();
                     break;
-                /*case ObjectToSort.CountyResidents:
+                /*case "ourStrat":
                     AIStrategy = new QuickSort();
                     break;*/
                 default:
