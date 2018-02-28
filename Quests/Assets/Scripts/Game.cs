@@ -14,6 +14,8 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
+        public enum gameState { startTurn, Quest, Event, Tournment, endTurn};
+        public gameState state;
 
         void Start()
         {
@@ -24,7 +26,26 @@ namespace QuestOTRT
 
         void Update()
         {
-           // Debug.Log("Game update");
+           if (state == gameState.startTurn)
+           {
+
+           }
+           else if(state == gameState.Quest)
+           {
+
+           }
+           else if (state == gameState.Event)
+           {
+
+           }
+           else if (state == gameState.Tournment)
+           {
+
+           }
+           else if (state == gameState.endTurn)
+           {
+
+           }
         }
 
         void initPlayers()
