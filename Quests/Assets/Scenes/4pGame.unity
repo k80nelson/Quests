@@ -1076,6 +1076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 434917547}
   - component: {fileID: 434917548}
+  - component: {fileID: 434917549}
   m_Layer: 0
   m_Name: Game
   m_TagString: Game
@@ -1116,6 +1117,18 @@ MonoBehaviour:
   - {fileID: 141583601}
   deck: {fileID: 0}
   state: 0
+  turn: {fileID: 434917549}
+--- !u!114 &434917549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434917546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f88b588f9081b048b96b2b349f62947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452625948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,6 +3102,7 @@ MonoBehaviour:
   players: []
   deck: {fileID: 978989410}
   state: 0
+  turn: {fileID: 0}
 --- !u!1 &1111563270
 GameObject:
   m_ObjectHideFlags: 0
