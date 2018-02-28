@@ -5,17 +5,25 @@ using QuestOTRT;
 
 public class Turn : GameElement {
     public List<Card> cards;
+    public GameObject overlay;
 
     void Start()
     {
         cards = new List<Card>();
     }
 
-
-
     public void addCard(Card card)
     {
         cards.Add(card);
+    }
+
+    public void init()
+    {
+        if (game.state == Game.gameState.Quest || game.state == Game.gameState.Quest)
+        {
+            overlay.SetActive(true);
+        }
+            
     }
 
     public void removeAll()
@@ -51,6 +59,11 @@ public class Turn : GameElement {
                 continue;
             }
         }
+
+        if (!(game.state == Game.gameState.Quest || game.state == Game.gameState.Quest))
+        {
+            overlay.SetActive(false);
+        }
     }
 
     public void removeCard(Card card)
@@ -66,5 +79,16 @@ public class Turn : GameElement {
             ls += card.Name + ", ";
         }
         Debug.Log(ls);
+    }
+
+    public void playCards()
+    {
+        Debug.Log("Played cards.");
+        foreach(Card card in cards)
+        {
+            game.current.GetComponent<PlayerController>().removeCard(card as AdventureCard);
+            Debug.Log("Removing" + card.Name);
+        }
+        removeAll();
     }
 }

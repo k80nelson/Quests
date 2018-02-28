@@ -20,6 +20,7 @@ namespace QuestOTRT
 
         //This will hold the current player
         public GameObject current;
+        public int currIndex;
 
         void Start()
         {
@@ -28,11 +29,25 @@ namespace QuestOTRT
             initPlayers();
             state = gameState.startTurn;
             turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
+            currIndex = 0;
+            current = players[currIndex];
         }
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                nextPlayer();
+            }
             
+        }
+
+        void nextPlayer()
+        {
+            current.GetComponent<PlayerController>().view.setViewOff();
+            currIndex = ((currIndex + 1) % numPlayers);
+            current = players[currIndex];
+            current.GetComponent<PlayerController>().view.setViewOn();
         }
 
         void initPlayers()

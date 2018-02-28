@@ -18,12 +18,21 @@ public class PlayerController : GameElement {
     {
         
     }
+
+
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        
 	}
+
+    public void removeCard(AdventureCard card)
+    {
+        player.removeCard(card);
+        view.removeCard(card);
+        view.adjustHand();
+    }
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)
     {
