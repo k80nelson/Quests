@@ -6,7 +6,6 @@ public class PlayerView : MonoBehaviour
 {
     public GameObject CardTransform;
     public CardFactory factory;
-    public List<GameObject> cardPrefabs;
 
     // Use this for initialization
     void Start()
@@ -24,18 +23,17 @@ public class PlayerView : MonoBehaviour
     {
         GameObject newCard = factory.create(card);
         newCard.transform.SetParent(CardTransform.transform, false);
-        cardPrefabs.Add(newCard);
     }
     public void adjustHand()
     {
         int i = 0;
         UnityEngine.Vector3 tempScale = new UnityEngine.Vector3(0.5f, 0.5f, 0.5f);
         UnityEngine.Vector3 tempSize;
-        foreach (GameObject c in cardPrefabs)
+        foreach(Transform child in CardTransform.transform)
         {
             tempSize = new UnityEngine.Vector3(900-(i*75), 100, 0);
-            c.transform.position = tempSize;
-            c.transform.localScale = tempScale;
+            child.position = tempSize;
+            child.localScale = tempScale;
             i++;
         }
     }
