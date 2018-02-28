@@ -17,7 +17,7 @@ namespace QuestOTRT
 
         void play()
         {
-            //Creates a new list of players to be filled 
+            //Loops through each game object and adds them to the list of players
             List<Player> players = new List<Player>();
 
             //Loops through each game object 
@@ -25,6 +25,7 @@ namespace QuestOTRT
             {
                 players.Add(player.GetComponent<PlayerController>().player);
             }
+
             Player highestPlayer = players[0];
 
             //find the highest rank
