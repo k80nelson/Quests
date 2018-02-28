@@ -20,7 +20,9 @@ public class PlayerController : GameElement {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+
 	}
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)

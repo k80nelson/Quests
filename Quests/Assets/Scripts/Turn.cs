@@ -11,6 +11,8 @@ public class Turn : GameElement {
         cards = new List<Card>();
     }
 
+
+
     public void addCard(Card card)
     {
         cards.Add(card);
@@ -19,6 +21,41 @@ public class Turn : GameElement {
     public void removeAll()
     {
         cards.Clear();
+
+        GameObject[] clicked = GameObject.FindGameObjectsWithTag("Clicked");
+        foreach (GameObject card in clicked)
+        {
+            if (card.GetComponent<WeaponController>() != null)
+            {
+                card.GetComponent<WeaponController>().reset();
+                continue;
+            }
+            if (card.GetComponent<FoeController>() != null)
+            {
+                card.GetComponent<FoeController>().reset();
+                continue;
+            }
+            if (card.GetComponent<TestController>() != null)
+            {
+                card.GetComponent<TestController>().reset();
+                continue;
+            }
+            if (card.GetComponent<AmourController>() != null)
+            {
+                card.GetComponent<AmourController>().reset();
+                continue;
+            }
+            if (card.GetComponent<AllyController>() != null)
+            {
+                card.GetComponent<AllyController>().reset();
+                continue;
+            }
+        }
+    }
+
+    public void removeCard(Card card)
+    {
+        cards.Remove(card);
     }
 
     public void ListAll()
@@ -28,7 +65,6 @@ public class Turn : GameElement {
         {
             ls += card.Name + ", ";
         }
-
         Debug.Log(ls);
     }
 }
