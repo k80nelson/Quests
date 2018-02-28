@@ -16,6 +16,7 @@ TagManager:
   - Deck
   - CardFactory
   - DisplayHand
+  - Game
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,8 @@ public class StoryDeckBehaviour : GameElement {
 
     public void TaskOnClick()
     {
-        deck.DrawStoryCard();
+        if (game.state==Game.gameState.startTurn) {
+            game.state=deck.DrawStoryCard();
+        }
     }
 }
