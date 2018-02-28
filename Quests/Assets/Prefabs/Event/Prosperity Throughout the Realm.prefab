@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114806259807949202}
   - component: {fileID: 61382194314781114}
   m_Layer: 0
-  m_Name: ProsperityThroughoutTR
+  m_Name: Prosperity Throughout the Realm
   m_TagString: Event
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!222 &222129852393985928
 CanvasRenderer:
   m_ObjectHideFlags: 1
