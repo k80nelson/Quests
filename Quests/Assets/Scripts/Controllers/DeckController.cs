@@ -53,7 +53,7 @@ public class DeckController : MonoBehaviour {
         card.transform.position = new Vector3(720, 524, 0);
         if (c is QuestOTRT.Quest) return Game.gameState.Quest;
         else if (c is QuestOTRT.Event) return Game.gameState.Event;
-        else return Game.gameState.Tournment;
+        else return Game.gameState.Tournament;
         
     }
 
