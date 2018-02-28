@@ -7,7 +7,9 @@ namespace QuestOTRT
     public class EventController : CardController<Event>
     {
 
-       
-
+        public void Start()
+        {
+            
+        }
     }
 }

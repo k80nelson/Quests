@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 434917548}
   m_Layer: 0
   m_Name: Game
-  m_TagString: Untagged
+  m_TagString: Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   - {fileID: 33283598}
   - {fileID: 141583601}
   deck: {fileID: 0}
+  state: 0
 --- !u!1 &452625948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,6 +3088,7 @@ MonoBehaviour:
   numControlled: 4
   players: []
   deck: {fileID: 978989410}
+  state: 0
 --- !u!1 &1111563270
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class DeckController : MonoBehaviour {
         return StrDeck.draw();
     }
 
-    public void DrawStoryCard()
+    public Game.gameState DrawStoryCard()
     {
         // if (story card already in play)
         if (false)
@@ -47,9 +47,14 @@ public class DeckController : MonoBehaviour {
         {
             GameObject.Destroy(child.gameObject);
         }
-        GameObject card = factory.create(getStoryCard());
+        StoryCard c = getStoryCard();
+        GameObject card = factory.create(c);
         card.transform.SetParent(parent.transform);
         card.transform.position = new Vector3(720, 524, 0);
+        if (c is QuestOTRT.Quest) return Game.gameState.Quest;
+        else if (c is QuestOTRT.Event) return Game.gameState.Event;
+        else return Game.gameState.Tournment;
+        
     }
 
     public int numAdvCards()

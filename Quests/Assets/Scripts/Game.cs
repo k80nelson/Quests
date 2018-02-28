@@ -5,7 +5,7 @@ namespace QuestOTRT
 {
     public class GameElement : MonoBehaviour
     {
-        public Game gameState { get { return GameObject.FindObjectOfType<Game>(); } }
+        public Game game { get { return GameObject.FindObjectOfType<Game>(); } }
     }
 
     public class Game : MonoBehaviour
@@ -22,30 +22,12 @@ namespace QuestOTRT
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
-            }
+            state = gameState.startTurn;
+        }
 
         void Update()
         {
-           if (state == gameState.startTurn)
-           {
-
-           }
-           else if(state == gameState.Quest)
-           {
-
-           }
-           else if (state == gameState.Event)
-           {
-
-           }
-           else if (state == gameState.Tournment)
-           {
-
-           }
-           else if (state == gameState.endTurn)
-           {
-
-           }
+            
         }
 
         void initPlayers()
