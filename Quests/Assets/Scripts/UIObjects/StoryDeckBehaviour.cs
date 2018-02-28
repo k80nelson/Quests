@@ -7,10 +7,10 @@ using QuestOTRT;
 public class StoryDeckBehaviour : GameElement {
     public DeckController deck;
     public Button btn;
+    
 
     // Use this for initialization
     void Start () {
-        btn.onClick.AddListener(TaskOnClick);
     }
 	
 	// Update is called once per frame
@@ -20,7 +20,6 @@ public class StoryDeckBehaviour : GameElement {
 
     public void TaskOnClick()
     {
-        StoryCard card = deck.DrawStoryCard();
-        Debug.Log(card.Name);
+        deck.DrawStoryCard();
     }
 }

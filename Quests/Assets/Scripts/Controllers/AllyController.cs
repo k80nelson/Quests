@@ -5,8 +5,6 @@ using UnityEngine;
 namespace QuestOTRT {
     public class AllyController : CardController<Ally>
     {
-
         
-
     }
 }
