@@ -21,7 +21,7 @@ namespace QuestOTRT
 
             Player p = this.game.current.GetComponent<PlayerController>().player; //This needs to be the current player
 
-            //Loops through each game object 
+            //Loops through each game object and adds them to the list of players
             foreach (GameObject player in this.game.players)
             {
                 players.Add(player.GetComponent<PlayerController>().player);

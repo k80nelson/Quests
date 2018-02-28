@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//THIS EVENT STILL NEEDS A LOT OF WORK BEFORE IT IS DONE
+
 namespace QuestOTRT
 {
-    //All Allies in play are discarded
-    public class CourtCalled : GameElement
+    //All players can immediately draw 2 Adventure Cards
+    public class ProsperityTtR : GameElement
     {
         void Start()
         {
@@ -23,13 +25,12 @@ namespace QuestOTRT
                 players.Add(player.GetComponent<PlayerController>().player);
             }
 
-           
-            //loops through all allies and find their allies
-            for (int i = 0; i < players.Count; ++i)
+            //Loop through all players to add cards to their hands
+            for (int i = 0; i < players.Count; i++)
             {
-                players[i].removeAllies();
+                //draws 2 cards to the players hand
+                players[i].addCards(this.game.deck.DrawAdventureCards(2));
             }
-
         }
     }
 }

@@ -13,6 +13,7 @@ namespace QuestOTRT
         public Vector3 bigScale;
         private bool clicked;
         private bool scaled;
+        private string oldTag;
 
         public void initialize(T newCard)
         {
@@ -20,6 +21,7 @@ namespace QuestOTRT
             index = gameObject.transform.GetSiblingIndex();
             clicked = false;
             scaled = false;
+            oldTag = gameObject.tag;
         }
 
         public void OnMouseExit()
@@ -36,7 +38,6 @@ namespace QuestOTRT
                 transform.localScale = firstScale;
                 transform.SetSiblingIndex(index);
             }
-            
         }
 
         public void OnMouseEnter()
@@ -54,12 +55,34 @@ namespace QuestOTRT
 
         public virtual void OnClick()
         {
-            if(this.game.state == Game.gameState.Quest || this.game.state == Game.gameState.Tournament)
+            if (clicked && (this.game.state == Game.gameState.Quest || this.game.state == Game.gameState.Tournament))
+            {
+                this.game.turn.removeCard(card);
+                this.game.turn.ListAll();
+                clicked = false;
+                gameObject.tag = oldTag;
+            }
+            else if(this.game.state == Game.gameState.Quest || this.game.state == Game.gameState.Tournament)
             {
                 this.game.turn.addCard(card);
                 this.game.turn.ListAll();
                 clicked = true;
+                gameObject.tag = "Clicked";
             }
+
+            if(this.game.state == Game.gameState.Sponsorship)
+            {
+                GameObject.FindGameObjectWithTag("SPONSOR").GetComponent<Sponsoring>().add(card);
+                clicked = true;
+                gameObject.tag = "Clicked";
+            }
+        }
+
+        public void reset()
+        {
+            clicked = false;
+            tag = oldTag;
+            transform.localScale = firstScale;
         }
     }
 }

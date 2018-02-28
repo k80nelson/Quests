@@ -17,7 +17,7 @@ namespace QuestOTRT
             //Creates a new list of players to be filled 
             List<Player> players = new List<Player>();
 
-            //Loops through each game object 
+            //Loops through each game object and adds them to the list of players
             foreach (GameObject player in this.game.players)
             {
                 players.Add(player.GetComponent<PlayerController>().player);

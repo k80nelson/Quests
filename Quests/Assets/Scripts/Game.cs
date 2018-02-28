@@ -14,12 +14,13 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Event, Tournament, endTurn};
+        public enum gameState { startTurn, Quest, Sponsorship, Event, Tournament, endTurn};
         public gameState state;
         public Turn turn;
 
         //This will hold the current player
         public GameObject current;
+        public int currIndex;
 
         void Start()
         {
@@ -27,11 +28,25 @@ namespace QuestOTRT
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
             state = gameState.startTurn;
+
+            current = players[0];
+
+            turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
+            currIndex = 0;
+            current = players[currIndex];
         }
 
         void Update()
         {
             
+        }
+
+        public void nextPlayer()
+        {
+            current.GetComponent<PlayerController>().view.setViewOff();
+            currIndex = ((currIndex + 1) % numPlayers);
+            current = players[currIndex];
+            current.GetComponent<PlayerController>().view.setViewOn();
         }
 
         void initPlayers()

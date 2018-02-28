@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
     public GameObject CardTransform;
+    public GameObject UI;
     public CardFactory factory;
 
     // Use this for initialization
@@ -19,11 +20,35 @@ public class PlayerView : MonoBehaviour
 
     }
 
+    public void setViewOn()
+    {
+        UI.SetActive(true);
+    }
+
+    public void setViewOff()
+    {
+        UI.SetActive(false);
+    }
+
     public void createCard(QuestOTRT.AdventureCard card)
     {
         GameObject newCard = factory.create(card);
         newCard.transform.SetParent(CardTransform.transform, false);
     }
+
+    public void removeCard(QuestOTRT.AdventureCard card)
+    {
+        foreach(Transform child in CardTransform.transform)
+        {
+            if (child.name == card.Name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
+        
+    }
+
     public void adjustHand()
     {
         int i = 0;

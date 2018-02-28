@@ -17,6 +17,10 @@ TagManager:
   - CardFactory
   - DisplayHand
   - Game
+  - Turn
+  - Clicked
+  - CurrStory
+  - SPONSOR
   layers:
   - Default
   - TransparentFX

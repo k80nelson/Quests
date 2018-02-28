@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using QuestOTRT;
+using UnityEngine.UI;
 
 public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
     public PlayerView view;
+    public Text rankText;
+    public Text shieldText;
+    public Text cardText;
 
     // When absolutely first loaded
     void Awake()
@@ -16,12 +20,25 @@ public class PlayerController : GameElement {
     // When first enabled
     void Start ()
     {
-        
     }
+
+
 	
 	// Update is called once per frame
-	void Update () {
-	}
+	void Update ()
+    {
+        rankText.text = "Rank: " + ((QuestOTRT.Rank)this.player.getRank()).ToString();
+        shieldText.text = "Shields: " + this.player.Shields.ToString();
+        cardText.text = "Cards: " + this.player.hand.Cards.Count.ToString();
+
+    }
+
+    public void removeCard(AdventureCard card)
+    {
+        player.removeCard(card);
+        view.removeCard(card);
+        view.adjustHand();
+    }
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)
     {
