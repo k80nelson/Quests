@@ -49,9 +49,10 @@ public class DeckController : MonoBehaviour {
         }
         StoryCard c = getStoryCard();
         GameObject card = factory.create(c);
+        card.tag = "CurrStory";
         card.transform.SetParent(parent.transform);
         card.transform.position = new Vector3(720, 524, 0);
-        if (c is QuestOTRT.Quest) return Game.gameState.Quest;
+        if (c is QuestOTRT.Quest) return Game.gameState.Sponsorship;
         else if (c is QuestOTRT.Event) return Game.gameState.Event;
         else return Game.gameState.Tournament;
         

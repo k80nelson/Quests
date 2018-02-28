@@ -14,7 +14,7 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Event, Tournament, endTurn};
+        public enum gameState { startTurn, Quest, Sponsorship, Event, Tournament, endTurn};
         public gameState state;
         public Turn turn;
 
@@ -38,14 +38,10 @@ namespace QuestOTRT
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                nextPlayer();
-            }
             
         }
 
-        void nextPlayer()
+        public void nextPlayer()
         {
             current.GetComponent<PlayerController>().view.setViewOff();
             currIndex = ((currIndex + 1) % numPlayers);

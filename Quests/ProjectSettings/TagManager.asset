@@ -19,6 +19,8 @@ TagManager:
   - Game
   - Turn
   - Clicked
+  - CurrStory
+  - SPONSOR
   layers:
   - Default
   - TransparentFX

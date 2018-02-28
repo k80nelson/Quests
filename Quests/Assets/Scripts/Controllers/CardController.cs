@@ -55,7 +55,7 @@ namespace QuestOTRT
 
         public virtual void OnClick()
         {
-            if (clicked)
+            if (clicked && (this.game.state == Game.gameState.Quest || this.game.state == Game.gameState.Tournament))
             {
                 this.game.turn.removeCard(card);
                 this.game.turn.ListAll();
@@ -66,6 +66,13 @@ namespace QuestOTRT
             {
                 this.game.turn.addCard(card);
                 this.game.turn.ListAll();
+                clicked = true;
+                gameObject.tag = "Clicked";
+            }
+
+            if(this.game.state == Game.gameState.Sponsorship)
+            {
+                GameObject.FindGameObjectWithTag("SPONSOR").GetComponent<Sponsoring>().add(card);
                 clicked = true;
                 gameObject.tag = "Clicked";
             }

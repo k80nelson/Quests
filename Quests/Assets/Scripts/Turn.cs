@@ -4,8 +4,45 @@ using UnityEngine;
 using QuestOTRT;
 
 public class Turn : GameElement {
+    public GameObject SponsorPrefab;
+    public GameObject CombatPrefab;
+    public GameObject BiddingPrefab;
+
+    public GameObject SponsorOverlay;
+    public GameObject CombatOverlay;
+
+
     public List<Card> cards;
     public GameObject overlay;
+
+    public void init()
+    {
+        if (game.state == Game.gameState.Sponsorship)
+        {
+            SponsorOverlay.SetActive(true);
+        }
+
+        if (game.state == Game.gameState.Quest || game.state == Game.gameState.Tournament)
+        {
+            overlay.SetActive(true);
+        }
+
+    }
+
+    public void startSponsor()
+    {
+        GameObject temp = Instantiate(SponsorPrefab);
+        temp.transform.parent = game.current.transform.parent.transform;
+        SponsorOverlay.SetActive(false);
+    }
+
+    public void noSponsor()
+    {
+        this.game.nextPlayer();
+        this.game.state = Game.gameState.startTurn;
+        GameObject.Destroy(GameObject.FindGameObjectWithTag("CurrStory"));
+        SponsorOverlay.SetActive(false);
+    }
 
     void Start()
     {
@@ -17,19 +54,8 @@ public class Turn : GameElement {
         cards.Add(card);
     }
 
-    public void init()
+    public void removeClicked()
     {
-        if (game.state == Game.gameState.Quest || game.state == Game.gameState.Quest)
-        {
-            overlay.SetActive(true);
-        }
-            
-    }
-
-    public void removeAll()
-    {
-        cards.Clear();
-
         GameObject[] clicked = GameObject.FindGameObjectsWithTag("Clicked");
         foreach (GameObject card in clicked)
         {
@@ -59,10 +85,22 @@ public class Turn : GameElement {
                 continue;
             }
         }
+    }
+
+    public void removeAll()
+    {
+        cards.Clear();
+
+        removeClicked();
 
         if (!(game.state == Game.gameState.Quest || game.state == Game.gameState.Quest))
         {
             overlay.SetActive(false);
+        }
+
+        if(!(game.state == Game.gameState.Sponsorship))
+        {
+            SponsorOverlay.SetActive(false);
         }
     }
 
@@ -83,12 +121,13 @@ public class Turn : GameElement {
 
     public void playCards()
     {
-        Debug.Log("Played cards.");
         foreach(Card card in cards)
         {
             game.current.GetComponent<PlayerController>().removeCard(card as AdventureCard);
-            Debug.Log("Removing" + card.Name);
         }
         removeAll();
+        this.game.nextPlayer();
     }
+
+
 }
