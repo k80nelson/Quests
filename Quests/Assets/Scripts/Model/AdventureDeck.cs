@@ -59,13 +59,14 @@ namespace QuestOTRT
 
         public override void emptyDeck()
         {
-            this.ValidCards = DeckList.Keys.ToList();
+            AddCards(discard);
+            discard.Clear();
         }
 
         public override void initialize()
         {
            
-            DeckList[excalibur] =2;
+            DeckList[excalibur] = 2;
             DeckList[lance] = 6;
             DeckList[battleAx] = 8;
             DeckList[sword] = 16;
