@@ -24,6 +24,7 @@ namespace QuestOTRT
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
             state = gameState.startTurn;
+            turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
         }
 
         void Update()
