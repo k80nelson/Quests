@@ -47,6 +47,7 @@ namespace QuestOTRT
             currIndex = ((currIndex + 1) % numPlayers);
             current = players[currIndex];
             current.GetComponent<PlayerController>().view.setViewOn();
+            current.GetComponent<PlayerController>().view.adjustHand();
         }
 
         void initPlayers()
