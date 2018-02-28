@@ -14,8 +14,9 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Event, Tournment, endTurn};
+        public enum gameState { startTurn, Quest, Event, Tournament, endTurn};
         public gameState state;
+        public Turn turn;
 
         //This will hold the current player
         public GameObject current;

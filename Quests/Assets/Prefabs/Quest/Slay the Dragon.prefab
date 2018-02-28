@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114605350713419002}
   - component: {fileID: 114225067498106978}
   - component: {fileID: 61518710632098446}
+  - component: {fileID: 114601996047483372}
   m_Layer: 0
   m_Name: Slay the Dragon
   m_TagString: Quest
@@ -66,6 +67,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaec63c5dabcce944b204133009e0a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
+  firstScale: {x: 0, y: 0, z: 0}
+  bigScale: {x: 0, y: 0, z: 0}
+--- !u!114 &114601996047483372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900172419138242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114225067498106978}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114605350713419002
 MonoBehaviour:
   m_ObjectHideFlags: 1

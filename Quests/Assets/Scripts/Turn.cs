@@ -4,18 +4,31 @@ using UnityEngine;
 using QuestOTRT;
 
 public class Turn : GameElement {
-    public PlayerController player;
+    public List<Card> cards;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+        cards = new List<Card>();
+    }
 
+    public void addCard(Card card)
+    {
+        cards.Add(card);
+    }
 
+    public void removeAll()
+    {
+        cards.Clear();
+    }
 
+    public void ListAll()
+    {
+        string ls = "";
+        foreach (Card card in cards)
+        {
+            ls += card.Name + ", ";
+        }
+
+        Debug.Log(ls);
+    }
 }
