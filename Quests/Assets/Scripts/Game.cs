@@ -18,7 +18,6 @@ namespace QuestOTRT
         void Start()
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
-
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
             }

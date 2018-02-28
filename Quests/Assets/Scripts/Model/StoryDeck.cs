@@ -25,14 +25,14 @@ namespace QuestOTRT
         public static Tournament tournamentYork = new Tournament("Tournament at York", 0);
 
         //Events
-        public static Event eventKingRecognition = new Event("Kings Recognition");
-        public static Event eventQueensFavor = new Event("Queens Favor");
+        public static Event eventKingRecognition = new Event("King's Recognition");
+        public static Event eventQueensFavor = new Event("Queen's Favor");
         public static Event eventCCTC = new Event("Court Called to Camelot");
         public static Event eventPox = new Event("Pox");
         public static Event eventPlague = new Event("Plague");
         public static Event eventChivalrousDeed = new Event("Chivalrous Deed");
-        public static Event eventPTTR = new Event("Properity Throughout the Realm");
-        public static Event eventKingsCallToArms = new Event("Kings Call to Arms");
+        public static Event eventPTTR = new Event("Prosperity Throughout the Realm");
+        public static Event eventKingsCallToArms = new Event("King's Call to Arms");
 
         public StoryDeck()
         {

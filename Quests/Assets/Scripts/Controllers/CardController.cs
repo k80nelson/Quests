@@ -8,11 +8,27 @@ namespace QuestOTRT
     {
 
         public T card = null;
+        public int index;
 
 
         public void initialize(T ally)
         {
             if (card == null) card = ally;
+            index = gameObject.transform.GetSiblingIndex();
+        }
+        
+
+        public void OnMouseExit()
+        {
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            transform.SetSiblingIndex(index);
+        }
+
+        public void OnMouseEnter()
+        {
+            index = gameObject.transform.GetSiblingIndex();
+            transform.localScale += new Vector3(0.1F, 0.1f, 0.1f);
+            transform.SetAsLastSibling();
         }
 
     }
