@@ -24,14 +24,10 @@ public class Globals : MonoBehaviour {
     }
     public void addWeakAi()
     {
-
+        numWeakAi++;
     }
     public void addStrongAi()
     {
-
-    }
-    public void eventH(int x)
-    {
-
+        numStrongAi++;
     }
 }
