@@ -17,6 +17,9 @@ namespace QuestOTRT
         public enum gameState { startTurn, Quest, Event, Tournment, endTurn};
         public gameState state;
 
+        //This will hold the current player
+        public GameObject current;
+
         void Start()
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
