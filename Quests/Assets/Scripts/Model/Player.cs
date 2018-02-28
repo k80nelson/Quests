@@ -9,7 +9,7 @@ namespace QuestOTRT
         private int shields;
         private int bp;
         private int rank;
-        private Hand hand;
+        public Hand hand;
         private List<Ally> allies;
 
         public int Shields
@@ -165,7 +165,7 @@ namespace QuestOTRT
         public void removeAllies()
         {
             //removes all allies for the player
-            this.getAllies().Clear();
+            allies.Clear();
             
         }
         

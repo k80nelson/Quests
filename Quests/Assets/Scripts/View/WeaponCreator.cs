@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class WeaponCreator : CreatorBase<QuestOTRT.Weapon>
 {
-
-    public override void create(QuestOTRT.Weapon card)
+    protected override void initCard(GameObject obj, QuestOTRT.Weapon card)
     {
-        Sprite display = sprites[0];
-        GameObject newcard = Instantiate(prefab);
-        SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
-        sr.sprite = display;
+        obj.GetComponent<QuestOTRT.WeaponController>().initialize(card);
     }
 }

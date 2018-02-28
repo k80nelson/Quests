@@ -5,7 +5,7 @@ namespace QuestOTRT
 {
     public class GameElement : MonoBehaviour
     {
-        public Game gameState { get { return GameObject.FindObjectOfType<Game>(); } }
+        public Game game { get { return GameObject.FindObjectOfType<Game>(); } }
     }
 
     public class Game : MonoBehaviour
@@ -14,32 +14,35 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
+        public enum gameState { startTurn, Quest, Event, Tournament, endTurn};
+        public gameState state;
+        public Turn turn;
+
+        //This will hold the current player
+        public GameObject current;
 
         void Start()
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
-
             //runs the init player method with players having a count of 4 in 4pGame
             initPlayers();
-            }
+            state = gameState.startTurn;
+        }
 
         void Update()
         {
-           // Debug.Log("Game update");
+            
         }
 
         void initPlayers()
         {
-            Debug.Log("Initiating Players in game...");
             PlayerController ctrl;
             foreach (GameObject player in this.players)
             {
                 ctrl = player.GetComponent<PlayerController>();
                 ctrl.player.addCards(deck.DrawAdventureCards(12));
+                ctrl.initCards();
             }
-            
-            Debug.Log("after player loop");
-            Debug.Log(deck.numAdvCards()+" Adventure Cards initialized");
         }
 
         //Late Update runs whatever is inside it at the end of the loop, it updates last, so anythign that needs to be done at the end should be done here

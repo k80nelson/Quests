@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
+public abstract class CreatorBase<T>: MonoBehaviour where T : QuestOTRT.Card
 {
-    public GameObject prefab;
-    public Sprite[] sprites;
+    public GameObject[] prefabs;
 
-    public virtual void create(T card)
+    public virtual GameObject create(T card)
     {
-        Sprite display = sprites[0];
-        foreach (Sprite sp in sprites)
+        GameObject ret = null;
+        foreach (GameObject prefab in prefabs)
         {
-            if (sp.ToString().Contains(card.Name))
+            if (prefab.name.ToLower().Equals(card.Name.ToLower()))
             {
-                display = sp;
+                ret = Instantiate(prefab);
+                ret.name = prefab.name;
+                initCard(ret, card);
                 break;
             }
         }
-        Debug.Log(card.Name);
-        GameObject newcard = Instantiate(prefab);
-        SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
-        sr.sprite = display;
+        if (ret == null)
+        {
+            Debug.Log("Failed to create " + card.Name);
+        }
+        return ret;
     }
+
+    protected abstract void initCard(GameObject obj, T card);
 }

@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class TournamentCreator : CreatorBase<QuestOTRT.Tournament>
 {
-
-    public override void create(QuestOTRT.Tournament card)
+    protected override void initCard(GameObject obj, QuestOTRT.Tournament card)
     {
-        Sprite display = sprites[0];
-        GameObject newcard = Instantiate(prefab);
-        SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
-        sr.sprite = display;
+        obj.GetComponent<QuestOTRT.TournamentController>().initialize(card);
     }
 }

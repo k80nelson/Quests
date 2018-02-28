@@ -4,44 +4,17 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class EventController : GameElement
+    public class EventController : CardController<Event>
     {
-
-        public Event card;
-
-
-        // Use this for initialization
-        void Start()
+        public override void OnClick()
         {
+            if (this.game.state == Game.gameState.Event)
+            {
+                this.game.state = Game.gameState.startTurn;
+                this.game.turn.removeAll();
+                Destroy(gameObject);
+            }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
-        public void initialize(string name)
-        {
-            card = new Event(name);
-        }
-
-        public void initialize(Event eventC)
-        {
-            card = eventC;
-        }
-
-        //When card is clicked, only on 
-        private void OnMouseDown()
-        {
-            if (card != null) print(card.Name);
-            print(getName());
-        }
-
-        public string getName()
-        {
-            return card.Name;
-        }
-
-
+        
     }
 }

@@ -12,6 +12,8 @@ namespace QuestOTRT
         protected Dictionary<T, int> DeckList;
         protected List<T> ValidCards;
         protected int currCards = -1;
+        protected List<T> discard;
+
         public int Count
         {
             get
@@ -24,9 +26,8 @@ namespace QuestOTRT
         
         public virtual T draw()
         {
-            Debug.Log("Inside of Draw() method");
             /* Returns null when deck is empty */
-            if (currCards == 0) return null;
+            if (currCards == 0) emptyDeck();
 
             // Weighted randomness -> swords return more often than merlins, for example
             int rand = rnd.Next(0, currCards);
@@ -44,6 +45,8 @@ namespace QuestOTRT
             adjust(selected);
             return selected;
         }
+
+        public abstract void emptyDeck();
 
         public virtual List<T> draw(int numToDraw)
         {

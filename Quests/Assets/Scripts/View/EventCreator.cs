@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class EventCreator : CreatorBase<QuestOTRT.Event>
 {
-
-    public override void create(QuestOTRT.Event card)
+    protected override void initCard(GameObject obj, QuestOTRT.Event card)
     {
-        Sprite display = sprites[0];
-        GameObject newcard = Instantiate(prefab);
-        SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
-        sr.sprite = display;
+        obj.GetComponent<QuestOTRT.EventController>().initialize(card);
     }
 }

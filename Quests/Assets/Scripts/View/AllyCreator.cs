@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using QuestOTRT;
 using UnityEngine;
 
 public  class AllyCreator : CreatorBase<QuestOTRT.Ally>
 {
-    public override void create(QuestOTRT.Ally card)
+    protected override void initCard(GameObject obj, Ally card)
     {
-        Sprite display = sprites[0];
-        GameObject newcard = Instantiate(prefab);
-        SpriteRenderer sr = newcard.GetComponent<SpriteRenderer>();
-        sr.sprite = display;
+        obj.GetComponent<AllyController>().initialize(card);
     }
 }

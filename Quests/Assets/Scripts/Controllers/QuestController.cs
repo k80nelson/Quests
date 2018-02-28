@@ -4,50 +4,17 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class QuestController : GameElement
+    public class QuestController : CardController<Quest>
     {
-
-        public Quest card;
-
-
-        // Use this for initialization
-        void Start()
+        public override void OnClick()
         {
+            if (this.game.state == Game.gameState.Quest)
+            {
+                this.game.state = Game.gameState.startTurn;
+                this.game.turn.removeAll();
+                Destroy(gameObject);
+            }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
-        public void initialize(string name, int stages)
-        {
-            card = new Quest(name, stages);
-        }
-
-        public void initialize(Quest quest)
-        {
-            card = quest;
-        }
-
-        //When card is clicked, only on 
-        private void OnMouseDown()
-        {
-            if (card != null) print(card.Name);
-            print(getName());
-            print(getStage());
-        }
-
-        public string getName()
-        {
-            return card.Name;
-        }
-
-        public int getStage()
-        {
-            return card.Stages;
-        }
-
 
     }
 }

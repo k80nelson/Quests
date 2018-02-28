@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 224044479635405566}
   - component: {fileID: 222217358672291104}
   - component: {fileID: 114079979295735608}
-  - component: {fileID: 114897703673489924}
   - component: {fileID: 114174133352255742}
+  - component: {fileID: 61136293787537158}
+  - component: {fileID: 114157649773404868}
   m_Layer: 0
   m_Name: Plague
   m_TagString: Event
@@ -30,6 +31,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &61136293787537158
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632661068565700}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114079979295735608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,6 +83,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114157649773404868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632661068565700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114174133352255742}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114174133352255742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,18 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
---- !u!114 &114897703673489924
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1632661068565700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e18fa435fbe7948b606d076acf2d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  index: 0
+  firstScale: {x: 0, y: 0, z: 0}
+  bigScale: {x: 0, y: 0, z: 0}
 --- !u!222 &222217358672291104
 CanvasRenderer:
   m_ObjectHideFlags: 1
