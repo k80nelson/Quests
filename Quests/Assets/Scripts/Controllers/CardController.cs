@@ -11,12 +11,11 @@ namespace QuestOTRT
         public int index;
 
 
-        public void initialize(T ally)
+        public void initialize(T newCard)
         {
-            if (card == null) card = ally;
+            if (card == null) card = newCard;
             index = gameObject.transform.GetSiblingIndex();
         }
-        
 
         public void OnMouseExit()
         {
