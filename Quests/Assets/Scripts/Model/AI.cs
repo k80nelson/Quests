@@ -11,19 +11,17 @@ namespace QuestOTRT
 
         }
 
-        private static Strategy GetAIStrategy(Strategy strategy)
+        private Strategy GetAIStrategy(string option)
         {
-            Strategy option = null;
             //get the strategy selected by the user interface
-
 
             //find the proper strategy by what the user selected
             switch (option)
             {
-                case ObjectToSort.StudentNumber:
-                    AIStrategy = new Strategy1();
-                    break;
-                case ObjectToSort.RailwayPassengers:
+               // case "":
+                   // AIStrategy = new Strategy1();
+                   // break;
+                case "":
                     AIStrategy = new Strategy2();
                     break;
                 /*case ObjectToSort.CountyResidents:
