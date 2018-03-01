@@ -27,8 +27,8 @@ public class DeckTesting : IPrebuildSetup
     [Test]
     public void testAdvSpecificDraw()
     {
-        QuestOTRT.AdventureCard test = adv.draw("Saxon") as QuestOTRT.AdventureCard;
-        Assert.AreEqual("Saxon", test.Name);
+        QuestOTRT.AdventureCard test = adv.draw("Saxons") as QuestOTRT.AdventureCard;
+        Assert.AreEqual("Saxons", test.Name);
         Assert.AreEqual(10, test.getBP(new string[] { }));
         Assert.AreEqual(20, test.getBP(new string[] { "Defend the Queen's Honor" }));
     }
@@ -78,19 +78,19 @@ public class DeckTesting : IPrebuildSetup
     {
         QuestOTRT.Weapon excalibur = new QuestOTRT.Weapon("Excalibur", 30, 0);
         QuestOTRT.Weapon lance = new QuestOTRT.Weapon("Lance", 20, 0);
-        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-ax", 15, 0);
+        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-axe", 15, 0);
 
         List<QuestOTRT.AdventureCard> list = new List<QuestOTRT.AdventureCard> { excalibur, lance, battleAx };
 
         Assert.AreEqual(2, adv.getNumCard("Excalibur"));
         Assert.AreEqual(6, adv.getNumCard("Lance"));
-        Assert.AreEqual(8, adv.getNumCard("Battle-ax"));
+        Assert.AreEqual(8, adv.getNumCard("Battle-axe"));
 
         Assert.True(adv.AddCards(list));
 
         Assert.AreEqual(3, adv.getNumCard("Excalibur"));
         Assert.AreEqual(7, adv.getNumCard("Lance"));
-        Assert.AreEqual(9, adv.getNumCard("Battle-ax"));
+        Assert.AreEqual(9, adv.getNumCard("Battle-axe"));
     }
 
     [Test]
@@ -98,7 +98,7 @@ public class DeckTesting : IPrebuildSetup
     {
         QuestOTRT.Weapon excalibur = new QuestOTRT.Weapon("Excalibur", 30, 0);
         QuestOTRT.Weapon lance = new QuestOTRT.Weapon("Lance", 20, 0);
-        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-ax", 15, 0);
+        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-axe", 15, 0);
         
         Dictionary<QuestOTRT.AdventureCard, int> di = new Dictionary<QuestOTRT.AdventureCard, int>();
         di.Add(excalibur, 4);
@@ -107,13 +107,13 @@ public class DeckTesting : IPrebuildSetup
 
         Assert.AreEqual(2, adv.getNumCard("Excalibur"));
         Assert.AreEqual(6, adv.getNumCard("Lance"));
-        Assert.AreEqual(8, adv.getNumCard("Battle-ax"));
+        Assert.AreEqual(8, adv.getNumCard("Battle-axe"));
 
         Assert.True(adv.AddCards(di));
 
         Assert.AreEqual(6, adv.getNumCard("Excalibur"));
         Assert.AreEqual(12, adv.getNumCard("Lance"));
-        Assert.AreEqual(10, adv.getNumCard("Battle-ax"));
+        Assert.AreEqual(10, adv.getNumCard("Battle-axe"));
     }
 
     [Test]
