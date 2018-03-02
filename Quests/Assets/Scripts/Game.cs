@@ -69,6 +69,15 @@ namespace QuestOTRT
                 state = Game.gameState.StartEv;
                 turn.store = Game.gameState.Tournament;
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PlayerController p1 = players[1].GetComponent<PlayerController>();
+                PlayerController p2 = players[3].GetComponent<PlayerController>();
+                p1.addShields(10);
+                p2.addShields(5);
+                p1.upgradeRank();
+                p2.upgradeRank();
+            }
 
             if (Input.GetKeyDown(KeyCode.E))
             {

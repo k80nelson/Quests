@@ -71,5 +71,9 @@ public class PlayerController : GameElement {
         }
         view.adjustHand();
     }
+    public void upgradeRank()
+    {
+        player.rankUp();
+    }
 
 }

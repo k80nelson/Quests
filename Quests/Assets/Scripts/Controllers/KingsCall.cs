@@ -16,7 +16,7 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
             //Loops through each game object and adds them to the list of players
             List<Player> players = new List<Player>();
@@ -50,7 +50,7 @@ namespace QuestOTRT
             }
 
 
-            Debug.Log("kings call");
+            Debug.Log("Kings Call");
             //highest player must remove highest card.
             //highest player has to select one weapon card to discard
             //check to make sure the cards selected is a weapon card

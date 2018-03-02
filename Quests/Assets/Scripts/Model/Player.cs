@@ -8,7 +8,7 @@ namespace QuestOTRT
     {
         private int shields;
         private int bp;
-        private int rank;
+        public int rank;
         public Hand hand;
         private List<Ally> allies;
 

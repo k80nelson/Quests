@@ -15,8 +15,8 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
-        {/*
+        public void play()
+        {
             //Creates a new list of players to be filled 
             List<PlayerController> players = new List<PlayerController>();
 
@@ -31,7 +31,7 @@ namespace QuestOTRT
             {
                 //draws 2 cards to the players hand
                 players[i].addCards(this.game.deck.DrawAdventureCards(2));
-            }*/
+            }
             
         }
     }

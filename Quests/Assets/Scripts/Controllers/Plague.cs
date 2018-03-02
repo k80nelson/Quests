@@ -14,7 +14,7 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
             //Get a reference to the current player, remove two shields from them
             Player p = this.game.current.GetComponent<PlayerController>().player;
