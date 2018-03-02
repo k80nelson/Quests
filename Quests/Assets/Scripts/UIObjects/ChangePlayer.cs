@@ -22,11 +22,15 @@ namespace QuestOTRT
 
         public void onClick()
         {
-            this.game.current.GetComponent<PlayerController>().view.setViewOff();
-            this.game.currIndex = ((this.game.currIndex + 1) % this.game.numPlayers);
-            this.game.current = this.game.players[this.game.currIndex];
-            this.game.current.GetComponent<PlayerController>().view.setViewOn();
-            this.game.current.GetComponent<PlayerController>().view.adjustHand();
+            if(game.state == Game.gameState.endTurn)
+            {
+                this.game.current.GetComponent<PlayerController>().view.setViewOff();
+                this.game.currIndex = ((this.game.currIndex + 1) % this.game.numPlayers);
+                this.game.current = this.game.players[this.game.currIndex];
+                this.game.current.GetComponent<PlayerController>().view.setViewOn();
+                this.game.current.GetComponent<PlayerController>().view.adjustHand();
+            }
+            
         }
     }
 }

@@ -22,6 +22,10 @@ public class PlayerController : GameElement {
     {
     }
 
+    public Rank getRank()
+    {
+        return player.getRank();
+    }
 
 	
 	// Update is called once per frame

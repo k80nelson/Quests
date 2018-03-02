@@ -6,6 +6,9 @@ namespace QuestOTRT
 {
     public class Turn : GameElement
     {
+        public GameObject TournamentOverlay; 
+
+
         public void init()
         {
             switch (game.state)
@@ -22,12 +25,18 @@ namespace QuestOTRT
 
         void startDecisions()
         {
-
+            TournamentOverlay.SetActive(true);
         }
 
         void startSponsor()
         {
 
+        }
+
+        public void noTournament()
+        {
+            TournamentOverlay.SetActive(false);
+            game.state = Game.gameState.endTurn;
         }
     }
 }

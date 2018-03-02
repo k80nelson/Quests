@@ -17,13 +17,14 @@ namespace QuestOTRT
 
         void play()
         {
+            /*
             //Creates a new list of players to be filled 
-            List<Player> players = new List<Player>();
+            List<PlayerController> players = new List<PlayerController>();
 
             //Loops through each game object and adds them to the list of players
             foreach (GameObject player in this.game.players)
             {
-                players.Add(player.GetComponent<PlayerController>().player);
+                players.Add(player.GetComponent<PlayerController>());
             }
             
             int curLowestRank = (int)Rank.Squire; //keeps track of curent lowest rank
@@ -50,7 +51,7 @@ namespace QuestOTRT
                 {
                     i++;
                 }
-            }
+            }*/
             
         }
     }

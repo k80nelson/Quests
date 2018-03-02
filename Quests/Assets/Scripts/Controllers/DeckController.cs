@@ -47,7 +47,8 @@ public class DeckController : GameElement {
         GameObject card = factory.create(c);
         card.tag = "CurrStory";
         card.transform.SetParent(parent.transform);
-        card.transform.position = new Vector3(720, 524, 0);
+        card.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        card.transform.localPosition = new Vector3(0, 0, 0);
 
         if (c is QuestOTRT.Quest) game.state = Game.gameState.Sponsorship;
         else if (c is QuestOTRT.Event) game.state = Game.gameState.Event;

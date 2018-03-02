@@ -16,14 +16,14 @@ namespace QuestOTRT
         }
 
         void play()
-        {
+        {/*
             //Creates a new list of players to be filled 
-            List<Player> players = new List<Player>();
+            List<PlayerController> players = new List<PlayerController>();
 
             //Loops through each game object and adds them to the list of players
             foreach (GameObject player in this.game.players)
             {
-                players.Add(player.GetComponent<PlayerController>().player);
+                players.Add(player.GetComponent<PlayerController>());
             }
 
             //Loop through all players to add cards to their hands
@@ -31,9 +31,8 @@ namespace QuestOTRT
             {
                 //draws 2 cards to the players hand
                 players[i].addCards(this.game.deck.DrawAdventureCards(2));
-            }
-
-            Debug.Log("Prosperity ");
+            }*/
+            
         }
     }
 }
