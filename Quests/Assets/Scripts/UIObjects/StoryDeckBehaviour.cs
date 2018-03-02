@@ -24,6 +24,7 @@ public class StoryDeckBehaviour : GameElement {
         if (game.state==Game.gameState.startTurn ){//&& game.current.GetComponent<PlayerController>().player.NumCards <= 12) {
             deck.DrawStoryCard();
             game.turn.init();
+            btn.interactable = false;
         }
     }
 }

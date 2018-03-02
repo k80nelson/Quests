@@ -6,11 +6,15 @@ namespace QuestOTRT
 {
     public class Turn : GameElement
     {
-        public GameObject TournamentOverlay; 
+        public GameObject TournamentDecision;
+        public GameObject TournamentOverlay;
+        public GameObject storyCard;
+        public Game.gameState store;
 
 
         public void init()
         {
+            storyCard = GameObject.FindGameObjectWithTag("CurrStory");
             switch (game.state)
             {
                 case (Game.gameState.Sponsorship):
@@ -25,7 +29,8 @@ namespace QuestOTRT
 
         void startDecisions()
         {
-            TournamentOverlay.SetActive(true);
+            TournamentDecision.SetActive(true);
+            game.activePlayers.Clear();
         }
 
         void startSponsor()
@@ -35,8 +40,52 @@ namespace QuestOTRT
 
         public void noTournament()
         {
-            TournamentOverlay.SetActive(false);
-            game.state = Game.gameState.endTurn;
+            TournamentDecision.GetComponent<TournamentDecision>().reset();
+            TournamentDecision.SetActive(false);
+            end();
+        }
+
+        public void end()
+        {
+            GameObject.Destroy(storyCard);
+            game.state = Game.gameState.EndEv;
+        }
+
+        public void StartTournament(int joined)
+        {
+            TournamentDecision.GetComponent<TournamentDecision>().reset();
+            TournamentDecision.SetActive(false);
+            if (joined == 1)
+            {
+                GameObject win = game.activePlayers.Dequeue() as GameObject;
+                TourWin(win.GetComponent<PlayerController>(), joined);
+
+            }
+            else
+            {
+                store = Game.gameState.Tournament;
+                game.state = Game.gameState.StartEv;
+            }
+        }
+
+        public void TourWin(PlayerController winner, int num)
+        {
+            int bonus = storyCard.GetComponent<TournamentController>().getShields();
+            winner.addShields(num + bonus);
+        }
+
+        public void EndTournament()
+        {
+
+        }
+
+        public void next()
+        {
+            if(game.state == Game.gameState.NextTour)
+            {
+                TournamentDecision.GetComponent<TournamentDecision>().enableBtns();
+                game.state = Game.gameState.TourDecision;
+            }
         }
     }
 }

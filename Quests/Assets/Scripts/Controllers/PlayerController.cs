@@ -27,6 +27,10 @@ public class PlayerController : GameElement {
         return player.getRank();
     }
 
+    public void addShields(int num)
+    {
+        player.addShields(num);
+    }
 	
 	// Update is called once per frame
 	void Update ()

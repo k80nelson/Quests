@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace QuestOTRT
@@ -12,15 +13,17 @@ namespace QuestOTRT
     {
         public int numPlayers;
         public int numControlled;
+        public int numActive;
         public GameObject[] players;
+        public Queue activePlayers;
+        public Queue playerTurns;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, Tournament, endTurn};
+        public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, NextTour, StartEv, EndEv, Tournament, endTurn};
         public gameState state;
         public Turn turn;
 
         //This will hold the current player
         public GameObject current;
-        public int currIndex;
 
         void Start()
         {
@@ -35,18 +38,42 @@ namespace QuestOTRT
 
             initPlayers();
             state = gameState.startTurn;
-
-            current = players[0];
-
             turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
-            currIndex = 0;
-            current = players[currIndex];
+            playerTurns = new Queue(players);
+            current = playerTurns.Dequeue() as GameObject;
+            activePlayers = new Queue();
         }
+
         
         void Update()
         {
-            if (Input.GetKeyDown("space")) { current.GetComponent<PlayerController>().addCards(deck.DrawAdventureCards(2)); }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                state = Game.gameState.endTurn;
+            }
 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log(current.name);
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("Tournament state");
+                activePlayers = new Queue();
+                activePlayers.Enqueue(players[1]);
+                activePlayers.Enqueue(players[2]);
+                activePlayers.Enqueue(players[3]);
+                GameObject peek = (GameObject)activePlayers.Peek();
+                Debug.Log(peek.name);
+                state = Game.gameState.StartEv;
+                turn.store = Game.gameState.Tournament;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                state = Game.gameState.EndEv;
+            }
         }
 
          //Moved this to the chagePLayer.cs file
@@ -60,6 +87,8 @@ namespace QuestOTRT
             current.GetComponent<PlayerController>().view.adjustHand();
         */
         }
+
+        
 
         void initPlayers()
         {

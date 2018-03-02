@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 173016078}
   - component: {fileID: 173016077}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: Skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,7 +867,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 173016078}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1328914927}
+        m_MethodName: skip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &173016078
@@ -1831,6 +1842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numPlayers: 4
   numControlled: 4
+  numActive: 0
   players:
   - {fileID: 1724639752}
   - {fileID: 1954755576}
@@ -1840,7 +1852,6 @@ MonoBehaviour:
   state: 0
   turn: {fileID: 0}
   current: {fileID: 1724639752}
-  currIndex: 0
 --- !u!1 &456625266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2998,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b588f9081b048b96b2b349f62947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TournamentOverlay: {fileID: 1328914925}
+  TournamentDecision: {fileID: 1328914925}
+  TournamentOverlay: {fileID: 0}
+  storyCard: {fileID: 0}
+  store: 0
 --- !u!1 &792458998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4005,7 +4019,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Waiting for next Player...
+  m_Text: 'Waiting for '
 --- !u!222 &1155252727
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4796,6 +4810,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1328914926}
+  - component: {fileID: 1328914927}
   m_Layer: 0
   m_Name: TournamentDecision
   m_TagString: Untagged
@@ -4818,6 +4833,19 @@ Transform:
   m_Father: {fileID: 1692870703}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328914927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328914925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06728e87bfed8a84890fd05e6c7c324b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joinBtn: {fileID: 1527648991}
+  skipBtn: {fileID: 173016077}
 --- !u!1 &1338756905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5886,7 +5914,7 @@ GameObject:
   - component: {fileID: 1527648992}
   - component: {fileID: 1527648991}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Join
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5949,7 +5977,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1527648992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1328914927}
+        m_MethodName: join
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1527648992
@@ -8366,6 +8405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9950bd44fd0db4f9f7f36a2457e0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btn: {fileID: 1245909174}
+  text: {fileID: 1155252726}
 --- !u!1 &1982242362
 GameObject:
   m_ObjectHideFlags: 0

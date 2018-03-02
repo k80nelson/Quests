@@ -1,32 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using QuestOTRT;
 
 public class TournamentDecision : GameElement {
-
-    List<PlayerController> players;
-    int num;
+    
+    int skipped;
+    int joined;
+    public Button joinBtn;
+    public Button skipBtn;
 
     void Start()
     {
-        players = new List<PlayerController>();
-        num = 0;
+        skipped = 0;
+        joined = 0;
     }
 
     public void join()
     {
-        players.Add(game.current.GetComponent<PlayerController>());
+        joined += 1;
+        if(game.state == Game.gameState.TourDecision)
+        {
+            game.activePlayers.Enqueue(game.current);
+            joinBtn.interactable = false;
+            skipBtn.interactable = false;
+            game.state = Game.gameState.NextTour;
+        }
+        if (joined+skipped == game.numPlayers)
+        {
+            doneChoices();
+        }
     }
 
     public void skip()
     {
-        num += 1;
-        if (num == game.numPlayers)
+        if (game.state == Game.gameState.TourDecision)
         {
-            num = 0;
-            players.Clear();
-            game.turn.noTournament();
+            joinBtn.interactable = false;
+            skipBtn.interactable = false;
+            game.state = Game.gameState.NextTour;
         }
+        skipped += 1;
+        if (joined+skipped == game.numPlayers)
+        {
+            doneChoices();
+        }
+    }
+
+    public void doneChoices()
+    {
+        if (joined == 0) game.turn.noTournament();
+        else game.turn.StartTournament(joined);
+    }
+
+    public void reset()
+    {
+        skipped = 0;
+        joined = 0;
+        enableBtns();
+    }
+
+    public void enableBtns()
+    {
+        joinBtn.interactable = true;
+        skipBtn.interactable = true;
     }
 }

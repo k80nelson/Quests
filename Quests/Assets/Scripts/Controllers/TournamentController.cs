@@ -14,5 +14,10 @@ namespace QuestOTRT
                 Destroy(gameObject);
             }
         }
+
+        public int getShields()
+        {
+            return card.Shields;
+        }
     }
 }
