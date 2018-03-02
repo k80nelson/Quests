@@ -2,7 +2,7 @@
 
 namespace QuestOTRT
 {
-    public class AI
+    public class AI : GameElement
     {
         Strategy AIStrategy = null;
 
@@ -22,7 +22,7 @@ namespace QuestOTRT
                    // AIStrategy = new Strategy1();
                    // break;
                 case "strat2":
-                    AIStrategy = new Strategy2();
+                    AIStrategy = new Strategy2(game.current.GetComponent<PlayerController>());
                     break;
                 /*case "ourStrat":
                     AIStrategy = new QuickSort();
