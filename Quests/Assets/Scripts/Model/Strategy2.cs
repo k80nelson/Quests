@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace QuestOTRT
 {
@@ -94,8 +95,11 @@ namespace QuestOTRT
         public override void DoISponsorAQuest()
         {
             //need to find out how much the winner of the quest gets
-
+            int numShields = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<QuestController>().card.Stages;
+            
             //then need to check if one of the players can win or evolve by winning...
+
+
             //if so then 
             //do not sponsor 
 
