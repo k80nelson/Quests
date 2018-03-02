@@ -98,6 +98,11 @@ namespace QuestOTRT
             return true;
         }
 
+        public T getCard(string name)
+        {
+            T card = DeckList.Keys.ToList().Find(i => i.Name == name);
+            return card;
+        }
 
         public virtual int getNumCard(string name)
         {

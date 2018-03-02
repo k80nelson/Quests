@@ -79,12 +79,14 @@ namespace QuestOTRT
         public void remove(AdventureCard card)
         {
             cards.Remove(card);
+            numCards--;
         }
 
         public AdventureCard remove(string card)
         {
             AdventureCard toRm = cards.Find(i => i.Equals(card));
             remove(toRm);
+            numCards--;
             return toRm;
         }
     }

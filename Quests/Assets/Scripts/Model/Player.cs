@@ -74,6 +74,7 @@ namespace QuestOTRT
         public void addShields(int numToAdd)
         {
             this.shields += numToAdd;
+            if (canUpgrade(0)) rankUp();
         }
 
         //Used to change the bp value of each player

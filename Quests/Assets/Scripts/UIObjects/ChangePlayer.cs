@@ -26,36 +26,7 @@ namespace QuestOTRT
         {
             this.game.current.GetComponent<PlayerController>().view.setViewOff();
         }
-
         
-            
-            
-            /*
-            if (game.state == Game.gameState.Tournament || game.state == Game.gameState.Quest)
-            {   
-                game.activePlayers.Enqueue(game.current);
-                game.tie = false;
-                this.game.current = game.activePlayers.Dequeue() as GameObject;
-                game.turn.checkWin();
-            }
-            else if (game.state == Game.gameState.StartEv)
-            {
-                //game.playerTurns.Enqueue(game.current);
-                this.game.current = game.activePlayers.Dequeue() as GameObject;
-                game.state = game.turn.store;
-                game.turn.DisplayEvent();
-            }
-            else if (game.state == Game.gameState.EndEv)
-            {
-                this.game.current = game.playerTurns.Dequeue() as GameObject;
-                game.state = Game.gameState.startTurn;
-            }
-            else if (game.state == Game.gameState.startTurn || game.state == Game.gameState.NextTour)
-            {
-                game.playerTurns.Enqueue(game.current);
-                this.game.current = game.playerTurns.Dequeue() as GameObject;
-            }*/
-
 
         void setUpTurn()
         {

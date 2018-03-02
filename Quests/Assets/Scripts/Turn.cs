@@ -14,6 +14,9 @@ namespace QuestOTRT
         public Game.gameState store;
         public ChangePlayer playChange;
         public GameObject canvas;
+        public GameObject discardOverlay;
+        public Button StyBtn;
+        bool here = false;
         
         public void init()
         {
@@ -149,6 +152,23 @@ namespace QuestOTRT
             end();
         }
 
+        public void stopDiscard()
+        {
+            discardOverlay.SetActive(false);
+            StyBtn.interactable = true;
+            
+        }
+
+        public void discOverlayOn()
+        {
+            discardOverlay.SetActive(true);
+        }
+
+        public void discOverlayOff()
+        {
+            discardOverlay.SetActive(false);
+        }
+
         public void next()
         {
             if(game.state == Game.gameState.NextTour)
@@ -161,6 +181,13 @@ namespace QuestOTRT
             {
                 TournamentGameplay.GetComponent<TournamentGameplay>().enableBtn();
                 TournamentGameplay.GetComponent<TournamentGameplay>().checkWin();
+            }
+
+            if(game.state == Game.gameState.startTurn && game.current.GetComponent<PlayerController>().player.hand.overMax())
+            {
+                StyBtn.interactable = false;
+                discardOverlay.SetActive(true);
+                game.state = Game.gameState.Discard;
             }
         }
     }

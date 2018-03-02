@@ -78,19 +78,19 @@ public class DeckTesting : IPrebuildSetup
     {
         QuestOTRT.Weapon excalibur = new QuestOTRT.Weapon("Excalibur", 30, 0);
         QuestOTRT.Weapon lance = new QuestOTRT.Weapon("Lance", 20, 0);
-        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-axe", 15, 0);
+        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-Axe", 15, 0);
 
         List<QuestOTRT.AdventureCard> list = new List<QuestOTRT.AdventureCard> { excalibur, lance, battleAx };
 
         Assert.AreEqual(2, adv.getNumCard("Excalibur"));
         Assert.AreEqual(6, adv.getNumCard("Lance"));
-        Assert.AreEqual(8, adv.getNumCard("Battle-axe"));
+        Assert.AreEqual(8, adv.getNumCard("Battle-Axe"));
 
         Assert.True(adv.AddCards(list));
 
         Assert.AreEqual(3, adv.getNumCard("Excalibur"));
         Assert.AreEqual(7, adv.getNumCard("Lance"));
-        Assert.AreEqual(9, adv.getNumCard("Battle-axe"));
+        Assert.AreEqual(9, adv.getNumCard("Battle-Axe"));
     }
 
     [Test]
@@ -98,7 +98,7 @@ public class DeckTesting : IPrebuildSetup
     {
         QuestOTRT.Weapon excalibur = new QuestOTRT.Weapon("Excalibur", 30, 0);
         QuestOTRT.Weapon lance = new QuestOTRT.Weapon("Lance", 20, 0);
-        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-axe", 15, 0);
+        QuestOTRT.Weapon battleAx = new QuestOTRT.Weapon("Battle-Axe", 15, 0);
         
         Dictionary<QuestOTRT.AdventureCard, int> di = new Dictionary<QuestOTRT.AdventureCard, int>();
         di.Add(excalibur, 4);
@@ -107,13 +107,13 @@ public class DeckTesting : IPrebuildSetup
 
         Assert.AreEqual(2, adv.getNumCard("Excalibur"));
         Assert.AreEqual(6, adv.getNumCard("Lance"));
-        Assert.AreEqual(8, adv.getNumCard("Battle-axe"));
+        Assert.AreEqual(8, adv.getNumCard("Battle-Axe"));
 
         Assert.True(adv.AddCards(di));
 
         Assert.AreEqual(6, adv.getNumCard("Excalibur"));
         Assert.AreEqual(12, adv.getNumCard("Lance"));
-        Assert.AreEqual(10, adv.getNumCard("Battle-axe"));
+        Assert.AreEqual(10, adv.getNumCard("Battle-Axe"));
     }
 
     [Test]

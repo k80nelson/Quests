@@ -23,6 +23,7 @@ namespace QuestOTRT
         //public Queue playerTurns;
         public List<GameObject> activePlayers;
         public List<GameObject> playerTurns;
+        public gameState prevState;
         public DeckController deck;
         public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, NextTour, StartEv, EndEv, Tournament, endTurn, Discard};
         public gameState state;

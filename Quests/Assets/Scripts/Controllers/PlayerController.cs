@@ -24,6 +24,11 @@ public class PlayerController : GameElement {
         move = gameObject.GetComponent<Move>();
     }
 
+    public bool goodHand()
+    {
+        return !(player.hand.overMax());
+    }
+
     public void playMove(List<GameObject> move)
     {
         foreach(GameObject obj in move)

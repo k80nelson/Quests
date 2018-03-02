@@ -32,6 +32,7 @@ namespace QuestOTRT
         
         protected virtual void OnClick()
         {
+            
             if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
             if (clicked)
             {
@@ -51,6 +52,17 @@ namespace QuestOTRT
 
         protected virtual void OnMouseEnter()
         {
+            if (game.current.GetComponent<PlayerController>().player.hand.overMax() && game.state != Game.gameState.Discard)
+            {
+                game.prevState = game.state;
+                game.state = Game.gameState.Discard;
+                game.turn.discOverlayOn();
+            }
+            if (game.current.GetComponent<PlayerController>().goodHand() && game.state == Game.gameState.Discard)
+            {
+                game.state = game.prevState;
+                game.turn.discOverlayOff();
+            }
             if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
             view.ScaleUp();
             

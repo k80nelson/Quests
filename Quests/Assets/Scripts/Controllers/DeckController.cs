@@ -40,6 +40,11 @@ public class DeckController : GameElement {
         
     }
 
+    public AdventureCard getCard(string name)
+    {
+        return AdvDeck.getCard(name);
+    }
+
     public int getBP(string name, string[] cards)
     {
         return AdvDeck.getBP(name, cards);

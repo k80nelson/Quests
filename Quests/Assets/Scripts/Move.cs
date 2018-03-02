@@ -70,6 +70,18 @@ public class Move : GameElement {
 
         return true;
     }
+
+    public void DiscardAll()
+    {
+        foreach(GameObject obj in move)
+        {
+            AdventureCard card = game.deck.getCard(obj.name.Substring(0, obj.name.Length - 2));
+            gameObject.GetComponent<PlayerController>().removeCard(card);
+            game.deck.discard(card);
+            Destroy(obj);
+        }
+        move.Clear();
+    }
 	
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.J))

@@ -11,12 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4pGame.unity
     guid: 4ea423563cccde149ad16fdfe4ea2fd2
-  - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 6c212d4cf2fb3124896c8eaa2e61cdfa
-  - enabled: 1
-    path: Assets/Scenes/2pGame.unity
-    guid: 9b53500faebb7ca499233b023e010206
-  - enabled: 1
-    path: Assets/Scenes/3pGame.unity
-    guid: 4ffb18493d5d80b4f8520d0850a7284b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
