@@ -41,13 +41,16 @@ namespace QuestOTRT
             
         }
 
+         //Moved this to the chagePLayer.cs file
         public void nextPlayer()
         {
+        /*
             current.GetComponent<PlayerController>().view.setViewOff();
             currIndex = ((currIndex + 1) % numPlayers);
             current = players[currIndex];
             current.GetComponent<PlayerController>().view.setViewOn();
             current.GetComponent<PlayerController>().view.adjustHand();
+        */
         }
 
         void initPlayers()

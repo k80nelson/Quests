@@ -21,6 +21,7 @@ TagManager:
   - Clicked
   - CurrStory
   - SPONSOR
+  - Overlay
   layers:
   - Default
   - TransparentFX
