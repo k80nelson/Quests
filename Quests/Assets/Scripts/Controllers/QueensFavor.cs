@@ -9,6 +9,7 @@ namespace QuestOTRT
     //Lowest ranked player(s) immediately recieve 2 Adventure Cards
     public class QueensFavor : GameElement
     {
+
         void Start()
         {
             play();

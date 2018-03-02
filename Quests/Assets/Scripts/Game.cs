@@ -38,7 +38,8 @@ namespace QuestOTRT
 
         void Update()
         {
-            
+            if (Input.GetKeyDown("space")) { state = gameState.Event; }
+
         }
 
         public void nextPlayer()
