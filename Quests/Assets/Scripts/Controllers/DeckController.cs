@@ -51,7 +51,7 @@ public class DeckController : GameElement {
 
         if (c is QuestOTRT.Quest) game.state = Game.gameState.Sponsorship;
         else if (c is QuestOTRT.Event) game.state = Game.gameState.Event;
-        else game.state = Game.gameState.Tournament;
+        else game.state = Game.gameState.TourDecision;
     }
     
     public int numAdvCards()

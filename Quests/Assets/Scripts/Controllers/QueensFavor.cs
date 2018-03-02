@@ -25,8 +25,7 @@ namespace QuestOTRT
             {
                 players.Add(player.GetComponent<PlayerController>().player);
             }
-
-
+            
             int curLowestRank = (int)Rank.Squire; //keeps track of curent lowest rank
             int size = 0; //this is used to determine who is the lowest rank
             int i = 0;

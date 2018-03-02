@@ -11,13 +11,23 @@ namespace QuestOTRT
             switch (game.state)
             {
                 case (Game.gameState.Sponsorship):
+                    startSponsor();
                     break;
-                case (Game.gameState.Tournament):
-                    break;
-                case (Game.gameState.Event):
+                case (Game.gameState.TourDecision):
+                    startDecisions();
                     break;
                 default: break;
             }
+        }
+
+        void startDecisions()
+        {
+
+        }
+
+        void startSponsor()
+        {
+
         }
     }
 }
