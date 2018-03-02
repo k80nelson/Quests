@@ -44,7 +44,7 @@ namespace QuestOTRT
                 {
                     this.clicked = true;
                     move.Add(gameObject);
-                    Debug.Log("after" + card);
+                    Debug.Log( gameObject.name.Substring(0, gameObject.name.Length - 2) + ": " + game.deck.getBP(gameObject.name.Substring(0, gameObject.name.Length - 2), new string[] { }));
                 }
             }
         }

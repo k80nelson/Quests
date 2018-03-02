@@ -9,7 +9,7 @@ namespace QuestOTRT
     {
         public static Weapon excalibur = new Weapon("Excalibur", 30, 0);
         public static Weapon lance = new Weapon("Lance", 20, 0);
-        public static Weapon battleAx = new Weapon("Battle-axe", 15, 0);
+        public static Weapon battleAx = new Weapon("Battle-Axe", 15, 0);
         public static Weapon sword = new Weapon("Sword", 10, 0);
         public static Weapon horse = new Weapon("Horse", 10, 0);
         public static Weapon dagger = new Weapon("Dagger", 5, 0);

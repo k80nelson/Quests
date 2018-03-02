@@ -27,6 +27,9 @@ public class TournamentGameplay : GameElement {
 
     int calcBP(GameObject player)
     {
+        Debug.Log(player.name + " BP: " + player.GetComponent<PlayerController>().player.BP);
+        Debug.Log(player.name + " Added: " + moves[player].total);
+        Debug.Log(player.name + " Total: " + (player.GetComponent<PlayerController>().player.BP + moves[player].total));
         return player.GetComponent<PlayerController>().player.BP + moves[player].total;
     }
 
@@ -36,7 +39,7 @@ public class TournamentGameplay : GameElement {
         List<GameObject> ties = new List<GameObject>();
 
         GameObject highest = game.current;
-        int highBP = calcBP(highest);
+        int highBP = -2;
 
         int curr = 0;
         foreach(GameObject player in moves.Keys)
@@ -49,7 +52,7 @@ public class TournamentGameplay : GameElement {
                 highBP = curr;
                 highest = player;
             }
-            else if (curr == highBP)
+            else if (player.name != highest.name && curr == highBP)
             {
                 tie = true;
                 ties.Add(highest);
@@ -64,12 +67,12 @@ public class TournamentGameplay : GameElement {
                 firstRound = false;
                 game.numActive = ties.Count;
                 numMoves = 0;
-                game.activePlayers.Clear();
+                game.activePlayers = ties;
                 foreach (GameObject player in ties)
                 {
                     moves[player].discardWeapons();
-                    game.activePlayers.Enqueue(player);
                 }
+                game.tie = true;
             }
             else
             {
@@ -86,7 +89,7 @@ public class TournamentGameplay : GameElement {
             {
                 player.GetComponent<PlayerController>().playMove(moves[player].move);
             }
-            game.turn.EndTournament(highest, joined);
+            game.turn.EndTournament(highest, game.numActive);
         }
     }
 
@@ -107,6 +110,15 @@ public class TournamentGameplay : GameElement {
     public void checkWin()
     {
         if (numMoves == game.numActive) endTourn();
+    }
+
+    public void init()
+    {
+        numMoves = 0;
+        joined = game.numActive;
+        firstRound = true;
+        enableBtn();
+        moves = new Dictionary<GameObject, Move>();
     }
 
     public void reset()

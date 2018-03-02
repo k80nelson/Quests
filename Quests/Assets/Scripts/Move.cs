@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using QuestOTRT;
 
@@ -13,6 +14,11 @@ public class Move : GameElement {
         move = new List<GameObject>();
         names = new List<string>();
         total = 0;
+    }
+
+    void clean()
+    {
+        move = move.Where(x => x != null).ToList();
     }
 
     public void Add(GameObject card)
@@ -43,6 +49,7 @@ public class Move : GameElement {
     
     public bool isValid(GameObject card)
     {
+        clean();
         if (card.tag == "Weapon")
         {
             List<GameObject> tmp = move.FindAll(x => x.tag == "Weapon");

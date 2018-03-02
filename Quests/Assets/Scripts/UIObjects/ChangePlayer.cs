@@ -27,18 +27,20 @@ namespace QuestOTRT
             this.game.current.GetComponent<PlayerController>().view.setViewOff();
         }
 
-        void getNext()
-        {
+        
+            
+            
+            /*
             if (game.state == Game.gameState.Tournament || game.state == Game.gameState.Quest)
-            {
+            {   
                 game.activePlayers.Enqueue(game.current);
+                game.tie = false;
                 this.game.current = game.activePlayers.Dequeue() as GameObject;
                 game.turn.checkWin();
             }
             else if (game.state == Game.gameState.StartEv)
             {
-                game.playerTurns.Enqueue(game.current);
-                game.playerTurns.Dequeue();
+                //game.playerTurns.Enqueue(game.current);
                 this.game.current = game.activePlayers.Dequeue() as GameObject;
                 game.state = game.turn.store;
                 game.turn.DisplayEvent();
@@ -48,12 +50,12 @@ namespace QuestOTRT
                 this.game.current = game.playerTurns.Dequeue() as GameObject;
                 game.state = Game.gameState.startTurn;
             }
-            else
+            else if (game.state == Game.gameState.startTurn || game.state == Game.gameState.NextTour)
             {
                 game.playerTurns.Enqueue(game.current);
                 this.game.current = game.playerTurns.Dequeue() as GameObject;
-            }
-        }
+            }*/
+
 
         void setUpTurn()
         {
@@ -66,10 +68,10 @@ namespace QuestOTRT
         public void onClick()
         { 
             deactivateCurrent();
-            getNext();
+            game.current = game.nextPlayer();
+            game.setIndeces();
             text.text = "Waiting on " + game.current.name + "... ";
             setUpTurn();
-
         }
     }
 }

@@ -16,13 +16,18 @@ namespace QuestOTRT
         public int numPlayers;
         public int numControlled;
         public int numActive;
+        int activeIndex;
+        int playerIndex;
         public GameObject[] players;
-        public Queue activePlayers;
-        public Queue playerTurns;
+        //public Queue activePlayers;
+        //public Queue playerTurns;
+        public List<GameObject> activePlayers;
+        public List<GameObject> playerTurns;
         public DeckController deck;
         public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, NextTour, StartEv, EndEv, Tournament, endTurn, Discard};
         public gameState state;
         public Turn turn;
+        public bool tie = false;
         
 
         //This will hold the current player
@@ -43,11 +48,32 @@ namespace QuestOTRT
             initPlayers();
             state = gameState.startTurn;
             turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
-            playerTurns = new Queue(players);
-            current = playerTurns.Dequeue() as GameObject;
-            activePlayers = new Queue();
+            playerTurns = new List<GameObject>(players);
+            //playerTurns = new Queue(players);
+            current = playerTurns[0];
+            playerIndex = 0;
+            activeIndex = -1;
+            activePlayers = new List<GameObject>();
+            //activePlayers = new Queue();
         }
 
+        public GameObject nextPlayer()
+        {
+            if (state == gameState.Tournament || state == gameState.Quest) return activePlayers[(activeIndex + 1) % activePlayers.Count];
+            else return playerTurns[(playerIndex + 1) % numPlayers];
+        }
+
+        public int nextIndex()
+        {
+            if (state == gameState.Tournament || state == gameState.Quest) return (activeIndex + 1) % activePlayers.Count;
+            else return (playerIndex + 1) % numPlayers;
+        }
+        
+        public void setIndeces()
+        {
+            if (state == gameState.Tournament || state == gameState.Quest) activeIndex = (activeIndex + 1) % activePlayers.Count;
+            else playerIndex =  (playerIndex + 1) % numPlayers;
+        }
         
         void Update()
         {
@@ -63,15 +89,6 @@ namespace QuestOTRT
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                Debug.Log("Tournament state");
-                activePlayers = new Queue();
-                activePlayers.Enqueue(players[1]);
-                activePlayers.Enqueue(players[2]);
-                activePlayers.Enqueue(players[3]);
-                GameObject peek = (GameObject)activePlayers.Peek();
-                Debug.Log(peek.name);
-                state = Game.gameState.StartEv;
-                turn.store = Game.gameState.Tournament;
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -142,17 +159,7 @@ namespace QuestOTRT
             }
         }
 
-         //Moved this to the chagePLayer.cs file
-        public void nextPlayer()
-        {
-        /*
-            current.GetComponent<PlayerController>().view.setViewOff();
-            currIndex = ((currIndex + 1) % numPlayers);
-            current = players[currIndex];
-            current.GetComponent<PlayerController>().view.setViewOn();
-            current.GetComponent<PlayerController>().view.adjustHand();
-        */
-        }
+         
 
         
 

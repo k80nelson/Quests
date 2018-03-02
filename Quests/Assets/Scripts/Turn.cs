@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace QuestOTRT
 {
@@ -8,8 +9,11 @@ namespace QuestOTRT
     {
         public GameObject TournamentDecision;
         public GameObject TournamentGameplay;
+        public GameObject SponsorOverlay;
         public GameObject storyCard;
         public Game.gameState store;
+        public ChangePlayer playChange;
+        public GameObject canvas;
         
         public void init()
         {
@@ -17,7 +21,7 @@ namespace QuestOTRT
             switch (game.state)
             {
                 case (Game.gameState.Sponsorship):
-                    startSponsor();
+                    initSponsor();
                     break;
                 case (Game.gameState.TourDecision):
                     startDecisions();
@@ -26,51 +30,77 @@ namespace QuestOTRT
             }
         }
 
+        public void nextPlayer()
+        {
+            canvas.SetActive(true);
+            playChange.onClick();
+        }
+
+        public void initSponsor()
+        {
+            SponsorOverlay.SetActive(true);
+        }
+
+        public void startSponsor()
+        {
+            SponsorOverlay.SetActive(false);
+            Debug.Log(game.current.name + "Sponsored this quest");
+        }
+
+        public void noSponsor()
+        {
+            Debug.Log("no sponsor");
+            SponsorOverlay.SetActive(false);
+            end();
+        }
+
         void startDecisions()
         {
             TournamentDecision.SetActive(true);
             game.activePlayers.Clear();
             game.numActive = 0;
         }
-
-        void startSponsor()
-        {
-
-        }
-
+        
         public void noTournament()
         {
+            Debug.Log("none");
             TournamentDecision.GetComponent<TournamentDecision>().reset();
             TournamentDecision.SetActive(false);
             end();
         }
 
+        public void StartTournament(List<GameObject> players)
+        {
+            Debug.Log("Started");
+            TournamentDecision.GetComponent<TournamentDecision>().reset();
+            TournamentDecision.SetActive(false);
+            game.activePlayers = players;
+            game.numActive = players.Count;
+            game.state = Game.gameState.Tournament;
+            DisplayEvent();
+        }
+
+        public void endTourn()
+        {
+            GameObject.Destroy(storyCard);
+            game.state = Game.gameState.startTurn;
+            this.game.current.GetComponent<PlayerController>().view.setViewOff();
+            game.current = game.nextPlayer();
+            game.setIndeces();
+            this.game.current.GetComponent<PlayerController>().view.setViewOn();
+            this.game.current.GetComponent<PlayerController>().view.adjustHand();
+        }
+
         public void end()
         {
             GameObject.Destroy(storyCard);
-            game.state = Game.gameState.EndEv;
+            game.state = Game.gameState.startTurn;
         }
-
-        public void StartTournament(int joined)
-        {
-            if (joined == 1)
-            {
-                TournamentDecision.GetComponent<TournamentDecision>().reset();
-                TournamentDecision.SetActive(false);
-                GameObject win = game.activePlayers.Dequeue() as GameObject;
-                EndTournament(win, joined);
-            }
-            else
-            {
-                store = Game.gameState.Tournament;
-                game.state = Game.gameState.StartEv;
-            }
-            
-        }
-
+        
         public void DisplayEvent()
         {
-            if(game.state == Game.gameState.Tournament)
+            if (game.state == Game.gameState.Tournament)
+                TournamentGameplay.GetComponent<TournamentGameplay>().init();
                 TournamentGameplay.SetActive(true);
         }
 
@@ -79,6 +109,16 @@ namespace QuestOTRT
             int bonus = storyCard.GetComponent<TournamentController>().getShields();
             winner.addShields(num + bonus);
             Debug.Log(winner.name + " won the tournament, + " + (num + bonus) + " shields.");
+            
+        }
+
+        public void OneTournament(GameObject player, int num)
+        {
+            TourWin(player.GetComponent<PlayerController>(), num);
+            Destroy(storyCard);
+            TournamentGameplay.GetComponent<TournamentGameplay>().reset();
+            TournamentGameplay.SetActive(false);
+            end();
         }
 
         public void EndTournament(GameObject player, int num)
@@ -87,7 +127,7 @@ namespace QuestOTRT
             Destroy(storyCard);
             TournamentGameplay.GetComponent<TournamentGameplay>().reset();
             TournamentGameplay.SetActive(false);
-            end();
+            endTourn();
         }
 
         public void checkWin()
@@ -120,6 +160,7 @@ namespace QuestOTRT
             if(game.state == Game.gameState.Tournament)
             {
                 TournamentGameplay.GetComponent<TournamentGameplay>().enableBtn();
+                TournamentGameplay.GetComponent<TournamentGameplay>().checkWin();
             }
         }
     }

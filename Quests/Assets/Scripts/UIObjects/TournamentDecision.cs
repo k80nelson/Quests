@@ -6,15 +6,17 @@ using QuestOTRT;
 
 public class TournamentDecision : GameElement {
     
-    int skipped;
-    int joined;
+    public int skipped;
+    public int joined;
     public Button joinBtn;
     public Button skipBtn;
+    List<GameObject> players;
 
     void Start()
     {
         skipped = 0;
         joined = 0;
+        players = new List<GameObject>();
     }
 
     public void join()
@@ -22,7 +24,7 @@ public class TournamentDecision : GameElement {
         joined += 1;
         if(game.state == Game.gameState.TourDecision)
         {
-            game.activePlayers.Enqueue(game.current);
+            players.Insert(players.Count, game.current);
             joinBtn.interactable = false;
             skipBtn.interactable = false;
             game.state = Game.gameState.NextTour;
@@ -50,14 +52,18 @@ public class TournamentDecision : GameElement {
 
     public void doneChoices()
     {
+        Debug.Log(joined);
         if (joined == 0)
         {
             game.turn.noTournament();
         }
+        else if (joined == 1)
+        {
+            game.turn.OneTournament(players[0], 1);
+        }
         else
         {
-            game.numActive = joined;
-            game.turn.StartTournament(joined);
+            game.turn.StartTournament(players);
         }
     }
 
@@ -66,8 +72,15 @@ public class TournamentDecision : GameElement {
         skipped = 0;
         joined = 0;
         enableBtns();
-        game.activePlayers.Clear();
+    }
+
+    public void init()
+    {
+        skipped = 0;
+        joined = 0;
+        enableBtns();
         game.numActive = 0;
+        game.activePlayers.Clear();
     }
 
     public void enableBtns()

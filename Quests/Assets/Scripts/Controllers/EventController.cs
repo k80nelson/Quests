@@ -26,10 +26,7 @@ namespace QuestOTRT
         {
             if(this.game.state == Game.gameState.Event)
             {
-                
-
-
-                ChivalrousDeed a = new ChivalrousDeed();
+                /*ChivalrousDeed a = new ChivalrousDeed();
                 Debug.Log("Player(s) with lowest rank and least amount of shields gains 3 shields");
                 a.play();
                 
@@ -60,7 +57,7 @@ namespace QuestOTRT
 
                 ProsperityTtR h = new ProsperityTtR();
                 Debug.Log("All players can immediately draw 2 Adventure Cards");
-                h.play();
+                h.play();*/
 
                 this.game.state = Game.gameState.startTurn;
                 Destroy(gameObject);

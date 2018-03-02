@@ -2002,9 +2002,12 @@ MonoBehaviour:
   - {fileID: 1954755576}
   - {fileID: 33283598}
   - {fileID: 141583601}
+  activePlayers: []
+  playerTurns: []
   deck: {fileID: 0}
   state: 0
   turn: {fileID: 0}
+  tie: 0
   current: {fileID: 1724639752}
 --- !u!1 &456625266
 GameObject:
@@ -3228,8 +3231,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TournamentDecision: {fileID: 1328914925}
   TournamentGameplay: {fileID: 1519771886}
+  SponsorOverlay: {fileID: 1790050623}
   storyCard: {fileID: 0}
   store: 0
+  playChange: {fileID: 1978507976}
+  canvas: {fileID: 22757700}
 --- !u!1 &792458998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5072,6 +5078,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06728e87bfed8a84890fd05e6c7c324b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipped: 0
+  joined: 0
   joinBtn: {fileID: 1527648991}
   skipBtn: {fileID: 173016077}
 --- !u!1 &1338756905
