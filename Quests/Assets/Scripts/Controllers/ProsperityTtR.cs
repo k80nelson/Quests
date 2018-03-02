@@ -9,6 +9,7 @@ namespace QuestOTRT
     //All players can immediately draw 2 Adventure Cards
     public class ProsperityTtR : GameElement
     {
+
         void Start()
         {
             play();

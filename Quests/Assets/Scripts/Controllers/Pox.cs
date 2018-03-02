@@ -9,6 +9,7 @@ namespace QuestOTRT
     //All other players lose one shield(if possible), drawer of this card is exempt
     public class Pox : GameElement
     {
+
         void Start()
         {
             play();

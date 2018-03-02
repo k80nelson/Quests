@@ -38,7 +38,8 @@ namespace QuestOTRT
 
         void Update()
         {
-            
+            if (Input.GetKeyDown("space")) { state = gameState.Event; }
+
         }
 
          //Moved this to the chagePLayer.cs file
