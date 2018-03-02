@@ -15,8 +15,9 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
+            Debug.Log("Kings Recognition");
         }
     }
 }

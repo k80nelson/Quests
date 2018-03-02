@@ -16,7 +16,7 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
             //Loops through each game object and adds them to the list of players
             List<Player> players = new List<Player>();
@@ -50,7 +50,7 @@ namespace QuestOTRT
             }
 
 
-            Debug.Log("kings call");
+            
             //highest player must remove highest card.
             //highest player has to select one weapon card to discard
             //check to make sure the cards selected is a weapon card
@@ -58,18 +58,35 @@ namespace QuestOTRT
             //if they have no weapon cards then they have to discard 2 foe cards
             //check to make sure the cards selected is a foe card
             //valid then remove it from players hand
-            /*
-                        for(int i = 0; i < HighestPlayer.Cards.Count; ++i){
-                            AdventureCard card = highestPlayer.Cards[i];
+            int count = highestPlayer.Cards.Count;
+            for (int i = 0; i < highestPlayer.Cards.Count; ++i){
+                AdventureCard card = highestPlayer.Cards[i];
 
-                            //supposed to check if the card is a weapon
-                            if (card is Weapon){
-                               highestPlayer.Cards.Remove(card);
-                            }else if (card is Foe){
+                //supposed to check if the card is a weapon
+                if (card is Weapon){
+                    highestPlayer.Cards.Remove(card);
+                    //discard
+                    break;
+                }
+            }
+            if(count == highestPlayer.Cards.Count)
+            {
+                int f = 0;
+                for (int i = 0; i < highestPlayer.Cards.Count; ++i)
+                {
+                    AdventureCard card = highestPlayer.Cards[i];
 
-                            }
-                        }
-                        */
+                    //supposed to check if the card is a weapon
+                    if (card is Foe && f<2)
+                    {
+                        highestPlayer.Cards.Remove(card);
+                        //discard
+                    }
+                    else { break; }
+                }
+            }
+
+            Debug.Log("Kings Call");
         }
     }
 }

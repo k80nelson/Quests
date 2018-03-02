@@ -73,8 +73,70 @@ namespace QuestOTRT
                 state = Game.gameState.StartEv;
                 turn.store = Game.gameState.Tournament;
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("Event Test: sets player 2 and player 4 to different rank.");
+                Debug.Log("Current card Drawer is: "+ current.name);
+                PlayerController p1 = players[1].GetComponent<PlayerController>();
+                PlayerController p2 = players[3].GetComponent<PlayerController>();
+                p1.addShields(15);
+                p2.addShields(5);
+                p1.upgradeRank();
+                p2.upgradeRank();
+            }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                ChivalrousDeed a = new ChivalrousDeed();
+                Debug.Log("Player(s) with lowest rank and least amount of shields gains 3 shields");
+                a.play();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                QueensFavor b = new QueensFavor();
+                Debug.Log("Lowest ranked player(s) immediately recieve 2 Adventure Cards");
+                b.play();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                CourtCalled c = new CourtCalled();
+                Debug.Log("All Allies in play are discarded");
+                c.play();
+                Debug.Log("Currently Not implemented");
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                KingRecognition d = new KingRecognition();
+                Debug.Log("Kings Recognition not yet implemented...");
+                Debug.Log("Highest ranked player(s) must place 1 weapon in the discard");
+                d.play();
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                KingsCall e = new KingsCall();
+                Debug.Log("Highest ranked player(s) must place 1 weapon in the discard. If unable to do so, 2 foe cards must be discarded");
+                e.play();
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                Plague f = new Plague();
+                Debug.Log("Drawer loses 2 shields, if possible");
+                f.play();
+            }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                Pox g = new Pox();
+                Debug.Log("All other players lose one shield (if possible), drawer of this card is exempt");
+                g.play();
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                ProsperityTtR h = new ProsperityTtR();
+                Debug.Log("All players can immediately draw 2 Adventure Cards");
+                h.play();
+            }
+
+                    if (Input.GetKeyDown(KeyCode.E))
             {
                 state = Game.gameState.EndEv;
             }

@@ -13,7 +13,7 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
             //Creates a new list of players to be filled 
             List<Player> players = new List<Player>();

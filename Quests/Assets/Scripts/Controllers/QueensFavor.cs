@@ -15,7 +15,7 @@ namespace QuestOTRT
             play();
         }
 
-        void play()
+        public void play()
         {
                
             //Creates a new list of players to be filled 
@@ -54,7 +54,7 @@ namespace QuestOTRT
                 }
                 
             }
-            Debug.Log("Queens Favour");
+            Debug.Log("Queens Favour event Completed");
         }
     }
 }
