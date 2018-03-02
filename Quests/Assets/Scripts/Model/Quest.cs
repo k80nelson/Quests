@@ -206,6 +206,8 @@ namespace QuestOTRT
         //If 4 was returned then something went wrong.
         public int testRunner(Test test, Player[] players)
         {
+            //Card is displayed at begining of test
+
             return 4;
         }
 
@@ -218,11 +220,14 @@ namespace QuestOTRT
             int stageBP = 0;
             int lastStageBP = 0;
 
+            List<AdventureCard> stage = new List<AdventureCard>();
+
             //Booleans used to check conditions of certain cards in play
             bool sponsoring = true;
             bool foePlayed = false;
             bool testPlayed = false;
             bool cardsDone = false;
+            bool weaponInPlay = false;
 
             //This is only here so the code doesnt give me errors while writing. In reality this will be gotten from a get component from unity.
             AdventureCard card = new Weapon("test", 0, 0); 
@@ -230,9 +235,11 @@ namespace QuestOTRT
             //Loop through the number of stages to play cards for each stage
             for(int i = 0; i < numStages; i++)
             {
+                
                 //Will continue to loop, letting the player play as many cards as they want
                 while (sponsoring)
                 {
+            
                     //play a card and get whatever that card is, display it to the screen in a specific location that can be accessed later using getComponent
                     //card = GetComponent();
 
@@ -243,6 +250,7 @@ namespace QuestOTRT
                         //Increment the bp of the stage and change a boolean
                         stageBP += card.getBP(new string[] { quest.Name });
                         foePlayed = true;
+                        stage.Add(card);
 
                         //Checker to prompt if they want to play more cards
                         if (stageBP > lastStageBP)
@@ -255,7 +263,19 @@ namespace QuestOTRT
 
                     else if (card is QuestOTRT.Weapon && foePlayed)
                     {
-                        stageBP += card.getBP(new string[] { card.Name });
+                        for(int j = 0; j < stage.Count; j++)
+                        {
+                            if (card == stage[j]) weaponInPlay = true;
+                        }
+
+                        if (weaponInPlay)
+                        {
+                            //Say you cant do that, return card to player
+                        }
+                        else
+                        {
+                            stageBP += card.getBP(new string[] { card.Name });
+                        }
 
                         if (stageBP > lastStageBP)
                         {
@@ -283,6 +303,7 @@ namespace QuestOTRT
                 stageBP = 0;
                 foePlayed = false;
                 sponsoring = true;
+                weaponInPlay = false;
 
             }
 
