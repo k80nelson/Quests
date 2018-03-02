@@ -17,7 +17,7 @@ namespace QuestOTRT
 
         void play()
         {
-            /*
+               
             //Creates a new list of players to be filled 
             List<PlayerController> players = new List<PlayerController>();
 
@@ -27,6 +27,9 @@ namespace QuestOTRT
                 players.Add(player.GetComponent<PlayerController>());
             }
             
+
+
+
             int curLowestRank = (int)Rank.Squire; //keeps track of curent lowest rank
             int size = 0; //this is used to determine who is the lowest rank
             int i = 0;
@@ -46,13 +49,12 @@ namespace QuestOTRT
                     curLowestRank++;
                     i = 0;
                 }
-            
-                else
-                {
+                else {
                     i++;
                 }
-            }*/
-            
+                
+            }
+            Debug.Log("Queens Favour");
         }
     }
 }
