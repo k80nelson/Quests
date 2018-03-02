@@ -168,6 +168,19 @@ namespace QuestOTRT
             allies.Clear();
             
         }
+
+        public bool canUpgrade(int additionalShields)
+        {
+            bool upgrade = false;
+            if (rank == 0 && ((shields + additionalShields) >= 5)){
+                upgrade = true;
+            }else if (rank == 1 && ((shields + additionalShields) >= 7)){
+                upgrade = true;
+            }else if (rank == 2 && ((shields + additionalShields) >= 10)){
+                upgrade = true;
+            }
+            return upgrade;
+        }
         
     }
 }

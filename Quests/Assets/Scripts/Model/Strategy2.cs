@@ -16,55 +16,63 @@ namespace QuestOTRT
             //participation button is clicked in the back end!
             int currentTotalBP = 0;
 
+            //checks to see if the player bp is already above 50
             if (pc.player.BP >= 50)
                 return;
-            else
+            else  //if not adds the allies to bp to player
             {
                 currentTotalBP = pc.player.BP;
+
+                //gets all the players allies
                 List<Ally> allies = pc.player.getAllies();
                 String[] alliesNames = null;
+                
+                //loops through all the allies to create a gamestate string[]
                 for (int i = 0; i < allies.Count; ++i)
                 {
                     alliesNames[i] = allies[i].Name;
                 }
 
+                //adds all the allies to bp to current bp
                 for (int i = 0; i < allies.Count; ++i)
                 {
                     currentTotalBP += allies[i].getBP(alliesNames);
                 }
 
+                //check to see if the bp is over 50 and return if true
                 if (currentTotalBP >= 50)
                     return;
                 else
                 {
                     int amountLeft = 50 - currentTotalBP;
+
+                    //gets all of the players cards
                     List<AdventureCard> cards = pc.player.getCards();
 
-                    String[] cardNames = null;
-                    for (int j = 0; j < cards.Count; ++j)
-                    {
-                        cardNames[j] = cards[j].Name;
-                    }
-
                     List<AdventureCard> weapons = null;
-                    //add all weapon cards to a different array as long as its not a duplicate
+
+                    //loops through all the players cards
                     for (int j = 0; j < cards.Count; ++j)
                     {
                         bool duplicate = false;
+                        //checks to see if the card is a weapon
                         if (cards[j] is Weapon)
                         {
+                            //if no cards are added it just adds the first weapon card
                             if (weapons.Count == 0)
                                 weapons.Add(cards[j]);
-                            else
+                            else 
                             {
+                                //loops through all previous weapons
                                 for (int w = 0; w < weapons.Count; ++w)
                                 {
+                                    //check to see if the weapon was a duplicate
                                     if (cards[j].Equals(weapons[w]))
                                     {
                                         duplicate = true;
                                     }
                                 }
-
+                                //if not duplicate, it adds the weapon to weapons list
                                 if (!duplicate)
                                     weapons.Add(cards[j]);
                             }
@@ -84,10 +92,7 @@ namespace QuestOTRT
                         //return if bp is >= 50
                         if (currentTotalBP >= 50)
                             return;
-                    }
-
-                    
-
+                    }                
                 }
             }
         }
