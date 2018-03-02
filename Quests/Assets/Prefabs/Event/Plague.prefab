@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114174133352255742}
   - component: {fileID: 61136293787537158}
   - component: {fileID: 114157649773404868}
+  - component: {fileID: 114857924946458256}
   m_Layer: 0
   m_Name: Plague
   m_TagString: Event
@@ -124,9 +125,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
+--- !u!114 &114857924946458256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632661068565700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cf5af3d42f55143903b21a6629367e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222217358672291104
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -17,6 +17,7 @@ namespace QuestOTRT
 
         void play()
         {
+            /*
             //Creates a new list of players to be filled 
             List<Player> players = new List<Player>();
 
@@ -48,8 +49,8 @@ namespace QuestOTRT
                     i = 0;
                 }
                 i++;
-            }
-
+            }*/
+            
         }
     }
 }

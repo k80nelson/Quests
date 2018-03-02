@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114806259807949202}
   - component: {fileID: 61382194314781114}
   - component: {fileID: 114779071186560178}
+  - component: {fileID: 114396406302308396}
   m_Layer: 0
   m_Name: Prosperity Throughout the Realm
   m_TagString: Event
@@ -56,6 +57,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114396406302308396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204643166324118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ed07b21f29624da5371f2e8bd5a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114471105460056008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,9 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
 --- !u!222 &222129852393985928
 CanvasRenderer:
   m_ObjectHideFlags: 1

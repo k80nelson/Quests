@@ -38,7 +38,7 @@ namespace QuestOTRT
         
         void Update()
         {
-            if (Input.GetKeyDown("space")) { state = gameState.Event; }
+            if (Input.GetKeyDown("space")) { current.GetComponent<PlayerController>().addCards(deck.DrawAdventureCards(2)); }
 
         }
 

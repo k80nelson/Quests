@@ -8,7 +8,7 @@ namespace QuestOTRT
     {
         public void OnClick()
         {
-            if (this.game.state == Game.gameState.Event)
+            if (this.game.state == Game.gameState.Tournament)
             {
                 this.game.state = Game.gameState.startTurn;
                 Destroy(gameObject);

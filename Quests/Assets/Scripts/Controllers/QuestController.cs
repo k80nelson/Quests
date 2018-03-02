@@ -8,7 +8,11 @@ namespace QuestOTRT
     {
         public void OnClick()
         {
-            
+            if (this.game.state == Game.gameState.Sponsorship)
+            {
+                this.game.state = Game.gameState.startTurn;
+                Destroy(gameObject);
+            }
         }
     }
 }
