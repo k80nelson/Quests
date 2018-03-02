@@ -17,7 +17,6 @@ namespace QuestOTRT
 
         void play()
         {
-            /*
             //Creates a new list of players to be filled 
             List<Player> players = new List<Player>();
 
@@ -27,13 +26,12 @@ namespace QuestOTRT
                 players.Add(player.GetComponent<PlayerController>().player);
             }
 
+
             int curLowestRank = (int)Rank.Squire; //keeps track of curent lowest rank
             int size = 0; //this is used to determine who is the lowest rank
-
-            //loop through Player[] players
-            for(int i = 0; i < players.Count; i++)
+            int i = 0;
+            while (i < players.Count)
             {
-
                 //checks if the current players rank is <= to current lowest rank being checked
                 if ((int)players[i].getRank() <= curLowestRank)
                 {
@@ -43,13 +41,17 @@ namespace QuestOTRT
                 }
 
                 //if no players have this current lowest rank, and no players have been given cards, try next highest rank
-                if (i == 3 && size == 0)
+                if (i == players.Count - 1 && size == 0)
                 {
                     curLowestRank++;
                     i = 0;
                 }
-                i++;
-            }*/
+            
+                else
+                {
+                    i++;
+                }
+            }
             
         }
     }
