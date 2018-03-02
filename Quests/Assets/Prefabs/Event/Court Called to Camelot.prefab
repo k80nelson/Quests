@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114169080615387632}
   - component: {fileID: 61413107515711276}
   - component: {fileID: 114692617508458922}
+  - component: {fileID: 114797236963247854}
   m_Layer: 0
   m_Name: Court Called to Camelot
   m_TagString: Event
@@ -67,9 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
 --- !u!114 &114206347623159576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +127,17 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114797236963247854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058434811284348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbcf1a7924efaf4eb9df1ff1a9c9494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222890160937058444
 CanvasRenderer:
   m_ObjectHideFlags: 1

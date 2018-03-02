@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114455156752965940}
   - component: {fileID: 61263710744732928}
   - component: {fileID: 114861969789418158}
+  - component: {fileID: 114613777881559404}
   m_Layer: 0
   m_Name: Queen's Favor
   m_TagString: Event
@@ -94,9 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa54f39c8468b0458636466fdaa971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
+--- !u!114 &114613777881559404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779812560340674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da4be31f4c493f479dc20c617a4e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114861969789418158
 MonoBehaviour:
   m_ObjectHideFlags: 1

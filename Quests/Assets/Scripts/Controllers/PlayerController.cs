@@ -42,7 +42,12 @@ public class PlayerController : GameElement {
 
     public void addCards(List<QuestOTRT.AdventureCard> cards)
     {
+        foreach (AdventureCard card in cards)
+        {
+            view.createCard(card);
+        }
         player.addCards(cards);
+        view.adjustHand();
     }
 
     public void onSponsorQuest()

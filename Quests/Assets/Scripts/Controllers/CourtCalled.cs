@@ -30,7 +30,7 @@ namespace QuestOTRT
             {
                 players[i].removeAllies();
             }
-
+            Debug.Log("Court Called");
         }
     }
 }

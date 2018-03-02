@@ -32,6 +32,8 @@ namespace QuestOTRT
                 //draws 2 cards to the players hand
                 players[i].addCards(this.game.deck.DrawAdventureCards(2));
             }
+
+            Debug.Log("Prosperity ");
         }
     }
 }

@@ -6,11 +6,10 @@ namespace QuestOTRT
 {
     public class EventController : CardController<Event>
     {
-        public override void OnClick()
+        public  void OnClick()
         {
             if(this.game.state == Game.gameState.Event)
             {
-                
                 this.game.state = Game.gameState.startTurn;
                 Destroy(gameObject);
             }

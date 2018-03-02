@@ -42,7 +42,7 @@ namespace QuestOTRT
                     players[i].removeShields(1);
                 }
             }
-
+            Debug.Log("Pox");
         }
     }
 }

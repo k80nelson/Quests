@@ -46,8 +46,11 @@ namespace QuestOTRT
                         highestPlayer = players[i];
                     }
                 }
+                
             }
 
+
+            Debug.Log("kings call");
             //highest player must remove highest card.
             //highest player has to select one weapon card to discard
             //check to make sure the cards selected is a weapon card

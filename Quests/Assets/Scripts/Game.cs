@@ -14,7 +14,7 @@ namespace QuestOTRT
         public int numControlled;
         public GameObject[] players;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Sponsorship, Event, Tournament, endTurn};
+        public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, Tournament, endTurn};
         public gameState state;
         public Turn turn;
 
@@ -38,7 +38,7 @@ namespace QuestOTRT
         
         void Update()
         {
-            if (Input.GetKeyDown("space")) { state = gameState.Event; }
+            if (Input.GetKeyDown("space")) { current.GetComponent<PlayerController>().addCards(deck.DrawAdventureCards(2)); }
 
         }
 

@@ -42,13 +42,11 @@ namespace QuestOTRT
 
         void OnMouseEnter()
         {
-            Debug.Log("enter");
             view.ScaleUp();
         }
 
         void OnMouseExit()
         {
-            Debug.Log("exit");
             if(!clicked) view.ScaleDown();
         }
 

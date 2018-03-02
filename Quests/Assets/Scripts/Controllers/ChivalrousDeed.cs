@@ -77,6 +77,7 @@ namespace QuestOTRT
             {
                 lowest[i].addShields(3);
             }
+            Debug.Log("Chivalrous Deed");
         }
     }
 }
