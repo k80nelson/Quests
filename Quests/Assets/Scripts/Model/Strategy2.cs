@@ -122,18 +122,71 @@ namespace QuestOTRT
 
         public override void doIParticipateInQuest()
         {
+            List<AdventureCard> cards = pc.player.getCards();
 
+            int count = 0;
+            int foes = 0;
+            for(int i = 0; i < cards.Count; i++)
+            {
+                if (cards[i].getBP(new String[] { cards[i].Name }) >=10)
+                {
+                    count++;
+                }
+                if(cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name })<25)
+                {
+                    foes++;
+                }
+            }
+            if(foes>2 && count > 3)
+            {
+                //participate in quest
+            }
+            else
+            {
+                //i do not participate in quest
+            }
             throw new NotImplementedException();
         }
 
-        public override void nextBid()
+        public override int nextBid(int prev)
         {
+            //if valid (IE an increase in bid)
+            List<AdventureCard> cards = pc.player.getCards();
+            int foeCount = 0;
+            for (int i = 0; i < cards.Count; i++)
+            {
+                if (cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name }) <20)
+                {
+                    //add to sublist
+                    foeCount++;
+                }
+            }
+            if (foeCount>prev) {
+                //bid amount of foes possible
+                return foeCount;
+            }
+            else
+            {
+                //Return -1 to show it isnt possible to bid
+                return -1;
+            }
             throw new NotImplementedException();
+            
         }
 
-        public override void discardAfterWinningTest(Hand hand)
+        public override void discardAfterWinningTest()//Hand hand)
         {
-            //hand.getAllies().Count
+            //get cards needed
+            List<AdventureCard> cards = pc.player.getCards();
+            
+            for (int i = 0; i < cards.Count; i++)
+            {
+                //check if the current foe card has les than 20 bp
+                if (cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name }) < 20)
+                {
+                    pc.removeCard(cards[i]);
+                }
+            }
             throw new NotImplementedException();
         }
     }

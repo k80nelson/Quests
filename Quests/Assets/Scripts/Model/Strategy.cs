@@ -17,8 +17,8 @@ namespace QuestOTRT
 
         public abstract void doIParticipateInQuest();
 
-        public abstract void nextBid();
+        public abstract int nextBid(int prevBid);
 
-        public abstract void discardAfterWinningTest(Hand hand);
+        public abstract void discardAfterWinningTest();// Hand hand);
     }
 }
