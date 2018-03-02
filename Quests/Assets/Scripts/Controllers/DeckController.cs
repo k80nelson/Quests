@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using QuestOTRT;
 
-public class DeckController : MonoBehaviour {
+public class DeckController : GameElement {
 
     AdventureDeck AdvDeck = new AdventureDeck();
     StoryDeck StrDeck = new StoryDeck();
@@ -36,28 +36,24 @@ public class DeckController : MonoBehaviour {
         return StrDeck.draw();
     }
 
-    public Game.gameState DrawStoryCard()
+    public void DrawStoryCard()
     {
-        // if (story card already in play)
-        if (false)
-        {
-            // dont let them take another
-        }
         foreach(Transform child in parent.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
+
         StoryCard c = getStoryCard();
         GameObject card = factory.create(c);
         card.tag = "CurrStory";
         card.transform.SetParent(parent.transform);
         card.transform.position = new Vector3(720, 524, 0);
-        if (c is QuestOTRT.Quest) return Game.gameState.Sponsorship;
-        else if (c is QuestOTRT.Event) return Game.gameState.Event;
-        else return Game.gameState.Tournament;
-        
-    }
 
+        if (c is QuestOTRT.Quest) game.state = Game.gameState.Sponsorship;
+        else if (c is QuestOTRT.Event) game.state = Game.gameState.Event;
+        else game.state = Game.gameState.Tournament;
+    }
+    
     public int numAdvCards()
     {
         return AdvDeck.Count;

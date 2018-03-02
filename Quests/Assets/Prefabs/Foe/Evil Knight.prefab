@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 222115154695646698}
   - component: {fileID: 114922169084653986}
   - component: {fileID: 114996875089763352}
-  - component: {fileID: 61631194124241810}
   - component: {fileID: 114564038280327336}
+  - component: {fileID: 114481799732947796}
   m_Layer: 0
   m_Name: Evil Knight
   m_TagString: Foe
@@ -31,31 +31,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &61631194124241810
-BoxCollider2D:
+--- !u!114 &114481799732947796
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090331516861548}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd88f25677600834c862469e0160c7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialScale: {x: 0, y: 0, z: 0}
+  largeScale: {x: 0, y: 0, z: 0}
+  index: 0
 --- !u!114 &114564038280327336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,9 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833243bfa6b850c4b9d82c6136761a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
 --- !u!222 &222115154695646698
 CanvasRenderer:
   m_ObjectHideFlags: 1

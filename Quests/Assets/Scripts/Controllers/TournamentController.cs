@@ -6,12 +6,11 @@ namespace QuestOTRT
 {
     public class TournamentController : CardController<Tournament>
     {
-        public override void OnClick()
+        public void OnClick()
         {
-            if (this.game.state == Game.gameState.Tournament)
+            if (this.game.state == Game.gameState.Event)
             {
                 this.game.state = Game.gameState.startTurn;
-                this.game.turn.removeAll();
                 Destroy(gameObject);
             }
         }

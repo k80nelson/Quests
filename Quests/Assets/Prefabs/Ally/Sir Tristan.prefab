@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114521254010395330}
   - component: {fileID: 61834080585915606}
   - component: {fileID: 114981103155350130}
+  - component: {fileID: 114939110431585076}
   m_Layer: 0
   m_Name: Sir Tristan
   m_TagString: Ally
@@ -94,9 +95,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d7a334f1bdddf4096a2e10016559eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
+  turn: {fileID: 0}
+--- !u!114 &114939110431585076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071636523569528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd88f25677600834c862469e0160c7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialScale: {x: 0, y: 0, z: 0}
+  largeScale: {x: 0, y: 0, z: 0}
   index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114981103155350130
 MonoBehaviour:
   m_ObjectHideFlags: 1

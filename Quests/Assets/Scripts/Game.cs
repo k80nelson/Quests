@@ -35,7 +35,7 @@ namespace QuestOTRT
             currIndex = 0;
             current = players[currIndex];
         }
-
+        
         void Update()
         {
             

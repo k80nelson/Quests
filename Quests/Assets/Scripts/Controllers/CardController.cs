@@ -4,7 +4,70 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
+
     public abstract class CardController<T> : GameElement where T : Card
+    {
+        public T card;
+        public CardView view;
+        private bool clicked;
+        private string origTag;
+        public Turn turn;
+
+        void Update()
+        {
+           
+        }
+
+        void Start()
+        {
+            view = gameObject.GetComponent<CardView>();
+            clicked = false;
+            card = null;
+            origTag = gameObject.tag;
+        }
+        
+        void OnClick()
+        {
+            if (clicked)
+            {
+                this.clicked = false;
+                this.tag = "Clicked";
+            }
+            else
+            {
+                this.clicked = true;
+                this.tag = origTag;
+            }
+        }
+
+        void OnMouseEnter()
+        {
+            Debug.Log("enter");
+            view.ScaleUp();
+        }
+
+        void OnMouseExit()
+        {
+            Debug.Log("exit");
+            if(!clicked) view.ScaleDown();
+        }
+
+        public void initialize(T newCard)
+        {
+            if (card == null)
+            {
+                card = newCard;
+            }
+        }
+
+        public void Reset()
+        {
+            this.clicked = false;
+            tag = this.origTag;
+
+        }
+    }
+    /*public abstract class CardController<T> : GameElement where T : Card
     {
 
         public T card = null;
@@ -84,5 +147,5 @@ namespace QuestOTRT
             tag = oldTag;
             transform.localScale = firstScale;
         }
-    }
+    }*/
 }

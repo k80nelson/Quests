@@ -2690,13 +2690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b588f9081b048b96b2b349f62947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SponsorPrefab: {fileID: 1016393266700672, guid: a19df14d9a0bf8f44881dfe87e36a20a,
-    type: 2}
-  CombatPrefab: {fileID: 0}
-  BiddingPrefab: {fileID: 0}
-  SponsorOverlay: {fileID: 1790050623}
-  CombatOverlay: {fileID: 0}
-  overlay: {fileID: 428548859}
 --- !u!1 &792458998
 GameObject:
   m_ObjectHideFlags: 0
