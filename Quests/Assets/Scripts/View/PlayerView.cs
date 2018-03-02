@@ -56,7 +56,15 @@ public class PlayerView : MonoBehaviour
         UnityEngine.Vector3 tempSize;
         foreach(Transform child in CardTransform.transform)
         {
-            tempSize = new UnityEngine.Vector3(900-(i*75), 100, 0);
+           
+            if (i < 10)
+            {
+                tempSize = new UnityEngine.Vector3(1050 - (i * 75), 80, 0);
+            }
+            else
+            {
+                tempSize = new UnityEngine.Vector3(1050 - ((i-10) * 75), 180, 0);
+            }
             child.position = tempSize;
             child.localScale = tempScale;
             i++;
