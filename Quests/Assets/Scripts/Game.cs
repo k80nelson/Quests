@@ -29,6 +29,13 @@ namespace QuestOTRT
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
             //runs the init player method with players having a count of 4 in 4pGame
+
+
+            //Finds preffered # of AI and Humans
+            //Globals globals = GameObject.FindObjectOfType<Globals>();
+            //numPlayers = globals.numPlayers;
+            //numControlled = globals.numStrongAi + globals.numWeakAi; 
+
             initPlayers();
             state = gameState.startTurn;
             turn = GameObject.FindWithTag("Turn").GetComponent<Turn>();
@@ -85,7 +92,9 @@ namespace QuestOTRT
 
         void initPlayers()
         {
+
             PlayerController ctrl;
+            
             foreach (GameObject player in this.players)
             {
                 ctrl = player.GetComponent<PlayerController>();
