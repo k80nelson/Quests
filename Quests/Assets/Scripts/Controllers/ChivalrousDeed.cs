@@ -7,12 +7,13 @@ namespace QuestOTRT
     //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
     public class ChivalrousDeed : GameElement
     {
+
         void Start()
         {
             play();
         }
 
-        void play()
+        public void play()
         {
             //Creates a new list of players to be filled 
             List<Player> players = new List<Player>();
