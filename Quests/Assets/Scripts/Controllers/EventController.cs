@@ -12,6 +12,7 @@ namespace QuestOTRT
             {
                 
 
+
                 ChivalrousDeed a = new ChivalrousDeed();
                 Debug.Log("Player(s) with lowest rank and least amount of shields gains 3 shields");
                 a.play();

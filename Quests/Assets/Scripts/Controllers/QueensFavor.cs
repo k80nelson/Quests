@@ -54,7 +54,7 @@ namespace QuestOTRT
                 }
                 
             }
-            Debug.Log("Queens Favour");
+            Debug.Log("Queens Favour event Completed");
         }
     }
 }
