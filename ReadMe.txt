@@ -53,4 +53,14 @@ NOTES
 There is not a lot implemented game wise for this project
 the test runner shows a lot of the implemented logic that we have written
 but that we did not show on the GUI.
+All logs are in the unity console.
+
+STRATEGY PATTERN
+----------------
+
+Strategy base class is in Assets/Scripts/Model/Strategy.cs
+Strategy2 implementation is in Assets/Scripts/Model/Strategy2.cs
+
+Both are used in Assets/Scripts/Model/AI.cs
+
 
