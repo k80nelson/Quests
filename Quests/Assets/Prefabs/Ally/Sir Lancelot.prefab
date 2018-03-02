@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114917427500918354}
   - component: {fileID: 61518957840612324}
   - component: {fileID: 114106944971723576}
+  - component: {fileID: 114475239287898456}
   m_Layer: 0
   m_Name: Sir Lancelot
   m_TagString: Ally
@@ -120,6 +121,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114475239287898456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102219763446234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd88f25677600834c862469e0160c7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialScale: {x: 0, y: 0, z: 0}
+  largeScale: {x: 0, y: 0, z: 0}
+  index: 0
 --- !u!114 &114595851343903986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,9 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d7a334f1bdddf4096a2e10016559eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  firstScale: {x: 0, y: 0, z: 0}
-  bigScale: {x: 0, y: 0, z: 0}
+  view: {fileID: 0}
+  turn: {fileID: 0}
 --- !u!222 &222919267721927002
 CanvasRenderer:
   m_ObjectHideFlags: 1

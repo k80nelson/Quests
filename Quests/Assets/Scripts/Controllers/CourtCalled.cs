@@ -7,6 +7,7 @@ namespace QuestOTRT
     //All Allies in play are discarded
     public class CourtCalled : GameElement
     {
+
         void Start()
         {
             play();

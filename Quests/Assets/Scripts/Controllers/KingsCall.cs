@@ -10,6 +10,7 @@ namespace QuestOTRT
     //If unable to do so, 2 foe cards must be discarded
     public class KingsCall : GameElement
     {
+
         void Start()
         {
             play();

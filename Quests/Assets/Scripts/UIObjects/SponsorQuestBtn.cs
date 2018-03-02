@@ -5,7 +5,7 @@ using QuestOTRT;
 
 public class SponsorQuestBtn : GameElement {
 
-    private int numSkips;
+    /*private int numSkips;
 
     public void Start()
     {
@@ -28,5 +28,5 @@ public class SponsorQuestBtn : GameElement {
             numSkips = 0;
         }
         game.nextPlayer();
-    }
+    }*/
 }

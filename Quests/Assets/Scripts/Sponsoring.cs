@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using QuestOTRT;
-
+/*
 public class Sponsoring : GameElement {
     public GameObject btn;
     public GameObject ourBtn;
@@ -91,3 +91,4 @@ public class Sponsoring : GameElement {
     }
 
 }
+*/

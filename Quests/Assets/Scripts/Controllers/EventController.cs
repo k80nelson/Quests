@@ -8,13 +8,12 @@ namespace QuestOTRT
     {
         public override void OnClick()
         {
-            if (this.game.state == Game.gameState.Event)
+            if(this.game.state == Game.gameState.Event)
             {
+                
                 this.game.state = Game.gameState.startTurn;
-                this.game.turn.removeAll();
                 Destroy(gameObject);
             }
         }
-        
     }
 }

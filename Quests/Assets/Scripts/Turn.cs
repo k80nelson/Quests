@@ -1,8 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using QuestOTRT;
 
+namespace QuestOTRT
+{
+    public class Turn : GameElement
+    {
+        public void init()
+        {
+            switch (game.state)
+            {
+                case (Game.gameState.Sponsorship):
+                    break;
+                case (Game.gameState.Tournament):
+                    break;
+                case (Game.gameState.Event):
+                    break;
+                default: break;
+            }
+        }
+    }
+}
+
+
+
+
+/*
 public class Turn : GameElement {
     public GameObject SponsorPrefab;
     public GameObject CombatPrefab;
@@ -131,3 +154,4 @@ public class Turn : GameElement {
 
 
 }
+*/

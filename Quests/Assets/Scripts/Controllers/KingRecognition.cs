@@ -9,6 +9,7 @@ namespace QuestOTRT
     //Next player(s) to complete a Quest reicieve 2 extra shields
     public class KingRecognition : GameElement
     {
+
         void Start()
         {
             play();
