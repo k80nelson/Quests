@@ -30,6 +30,7 @@ namespace QuestOTRT
         {
             TournamentDecision.SetActive(true);
             game.activePlayers.Clear();
+            game.numActive = 0;
         }
 
         void startSponsor()
@@ -52,30 +53,49 @@ namespace QuestOTRT
 
         public void StartTournament(int joined)
         {
-            TournamentDecision.GetComponent<TournamentDecision>().reset();
-            TournamentDecision.SetActive(false);
             if (joined == 1)
             {
+                TournamentDecision.GetComponent<TournamentDecision>().reset();
+                TournamentDecision.SetActive(false);
                 GameObject win = game.activePlayers.Dequeue() as GameObject;
-                TourWin(win.GetComponent<PlayerController>(), joined);
+                EndTournament(win, joined);
             }
             else
             {
                 store = Game.gameState.Tournament;
                 game.state = Game.gameState.StartEv;
             }
+            
+        }
+
+        public void DisplayEvent()
+        {
+            if(game.state == Game.gameState.Tournament)
+                TournamentGameplay.SetActive(true);
         }
 
         public void TourWin(PlayerController winner, int num)
         {
             int bonus = storyCard.GetComponent<TournamentController>().getShields();
             winner.addShields(num + bonus);
+            Debug.Log(winner.name + " won the tournament, + " + (num + bonus) + " shields.");
         }
 
         public void EndTournament(GameObject player, int num)
         {
             TourWin(player.GetComponent<PlayerController>(), num);
-            game.state = Game.gameState.EndEv;
+            Destroy(storyCard);
+            TournamentGameplay.GetComponent<TournamentGameplay>().reset();
+            TournamentGameplay.SetActive(false);
+            end();
+        }
+
+        public void checkWin()
+        {
+            if (game.state == Game.gameState.Tournament)
+            {
+                TournamentGameplay.GetComponent<TournamentGameplay>().checkWin();
+            }
         }
 
         public void EndTournament(List<GameObject> ties, int num)
@@ -84,7 +104,9 @@ namespace QuestOTRT
             {
                 TourWin(player.GetComponent<PlayerController>(), num);
             }
-            game.state = Game.gameState.EndEv;
+            TournamentGameplay.GetComponent<TournamentDecision>().reset();
+            TournamentGameplay.SetActive(false);
+            end();
         }
 
         public void next()

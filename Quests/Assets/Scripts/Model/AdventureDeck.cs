@@ -63,6 +63,18 @@ namespace QuestOTRT
             discard.Clear();
         }
 
+        public int getBP(string name, string[] cards)
+        {
+            foreach(AdventureCard card in DeckList.Keys)
+            {
+                if (name == card.Name)
+                {
+                    return card.getBP(cards);
+                }
+            }
+            return 0;
+        }
+
         public override void initialize()
         {
            

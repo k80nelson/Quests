@@ -14,7 +14,12 @@ namespace QuestOTRT
 
         void Update()
         {
-           
+            
+        }
+
+        public void getBP()
+        {
+
         }
 
         void Start()
@@ -39,6 +44,7 @@ namespace QuestOTRT
                 {
                     this.clicked = true;
                     move.Add(gameObject);
+                    Debug.Log("after" + card);
                 }
             }
         }
@@ -47,6 +53,7 @@ namespace QuestOTRT
         {
             if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
             view.ScaleUp();
+            
         }
 
         protected virtual void OnMouseExit()
@@ -57,16 +64,12 @@ namespace QuestOTRT
 
         public void initialize(T newCard)
         {
-            if (card == null)
-            {
-                card = newCard;
-            }
+            this.card = newCard;
         }
 
         public void Reset()
         {
             this.clicked = false;
-
         }
     }
     /*public abstract class CardController<T> : GameElement where T : Card

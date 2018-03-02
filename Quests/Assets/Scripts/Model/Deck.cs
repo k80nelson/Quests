@@ -12,6 +12,7 @@ namespace QuestOTRT
         protected Dictionary<T, int> DeckList;
         protected List<T> ValidCards;
         protected int currCards = -1;
+        public  List<T> discard;
 
         public int Count
         {

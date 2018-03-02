@@ -34,29 +34,10 @@ public class Move : GameElement {
 
     public void totalBP()
     {
+
         foreach(GameObject obj in move)
         {
-
-            if (obj.tag == "Weapon")
-            {
-                total += obj.GetComponent<WeaponController>().card.getBP(names.ToArray());
-            }
-            if (obj.tag == "Foe")
-            {
-                total += obj.GetComponent<FoeController>().card.getBP(names.ToArray());
-            }
-            if (obj.tag == "Ally")
-            {
-                total += obj.GetComponent<AllyController>().card.getBP(names.ToArray());
-            }
-            if (obj.tag == "Test")
-            {
-                total += obj.GetComponent<TestController>().card.getBP(names.ToArray());
-            }
-            if (obj.tag == "Amour")
-            {
-                total += obj.GetComponent<AmourController>().card.getBP(names.ToArray());
-            }
+            this.total += game.deck.getBP(obj.name.Substring(0, obj.name.Length - 2), names.ToArray());
         }
     }
     
@@ -92,6 +73,11 @@ public class Move : GameElement {
                 tmp += name + ", ";
             }
             Debug.Log(tmp);
+
+            foreach (GameObject card in move)
+            {
+                Debug.Log(card.GetComponent<WeaponController>().card);
+            }
         }
 	}
 

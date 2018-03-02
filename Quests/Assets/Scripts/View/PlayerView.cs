@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QuestOTRT;
 
 public class PlayerView : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class PlayerView : MonoBehaviour
     public void createCard(QuestOTRT.AdventureCard card)
     {
         GameObject newCard = factory.create(card);
+        
         int sum = 0;
         foreach (Transform child in CardTransform.transform)
         {

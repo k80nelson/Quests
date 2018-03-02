@@ -21,6 +21,7 @@ public class PlayerController : GameElement {
     // When first enabled
     void Start ()
     {
+        move = gameObject.GetComponent<Move>();
     }
 
     public void playMove(List<GameObject> move)

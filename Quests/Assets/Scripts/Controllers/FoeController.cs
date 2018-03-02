@@ -6,6 +6,7 @@ namespace QuestOTRT
 {
     public class FoeController : CardController<Foe>
     {
+
         protected override void OnClick()
         {
             if (game.state == Game.gameState.Tournament) return;

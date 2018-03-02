@@ -33,7 +33,7 @@ namespace QuestOTRT
             {
                 game.activePlayers.Enqueue(game.current);
                 this.game.current = game.activePlayers.Dequeue() as GameObject;
-                Debug.Log("At Tour");
+                game.turn.checkWin();
             }
             else if (game.state == Game.gameState.StartEv)
             {
@@ -41,10 +41,12 @@ namespace QuestOTRT
                 game.playerTurns.Dequeue();
                 this.game.current = game.activePlayers.Dequeue() as GameObject;
                 game.state = game.turn.store;
+                game.turn.DisplayEvent();
             }
             else if (game.state == Game.gameState.EndEv)
             {
                 this.game.current = game.playerTurns.Dequeue() as GameObject;
+                game.state = Game.gameState.startTurn;
             }
             else
             {

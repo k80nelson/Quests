@@ -21,11 +21,13 @@ public class DeckController : GameElement {
     public void discard(AdventureCard card)
     {
         discardDeck.Add(card);
+        AdvDeck.discard = discardDeck;
     }
 
     public void discard(List<AdventureCard> cards)
     {
         discardDeck.AddRange(cards);
+        AdvDeck.discard = discardDeck;
     }
 
     void Start()
@@ -36,6 +38,11 @@ public class DeckController : GameElement {
     void Update()
     {
         
+    }
+
+    public int getBP(string name, string[] cards)
+    {
+        return AdvDeck.getBP(name, cards);
     }
 
     public List<AdventureCard> DrawAdventureCards(int num)

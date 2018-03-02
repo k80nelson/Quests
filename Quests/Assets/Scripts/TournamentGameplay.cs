@@ -8,7 +8,7 @@ using QuestOTRT;
 public class TournamentGameplay : GameElement {
 
     Dictionary<GameObject, Move> moves;
-    Button btn;
+    public Button btn;
     int numMoves;
     bool firstRound;
     int joined;
@@ -17,6 +17,7 @@ public class TournamentGameplay : GameElement {
     {
         numMoves = 0;
         moves = new Dictionary<GameObject, Move>();
+        firstRound = true;
 	}
 	
 	void Update ()
@@ -60,7 +61,9 @@ public class TournamentGameplay : GameElement {
             Debug.Log("Tournament Tie");
             if (firstRound)
             {
+                firstRound = false;
                 game.numActive = ties.Count;
+                numMoves = 0;
                 game.activePlayers.Clear();
                 foreach (GameObject player in ties)
                 {
@@ -68,14 +71,21 @@ public class TournamentGameplay : GameElement {
                     game.activePlayers.Enqueue(player);
                 }
             }
-
             else
             {
+                foreach (GameObject player in moves.Keys)
+                {
+                    player.GetComponent<PlayerController>().playMove(moves[player].move);
+                }
                 game.turn.EndTournament(ties, joined);
             }
         }
         else
         {
+            foreach(GameObject player in moves.Keys)
+            {
+                player.GetComponent<PlayerController>().playMove(moves[player].move);
+            }
             game.turn.EndTournament(highest, joined);
         }
     }
@@ -83,17 +93,20 @@ public class TournamentGameplay : GameElement {
     public void addMove()
     {
         numMoves += 1;
-        Move tmp = game.current.GetComponent<PlayerController>().move;
+        Move tmp = game.current.GetComponent<Move>();
         tmp.totalBP();
         moves[game.current] = tmp;
         btn.interactable = false;
-
-        if (numMoves == game.numActive) endTourn();
     }
 
     public void enableBtn()
     {
         btn.interactable = true;
+    }
+
+    public void checkWin()
+    {
+        if (numMoves == game.numActive) endTourn();
     }
 
     public void reset()
@@ -102,6 +115,6 @@ public class TournamentGameplay : GameElement {
         joined = game.numActive;
         firstRound = true;
         enableBtn();
-        moves.Clear();
+        moves = new Dictionary<GameObject, Move>(); 
     }
 }

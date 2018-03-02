@@ -50,11 +50,14 @@ public class TournamentDecision : GameElement {
 
     public void doneChoices()
     {
-        if (joined == 0) game.turn.noTournament();
+        if (joined == 0)
+        {
+            game.turn.noTournament();
+        }
         else
         {
-            game.turn.StartTournament(joined);
             game.numActive = joined;
+            game.turn.StartTournament(joined);
         }
     }
 
@@ -63,6 +66,8 @@ public class TournamentDecision : GameElement {
         skipped = 0;
         joined = 0;
         enableBtns();
+        game.activePlayers.Clear();
+        game.numActive = 0;
     }
 
     public void enableBtns()
