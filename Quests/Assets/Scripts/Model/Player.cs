@@ -108,9 +108,9 @@ namespace QuestOTRT
             this.hand.remove(card);
         }
 
-        public void removeCard(string card)
+        public AdventureCard removeCard(string card)
         {
-            this.hand.remove(card);
+            return this.hand.remove(card);
         }
 
         public bool rankUp()

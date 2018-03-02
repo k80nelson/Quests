@@ -28,6 +28,5 @@ namespace QuestOTRT
         {
             return (currState.Contains(specialCard)) ? this.specialBids : this.bids;
         }
-
     }
 }

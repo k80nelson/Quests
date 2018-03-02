@@ -33,7 +33,17 @@ public class PlayerView : MonoBehaviour
     public void createCard(QuestOTRT.AdventureCard card)
     {
         GameObject newCard = factory.create(card);
+        int sum = 0;
+        foreach (Transform child in CardTransform.transform)
+        {
+            if (child.name.Contains(newCard.name))
+            {
+                sum += 1;
+            }
+        }
+        newCard.name += " " + sum;
         newCard.transform.SetParent(CardTransform.transform, false);
+        
     }
 
     public void removeCard(QuestOTRT.AdventureCard card)
@@ -46,7 +56,19 @@ public class PlayerView : MonoBehaviour
                 break;
             }
         }
-        
+    }
+
+    public void removeCard(string name)
+    {
+        foreach (Transform child in CardTransform.transform)
+        {
+            if (child.name == name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
+
     }
 
     public void adjustHand()
@@ -56,7 +78,6 @@ public class PlayerView : MonoBehaviour
         UnityEngine.Vector3 tempSize;
         foreach(Transform child in CardTransform.transform)
         {
-           
             if (i < 10)
             {
                 tempSize = new UnityEngine.Vector3(1050 - (i * 75), 80, 0);

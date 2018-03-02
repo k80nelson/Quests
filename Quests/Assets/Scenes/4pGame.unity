@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 33283600}
   - component: {fileID: 33283599}
   - component: {fileID: 33283601}
+  - component: {fileID: 33283602}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Player
@@ -343,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d827ee5bfb26324bb3e8e7a14adfcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
   view: {fileID: 33283601}
   rankText: {fileID: 1596144124}
   shieldText: {fileID: 380945609}
@@ -376,6 +378,19 @@ MonoBehaviour:
   CardTransform: {fileID: 301172380}
   UI: {fileID: 1996560816}
   factory: {fileID: 792459002}
+--- !u!114 &33283602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 33283598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad73051649997147904a66151a67768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: []
+  names: []
 --- !u!1 &58987167
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +572,7 @@ GameObject:
   - component: {fileID: 141583603}
   - component: {fileID: 141583602}
   - component: {fileID: 141583604}
+  - component: {fileID: 141583605}
   m_Layer: 0
   m_Name: Player 4
   m_TagString: Player
@@ -575,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d827ee5bfb26324bb3e8e7a14adfcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
   view: {fileID: 141583604}
   rankText: {fileID: 1392864404}
   shieldText: {fileID: 1781576040}
@@ -608,6 +625,19 @@ MonoBehaviour:
   CardTransform: {fileID: 2070370201}
   UI: {fileID: 601479465}
   factory: {fileID: 792459002}
+--- !u!114 &141583605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 141583601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad73051649997147904a66151a67768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: []
+  names: []
 --- !u!1 &160809125
 GameObject:
   m_ObjectHideFlags: 0
@@ -5834,6 +5864,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1517545540}
+--- !u!1 &1519771886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1519771887}
+  m_Layer: 0
+  m_Name: Tournament Gameplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519771887
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519771886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1692870703}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521035321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,6 +7036,7 @@ Transform:
   - {fileID: 428548860}
   - {fileID: 1790050624}
   - {fileID: 1328914926}
+  - {fileID: 1519771887}
   m_Father: {fileID: 1109578097}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7020,6 +7079,7 @@ GameObject:
   - component: {fileID: 1724639753}
   - component: {fileID: 1724639755}
   - component: {fileID: 1724639754}
+  - component: {fileID: 1724639756}
   m_Layer: 5
   m_Name: Player 1
   m_TagString: Player
@@ -7072,10 +7132,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d827ee5bfb26324bb3e8e7a14adfcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
   view: {fileID: 1724639754}
   rankText: {fileID: 1679912389}
   shieldText: {fileID: 606490824}
   cardText: {fileID: 377252677}
+--- !u!114 &1724639756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724639752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad73051649997147904a66151a67768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: []
+  names: []
 --- !u!1 &1741519760
 GameObject:
   m_ObjectHideFlags: 0
@@ -7927,6 +8001,7 @@ GameObject:
   - component: {fileID: 1954755577}
   - component: {fileID: 1954755579}
   - component: {fileID: 1954755578}
+  - component: {fileID: 1954755580}
   m_Layer: 5
   m_Name: Player 2
   m_TagString: Player
@@ -7979,10 +8054,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d827ee5bfb26324bb3e8e7a14adfcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
   view: {fileID: 1954755578}
   rankText: {fileID: 1347839068}
   shieldText: {fileID: 1626605185}
   cardText: {fileID: 371497357}
+--- !u!114 &1954755580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954755576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad73051649997147904a66151a67768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: []
+  names: []
 --- !u!1 &1967508863
 GameObject:
   m_ObjectHideFlags: 0

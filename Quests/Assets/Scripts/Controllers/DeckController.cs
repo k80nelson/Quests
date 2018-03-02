@@ -9,11 +9,23 @@ public class DeckController : GameElement {
     StoryDeck StrDeck = new StoryDeck();
     public CardFactory factory;
     public GameObject parent;
+    public List<AdventureCard> discardDeck;
 
     void Awake()
     { 
         AdvDeck = new AdventureDeck();
         StrDeck = new StoryDeck();
+        discardDeck = new List<AdventureCard>();
+    }
+
+    public void discard(AdventureCard card)
+    {
+        discardDeck.Add(card);
+    }
+
+    public void discard(List<AdventureCard> cards)
+    {
+        discardDeck.AddRange(cards);
     }
 
     void Start()

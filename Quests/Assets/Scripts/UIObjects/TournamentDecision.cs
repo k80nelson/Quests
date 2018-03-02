@@ -51,7 +51,11 @@ public class TournamentDecision : GameElement {
     public void doneChoices()
     {
         if (joined == 0) game.turn.noTournament();
-        else game.turn.StartTournament(joined);
+        else
+        {
+            game.turn.StartTournament(joined);
+            game.numActive = joined;
+        }
     }
 
     public void reset()

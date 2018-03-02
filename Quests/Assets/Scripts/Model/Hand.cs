@@ -81,9 +81,11 @@ namespace QuestOTRT
             cards.Remove(card);
         }
 
-        public void remove(string card)
+        public AdventureCard remove(string card)
         {
-            cards.RemoveAt(cards.FindIndex(i => i.Equals(card)));
+            AdventureCard toRm = cards.Find(i => i.Equals(card));
+            remove(toRm);
+            return toRm;
         }
     }
 }

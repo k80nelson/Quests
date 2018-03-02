@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace QuestOTRT
 {
@@ -18,9 +20,10 @@ namespace QuestOTRT
         public Queue activePlayers;
         public Queue playerTurns;
         public DeckController deck;
-        public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, NextTour, StartEv, EndEv, Tournament, endTurn};
+        public enum gameState { startTurn, Quest, Sponsorship, Event, TourDecision, NextTour, StartEv, EndEv, Tournament, endTurn, Discard};
         public gameState state;
         public Turn turn;
+        
 
         //This will hold the current player
         public GameObject current;
@@ -28,6 +31,7 @@ namespace QuestOTRT
         void Start()
         {
             deck = GameObject.FindWithTag("Deck").GetComponent<DeckController>();
+
             //runs the init player method with players having a count of 4 in 4pGame
 
 

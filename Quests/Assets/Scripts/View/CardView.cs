@@ -11,6 +11,8 @@ namespace QuestOTRT
         public Vector3 largeScale;
         public int index;
 
+        
+
         void Start()
         {
             this.initialScale = new Vector3(0.5f, 0.5f, 0.5f);

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : GameElement {
 
     public QuestOTRT.Player player;
+    public Move move;
     public PlayerView view;
     public Text rankText;
     public Text shieldText;
@@ -20,6 +21,14 @@ public class PlayerController : GameElement {
     // When first enabled
     void Start ()
     {
+    }
+
+    public void playMove(List<GameObject> move)
+    {
+        foreach(GameObject obj in move)
+        {
+            removeCard(obj.name);
+        }
     }
 
     public Rank getRank()
@@ -39,6 +48,14 @@ public class PlayerController : GameElement {
         shieldText.text = "Shields: " + this.player.Shields.ToString();
         cardText.text = "Cards: " + this.player.hand.Cards.Count.ToString();
 
+    }
+
+    public void removeCard(string card)
+    {
+        AdventureCard toRm = player.removeCard(card.Substring(0, card.Length - 2));
+        view.removeCard(card);
+        view.adjustHand();
+        game.deck.discard(toRm);
     }
 
     public void removeCard(AdventureCard card)

@@ -4,8 +4,24 @@ using UnityEngine;
 
 namespace QuestOTRT
 {
-    public class EventController : CardController<Event>
+    public class EventController : GameElement
     {
+        public Event card;
+        public CardView view;
+
+        void Start()
+        {
+            view = gameObject.GetComponent<CardView>();
+        }
+
+        public void initialize(Event newCard)
+        {
+            if (card == null)
+            {
+                card = newCard;
+            }
+        }
+
         public  void OnClick()
         {
             if(this.game.state == Game.gameState.Event)

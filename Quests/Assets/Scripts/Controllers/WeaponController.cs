@@ -7,6 +7,7 @@ namespace QuestOTRT
     public class WeaponController : CardController<Weapon>
     {
 
+       
 
     }
 }

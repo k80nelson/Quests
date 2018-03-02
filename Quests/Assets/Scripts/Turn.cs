@@ -7,11 +7,10 @@ namespace QuestOTRT
     public class Turn : GameElement
     {
         public GameObject TournamentDecision;
-        public GameObject TournamentOverlay;
+        public GameObject TournamentGameplay;
         public GameObject storyCard;
         public Game.gameState store;
-
-
+        
         public void init()
         {
             storyCard = GameObject.FindGameObjectWithTag("CurrStory");
@@ -59,7 +58,6 @@ namespace QuestOTRT
             {
                 GameObject win = game.activePlayers.Dequeue() as GameObject;
                 TourWin(win.GetComponent<PlayerController>(), joined);
-
             }
             else
             {
@@ -74,9 +72,19 @@ namespace QuestOTRT
             winner.addShields(num + bonus);
         }
 
-        public void EndTournament()
+        public void EndTournament(GameObject player, int num)
         {
+            TourWin(player.GetComponent<PlayerController>(), num);
+            game.state = Game.gameState.EndEv;
+        }
 
+        public void EndTournament(List<GameObject> ties, int num)
+        {
+            foreach (GameObject player in ties)
+            {
+                TourWin(player.GetComponent<PlayerController>(), num);
+            }
+            game.state = Game.gameState.EndEv;
         }
 
         public void next()
@@ -85,6 +93,11 @@ namespace QuestOTRT
             {
                 TournamentDecision.GetComponent<TournamentDecision>().enableBtns();
                 game.state = Game.gameState.TourDecision;
+            }
+
+            if(game.state == Game.gameState.Tournament)
+            {
+                TournamentGameplay.GetComponent<TournamentGameplay>().enableBtn();
             }
         }
     }

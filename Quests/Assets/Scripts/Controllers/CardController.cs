@@ -5,13 +5,12 @@ using UnityEngine;
 namespace QuestOTRT
 {
 
-    public abstract class CardController<T> : GameElement where T : Card
+    public abstract class CardController<T> : GameElement where T : AdventureCard
     {
         public T card;
         public CardView view;
         private bool clicked;
-        private string origTag;
-        public Turn turn;
+        public Move move;
 
         void Update()
         {
@@ -23,31 +22,37 @@ namespace QuestOTRT
             view = gameObject.GetComponent<CardView>();
             clicked = false;
             card = null;
-            origTag = gameObject.tag;
+            move = gameObject.transform.parent.parent.parent.gameObject.GetComponent<Move>();
         }
         
-        void OnClick()
+        protected virtual void OnClick()
         {
+            if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
             if (clicked)
             {
                 this.clicked = false;
-                this.tag = "Clicked";
+                move.Remove(gameObject);
             }
             else
             {
-                this.clicked = true;
-                this.tag = origTag;
+                if (move.isValid(gameObject))
+                {
+                    this.clicked = true;
+                    move.Add(gameObject);
+                }
             }
         }
 
-        void OnMouseEnter()
+        protected virtual void OnMouseEnter()
         {
+            if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
             view.ScaleUp();
         }
 
-        void OnMouseExit()
+        protected virtual void OnMouseExit()
         {
-            if(!clicked) view.ScaleDown();
+            if (game.state != Game.gameState.Quest && game.state != Game.gameState.Tournament && game.state != Game.gameState.Discard) return;
+            if (!clicked) view.ScaleDown();
         }
 
         public void initialize(T newCard)
@@ -61,7 +66,6 @@ namespace QuestOTRT
         public void Reset()
         {
             this.clicked = false;
-            tag = this.origTag;
 
         }
     }
