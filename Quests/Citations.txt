@@ -1,5 +1,17 @@
 https://www.pinterest.ca/pin/424816177332817077/
-	The menu pic
+	The menu image
 
 http://polycount.com/discussion/148195/throne-room-the-temple-of-utu-martinh-minos
-	The game scene
+	The game scene image
+
+https://www.youtube.com/watch?v=cKh457CoW78
+	the overlay image
+
+Two Steps from Hell - "Fire Nation", From the album "Invicible"
+	Menu Music
+
+Two Steps from Hell - "Stronger Faster Braver", From the album "Battlecry"
+	Game Music
+
+Kenney - RPG Maker Assets - Public Domain image file
+	All button assets taken from this sprite sheet
