@@ -6,33 +6,12 @@ using QuestOTRT;
     public class Globals : GameElement
     {
 
-        public int numPlayers = 0;
-        public int numStrongAi = 0;
-        public int numWeakAi = 0;
+        public int numPlayers;
+        public int[] choices;
 
-
-        // Use this for initialization
-        void Start()
+        private void Awake()
         {
             DontDestroyOnLoad(gameObject);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        public void addPlayers()
-        {
-            numPlayers++;
-        }
-        public void addWeakAi()
-        {
-            numWeakAi++;
-        }
-        public void addStrongAi()
-        {
-            numStrongAi++;
-        }
-    }
+}
 
