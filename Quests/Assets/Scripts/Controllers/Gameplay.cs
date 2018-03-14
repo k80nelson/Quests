@@ -55,6 +55,14 @@ public class Gameplay : MonoBehaviour {
         setCurrPlayer(nextPlayer());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            view.toggleMenu();
+        }
+    }
+
     private void initPlayers()
     {
         for (int i = 0; i < numPlayers; i++)

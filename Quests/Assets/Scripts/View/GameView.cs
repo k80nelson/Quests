@@ -12,7 +12,13 @@ public class GameView : MonoBehaviour {
     public GameObject JoinTournament;
     public GameObject Tournament;
     public GameObject PlayerOverlay;
+    public GameObject Menu;
     public Text PlayerOverlayText;
+
+    public void toggleMenu()
+    {
+        Menu.SetActive(!Menu.activeInHierarchy);
+    }
 
     public void LoadJoinSponsor()
     {
