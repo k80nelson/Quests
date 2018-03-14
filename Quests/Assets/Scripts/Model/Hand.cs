@@ -23,12 +23,17 @@ public class Hand : MonoBehaviour
         cards = new List<AdventureCard>();
     }
 
-    public IEnumerable<AdventureCard> GetCards()
+    public IEnumerable<AdventureCard> getICards()
     {
         foreach (AdventureCard card in cards)
         {
             yield return card;
         }
+    }
+
+    public List<AdventureCard> getCards()
+    {
+        return new List<AdventureCard>(cards);
     }
 
     public List<AdventureCard> getWeapons()
@@ -57,10 +62,9 @@ public class Hand : MonoBehaviour
         List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.AMOUR).ToList();
         return ret;
     }
-    public void add(AdventureCard card)
+    public void Add(AdventureCard card)
     {
         if (cards == null) cards = new List<AdventureCard>();
-        Debug.Log("Adding AdventureCard controller");
         cards.Add(card);
     }
 

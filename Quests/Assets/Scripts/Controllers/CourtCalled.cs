@@ -2,35 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace QuestOTRT
+//All Allies in play are discarded
+public class CourtCalled : MonoBehaviour
 {
-    //All Allies in play are discarded
-    public class CourtCalled : GameElement
+    Gameplay game;
+    void Start()
     {
+        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        play();
+    }
 
-        void Start()
+    public void play()
+    {
+        //Creates a new list of players to be filled 
+        List<PlayerModel> players = new List<PlayerModel>();
+
+        //Loops through each game object and adds them to the list of players
+        foreach (GameObject player in this.game.players)
         {
-            play();
+            players.Add(player.GetComponent<PlayerModel>());
         }
 
-        public void play()
-        {
-            //Creates a new list of players to be filled 
-            List<Player> players = new List<Player>();
-
-            //Loops through each game object and adds them to the list of players
-            foreach (GameObject player in this.game.players)
-            {
-                players.Add(player.GetComponent<PlayerController>().player);
-            }
-
            
-            //loops through all allies and find their allies
-            for (int i = 0; i < players.Count; ++i)
-            {
-                players[i].removeAllies();
-            }
-            Debug.Log("Court Called");
+        //loops through all allies and find their allies
+        for (int i = 0; i < players.Count; ++i)
+        {
+            players[i].removeAllies();
         }
     }
 }

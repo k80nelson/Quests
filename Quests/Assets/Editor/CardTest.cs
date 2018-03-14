@@ -6,6 +6,7 @@ using System.Collections;
 using System;
 
 public class CardTesting : IPrebuildSetup{
+    /*
     private QuestOTRT.Foe foeCard;
     private QuestOTRT.Ally allyCard;
     private QuestOTRT.Test testCard;
@@ -58,6 +59,9 @@ public class CardTesting : IPrebuildSetup{
         Assert.AreEqual(1, testCard.getBids(new string[] { quest2.Name }));
         Assert.AreEqual(3, testCard.getBids(new string[] { quest1.Name, "Defend the Queen's Honor" }));
         Assert.AreEqual(0, testCard.getBP(new string[] { quest2.Name }));
+    }*/
+    public void Setup()
+    {
     }
 
 }

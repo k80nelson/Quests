@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AdventureCard : BaseCard {
+
     public enum Type { ALLY, FOE, WEAPON, TEST, AMOUR }
 
     public Type type;
@@ -11,4 +12,9 @@ public class AdventureCard : BaseCard {
     public int SpecialBP;
     public int SpecialBids;
     public BaseCard[] SpecialCards;
+
+    public int getBP()
+    {
+        return BP;
+    }
 }

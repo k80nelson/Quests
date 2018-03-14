@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using QuestOTRT;
 
 public class Discard : GameElement {
-
+    /*
     public void click()
     {
         game.current.GetComponent<Move>().DiscardAll();
@@ -14,5 +14,5 @@ public class Discard : GameElement {
             Debug.Log("good hand");
             game.turn.stopDiscard();
         }
-    }
+    }*/
 }

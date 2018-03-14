@@ -4,6 +4,7 @@ using UnityEngine;
 
 //THIS EVENT STILL NEEDS A LOT OF WORK BEFORE IT IS DONE
 
+    /*
 namespace QuestOTRT
 {
     //Highest ranked player(s) must place 1 weapon in the discard
@@ -89,4 +90,4 @@ namespace QuestOTRT
             Debug.Log("Kings Call");
         }
     }
-}
+}*/

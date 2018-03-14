@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//THIS EVENT STILL NEEDS A LOT OF WORK BEFORE IT IS DONE
 
-namespace QuestOTRT
+//Next player(s) to complete a Quest reicieve 2 extra shields
+public class KingRecognition : MonoBehaviour
 {
-    //Next player(s) to complete a Quest reicieve 2 extra shields
-    public class KingRecognition : GameElement
+    Gameplay game;
+    void Start()
     {
+        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        play();
+    }
 
-        void Start()
-        {
-            play();
-        }
-
-        public void play()
-        {
-            Debug.Log("Kings Recognition");
-        }
+    public void play()
+    {
     }
 }

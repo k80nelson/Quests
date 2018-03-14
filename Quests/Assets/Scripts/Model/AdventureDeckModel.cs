@@ -1,0 +1,68 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AdventureDeckModel : BaseDeckModel {
+
+    void addCard(int index)
+    {
+        if (!validCards.Contains(index)) validCards.Add(index);
+        numCards[index] += 1;
+    }
+
+    
+    void initialize()
+    {
+        for (int i = 0; i < 32; i++)
+        {
+            validCards.Add(i);
+        }
+        
+        numCards[0] = 1;
+        numCards[1] = 1;
+        numCards[2] = 1;
+        numCards[3] = 1;
+        numCards[4] = 1;
+        numCards[5] = 1;
+        numCards[6] = 1;
+        numCards[7] = 1;
+        numCards[8] = 1;
+        numCards[9] = 1;
+        numCards[10] = 3;
+        numCards[11] = 4;
+        numCards[12] = 1;
+        numCards[13] = 6;
+        numCards[14] = 2;
+        numCards[15] = 2;
+        numCards[16] = 4;
+        numCards[17] = 7;
+        numCards[18] = 8;
+        numCards[19] = 5;
+        numCards[20] = 8;
+        numCards[21] = 8;
+        numCards[22] = 6;
+        numCards[23] = 2;
+        numCards[24] = 11;
+        numCards[25] = 6;
+        numCards[26] = 16;
+        numCards[27] = 2;
+        numCards[28] = 2;
+        numCards[29] = 2;
+        numCards[30] = 2;
+        numCards[31] = 8;
+
+        cardsRemaining = 125;
+    }
+
+    void Awake()
+    {
+        validCards = new List<int>();
+        numCards = new Dictionary<int, int>();
+        initialize();
+    }
+
+    public override void emptyDeck()
+    {
+
+    }
+}

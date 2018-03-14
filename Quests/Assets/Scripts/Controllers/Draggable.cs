@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -23,7 +24,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         returnParent = this.transform.parent;
         setPlaceHolder();
-        this.transform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
+        this.transform.SetParent(GameObject.FindGameObjectWithTag("Game").transform);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 

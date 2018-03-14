@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TournamentCardK : MonoBehaviour {
+public class TournamentCard : StoryCard {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public int BonusShields;
+
+    public override void Apply()
+    {
+        GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().PromptTournament();
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

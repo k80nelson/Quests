@@ -10,6 +10,8 @@ public class PlayerView : MonoBehaviour {
     public Text shieldText;
     public Text cardsText;
     public GameObject highlight;
+
+    public GameObject cardView;
     
 
     public void changeName(string name)
@@ -19,16 +21,28 @@ public class PlayerView : MonoBehaviour {
 
     public void updateRank(string rank)
     {
-        if (rankText != null) rankText.text = "Rank: " + rank;
+        if (rankText != null) rankText.text = "Rank:     " + rank;
     }
 
     public void updateShields(int shields)
     {
-        if (shieldText != null) shieldText.text = "Shields: " + shields;
+        if (shieldText != null) shieldText.text = "Shields:  " + shields;
     }
 
     public void updateCards(int cards)
     {
-        if (cardsText != null) cardsText.text = "Cards: " + cards;
+        if (cardsText != null) cardsText.text = "Cards:    " + cards;
+    }
+
+    public void turnOn()
+    {
+        cardView.SetActive(true);
+        highlight.SetActive(true);
+    }
+
+    public void turnOff()
+    {
+        cardView.SetActive(false);
+        highlight.SetActive(false);
     }
 }

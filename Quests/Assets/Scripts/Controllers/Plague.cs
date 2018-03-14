@@ -2,24 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//THIS EVENT STILL NEEDS A LOT OF WORK BEFORE IT IS DONE
 
-namespace QuestOTRT
+//Drawer loses 2 shields, if possible
+public class Plague : MonoBehaviour
 {
-    //Drawer loses 2 shields, if possible
-    public class Plague : GameElement
+    Gameplay game;
+    void Start()
     {
-        void Start()
-        {
-            play();
-        }
+        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        play();
+    }
 
-        public void play()
-        {
-            //Get a reference to the current player, remove two shields from them
-            Player p = this.game.current.GetComponent<PlayerController>().player;
-            p.removeShields(2);
-            Debug.Log("Plague event just played");
-        }
+    public void play()
+    {
+        PlayerModel p = game.players[game.currPlayer].GetComponent<PlayerModel>();
+        p.removeShields(2);
     }
 }

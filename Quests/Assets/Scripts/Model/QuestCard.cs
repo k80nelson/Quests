@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class QuestCard : StoryCard
 {
-
     public int stages;
     public override void Apply()
     {
-        GameObject.Find("Gameplay").GetComponent<Game>().CreateJoinSponsor();
+        GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().StartSponsor();
     }
 }

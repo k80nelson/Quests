@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QuestOTRT;
 
-
+/*
 public class TournamentGameplay : GameElement {
 
     Dictionary<GameObject, Move> moves;
@@ -130,3 +130,4 @@ public class TournamentGameplay : GameElement {
         moves = new Dictionary<GameObject, Move>(); 
     }
 }
+*/
