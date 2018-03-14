@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 public class DeckTesting : IPrebuildSetup
 {
+    /*
     QuestOTRT.AdventureDeck adv;
     QuestOTRT.StoryDeck str;
 
@@ -130,5 +131,8 @@ public class DeckTesting : IPrebuildSetup
         temp = adv.drawAll();
         Assert.AreEqual(0, adv.Count);
         Assert.AreEqual(125, temp.Count);
+    }*/
+    public void Setup()
+    {
     }
 }

@@ -17,14 +17,14 @@ namespace QuestOTRT
             int currentTotalBP = 0;
 
             //checks to see if the player bp is already above 50
-            if (pc.player.BP >= 50)
+            if (pc.model.bp >= 50)
                 return;
             else  //if not adds the allies to bp to player
             {
-                currentTotalBP = pc.player.BP;
+                currentTotalBP = pc.model.bp;
 
                 //gets all the players allies
-                List<Ally> allies = pc.player.getAllies();
+                List<AdventureCard> allies = pc.model.getAllies();
                 String[] alliesNames = null;
                 
                 //loops through all the allies to create a gamestate string[]
@@ -36,7 +36,7 @@ namespace QuestOTRT
                 //adds all the allies to bp to current bp
                 for (int i = 0; i < allies.Count; ++i)
                 {
-                    currentTotalBP += allies[i].getBP(alliesNames);
+                    currentTotalBP += allies[i].getBP();
                 }
 
                 //check to see if the bp is over 50 and return if true
@@ -47,7 +47,7 @@ namespace QuestOTRT
                     int amountLeft = 50 - currentTotalBP;
 
                     //gets all of the players cards
-                    List<AdventureCard> cards = pc.player.getCards();
+                    List<AdventureCard> cards = pc.model.getCards();
 
                     List<AdventureCard> weapons = null;
 
@@ -56,7 +56,7 @@ namespace QuestOTRT
                     {
                         bool duplicate = false;
                         //checks to see if the card is a weapon
-                        if (cards[j] is Weapon)
+                        if (cards[j].type == AdventureCard.Type.WEAPON)
                         {
                             //if no cards are added it just adds the first weapon card
                             if (weapons.Count == 0)
@@ -80,14 +80,14 @@ namespace QuestOTRT
                     }
 
                     //Sort weapon from highest to lowest
-                   weapons = weapons.OrderByDescending(w => w.getBP(new String[] { w.Name })).ToList();
+                   weapons = weapons.OrderByDescending(w => w.getBP()).ToList();
                     
                     //loop through the sorted weapons list to play each card until the bp >= 50
                     for (int w = 0; w < weapons.Count; ++w)
                     {
                         //then add weapons to total pb and plays card
                         //cards.play(cards[largest]);
-                        currentTotalBP += weapons[w].getBP(new String[] { weapons[w].Name });
+                        currentTotalBP += weapons[w].getBP();
                         
                         //return if bp is >= 50
                         if (currentTotalBP >= 50)
@@ -100,7 +100,7 @@ namespace QuestOTRT
         public override void DoISponsorAQuest()
         {
             //need to find out how much the winner of the quest gets
-            int numShields = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<QuestController>().card.Stages;
+            int numShields = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<QuestCard>().stages;
             
             //then need to check if one of the players can win or evolve by winning...
 
@@ -127,17 +127,17 @@ namespace QuestOTRT
 
         public override void doIParticipateInQuest()
         {
-            List<AdventureCard> cards = pc.player.getCards();
+            List<AdventureCard> cards = pc.model.getCards();
 
             int count = 0;
             int foes = 0;
             for(int i = 0; i < cards.Count; i++)
             {
-                if (cards[i].getBP(new String[] { cards[i].Name }) >=10)
+                if (cards[i].getBP() >=10)
                 {
                     count++;
                 }
-                if(cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name })<25)
+                if(cards[i].type == AdventureCard.Type.FOE && cards[i].getBP()<25)
                 {
                     foes++;
                 }
@@ -156,11 +156,11 @@ namespace QuestOTRT
         public override int nextBid(int prev)
         {
             //if valid (IE an increase in bid)
-            List<AdventureCard> cards = pc.player.getCards();
+            List<AdventureCard> cards = pc.model.getCards();
             int foeCount = 0;
             for (int i = 0; i < cards.Count; i++)
             {
-                if (cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name }) <20)
+                if (cards[i].type == AdventureCard.Type.FOE && cards[i].getBP() <20)
                 {
                     //add to sublist
                     foeCount++;
@@ -182,14 +182,14 @@ namespace QuestOTRT
         public override void discardAfterWinningTest()//Hand hand)
         {
             //get cards needed
-            List<AdventureCard> cards = pc.player.getCards();
+            List<AdventureCard> cards = pc.model.getCards();
             
             for (int i = 0; i < cards.Count; i++)
             {
                 //check if the current foe card has les than 20 bp
-                if (cards[i] is Foe && cards[i].getBP(new String[] { cards[i].Name }) < 20)
+                if (cards[i].type == AdventureCard.Type.FOE && cards[i].getBP() < 20)
                 {
-                    pc.removeCard(cards[i]);
+                    //pc.removeCard(cards[i]);
                 }
             }
             throw new NotImplementedException();

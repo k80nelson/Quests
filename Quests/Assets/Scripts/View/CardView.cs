@@ -1,37 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using QuestOTRT;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-namespace QuestOTRT
+public class CardView : MonoBehaviour, IPointerEnterHandler, IDragHandler, IPointerExitHandler
 {
-    public class CardView : GameElement
+    public Sprite face;
+    public Sprite back;
+
+    public Image image;
+    public Vector3 initialScale;
+    public Vector3 bigScale;
+
+    public void toggleFace(bool show)
     {
-        public Vector3 initialScale;
-        public Vector3 largeScale;
-        public int index;
-
-        
-
-        void Start()
+        if (show)
         {
-            this.initialScale = new Vector3(0.5f, 0.5f, 0.5f);
-            this.largeScale = new Vector3(0.6f, 0.6f, 0.6f);
-            this.index = gameObject.transform.GetSiblingIndex();
+            image.sprite = face;
         }
-
-        public void ScaleUp()
+        else
         {
-            transform.localScale = this.largeScale;
-            transform.SetAsLastSibling();
+            image.sprite = back;
         }
-
-        public void ScaleDown()
-        {
-            transform.localScale = this.initialScale;
-            transform.SetSiblingIndex(index);
-        }
-        
     }
-}
 
+    public void OnPointerEnter(PointerEventData pointer)
+    {
+        this.transform.localScale = bigScale;
+    }
+
+    public void OnPointerExit(PointerEventData pointer)
+    {
+        this.transform.localScale = initialScale;
+    }
+
+    public void OnDrag(PointerEventData pointer)
+    {
+        this.transform.localScale = bigScale;
+    }
+
+    private void Awake()
+    {
+        image = GetComponent<Image>();
+        initialScale = this.transform.localScale;
+        bigScale = initialScale + new Vector3(0.1f, 0.1f, 0.1f);
+    }
+
+}

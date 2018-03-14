@@ -1,30 +1,20 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace QuestOTRT
-{
+public class AdventureCard : BaseCard {
 
-    public abstract class AdventureCard : Card
+    public enum Type { ALLY, FOE, WEAPON, TEST, AMOUR }
+
+    public Type type;
+    public int BP;
+    public int Bids;
+    public int SpecialBP;
+    public int SpecialBids;
+    public BaseCard[] SpecialCards;
+
+    public int getBP()
     {
-        protected int bp;
-        protected int bids;
-        
-        public AdventureCard(string name, int bp, int bids): base(name)
-        {
-            this.bp = bp;
-            this.bids = bids;
-        }
-        
-        public virtual int getBP(string[] currState)
-        {
-            /* This function is meant to be overridden in Foe, Test, and Ally classes */
-            return this.bp;
-        }
-
-        public virtual int getBids(string[] currState)
-        {
-            /* This function is meant to be overridden in Foe, Test, and Ally classes */
-            return this.bids;
-        }
-
+        return BP;
     }
 }

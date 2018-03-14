@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace QuestOTRT
-{
-
+{   /*
     public class ChangePlayer : GameElement
     {
         public Button btn;
@@ -44,5 +43,5 @@ namespace QuestOTRT
             text.text = "Waiting on " + game.current.name + "... ";
             setUpTurn();
         }
-    }
+    }*/
 }

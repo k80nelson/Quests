@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace QuestOTRT
-{
-    public abstract class StoryCard : Card
-    {
-        protected StoryCard(string name) : base(name) { }
+public abstract class StoryCard : BaseCard {
 
-    }
+    public abstract void Apply();
+
 }

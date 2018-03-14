@@ -1,93 +1,81 @@
 ﻿using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace QuestOTRT
+public class Hand : MonoBehaviour
 {
-    public class Hand
+
+    private List<AdventureCard> cards;
+    public int max;
+
+    public int Count
     {
-        private int maxSize;
-        public int numCards;
-        private List<AdventureCard> cards;
-        public List<AdventureCard> Cards
+        get
         {
-            get
-            {
-                return cards;
-            }
+            return cards.Count;
         }
+    }
 
-        public List<Ally> getAllies()
-        {
-            return cards.OfType<Ally>().ToList();
-        }
 
-        public List<Amour> getAmours()
-        {
-            return cards.OfType<Amour>().ToList();
-        }
+    private void Awake()
+    {
+        cards = new List<AdventureCard>();
+    }
 
-        public List<Foe> getFoes()
+    public IEnumerable<AdventureCard> getICards()
+    {
+        foreach (AdventureCard card in cards)
         {
-            return cards.OfType<Foe>().ToList();
+            yield return card;
         }
+    }
 
-        public List<Test> getTests()
-        {
-            return cards.OfType<Test>().ToList();
-        }
+    public List<AdventureCard> getCards()
+    {
+        return new List<AdventureCard>(cards);
+    }
 
-        public List<Weapon> getWeapons()
-        {
-            return cards.OfType<Weapon>().ToList();
-        }
+    public List<AdventureCard> getWeapons()
+    {
+        List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.WEAPON).ToList();
+        return ret;
+    }
 
-        public bool overMax()
-        {
-            return numCards > maxSize;
-        }
+    public List<AdventureCard> getAllies()
+    {
+        List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.ALLY).ToList();
+        return ret;
+    }
+    public List<AdventureCard> getFoes()
+    {
+        List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.FOE).ToList();
+        return ret;
+    }
+    public List<AdventureCard> getTests()
+    {
+        List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.TEST).ToList();
+        return ret;
+    }
+    public List<AdventureCard> getAmours()
+    {
+        List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.AMOUR).ToList();
+        return ret;
+    }
+    public void Add(AdventureCard card)
+    {
+        if (cards == null) cards = new List<AdventureCard>();
+        cards.Add(card);
+    }
 
-        public Hand()
-        {
-            this.maxSize = 12;
-            this.numCards = 0;
-            this.cards = new List<AdventureCard>();
-        }
+    public void add(List<AdventureCard> cards)
+    {
+        if (cards == null) cards = new List<AdventureCard>();
+        this.cards.AddRange(cards);
+    }
 
-        public Hand(int maxSize, List<AdventureCard> cards)
-        {
-            this.maxSize = maxSize;
-            this.numCards = cards.Count;
-            this.cards = new List<AdventureCard>(cards);
-        }
-        
-        public void add(AdventureCard card)
-        {
-            cards.Add(card);
-            numCards++;
-        }
-
-        public void addMany(List<AdventureCard> cards)
-        {
-            foreach(AdventureCard card in cards)
-            {
-                add(card);
-            }
-        }
-
-        public void remove(AdventureCard card)
-        {
-            cards.Remove(card);
-            numCards--;
-        }
-
-        public AdventureCard remove(string card)
-        {
-            AdventureCard toRm = cards.Find(i => i.Equals(card));
-            remove(toRm);
-            numCards--;
-            return toRm;
-        }
+    public void remove(AdventureCard card)
+    {
+        cards.Remove(card);
     }
 }
