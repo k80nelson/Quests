@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        view.updateRank(model.rank.ToString());
+        view.updateRank(((PlayerModel.Rank)(model.rank)).ToString());
         view.updateShields(model.shields);
         view.updateCards(model.numCards);
     }
@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
         GameObject newCard = Instantiate(card, cardTransform);
         newCard.name = card.name;
         model.addCard(newCard);
+    }
+
+    public void discardCard(GameObject card)
+    {
+        model.removeCard(card.GetComponent<AdventureCard>());
+        Destroy(card);
     }
 
     public void addManyCards(List<GameObject> cards)

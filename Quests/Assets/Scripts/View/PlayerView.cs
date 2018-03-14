@@ -21,7 +21,7 @@ public class PlayerView : MonoBehaviour {
 
     public void updateRank(string rank)
     {
-        if (rankText != null) rankText.text = "Rank:     " + rank;
+        if (rankText != null) rankText.text = "Rank:  " + rank;
     }
 
     public void updateShields(int shields)
@@ -31,7 +31,7 @@ public class PlayerView : MonoBehaviour {
 
     public void updateCards(int cards)
     {
-        if (cardsText != null) cardsText.text = "Cards:    " + cards;
+        if (cardsText != null) cardsText.text = "Cards:  " + cards;
     }
 
     public void turnOn()

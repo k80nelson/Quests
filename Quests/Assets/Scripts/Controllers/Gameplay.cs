@@ -29,6 +29,8 @@ public class Gameplay : MonoBehaviour {
     public Transform PlayerStats;
 
     public GameView view;
+    public GameObject endTurn;
+    public GameObject startTurn;
     
     private void Awake()
     {

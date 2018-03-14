@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AdventureDeckModel : BaseDeckModel {
+
+    public List<int> discardDeck;
 
     void addCard(int index)
     {
@@ -10,9 +13,17 @@ public class AdventureDeckModel : BaseDeckModel {
         numCards[index] += 1;
     }
 
+    public void discard(GameObject card)
+    {
+        discardDeck.Add(getIndex(card));
+    }
+
     
     void initialize()
     {
+
+        discardDeck = new List<int>();
+
         for (int i = 0; i < 32; i++)
         {
             validCards.Add(i);
@@ -54,6 +65,11 @@ public class AdventureDeckModel : BaseDeckModel {
         cardsRemaining = 125;
     }
 
+    public int getIndex(GameObject card)
+    {
+        return prefabs.ToList<GameObject>().FindIndex(x => card.name.Contains(x.name));
+    }
+
     void Awake()
     {
         validCards = new List<int>();
@@ -63,6 +79,12 @@ public class AdventureDeckModel : BaseDeckModel {
 
     public override void emptyDeck()
     {
+        foreach(int index in discardDeck)
+        {
+            if (!validCards.Contains(index)) validCards.Add(index);
+            numCards[index] += 1;
+        }
 
+        discardDeck.Clear();
     }
 }

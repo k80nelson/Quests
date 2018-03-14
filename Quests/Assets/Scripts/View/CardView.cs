@@ -44,7 +44,7 @@ public class CardView : MonoBehaviour, IPointerEnterHandler, IDragHandler, IPoin
     {
         image = GetComponent<Image>();
         initialScale = this.transform.localScale;
-        bigScale = initialScale + new Vector3(0.1f, 0.1f, 0.1f);
+        bigScale = initialScale + new Vector3(0.05f, 0.05f, 0.05f);
     }
 
 }

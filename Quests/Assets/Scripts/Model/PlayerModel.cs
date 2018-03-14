@@ -59,6 +59,16 @@ public class PlayerModel : MonoBehaviour
         return hand.getCards();
     }
 
+    public void removeCard(AdventureCard card)
+    {
+        hand.remove(card);
+    }
+
+    public bool overMax()
+    {
+        return (hand.Count > hand.max);
+    }
+
     public void addCard(GameObject card)
     {
         hand.Add(card.GetComponent<AdventureCard>());
