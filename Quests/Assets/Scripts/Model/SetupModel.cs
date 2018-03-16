@@ -7,7 +7,7 @@ namespace QuestOTRT
     public class SetupModel
     {
 
-        private List<StageModel> stageSetup;
+        public List<StageModel> stageSetup;
 
         //Constructor to create the setup for the stage
         public SetupModel()

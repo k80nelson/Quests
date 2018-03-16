@@ -7,7 +7,7 @@ namespace QuestOTRT
     public class StageModel
     {
 
-        private List<AdventureCard> cardsPlayed;
+        public List<AdventureCard> cardsPlayed;
 
         public StageModel()
         {
