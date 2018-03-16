@@ -150,12 +150,30 @@ public class Gameplay : MonoBehaviour {
         }
         else
         {
-            Debug.Log(players.Count + " Player tournament");
+            Debug.Log(players.Count + " Players in tournament");
+        }
+    }
+
+    public void CreateQuest(List<int> players)
+    {
+        if (players.Count == 0)
+        {
+            StoryDeck.discard();
+            setNextPlayer();
+        }
+        else
+        {
+            Debug.Log(players.Count + " Players in Quest");
         }
     }
 
     public void PromptTournament()
     {
         view.LoadJoinTournament();
+    }
+
+    public void PromptQuest()
+    {
+        view.LoadJoinQuest();
     }
 }

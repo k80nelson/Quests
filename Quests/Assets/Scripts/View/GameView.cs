@@ -30,6 +30,11 @@ public class GameView : MonoBehaviour {
         JoinTournament.SetActive(true);
     }
 
+    public void LoadJoinQuest()
+    {
+        JoinQuest.SetActive(true);
+    }
+
     public void EndJoinSponsor()
     {
         JoinSponsor.SetActive(false);

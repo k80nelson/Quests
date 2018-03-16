@@ -8,5 +8,6 @@ public class QuestCard : StoryCard
     public override void Apply()
     {
         GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().StartSponsor();
+        //GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().PromptQuest();
     }
 }

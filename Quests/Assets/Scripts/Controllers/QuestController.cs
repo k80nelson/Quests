@@ -43,12 +43,17 @@ namespace QuestOTRT
         }
 
         //Will be the actual brain of the quest
-        public void play(QuestCard quest)
+        public void play(QuestCard quest, int numPlayers)
         {
             int numStages = quest.stages;
             int currentStage = 0;
 
             SetupModel sponsor = new SetupModel(); //This will change later
+
+            for(int i = 0; i < numPlayers; ++i)
+            {
+
+            }
             SetupModel player = new SetupModel(); //This will change later
 
 
