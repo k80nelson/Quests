@@ -3,8 +3,9 @@
 ### Authors:
 * 100915003 Bertholin Destinvil
 * 100938015 Andrew Dodge
-* 101008617 Jeremy Crinson
+* ~~101008617 Jeremy Crinson~~
 * 101012786 Katie Nelson
+* 100948027 Tamara Alhajj
 
 ### Description:
 A turn-based card game based off the 1995 card game [Quests of the Round Table](https://boardgamegeek.com/boardgame/360/quests-round-table "Boardgame Geek Webpage").  
