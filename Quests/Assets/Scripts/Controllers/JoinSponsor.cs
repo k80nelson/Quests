@@ -48,5 +48,10 @@ public class JoinSponsor : GameElement
         Destroy(card.gameObject);
         game.CreateSponsor(sponsor);
         game.view.EndJoinSponsor();
+
+
+        // this is where we whill have to activate the droppable area for the players cards that they want to sponsor and activates a button.
+        //also would need to have a button that allows the sponsor to move to the next stage.. 
+        
     }
 }

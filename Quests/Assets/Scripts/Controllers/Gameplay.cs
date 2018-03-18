@@ -31,6 +31,8 @@ public class Gameplay : MonoBehaviour {
     public GameView view;
     public GameObject endTurn;
     public GameObject startTurn;
+    public bool sponsorChosen = false;
+    public int currentSponsor = -1;
     
     private void Awake()
     {
@@ -130,6 +132,7 @@ public class Gameplay : MonoBehaviour {
 
     public void CreateSponsor(int sponsor)
     {
+        Debug.Log("The current active player is " + activePlayer + " in create sponsor");
         if (sponsor < 0)
         {
             StoryDeck.discard();
@@ -138,6 +141,8 @@ public class Gameplay : MonoBehaviour {
         else
         {
             Debug.Log("Quest Sponsored by Player " + (sponsor + 1));
+            sponsorChosen = true;
+            currentSponsor = sponsor;
         }
     }
 
