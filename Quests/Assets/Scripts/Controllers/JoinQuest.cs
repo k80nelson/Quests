@@ -26,6 +26,7 @@ public class JoinQuest : MonoBehaviour {
 
     public void yes()
     {
+        Debug.Log("Join quest yes");
         counter += 1;
         players.Add(game.currPlayer);
         if (counter == (game.numPlayers - 1))
@@ -40,6 +41,7 @@ public class JoinQuest : MonoBehaviour {
 
     public void no()
     {
+        Debug.Log("Join quest yes");
         counter += 1;
         if (counter == (game.numPlayers - 1))
         {
@@ -55,6 +57,6 @@ public class JoinQuest : MonoBehaviour {
     {
         Destroy(card);
         game.CreateQuest(players);
-        game.view.EndJoinTournament();
+        game.view.EndJoinQuest();
     }
 }

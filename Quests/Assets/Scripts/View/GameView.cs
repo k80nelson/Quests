@@ -45,6 +45,11 @@ public class GameView : MonoBehaviour {
         JoinTournament.SetActive(false);
     }
 
+    public void EndJoinQuest()
+    {
+        JoinQuest.SetActive(false);
+    }
+
     public void ShowPlayerOverlay(int player)
     {
         PlayerOverlayText.text = "Waiting on Player " + (player) + "... ";
