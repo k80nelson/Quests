@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameElement : MonoBehaviour
 {
     protected Gameplay game;
@@ -13,7 +14,8 @@ public class GameElement : MonoBehaviour
     }
 }
 
-public class Gameplay : MonoBehaviour {
+public class Gameplay : MonoBehaviour
+{
 
     public GameState state;
     public int currPlayer;
@@ -21,7 +23,7 @@ public class Gameplay : MonoBehaviour {
 
     public AdventureDeckModel AdventureDeck;
     public StoryDeckController StoryDeck;
-    
+
     public int numPlayers;
     public List<GameObject> players;
     public GameObject playerPrefab;
@@ -33,7 +35,17 @@ public class Gameplay : MonoBehaviour {
     public GameObject startTurn;
     public bool sponsorChosen = false;
     public int currentSponsor = -1;
-    
+
+    //Stages that the sponsor will use
+    public StageModel sponsorStage1;
+    public StageModel sponsorStage2;
+    public StageModel sponsorStage3;
+    public StageModel sponsorStage4;
+    public StageModel sponsorStage5;
+
+    public SetupModel sponsorSetup;
+
+
     private void Awake()
     {
         // Get the settings from the main menu
@@ -57,6 +69,16 @@ public class Gameplay : MonoBehaviour {
         initPlayers();
         setActivePlayer(nextPlayer());
         setCurrPlayer(nextPlayer());
+
+        //Instantiate the elements to be used for quests later on, these will hold the cards the sponsor plays per stage
+        sponsorStage1 = new StageModel();
+        sponsorStage2 = new StageModel();
+        sponsorStage3 = new StageModel();
+        sponsorStage4 = new StageModel();
+        sponsorStage5 = new StageModel();
+
+        //This will hold the stage models above when populated, these will be cleared and added to when needed
+        sponsorSetup = new SetupModel();
     }
 
     private void Update()
@@ -71,7 +93,7 @@ public class Gameplay : MonoBehaviour {
     {
         for (int i = 0; i < numPlayers; i++)
         {
-            Debug.Log("Instantiating Player " + (i+1));
+            Debug.Log("Instantiating Player " + (i + 1));
             GameObject player = Instantiate(playerPrefab, this.transform);
             GameObject stats = Instantiate(StatsPrefab, PlayerStats);
 
@@ -88,6 +110,10 @@ public class Gameplay : MonoBehaviour {
             tmp.highlight = stats.transform.Find("Highlight").gameObject;
 
             player.GetComponent<PlayerController>().addManyCards(AdventureDeck.drawMany(12));
+
+            //Instantiate the stageModel for each player that will hold the cards they play for each stage on a quest.
+            player.GetComponent<PlayerModel>().cardsPlayed4Quest = new StageModel();
+
             players.Add(player);
         }
 

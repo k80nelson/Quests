@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class PlayerModel : MonoBehaviour
 {
 
@@ -12,6 +14,9 @@ public class PlayerModel : MonoBehaviour
     public int shields;
     public int bp;
     public Hand hand;
+
+    public StageModel cardsPlayed4Quest;
+
     public int numCards
     {
         get
@@ -46,7 +51,7 @@ public class PlayerModel : MonoBehaviour
     {
         return new List<AdventureCard>(allies);
     }
-    
+
     public void removeAllies()
     {
         //removes all allies for the player
@@ -119,5 +124,4 @@ public class PlayerModel : MonoBehaviour
         }
     }
 }
-
 
