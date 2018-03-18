@@ -38,5 +38,12 @@ namespace QuestOTRT
             if (stageSetup == null) stageSetup = new List<StageModel>();
             this.stageSetup.AddRange(stages);
         }
+
+        //Remove one stage from the list, this can be used to remove one player from the list of stages if they lose a quest
+        public void Remove(StageModel stage)
+        {
+            if (stageSetup == null) return;
+            stageSetup.Remove(stage);
+        }
     }
 }
