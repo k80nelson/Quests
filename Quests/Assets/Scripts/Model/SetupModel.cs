@@ -31,7 +31,7 @@ public class SetupModel
     }
 
     //Ability to add a list of stages to the list, used for the sponsor for the quest
-    public void add(List<StageModel> stages)
+    public void addList(List<StageModel> stages)
     {
         if (stageSetup == null) stageSetup = new List<StageModel>();
         this.stageSetup.AddRange(stages);
@@ -42,5 +42,10 @@ public class SetupModel
     {
         if (stageSetup == null) return;
         stageSetup.Remove(stage);
+    }
+
+    public void Empty()
+    {
+        stageSetup.Clear();
     }
 }

@@ -36,16 +36,6 @@ public class Gameplay : MonoBehaviour
     public bool sponsorChosen = false;
     public int currentSponsor = -1;
 
-    //Stages that the sponsor will use
-    public StageModel sponsorStage1;
-    public StageModel sponsorStage2;
-    public StageModel sponsorStage3;
-    public StageModel sponsorStage4;
-    public StageModel sponsorStage5;
-
-    public SetupModel sponsorSetup;
-
-
     private void Awake()
     {
         // Get the settings from the main menu
@@ -69,16 +59,6 @@ public class Gameplay : MonoBehaviour
         initPlayers();
         setActivePlayer(nextPlayer());
         setCurrPlayer(nextPlayer());
-
-        //Instantiate the elements to be used for quests later on, these will hold the cards the sponsor plays per stage
-        sponsorStage1 = new StageModel();
-        sponsorStage2 = new StageModel();
-        sponsorStage3 = new StageModel();
-        sponsorStage4 = new StageModel();
-        sponsorStage5 = new StageModel();
-
-        //This will hold the stage models above when populated, these will be cleared and added to when needed
-        sponsorSetup = new SetupModel();
     }
 
     private void Update()
@@ -169,6 +149,9 @@ public class Gameplay : MonoBehaviour
             Debug.Log("Quest Sponsored by Player " + (sponsor + 1));
             sponsorChosen = true;
             currentSponsor = sponsor;
+
+            //THIS IS WHERE WE WILL PLAY CARDS FOR EACH STAGE
+
         }
     }
 

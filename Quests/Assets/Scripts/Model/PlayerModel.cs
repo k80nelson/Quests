@@ -16,6 +16,7 @@ public class PlayerModel : MonoBehaviour
     public Hand hand;
 
     public StageModel cardsPlayed4Quest;
+    public List<AdventureCard> allies;
 
     public int numCards
     {
@@ -44,8 +45,6 @@ public class PlayerModel : MonoBehaviour
             shields = 0;
         }
     }
-
-    public List<AdventureCard> allies;
 
     public List<AdventureCard> getAllies()
     {

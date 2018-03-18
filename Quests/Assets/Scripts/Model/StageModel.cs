@@ -30,7 +30,7 @@ public class StageModel
     }
 
     //Adds a list of adventure cards to the list
-    public void add(List<AdventureCard> cards)
+    public void addList(List<AdventureCard> cards)
     {
         if (cards == null) cards = new List<AdventureCard>();
         this.cardsPlayed.AddRange(cards);
@@ -56,5 +56,10 @@ public class StageModel
             }
         }
                 
+    }
+
+    public void Empty()
+    {
+        cardsPlayed.Clear();
     }
 }
