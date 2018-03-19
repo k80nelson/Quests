@@ -77,10 +77,9 @@ public class QuestController : MonoBehaviour
         {
             players[i].cardsPlayed4Quest.RemoveWeapons();
             //players[i].cardsPlayed4Quest.Remove(AdventureCard Amour); This will remove the amour card played if they played one
+            players[i].addAllies(players[i].cardsPlayed4Quest.cardsPlayed); //At this point all that should be left in the list are allies
+            players[i].cardsPlayed4Quest.Empty();
         }
-
-        //The cards that remain are allies and should be added to the player object here, NEED TO WRITE AN ADD ALLIES METHOD
-
     }
 
     //Used to calculate the BP for the stage, youll pass it the appropriate list of cards. See stage model is passed and not setup model!
