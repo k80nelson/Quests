@@ -26,7 +26,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 
-    public void OnDrop(PointerEventData data)
+    public virtual void OnDrop(PointerEventData data)
     {
         Draggable d = data.pointerDrag.GetComponent<Draggable>();
         if (d != null)
@@ -38,7 +38,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 
-    public void OnPointerExit(PointerEventData data)
+    public virtual void OnPointerExit(PointerEventData data)
     {
         if (data.pointerDrag == null) return;
 
@@ -49,7 +49,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 
-    bool isValid(Draggable d)
+    protected virtual bool isValid(Draggable d)
     {
         return true;
     }

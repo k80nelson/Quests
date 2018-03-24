@@ -33,8 +33,6 @@ public class Gameplay : MonoBehaviour
     public GameView view;
     public GameObject endTurn;
     public GameObject startTurn;
-    public bool sponsorChosen = false;
-    public int currentSponsor = -1;
 
     private void Awake()
     {
@@ -147,11 +145,7 @@ public class Gameplay : MonoBehaviour
         else
         {
             Debug.Log("Quest Sponsored by Player " + (sponsor + 1));
-            sponsorChosen = true;
-            currentSponsor = sponsor;
-
-            //THIS IS WHERE WE WILL PLAY CARDS FOR EACH STAGE
-
+            view.LoadSponsor();
         }
     }
 

@@ -55,7 +55,7 @@ public class JoinQuest : MonoBehaviour {
 
     void end()
     {
-        Destroy(card);
+        //Destroy(card);
         game.CreateQuest(players);
         game.view.EndJoinQuest();
     }

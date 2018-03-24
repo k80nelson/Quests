@@ -55,7 +55,7 @@ public class JoinTournament : MonoBehaviour
 
     void end()
     {
-        Destroy(card);
+        //Destroy(card);
         game.CreateTournament(players);
         game.view.EndJoinTournament();
     }

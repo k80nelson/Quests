@@ -15,6 +15,16 @@ public class GameView : MonoBehaviour {
     public GameObject Menu;
     public Text PlayerOverlayText;
 
+    void unSetMainGame()
+    {
+        gameObject.tag = "Untagged";
+    }
+
+    void setMainGame()
+    {
+        gameObject.tag = "Game";
+    }
+
     public void toggleMenu()
     {
         Menu.SetActive(!Menu.activeInHierarchy);
@@ -32,7 +42,22 @@ public class GameView : MonoBehaviour {
 
     public void LoadJoinQuest()
     {
+
         JoinQuest.SetActive(true);
+    }
+
+    public void LoadSponsor()
+    {
+        unSetMainGame();
+        Sponsor.SetActive(true);
+        Sponsor.tag = "Game";
+    }
+
+    public void EndSponsor()
+    {
+        setMainGame();
+        Sponsor.tag = "Untagged";
+        Sponsor.SetActive(false);
     }
 
     public void EndJoinSponsor()

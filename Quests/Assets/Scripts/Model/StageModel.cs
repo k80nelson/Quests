@@ -22,6 +22,26 @@ public class StageModel
         }
     }
 
+    public bool Contains(string name)
+    {
+        return (cardsPlayed.Find(i => i.Name == name) != null);
+    }
+
+    public bool containsTest()
+    {
+        return (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) != null);
+    }
+
+    public bool containsFoe()
+    {
+        return (cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) != null);
+    }
+
+    public bool isEmpty()
+    {
+        return (cardsPlayed.Count == 0);
+    }
+
     //Adds one adventure card to the list
     public void Add(AdventureCard card)
     {
