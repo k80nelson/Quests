@@ -62,20 +62,38 @@ public class StageModel
         if (cardsPlayed == null) return;
         cardsPlayed.Remove(card);
     }
-        
+
     //Will remove all weapons cards from the list, this can be used for removing the weapons at the end of each stage
     public void RemoveWeapons()
     {
         if (cardsPlayed == null) return;
 
-        for(int i = 0; i < cardsPlayed.Count; i++)
+        for (int i = 0; i < cardsPlayed.Count; i++)
         {
-            if(cardsPlayed[i].type == AdventureCard.Type.WEAPON)
+            if (cardsPlayed[i].type == AdventureCard.Type.WEAPON)
             {
                 cardsPlayed.Remove(cardsPlayed[i]);
             }
         }
-                
+    }
+
+    public bool validState()
+    {
+        //makes sure that the stage is not empty
+        if (cardsPlayed.Count == 0)
+        {
+            return false;
+        }
+            
+
+        //if no foe and no test
+        if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null || cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
+        {
+            return false;
+        } 
+            
+
+        return true;
     }
 
     public void Empty()
