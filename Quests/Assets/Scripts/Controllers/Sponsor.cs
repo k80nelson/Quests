@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sponsor : MonoBehaviour {
+
 
     public Transform storyCardTransform;
     public GameObject questCard;
@@ -10,6 +12,9 @@ public class Sponsor : MonoBehaviour {
 
     public GameObject[] stagesObjects;
     public StageModel[] stageModels;
+
+    public GameObject promptBox;
+    public Text promptText;
 
     private void OnEnable()
     {
@@ -33,6 +38,11 @@ public class Sponsor : MonoBehaviour {
         }
     }
 
+    public void promptUser(string message)
+    {
+        promptText.text = message;
+        promptBox.SetActive(true);
+    }
 
     public bool testValid(int id, Draggable d)
     {
@@ -51,17 +61,6 @@ public class Sponsor : MonoBehaviour {
         return true;
     }
     
-    public void addCard(int id, AdventureCard card)
-    {
-        stageModels[id].Add(card);
-    }
-
-    public void removeCard(int id, AdventureCard card)
-    {
-        stageModels[id].Remove(card);
-    }
-
-
     public void End()
     {
         questCard = null;
@@ -72,6 +71,4 @@ public class Sponsor : MonoBehaviour {
             stagesObjects[i].SetActive(false);
         }
     }
-
-
 }
