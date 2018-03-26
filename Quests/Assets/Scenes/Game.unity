@@ -2890,8 +2890,9 @@ GameObject:
   - component: {fileID: 675885033}
   - component: {fileID: 675885032}
   - component: {fileID: 675885031}
+  - component: {fileID: 675885034}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EndSponsorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2955,7 +2956,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3ebbf8db6b5ca35458451dcf1bbd9a3c, type: 3}
+      - m_Target: {fileID: 675885034}
         m_MethodName: End
         m_Mode: 1
         m_Arguments:
@@ -3001,6 +3002,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 675885029}
+--- !u!114 &675885034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675885029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebbf8db6b5ca35458451dcf1bbd9a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyCardTransform: {fileID: 0}
+  questCard: {fileID: 0}
+  stages: 0
+  stagesObjects: []
+  promptBox: {fileID: 0}
+  promptText: {fileID: 0}
 --- !u!1 &680234433
 GameObject:
   m_ObjectHideFlags: 0
