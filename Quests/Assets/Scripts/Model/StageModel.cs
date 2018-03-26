@@ -81,17 +81,11 @@ public class StageModel
     {
         //makes sure that the stage is not empty
         if (cardsPlayed.Count == 0)
-        {
             return false;
-        }
-            
 
         //if no foe and no test
         if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null || cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
-        {
             return false;
-        } 
-            
 
         return true;
     }

@@ -60,15 +60,34 @@ public class Sponsor : MonoBehaviour {
 
         return true;
     }
-    
-    public void End()
-    {
-        questCard = null;
-        stages = 0;
 
+    private bool validateStages()
+    {
+        bool valid = true;
         for (int i = 0; i < stages; i++)
         {
-            stagesObjects[i].SetActive(false);
+            if (!stageModels[i].validState())
+            {
+                promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
+                valid = false;
+            }
         }
+        return valid;
+    }
+
+    public void End()
+    {
+        Debug.Log("Currently in the sponsor end function");
+        if (validateStages())
+        {
+            questCard = null;
+            stages = 0;
+
+            for (int i = 0; i < stages; i++)
+            {
+                stagesObjects[i].SetActive(false);
+            }
+        }
+
     }
 }
