@@ -8,16 +8,18 @@ public class Sponsor : MonoBehaviour {
 
     public Transform storyCardTransform;
     public GameObject questCard;
-    public int stages;
-
+    public static int stages;
+            
     public GameObject[] stagesObjects;
-    public StageModel[] stageModels;
-
+    public static StageModel[] stageModels;
+            
     public GameObject promptBox;
     public Text promptText;
 
-    private void OnEnable()
+private void OnEnable()
     {
+        //storyCardTransform = new GameObject().transform;
+
         if (storyCardTransform.GetChild(0) != null)
         {
             questCard = storyCardTransform.GetChild(0).gameObject;
@@ -36,10 +38,16 @@ public class Sponsor : MonoBehaviour {
         {
             stageModels[i] = new StageModel();
         }
+
+        Debug.Log(promptText);
     }
 
     public void promptUser(string message)
     {
+        Debug.Log("the message is: " + message);
+      
+        promptBox.SetActive(true);
+        
         promptText.text = message;
         promptBox.SetActive(true);
     }
@@ -49,19 +57,24 @@ public class Sponsor : MonoBehaviour {
         AdventureCard currCard = d.gameObject.GetComponent<AdventureCard>();
 
         if (currCard.type == AdventureCard.Type.AMOUR || currCard.type == AdventureCard.Type.ALLY) return false;
+
         List<AdventureCard> currStage = new List<AdventureCard>(stagesObjects[id].GetComponentsInChildren<AdventureCard>());
+
         if ((currCard.type == AdventureCard.Type.WEAPON) && 
             ((currStage.Find(i => i.type == AdventureCard.Type.TEST) != null) || 
             !(currStage.Find(i => i.type == AdventureCard.Type.FOE) != null) || 
             (currStage.Find(i=>i.Name == currCard.Name) != null))) return false;
+
         if ((currCard.type == AdventureCard.Type.TEST) && (currStage.Count > 0)) return false;
+
         if (currStage.Find(i => i.type == AdventureCard.Type.TEST) != null) return false;
+
         if ((currCard.type == AdventureCard.Type.FOE) && currStage.Find(i => i.type == AdventureCard.Type.FOE) != null) return false;
 
         return true;
     }
 
-    private bool validateStages()
+    public void validateStages()
     {
         bool valid = true;
         for (int i = 0; i < stages; i++)
@@ -72,14 +85,14 @@ public class Sponsor : MonoBehaviour {
                 valid = false;
             }
         }
-        return valid;
+        //return valid;
     }
 
     public void End()
     {
-        Debug.Log("Currently in the sponsor end function");
-        if (validateStages())
-        {
+        Debug.Log("Currently in the sponsor end function, num stages is " + stages);
+        //if (validateStages())
+        //{
             questCard = null;
             stages = 0;
 
@@ -87,7 +100,7 @@ public class Sponsor : MonoBehaviour {
             {
                 stagesObjects[i].SetActive(false);
             }
-        }
+        //}
 
     }
 }
