@@ -106,6 +106,10 @@ private void OnEnable()
         else
         {
             Debug.Log("Currently all stages did not pass");
+            for (int i=0; i<stages; i++)
+            {
+                stageModels[i].RemoveAll();
+            }
         }
         return valid;
     }
@@ -113,6 +117,12 @@ private void OnEnable()
     public void End()
     {
         Debug.Log("Currently in the sponsor end function, num stages is " + stages);
+
+        for(int i=0; i<stages; i++)
+        {
+            List<AdventureCard> tmp = new List<AdventureCard>(stagesObjects[i].GetComponentsInChildren<AdventureCard>());
+            stageModels[i].addList(tmp);
+        }
         if (validateStages())
         {
             questCard = null;

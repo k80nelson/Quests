@@ -22,6 +22,11 @@ public class StageModel
         }
     }
 
+    public void RemoveAll()
+    {
+        cardsPlayed.Clear();
+    }
+
     public bool Contains(string name)
     {
         return (cardsPlayed.Find(i => i.Name == name) != null);
