@@ -92,27 +92,58 @@ private void OnEnable()
     {
         Debug.Log("In the validate stage method");
         bool valid = true;
+
+        int currentStageBP = 0;
+        int lastStageBP = -1;
+
         for (int i = 0; i < stages; i++)
         {
+            Debug.Log("Current value of I is : " + i);
             if (!stageModels[i].validState())
             {
                 promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
                 valid = false;
+                break;
             }
         }
 
-        if (valid)
+
+        for(int j = 0; j < stages; j++)
         {
-            Debug.Log("Currently all stages passed");
+            if (stageModels[j].containsTest())
+            {
+                Debug.Log("TEST FOUND");
+                continue;
+            }
+            else
+            {
+                currentStageBP = stageModels[j].totalBP();
+                Debug.Log("Stage " + (j + 1) + " BP is" + currentStageBP);
+                Debug.Log("Stage " + (j) + " BP is" + lastStageBP);
+                if (j == 0)
+                {
+                    lastStageBP = currentStageBP;
+                    continue;
+                }
+
+                if (currentStageBP <= lastStageBP)
+                {
+                    promptUser("There was a errer with stage " + (j + 1) + ". Please go back and fix it.");
+                    valid = false;
+                }
+                else lastStageBP = currentStageBP;
+            }
         }
-        else
-        {
+
+
+       if (!valid)
+       {
             Debug.Log("Currently all stages did not pass");
             for (int i=0; i<stages; i++)
             {
                 stageModels[i].RemoveAll();
             }
-        }
+       }
         return valid;
     }
 

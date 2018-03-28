@@ -84,19 +84,37 @@ public class StageModel
 
     public bool validState()
     {
+        Debug.Log("in validate state");
+
+        Debug.Log("The current card count is " + cardsPlayed.Count);
         //makes sure that the stage is not empty
         if (cardsPlayed.Count == 0)
             return false;
 
         //if no foe and no test
-        if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null || cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
+        if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null && cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
             return false;
 
+
+        Debug.Log("End validate state");
         return true;
     }
 
     public void Empty()
     {
         cardsPlayed.Clear();
+    }
+
+    //Gets the total BP of the stage
+    public int totalBP()
+    {
+        int total = 0;
+
+        foreach(AdventureCard card in cardsPlayed)
+        {
+            total += card.getBP();
+        }
+
+        return total;
     }
 }
