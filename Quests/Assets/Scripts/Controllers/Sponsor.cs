@@ -105,7 +105,7 @@ private void OnEnable()
             }
         }
 
-<<<<<<< HEAD
+
         for(int j = 0; j < stages; j++)
         {
             if (stageModels[j].containsTest())
@@ -134,21 +134,14 @@ private void OnEnable()
         }
 
 
-        if (valid)
-        {
-            Debug.Log("Currently all stages passed");
-        }
-        else
-=======
-        if (!valid)
->>>>>>> 7293f14bd0545671eb817c9a68c5559a60ff0ebd
-        {
+       if (!valid)
+       {
             Debug.Log("Currently all stages did not pass");
             for (int i=0; i<stages; i++)
             {
                 stageModels[i].RemoveAll();
             }
-        }
+       }
         return valid;
     }
 
