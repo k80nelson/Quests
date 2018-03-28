@@ -74,10 +74,14 @@ private void OnEnable()
         bool valid = true;
         for (int i = 0; i < stages; i++)
         {
+            Debug.Log("Current value of I is : " + i);
             if (!stageModels[i].validState())
             {
                 promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
                 valid = false;
+            }else
+            {
+                Debug.Log("Stage " + i + " was valid.");
             }
         }
 

@@ -79,6 +79,9 @@ public class StageModel
 
     public bool validState()
     {
+        Debug.Log("in validate state");
+
+        Debug.Log("The current card count is " + cardsPlayed.Count);
         //makes sure that the stage is not empty
         if (cardsPlayed.Count == 0)
             return false;
@@ -87,6 +90,8 @@ public class StageModel
         if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null || cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
             return false;
 
+
+        Debug.Log("in validate state");
         return true;
     }
 
