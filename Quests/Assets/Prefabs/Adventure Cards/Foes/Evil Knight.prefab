@@ -69,7 +69,10 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 30
   SpecialBids: 1
-  SpecialCards: []
+  SpecialCards:
+  - Journey through the Enchanted Forest
+  - Defend the Queen's Honor
+  - Search for the Holy Grail
 --- !u!114 &114604414971138662
 MonoBehaviour:
   m_ObjectHideFlags: 1

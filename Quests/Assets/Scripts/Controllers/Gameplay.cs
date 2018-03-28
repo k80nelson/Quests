@@ -34,6 +34,8 @@ public class Gameplay : MonoBehaviour
     public GameObject endTurn;
     public GameObject startTurn;
 
+    public List<StageModel> stageModels;
+
     private void Awake()
     {
         // Get the settings from the main menu
@@ -160,6 +162,11 @@ public class Gameplay : MonoBehaviour
         {
             Debug.Log(players.Count + " Players in tournament");
         }
+    }
+
+    public void storeSponsors(List<StageModel> models)
+    {
+        stageModels = new List<StageModel>(models);
     }
 
     public void CreateQuest(List<int> players)

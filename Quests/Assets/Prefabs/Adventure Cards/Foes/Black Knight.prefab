@@ -106,7 +106,10 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 35
   SpecialBids: 1
-  SpecialCards: []
+  SpecialCards:
+  - Rescue the Fair Maiden
+  - Defend the Queen's Honor
+  - Search for the Holy Grail
 --- !u!114 &114931654645418670
 MonoBehaviour:
   m_ObjectHideFlags: 1

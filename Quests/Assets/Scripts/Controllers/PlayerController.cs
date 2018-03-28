@@ -36,6 +36,16 @@ public class PlayerController : MonoBehaviour
         Destroy(card);
     }
 
+    public void removeCard(AdventureCard card)
+    {
+        model.removeCard(card);
+    }
+
+    public void removeCards(List<AdventureCard> cards)
+    {
+        foreach (AdventureCard card in cards) removeCard(card);
+    }
+
     public void addManyCards(List<GameObject> cards)
     {
         foreach(GameObject prefab in cards)
