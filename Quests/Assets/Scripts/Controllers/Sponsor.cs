@@ -20,8 +20,6 @@ public class Sponsor : MonoBehaviour {
 
 private void OnEnable()
     {
-        //storyCardTransform = new GameObject().transform;
-
         if (storyCardTransform.GetChild(0) != null)
         {
             questCard = storyCardTransform.GetChild(0).gameObject;
@@ -40,16 +38,12 @@ private void OnEnable()
         {
             stageModels[i] = new StageModel();
         }
-
-        Debug.Log(promptText);
     }
 
     public void promptUser(string message)
     {
         Debug.Log("the message is: " + message);
-      
-        promptBox.SetActive(true);
-        
+             
         promptText.text = message;
         promptBox.SetActive(true);
     }
@@ -92,8 +86,9 @@ private void OnEnable()
         return true;
     }
 
-    public void validateStages()
+    public bool validateStages()
     {
+        Debug.Log("In the validate stage method");
         bool valid = true;
         for (int i = 0; i < stages; i++)
         {
@@ -103,14 +98,23 @@ private void OnEnable()
                 valid = false;
             }
         }
-        //return valid;
+
+        if (valid)
+        {
+            Debug.Log("Currently all stages passed");
+        }
+        else
+        {
+            Debug.Log("Currently all stages did not pass");
+        }
+        return valid;
     }
 
     public void End()
     {
         Debug.Log("Currently in the sponsor end function, num stages is " + stages);
-        //if (validateStages())
-        //{
+        if (validateStages())
+        {
             questCard = null;
             stages = 0;
 
@@ -118,7 +122,7 @@ private void OnEnable()
             {
                 stagesObjects[i].SetActive(false);
             }
-        //}
+        }
 
     }
 }
