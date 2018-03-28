@@ -97,17 +97,11 @@ private void OnEnable()
             {
                 promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
                 valid = false;
-            }else
-            {
-                Debug.Log("Stage " + i + " was valid.");
+                break;
             }
         }
 
-        if (valid)
-        {
-            Debug.Log("Currently all stages passed");
-        }
-        else
+        if (!valid)
         {
             Debug.Log("Currently all stages did not pass");
             for (int i=0; i<stages; i++)
@@ -129,6 +123,7 @@ private void OnEnable()
         }
         if (validateStages())
         {
+            Debug.Log("All stages are valid");
             questCard = null;
             stages = 0;
 

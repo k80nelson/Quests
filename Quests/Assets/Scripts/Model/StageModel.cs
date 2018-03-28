@@ -92,11 +92,11 @@ public class StageModel
             return false;
 
         //if no foe and no test
-        if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null || cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
+        if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null && cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
             return false;
 
 
-        Debug.Log("in validate state");
+        Debug.Log("End validate state");
         return true;
     }
 
