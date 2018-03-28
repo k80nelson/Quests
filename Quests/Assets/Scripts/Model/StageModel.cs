@@ -104,4 +104,17 @@ public class StageModel
     {
         cardsPlayed.Clear();
     }
+
+    //Gets the total BP of the stage
+    public int totalBP()
+    {
+        int total = 0;
+
+        foreach(AdventureCard card in cardsPlayed)
+        {
+            total += card.getBP();
+        }
+
+        return total;
+    }
 }
