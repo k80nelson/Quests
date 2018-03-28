@@ -11,10 +11,21 @@ public class AdventureCard : BaseCard {
     public int Bids;
     public int SpecialBP;
     public int SpecialBids;
-    public BaseCard[] SpecialCards;
+    public List<string> SpecialCards;
 
     public int getBP()
     {
+        if (SpecialCards == null) return BP;
+        
+        GameObject stryCard = GameObject.FindGameObjectWithTag("CurrStory");
+        if (stryCard != null)
+        {
+            if (SpecialCards.Contains(stryCard.name))
+            {
+                return SpecialBP;
+            }
+        }
+
         return BP;
     }
 }

@@ -30,6 +30,7 @@ public class StoryDeckController : GameElement {
         GameObject prefab = model.draw();
         GameObject card = Instantiate(prefab, CardTransform);
         card.name = prefab.name;
+        card.tag = "CurrStory";
 
         if (card.GetComponent<QuestCard>() != null)
         {

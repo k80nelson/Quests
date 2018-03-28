@@ -112,7 +112,10 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 40
   SpecialBids: 1
-  SpecialCards: []
+  SpecialCards:
+  - Test of the Green Knight
+  - Search for the Holy Grail
+  - Defend the Queen's Honor
 --- !u!114 &114673450511913320
 MonoBehaviour:
   m_ObjectHideFlags: 1

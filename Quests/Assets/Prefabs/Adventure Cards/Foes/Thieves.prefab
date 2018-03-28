@@ -50,7 +50,9 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 5
   SpecialBids: 1
-  SpecialCards: []
+  SpecialCards:
+  - Defend the Queen's Honor
+  - Search for the Holy Grail
 --- !u!114 &114506601163070070
 MonoBehaviour:
   m_ObjectHideFlags: 1

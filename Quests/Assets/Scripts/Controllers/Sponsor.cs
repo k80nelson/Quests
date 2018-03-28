@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sponsor : MonoBehaviour {
+public class Sponsor : GameElement {
 
 
     public Transform storyCardTransform;
@@ -17,6 +17,8 @@ public class Sponsor : MonoBehaviour {
     public Text promptText;
 
     bool testFlag = false;
+
+    public GameObject[] questStagesObjects;
 
 private void OnEnable()
     {
@@ -123,16 +125,28 @@ private void OnEnable()
             List<AdventureCard> tmp = new List<AdventureCard>(stagesObjects[i].GetComponentsInChildren<AdventureCard>());
             stageModels[i].addList(tmp);
         }
-        if (validateStages())
-        {
+
+        //if (validateStages())
+        //{
             questCard = null;
             stages = 0;
-
+            List<AdventureCard> allCards = new List<AdventureCard>();
+            List<StageModel> allStages = new List<StageModel>();
             for (int i = 0; i < stages; i++)
             {
+                allCards.AddRange(stageModels[i].cardsPlayed);
+                foreach (Transform child in stagesObjects[i].transform)
+                {
+                    child.SetParent(questStagesObjects[i].transform);
+                }
                 stagesObjects[i].SetActive(false);
+                allStages.Add(stageModels[i]);
             }
-        }
 
+            this.game.players[this.game.currPlayer].GetComponent<PlayerController>().removeCards(allCards);
+            this.game.storeSponsors(allStages);
+            this.gameObject.SetActive(false);
+            this.game.setNextPlayer();
+        //}
     }
 }

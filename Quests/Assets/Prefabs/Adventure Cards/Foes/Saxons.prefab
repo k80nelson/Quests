@@ -125,7 +125,10 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 20
   SpecialBids: 1
-  SpecialCards: []
+  SpecialCards:
+  - Repel the Saxon Raiders
+  - search for the Holy Grail
+  - Defend the Queen's Honor
 --- !u!222 &222842684636669292
 CanvasRenderer:
   m_ObjectHideFlags: 1
