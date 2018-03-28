@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &92690477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &242974977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2890,7 +2890,6 @@ GameObject:
   - component: {fileID: 675885033}
   - component: {fileID: 675885032}
   - component: {fileID: 675885031}
-  - component: {fileID: 675885034}
   m_Layer: 5
   m_Name: EndSponsorButton
   m_TagString: Untagged
@@ -2912,11 +2911,11 @@ RectTransform:
   m_Father: {fileID: 2032172948}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1006, y: -573}
-  m_SizeDelta: {x: 160, y: 53.8}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 125, y: 45}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &675885031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,7 +2955,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 675885034}
+      - m_Target: {fileID: 1344120145}
         m_MethodName: End
         m_Mode: 1
         m_Arguments:
@@ -3002,23 +3001,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 675885029}
---- !u!114 &675885034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 675885029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebbf8db6b5ca35458451dcf1bbd9a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storyCardTransform: {fileID: 0}
-  questCard: {fileID: 0}
-  stages: 0
-  stagesObjects: []
-  promptBox: {fileID: 0}
-  promptText: {fileID: 0}
 --- !u!1 &680234433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,7 +4254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &965474598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5475,7 +5457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1344120141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,7 +5548,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyCardTransform: {fileID: 263686827}
   questCard: {fileID: 0}
-  stages: 0
   stagesObjects:
   - {fileID: 242974976}
   - {fileID: 965474597}
@@ -7799,7 +7780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1977595995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8001,7 +7982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1995455392
 RectTransform:
   m_ObjectHideFlags: 0
