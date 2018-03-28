@@ -101,12 +101,11 @@ private void OnEnable()
             {
                 promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
                 valid = false;
-            }else
-            {
-                Debug.Log("Stage " + i + " was valid.");
+                break;
             }
         }
 
+<<<<<<< HEAD
         for(int j = 0; j < stages; j++)
         {
             if (stageModels[j].containsTest())
@@ -140,6 +139,9 @@ private void OnEnable()
             Debug.Log("Currently all stages passed");
         }
         else
+=======
+        if (!valid)
+>>>>>>> 7293f14bd0545671eb817c9a68c5559a60ff0ebd
         {
             Debug.Log("Currently all stages did not pass");
             for (int i=0; i<stages; i++)
@@ -161,6 +163,7 @@ private void OnEnable()
         }
         if (validateStages())
         {
+            Debug.Log("All stages are valid");
             questCard = null;
             stages = 0;
 
