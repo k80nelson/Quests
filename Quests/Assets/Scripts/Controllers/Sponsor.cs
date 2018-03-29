@@ -109,6 +109,8 @@ private void OnEnable()
         }
 
 
+        //This loops through all the stages and checks the BP total of the stage
+        //It skips tests and will only pass this check if the stages have increasing BP
         for(int j = 0; j < stages; j++)
         {
             if (stageModels[j].containsTest())
@@ -119,8 +121,8 @@ private void OnEnable()
             else
             {
                 currentStageBP = stageModels[j].totalBP();
-                Debug.Log("Stage " + (j + 1) + " BP is" + currentStageBP);
-                Debug.Log("Stage " + (j) + " BP is" + lastStageBP);
+                Debug.Log("Stage " + (j + 1) + " BP is " + currentStageBP);
+                Debug.Log("Last Combat Stage BP is" + lastStageBP);
                 if (j == 0)
                 {
                     lastStageBP = currentStageBP;
