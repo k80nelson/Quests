@@ -6,7 +6,24 @@ using UnityEngine;
 public class Quest : MonoBehaviour  
 {
     int stages;
+    public Transform StoryCardTransform;
+    public QuestCard currQuest;
+    public SetupModel sponsorship;
 
+    public Transform[] stageObjects;
+
+
+    private void OnEnable()
+    {
+        currQuest = StoryCardTransform.GetComponentInChildren<QuestCard>();
+        stages = currQuest.stages;
+    }
+
+    public void addStages(SetupModel sponsorCards)
+    {
+        Debug.Log(stages + " stages were added to the Quest.");
+        sponsorship = sponsorCards;
+    }
 
     //Will clear the players Stage variable and move their allies to the variable in the player class
     //ONLY TO BE USED UPON QUESTS COMPLETION

@@ -164,7 +164,7 @@ private void OnEnable()
         {
             
             List<AdventureCard> allCards = new List<AdventureCard>();
-            List<StageModel> allStages = new List<StageModel>();
+            SetupModel sponsorship = new SetupModel();
             for (int i = 0; i < stages; i++)
             {
                 allCards.AddRange(stageModels[i].cardsPlayed);
@@ -174,11 +174,11 @@ private void OnEnable()
                     stagesObjects[i].transform.GetChild(0).SetParent(questStagesObjects[i].transform);
                 }
                 stagesObjects[i].SetActive(false);
-                allStages.Add(stageModels[i]);
+                sponsorship.Add(stageModels[i]);
             }
             
             game.players[game.currPlayer].GetComponent<PlayerController>().removeCards(allCards);
-            game.storeSponsors(allStages);
+            game.storeSponsors(sponsorship);
 
             questCard = null;
             stages = 0;

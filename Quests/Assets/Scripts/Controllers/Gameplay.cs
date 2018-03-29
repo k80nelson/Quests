@@ -34,7 +34,7 @@ public class Gameplay : MonoBehaviour
     public GameObject endTurn;
     public GameObject startTurn;
 
-    public List<StageModel> stageModels;
+    public SetupModel stageModels;
 
     private void Awake()
     {
@@ -164,9 +164,9 @@ public class Gameplay : MonoBehaviour
         }
     }
 
-    public void storeSponsors(List<StageModel> models)
+    public void storeSponsors(SetupModel models)
     {
-        stageModels = new List<StageModel>(models);
+        stageModels = new SetupModel(models);
     }
 
     public void CreateQuest(List<int> players)

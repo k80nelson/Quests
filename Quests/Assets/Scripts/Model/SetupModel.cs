@@ -13,6 +13,11 @@ public class SetupModel
         stageSetup = new List<StageModel>();
     }
 
+    public SetupModel(SetupModel model)
+    {
+        stageSetup = new List<StageModel>(model.stageSetup);
+    }
+
     //Returns the number of players involved in that quest
     //if it is 1, then there are no players and only the sponsor in the quest, meaning quest is over.
     public int Count
