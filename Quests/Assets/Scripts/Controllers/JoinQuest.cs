@@ -13,7 +13,6 @@ public class JoinQuest : MonoBehaviour {
 
     private void OnEnable()
     {
-        if (game == null) game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
 
         players = new List<int>();
         GameObject tmp = StoryCard.transform.GetChild(0).gameObject;
