@@ -179,6 +179,8 @@ public class Gameplay : MonoBehaviour
         else
         {
             Debug.Log(players.Count + " Players in Quest");
+            Quest quest = view.LoadQuest();
+            quest.addStages(stageModels);
         }
     }
 

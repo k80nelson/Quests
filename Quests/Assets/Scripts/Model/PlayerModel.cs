@@ -18,6 +18,28 @@ public class PlayerModel : MonoBehaviour
     public StageModel cardsPlayed4Quest;
     public List<AdventureCard> allies;
 
+    private void Awake()
+    {
+        allies = new List<AdventureCard>();
+        cardsPlayed4Quest = new StageModel();
+    }
+
+    public int getBP()
+    {
+        int total = calculateAllyBP();
+        return (total + bp);
+    }
+
+    public int calculateAllyBP()
+    {
+        int total = 0;
+        foreach (AdventureCard ally in allies)
+        {
+            total += ally.getBP();
+        }
+        return total;
+    }
+
     public int numCards
     {
         get

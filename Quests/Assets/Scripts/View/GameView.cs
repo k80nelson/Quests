@@ -8,7 +8,7 @@ public class GameView : MonoBehaviour {
     public GameObject JoinSponsor;
     public GameObject Sponsor;
     public GameObject JoinQuest;
-    public GameObject Quest;
+    public GameObject quest;
     public GameObject JoinTournament;
     public GameObject Tournament;
     public GameObject PlayerOverlay;
@@ -44,6 +44,12 @@ public class GameView : MonoBehaviour {
     {
 
         JoinQuest.SetActive(true);
+    }
+
+    public Quest LoadQuest()
+    {
+        quest.SetActive(true);
+        return quest.GetComponent<Quest>();
     }
 
     public void LoadSponsor()
