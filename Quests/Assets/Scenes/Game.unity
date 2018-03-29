@@ -8471,7 +8471,7 @@ MonoBehaviour:
   JoinSponsor: {fileID: 613211915}
   Sponsor: {fileID: 1344120140}
   JoinQuest: {fileID: 1185924082}
-  Quest: {fileID: 1693772482}
+  quest: {fileID: 1693772482}
   JoinTournament: {fileID: 680234433}
   Tournament: {fileID: 472994481}
   PlayerOverlay: {fileID: 587057603}
