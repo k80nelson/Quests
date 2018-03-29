@@ -8455,8 +8455,8 @@ MonoBehaviour:
     type: 2}
   PlayerStats: {fileID: 1558528416}
   view: {fileID: 1735234472}
-  endTurn: {fileID: 0}
-  startTurn: {fileID: 0}
+  endTurn: {fileID: 1346526177}
+  startTurn: {fileID: 1284076352}
 --- !u!114 &1735234472
 MonoBehaviour:
   m_ObjectHideFlags: 0
