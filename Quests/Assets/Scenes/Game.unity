@@ -8056,6 +8056,7 @@ GameObject:
   - component: {fileID: 1693772485}
   - component: {fileID: 1693772484}
   - component: {fileID: 1693772483}
+  - component: {fileID: 1693772487}
   m_Layer: 5
   m_Name: Quest
   m_TagString: Untagged
@@ -8140,6 +8141,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1693772487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1693772482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb9876f8e785d745b6ee3104cc0b080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 1735234471}
+  StoryCardTransform: {fileID: 263686827}
+  currQuest: {fileID: 0}
+  stageObjects: []
 --- !u!1 &1696656562
 GameObject:
   m_ObjectHideFlags: 0
