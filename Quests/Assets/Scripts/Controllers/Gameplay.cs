@@ -8,10 +8,22 @@ public class GameElement : MonoBehaviour
 {
     protected Gameplay game;
 
-    void Start()
+    void Awake()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        findGame();
     }
+
+    void OnEnable()
+    {
+        findGame();
+    }
+
+    void findGame()
+    {
+        if (GameObject.FindGameObjectWithTag("Game") != null) game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        else game = GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<Gameplay>();
+    }
+
 }
 
 public class Gameplay : MonoBehaviour
@@ -69,19 +81,29 @@ public class Gameplay : MonoBehaviour
         }
 
         //Game Rigging to Spawn a Quest card instantly
-        if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "Game")
+        if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('q');
         }
 
+<<<<<<< HEAD
         //Game Rigging to Spawn a Tournement card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
+=======
+        //Game Rigging to Spawn a Quest card instantly
+        if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "ActiveArea")
+>>>>>>> dffb01286364161f421267c9d9f9cc8eab4a3fa8
         {
             StoryDeck.gameRig('t');
         }
 
+<<<<<<< HEAD
         //Game Rigging to Spawn a Event card instantly
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
+=======
+        //Game Rigging to Spawn a Quest card instantly
+        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "ActiveArea")
+>>>>>>> dffb01286364161f421267c9d9f9cc8eab4a3fa8
         {
             StoryDeck.gameRig('e');
         }
@@ -205,6 +227,8 @@ public class Gameplay : MonoBehaviour
             Debug.Log(players.Count + " Players in Quest");
             Quest quest = view.LoadQuest();
             quest.addStages(stageModels);
+            quest.addPlayers(players);
+            quest.startQuest();
         }
     }
 

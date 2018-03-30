@@ -7,7 +7,6 @@ public class QuestCard : StoryCard
     public int stages;
     public override void Apply()
     {
-        GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().StartSponsor();
-        //GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().PromptQuest();
+        GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<Gameplay>().StartSponsor();
     }
 }

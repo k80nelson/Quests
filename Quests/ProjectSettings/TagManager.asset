@@ -23,6 +23,7 @@ TagManager:
   - SPONSOR
   - Overlay
   - Global
+  - ActiveArea
   layers:
   - Default
   - TransparentFX

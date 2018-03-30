@@ -4,12 +4,10 @@ using UnityEngine;
 
 
 //Next player(s) to complete a Quest reicieve 2 extra shields
-public class KingRecognition : MonoBehaviour
+public class KingRecognition : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
         play();
     }
 

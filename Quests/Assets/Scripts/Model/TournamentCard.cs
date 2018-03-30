@@ -8,7 +8,7 @@ public class TournamentCard : StoryCard {
 
     public override void Apply()
     {
-        GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>().PromptTournament();
+         GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<Gameplay>().PromptTournament();
     }
 	
 }

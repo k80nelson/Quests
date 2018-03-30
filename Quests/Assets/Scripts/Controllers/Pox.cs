@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //All other players lose one shield(if possible), drawer of this card is exempt
-public class Pox : MonoBehaviour
+public class Pox : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        
         play();
     }
 

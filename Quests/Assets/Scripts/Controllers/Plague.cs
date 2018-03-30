@@ -4,12 +4,11 @@ using UnityEngine;
 
 
 //Drawer loses 2 shields, if possible
-public class Plague : MonoBehaviour
+public class Plague : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        
         play();
     }
 
