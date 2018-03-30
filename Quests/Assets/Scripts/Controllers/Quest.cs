@@ -6,10 +6,16 @@ using UnityEngine.UI;
 
 public class Quest : GameElement
 {
-   
+
+    public GameObject amourPrefab;
+    
     public Transform StoryCardTransform;
     public QuestCard currQuest;
     public Transform cardArea;
+    public GameObject combat;
+    public GameObject bidding;
+    public Transform testCard;
+    public Transform inPlayTransform;
 
     private List<int> playerIds;
     private List<PlayerModel> players;
@@ -25,7 +31,8 @@ public class Quest : GameElement
     public stageType currStageType;
     int currStageId;
     public StageModel currStage;
-    public Text encounterText;
+    public Text stageTextFoe;
+    public Text stageTextTest;
 
     public GameObject prompt;
     public Text promptMessage;
@@ -75,21 +82,32 @@ public class Quest : GameElement
 
     public void setNextStage()
     {
+        activePlayer = -1;
         Debug.Log("[Quest.cs:setNextStage] Initializing stage " + (currStageId + 2));
         currStageId += 1;
-        if (currStageId >= numStages) end();
+        if (currStageId >= numStages)
+        {
+            endSuccess();
+            return;
+        }
         currStage = sponsorship.getStage(currStageId);
         if (currStage.containsFoe())
         {
+            counter = 0;
+            bidding.SetActive(false);
             Debug.Log("[Quest.cs:setNextStage] Stage " + (currStageId + 1)+" contains a Foe");
             currStageType = stageType.FOE;
-            encounterText.text = "A Foe is encountered!";
+            stageTextFoe.text = "Stage " + (currStageId + 1);
+            combat.SetActive(true);
         }
         else
         {
+            combat.SetActive(false);
             Debug.Log("[Quest.cs:setNextStage] Stage " + (currStageId + 1) + " contains a Test");
             currStageType = stageType.TEST;
-            encounterText.text = "A Test is encountered!";
+            stageTextTest.text = "Stage " + (currStageId + 1);
+            stageObjects[currStageId].GetChild(0).SetParent(testCard);
+            bidding.SetActive(true);
         }
     }
 
@@ -106,8 +124,38 @@ public class Quest : GameElement
     private void setNextPlayer()
     {
         activePlayer = (activePlayer + 1) % numPlayers;
-        Debug.Log("[Quest.cs:setNextPlayer] Setting active player to player " + (playerIds[activePlayer] + 1));
+        Debug.Log("[Quest.cs:setNextPlayer] Setting active player to player " + (playerIds[activePlayer] + 1) +" in stage " + (currStageId+1));
         game.setActivePlayer(playerIds[activePlayer]);
+
+        string tmp = "";
+        foreach (AdventureCard card in game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.cardsPlayed)
+        {
+            tmp += card.Name;
+        }
+
+        Debug.Log("[QUEST NEXT PLAYER] Player " + (game.activePlayer + 1) + " HAS CARDS " + tmp);
+        Debug.Log("CONTAINS AMOUR?: " + game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.containsAmour());
+        if (currStageType == stageType.FOE)
+        {
+            foreach (Transform child in inPlayTransform)
+            {
+                Destroy(child.gameObject);
+            }
+            List<GameObject> allies = game.players[game.activePlayer].GetComponent<PlayerController>().getAllies();
+            foreach (GameObject ally in allies)
+            {
+                Debug.Log("[Quest.cs:setNextPlayer] Player "+ (playerIds[activePlayer]+1)+" has allie(s) in play");
+                GameObject objtmp = Instantiate(ally, inPlayTransform);
+                objtmp.GetComponent<Draggable>().draggable = false;
+            }
+            if (game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.containsAmour())
+            {
+                Debug.Log("[Quest.cs:setNextPlayer] Player " + (playerIds[activePlayer] + 1) + " has amour in play");
+                GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
+                objtmp.GetComponent<Draggable>().draggable = false;
+            } 
+        }
+        
     }
 
     //Will clear the players Stage variable and move their allies to the variable in the player class
@@ -123,9 +171,11 @@ public class Quest : GameElement
     
 
     //Returns true for passing the stage, false for failing the stage
-    public bool compareBP(StageModel sponsor, StageModel player)
+    public bool compareBP(StageModel sponsor, PlayerModel player)
     {
-        if (player.totalBP() >= sponsor.totalBP()) return true;
+        int playerBP = player.getBP() + player.cardsPlayed4Quest.totalBP();
+
+        if (playerBP >= sponsor.totalBP()) return true;
         return false;
     }
 
@@ -140,11 +190,16 @@ public class Quest : GameElement
 
         if (card.type == AdventureCard.Type.FOE || card.type == AdventureCard.Type.TEST) return false;
 
-        if (card.type == AdventureCard.Type.AMOUR && players[activePlayer].cardsPlayed4Quest.containsAmour()) return false;
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+        if (card.type == AdventureCard.Type.AMOUR)
+        {
+            if (players[activePlayer].cardsPlayed4Quest.containsAmour()) return false;
+            if (cardsPlayed.Find(i => i.type == AdventureCard.Type.AMOUR) != null) return false;
+        }
         
         if (card.type == AdventureCard.Type.WEAPON)
         {
-            List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+            
             if (cardsPlayed.Find(i => i.Name == card.Name) != null) return false;
         }
 
@@ -159,11 +214,6 @@ public class Quest : GameElement
     
     public void playCards()
     {
-        counter += 1;
-        if (counter == numPlayers)
-        {
-            endStage();
-        }
         PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
 
@@ -173,21 +223,115 @@ public class Quest : GameElement
         {
             currPlayerCtrl.hideCard(card.gameObject);
         }
-        players[activePlayer].cardsPlayed4Quest.addList(cardsPlayed);
-        players[activePlayer].addAllies(cardsPlayed.FindAll(i => i.type == AdventureCard.Type.ALLY));
+        game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.addList(cardsPlayed);
         currPlayerCtrl.removeCards(cardsPlayed);
-        setNextPlayer();
+
+        string tmp = "";
+        foreach (AdventureCard card in game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.cardsPlayed)
+        {
+            tmp += card.Name;
+        }
+
+        Debug.Log("[QUEST PLAY CARDS] Player " + (game.activePlayer + 1) + " HAS CARDS " + tmp);
+
+        counter += 1;
+        if (counter == numPlayers)
+        {
+            endCombat();
+
+        }
+        else setNextPlayer();
+    }
+
+    public void findPassingPlayers()
+    {
+        List<PlayerModel> models = new List<PlayerModel>(players);
+        foreach(PlayerModel player in models)
+        {
+            PlayerController ctrl = player.GetComponent<PlayerController>();
+            if (compareBP(currStage, player))
+            {
+                Debug.Log("[Quest.cs:findPassingPlayers] player " + (player.index + 1) + " passed stage " + (currStageId + 1));
+                player.cardsPlayed4Quest.discardWeapons();
+                string tmp = "";
+                foreach (AdventureCard card in player.GetComponent<PlayerModel>().cardsPlayed4Quest.cardsPlayed)
+                {
+                    tmp += card.Name;
+                }
+
+                Debug.Log("[QUEST PASSING PLAYERS] Player " + (player.index + 1) + " HAS CARDS " + tmp);
+            }
+            else
+            {
+                Debug.Log("[Quest.cs:findPassingPlayers] player " + (player.index + 1) + " failed stage " + (currStageId + 1));
+                players.Remove(player);
+                playerIds.Remove(player.index);
+                numPlayers -= 1;
+                player.cardsPlayed4Quest.discardWeaponsNAmours();
+                player.cardsPlayed4Quest.Empty();
+            }
+            ctrl.saveHiddenAllies();
+            ctrl.clearHiddenCards();
+        }
+
+        if (numPlayers == 0) endFail();
+    }
+
+    public void endCombat()
+    {
+        findPassingPlayers();
+        setNextStage();
+        if (currStageId < numStages)
+        {
+            giveAdventureCards();
+            setNextPlayer();
+        }
     }
 
     public void endStage()
     {
         Debug.Log("[Quest.cs:endStage] Stage " + (currStageId + 1) + " complete");
+        
     }
 
-    public void end()
+    public void discardSponsor()
     {
-        Debug.Log("[Quest.cs:end] Quest Completed");
+        sponsorship.discardAll();
+        foreach(Transform obj in stageObjects)
+        {
+            foreach(Transform child in obj)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
+    public void endFail()
+    {
+        Debug.Log("[Quest.cs:endFail] All players have failed the Quest");
+        end();
+    }
+
+    public void endSuccess()
+    {
+        Debug.Log("[Quest.cs:endSuccess] Quest completed successfully");
+
+        foreach(PlayerModel player in players)
+        {
+            player.addShields(numStages);
+            player.cardsPlayed4Quest.discardWeaponsNAmours();
+            player.cardsPlayed4Quest.Empty();
+        }
+        end();
+    }
+
+    void end()
+    {
+        game.EndQuest(numStages, sponsorship.totalNumCards());
+        discardSponsor();
         game.view.EndQuest();
     }
-    
+
 }
+
+

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoinSponsor : MonoBehaviour
+public class JoinSponsor : GameElement
 {
-    public Gameplay game;
 
     public GameObject StoryCard;
     public GameObject card;

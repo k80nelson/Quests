@@ -34,7 +34,16 @@ public class StageModel
 
     public bool containsAmour()
     {
-        return (cardsPlayed.Find(i => i.type == AdventureCard.Type.AMOUR) != null);
+        bool tag = false;
+        for(int i=0;i<cardsPlayed.Count; i++)
+        {
+            if (cardsPlayed[i].type == AdventureCard.Type.AMOUR)
+            {
+                tag = true;
+                break;
+            }
+        }
+        return tag;
     }
 
     public bool containsTest()
@@ -52,6 +61,34 @@ public class StageModel
         return (cardsPlayed.Count == 0);
     }
 
+    public void discardWeaponsNAmours()
+    {
+        if (cardsPlayed == null) return;
+        List<AdventureCard> toRemove = new List<AdventureCard>();
+
+        for (int i = 0; i < cardsPlayed.Count; i++)
+        {
+            if (cardsPlayed[i].type == AdventureCard.Type.WEAPON || cardsPlayed[i].type == AdventureCard.Type.AMOUR)
+            {
+                GameObject.FindGameObjectWithTag("Discard").GetComponent<AdventureDeckModel>().discard(cardsPlayed[i]);
+                toRemove.Add(cardsPlayed[i]);
+            }
+        }
+
+        foreach(AdventureCard card in toRemove)
+        {
+            cardsPlayed.Remove(card);
+        }
+    }
+
+    public void discardAll()
+    {
+        foreach(AdventureCard card in cardsPlayed)
+        {
+            GameObject.FindGameObjectWithTag("Discard").GetComponent<AdventureDeckModel>().discard(card);
+        }
+    }
+
     //Adds one adventure card to the list
     public void Add(AdventureCard card)
     {
@@ -62,6 +99,7 @@ public class StageModel
     //Adds a list of adventure cards to the list
     public void addList(List<AdventureCard> cards)
     {
+        Debug.Log("[StageModel.cs:addList] Adding list of cards to players cards played");
         if (cards == null) cards = new List<AdventureCard>();
         this.cardsPlayed.AddRange(cards);
     }
@@ -73,17 +111,44 @@ public class StageModel
         cardsPlayed.Remove(card);
     }
 
-    //Will remove all weapons cards from the list, this can be used for removing the weapons at the end of each stage
-    public void RemoveWeapons()
+    public void discardWeapons()
     {
         if (cardsPlayed == null) return;
+        List<AdventureCard> toRemove = new List<AdventureCard>();
 
         for (int i = 0; i < cardsPlayed.Count; i++)
         {
             if (cardsPlayed[i].type == AdventureCard.Type.WEAPON)
             {
-                cardsPlayed.Remove(cardsPlayed[i]);
+                GameObject.FindGameObjectWithTag("Discard").GetComponent<AdventureDeckModel>().discard(cardsPlayed[i]);
+                toRemove.Add(cardsPlayed[i]);
             }
+        }
+
+        foreach (AdventureCard card in toRemove)
+        {
+            cardsPlayed.Remove(card);
+        }
+    }
+
+    //Will remove all weapons cards from the list, this can be used for removing the weapons at the end of each stage
+    public void RemoveWeapons()
+    {
+        if (cardsPlayed == null) return;
+        List<AdventureCard> toRemove = new List<AdventureCard>();
+
+        for (int i = 0; i < cardsPlayed.Count; i++)
+        {
+            if (cardsPlayed[i].type == AdventureCard.Type.WEAPON)
+            {
+                
+                toRemove.Add(cardsPlayed[i]);
+            }
+        }
+
+        foreach (AdventureCard card in toRemove)
+        {
+            cardsPlayed.Remove(card);
         }
     }
 

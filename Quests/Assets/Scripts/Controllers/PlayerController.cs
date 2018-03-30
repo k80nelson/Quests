@@ -31,23 +31,38 @@ public class PlayerController : MonoBehaviour
         Debug.Log("[PlayerController.cs:addCard] " + card.name + " added to player " + (model.index + 1));
     }
 
+    public List<GameObject> getAllies()
+    {
+        return view.getAllies();
+    }
+
     public void discardCard(GameObject card)
     {
         model.removeCard(card.GetComponent<AdventureCard>());
-        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " discarded from player " + (model.index + 1));
+        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " removed from player " + (model.index + 1));
         Destroy(card);
     }
 
     public void removeCard(AdventureCard card)
     {
         model.removeCard(card);
-        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " discarded from player " + (model.index + 1));
+        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " removed from player " + (model.index + 1));
     }
 
     public void hideCard(GameObject card)
     {
-        view.holdCard(card);
+        view.hideCard(card);
         Debug.Log("[PlayerController.cs:hideCard] " + card.name + " hidden in player " + (model.index + 1));
+    }
+
+    public void saveHiddenAllies()
+    {
+        view.saveHiddenAllies();
+    }
+
+    public void clearHiddenCards()
+    {
+        view.clearHiddenCards();
     }
 
     public void removeCards(List<AdventureCard> cards)
@@ -55,6 +70,20 @@ public class PlayerController : MonoBehaviour
         if (cards == null) return;
         Debug.Log("[PlayerController:removeCards] Removing " + cards.Count + " cards from player " + (model.index + 1));
         foreach (AdventureCard card in cards) removeCard(card);
+    }
+
+    public void AddAlly(GameObject card)
+    {
+        view.saveAlly(card);
+        model.addAlly(card.GetComponent<AdventureCard>());
+    }
+
+    public void AddAllies(List<GameObject> cards)
+    {
+        foreach (GameObject card in cards)
+        {
+            AddAlly(card);
+        }
     }
 
     public void addManyCards(List<GameObject> cards)

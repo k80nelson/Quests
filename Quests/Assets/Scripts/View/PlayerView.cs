@@ -13,6 +13,7 @@ public class PlayerView : MonoBehaviour {
 
     public GameObject cardView;
     public Transform cardStorage;
+    public Transform allyStorage;
     
 
     public void changeName(string name)
@@ -35,9 +36,41 @@ public class PlayerView : MonoBehaviour {
         if (cardsText != null) cardsText.text = "Cards:  " + cards;
     }
 
-    public void holdCard(GameObject card)
+    public void hideCard(GameObject card)
     {
         card.transform.SetParent(cardStorage);
+    }
+
+    public void saveHiddenAllies()
+    {
+        List<AdventureCard> cards = new List<AdventureCard>(cardStorage.GetComponentsInChildren<AdventureCard>()).FindAll(i => i.type == AdventureCard.Type.ALLY);
+        foreach(AdventureCard card in cards)
+        {
+            card.gameObject.transform.SetParent(allyStorage);
+        }
+    }
+    
+    public void clearHiddenCards()
+    {
+        foreach(Transform child in cardStorage)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void saveAlly(GameObject card)
+    {
+        card.transform.SetParent(allyStorage);
+    }
+
+    public List<GameObject> getAllies()
+    {
+        List<GameObject> ret = new List<GameObject>();
+        foreach(Transform child in allyStorage)
+        {
+            ret.Add(child.gameObject);
+        }
+        return ret;
     }
 
     public void turnOn()

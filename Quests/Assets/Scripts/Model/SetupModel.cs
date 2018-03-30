@@ -28,6 +28,25 @@ public class SetupModel
         }
     }
 
+    public void discardAll()
+    {
+        foreach(StageModel stage in stageSetup)
+        {
+            stage.discardAll();
+        }
+    }
+
+    public int totalNumCards()
+    {
+        int total = 0;
+        foreach(StageModel stage in stageSetup)
+        {
+            total += stage.Count;
+        }
+
+        return total;
+    }
+
     //Ability to add one players cards to the list, used for the players on the quest
     public void Add(StageModel stage)
     {
@@ -38,6 +57,7 @@ public class SetupModel
     //Ability to add a list of stages to the list, used for the sponsor for the quest
     public void addList(List<StageModel> stages)
     {
+        
         if (stageSetup == null) stageSetup = new List<StageModel>();
         this.stageSetup.AddRange(stages);
     }

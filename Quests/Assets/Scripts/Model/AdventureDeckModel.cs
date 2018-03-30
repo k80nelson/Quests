@@ -18,7 +18,22 @@ public class AdventureDeckModel : BaseDeckModel {
         discardDeck.Add(getIndex(card));
     }
 
-    
+    public void discard(AdventureCard card)
+    {
+        Debug.Log("[AdventureDeck.cs:discard] " + card.Name + " discarded");
+        discardDeck.Add(getIndex(card));
+    }
+
+    public void discard(List<AdventureCard> cards)
+    {
+        if (cards == null) return;
+        foreach (AdventureCard card in cards)
+        {
+            discard(card);
+        }
+    }
+
+
     void initialize()
     {
 
@@ -69,6 +84,12 @@ public class AdventureDeckModel : BaseDeckModel {
     {
         return prefabs.ToList<GameObject>().FindIndex(x => card.name.Contains(x.name));
     }
+
+    public int getIndex(AdventureCard card)
+    {
+        return prefabs.ToList<GameObject>().FindIndex(x => card.Name.Contains(x.name));
+    }
+
 
     void Awake()
     {

@@ -66,6 +66,11 @@ public class GameView : MonoBehaviour {
         Sponsor.tag = "ActiveArea";
     }
 
+    public void removeSponsor()
+    {
+        quest.GetComponent<Quest>().discardSponsor();
+    }
+
     public void EndSponsor()
     {
         setMainGame();

@@ -26,7 +26,7 @@ public class CourtCalled : GameElement
         //loops through all allies and find their allies
         for (int i = 0; i < players.Count; ++i)
         {
-            players[i].removeAllies();
+            game.AdventureDeck.discard(players[i].removeAllies());
         }
 
         Debug.Log("[CourtCalled.cs:play] Court Called to Camelot complete -> Every ally in play discarded");

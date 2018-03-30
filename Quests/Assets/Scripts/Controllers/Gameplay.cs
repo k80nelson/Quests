@@ -47,6 +47,7 @@ public class Gameplay : MonoBehaviour
     public GameObject startTurn;
 
     private SetupModel stageModels;
+    private int sponsorId;
 
     private void Awake()
     {
@@ -205,6 +206,13 @@ public class Gameplay : MonoBehaviour
         view.LoadJoinSponsor();
     }
 
+    public void EndQuest(int stages, int numCardsSponsor)
+    {
+        PlayerController ctrl = players[sponsorId].GetComponent<PlayerController>();
+        ctrl.addManyCards(AdventureDeck.drawMany(stages + numCardsSponsor));
+        setNextPlayer();
+    }
+
     public void CreateSponsor(int sponsor)
     {
         if (sponsor < 0)
@@ -234,14 +242,17 @@ public class Gameplay : MonoBehaviour
     public void storeSponsors(SetupModel models)
     {
         stageModels = new SetupModel(models);
+        sponsorId = activePlayer;
     }
-
+    
     public void CreateQuest(List<int> players)
     {
         if (players.Count == 0)
         {
+            int stages = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<QuestCard>().stages;
+            EndQuest(stages, stageModels.totalNumCards());
+            view.removeSponsor();
             StoryDeck.discard();
-            setNextPlayer();
         }
         else
         {

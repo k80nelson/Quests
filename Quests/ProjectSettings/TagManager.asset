@@ -24,6 +24,7 @@ TagManager:
   - Overlay
   - Global
   - ActiveArea
+  - Discard
   layers:
   - Default
   - TransparentFX

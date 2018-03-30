@@ -13,6 +13,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     GameObject placeHolder = null;
     LayoutElement layout = null;
     RectTransform rect = null;
+    public bool draggable = true;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData data)
     {
+        if (!draggable) return;
         returnParent = this.transform.parent;
         setPlaceHolder();
         this.transform.SetParent(GameObject.FindGameObjectWithTag("ActiveArea").transform);
@@ -30,12 +32,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData data)
     {
+        if (!draggable) return;
         this.transform.position = data.position;
         adjustPlaceHolder();
     }
 
     public void OnEndDrag(PointerEventData data)
     {
+        if (!draggable) return;
         this.transform.SetParent(returnParent);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         transform.SetSiblingIndex(placeHolder.transform.GetSiblingIndex());

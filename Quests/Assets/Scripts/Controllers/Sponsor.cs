@@ -11,6 +11,7 @@ public class Sponsor : GameElement {
     public static int stages;
             
     public GameObject[] stagesObjects;
+    public Transform[] stagesTransforms;
     public static StageModel[] stageModels;
             
     public GameObject promptBox;
@@ -60,7 +61,7 @@ private void OnEnable()
 
         if (currCard.type == AdventureCard.Type.AMOUR || currCard.type == AdventureCard.Type.ALLY) return false;
 
-        List<AdventureCard> currStage = new List<AdventureCard>(stagesObjects[id].GetComponentsInChildren<AdventureCard>());
+        List<AdventureCard> currStage = new List<AdventureCard>(stagesTransforms[id].GetComponentsInChildren<AdventureCard>());
 
         if (currStage.Find(i => i.type == AdventureCard.Type.TEST) != null) return false;
 
@@ -138,7 +139,7 @@ private void OnEnable()
         
         for(int i=0; i<stages; i++)
         {
-            List<AdventureCard> tmp = new List<AdventureCard>(stagesObjects[i].GetComponentsInChildren<AdventureCard>());
+            List<AdventureCard> tmp = new List<AdventureCard>(stagesTransforms[i].GetComponentsInChildren<AdventureCard>());
             stageModels[i].addList(tmp);
         }
         
@@ -150,10 +151,10 @@ private void OnEnable()
             for (int i = 0; i < stages; i++)
             {
                 allCards.AddRange(stageModels[i].cardsPlayed);
-                int numcards = stagesObjects[i].transform.childCount;
+                int numcards = stagesTransforms[i].childCount;
                 for (int j=0; j<numcards; j++)
                 {
-                    stagesObjects[i].transform.GetChild(0).SetParent(questStagesObjects[i].transform);
+                    stagesTransforms[i].GetChild(0).SetParent(questStagesObjects[i].transform);
                 }
                 stagesObjects[i].SetActive(false);
                 sponsorship.Add(stageModels[i]);

@@ -73,7 +73,7 @@ public class PlayerModel : MonoBehaviour
         return new List<AdventureCard>(allies);
     }
 
-    public void addAllies(AdventureCard card)
+    public void addAlly(AdventureCard card)
     {
         if (card == null) return;
         if(card.type == AdventureCard.Type.ALLY) allies.Add(card.GetComponent<AdventureCard>());
@@ -90,11 +90,12 @@ public class PlayerModel : MonoBehaviour
         
     }
 
-    public void removeAllies()
+    public List<AdventureCard> removeAllies()
     {
         //removes all allies for the player
+        List<AdventureCard> ret = new List<AdventureCard>(allies);
         allies.Clear();
-
+        return ret;
     }
 
     public List<AdventureCard> getCards()
