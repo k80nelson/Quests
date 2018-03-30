@@ -15,6 +15,7 @@ public class JoinSponsor : MonoBehaviour
     
     private void OnEnable()
     {
+        Debug.Log("[JoinSponsor.cs:OnEnable] Initializing Join Sponsor");
         GameObject tmp = StoryCard.transform.GetChild(0).gameObject;
         card = Instantiate(tmp, parentTransform);
         card.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
@@ -22,10 +23,12 @@ public class JoinSponsor : MonoBehaviour
         card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         counter = 0;
         sponsor = -1;
+        Debug.Log("[JoinSponsor.cs:OnEnable] Initialization complete");
     }
 
     public void yes()
     {
+        Debug.Log("[JoinSponsor.cs:yes] Quest sponsored by player " + (game.activePlayer + 1));
         sponsor = game.activePlayer;
         end();
     }
@@ -33,6 +36,8 @@ public class JoinSponsor : MonoBehaviour
     public void no()
     {
         counter += 1;
+
+        Debug.Log("[JoinSponsor.cs:no] Quest sponsorship refused by player " + (game.activePlayer + 1));
         if (counter == game.numPlayers)
         {
             end();
@@ -45,13 +50,10 @@ public class JoinSponsor : MonoBehaviour
 
     void end()
     {
+        Debug.Log("[JoinSponsor.cs:end] Join Sponsor complete");
+
         Destroy(card.gameObject);
         game.CreateSponsor(sponsor);
         game.view.EndJoinSponsor();
-
-
-        // this is where we whill have to activate the droppable area for the players cards that they want to sponsor and activates a button.
-        //also would need to have a button that allows the sponsor to move to the next stage.. 
-        
     }
 }

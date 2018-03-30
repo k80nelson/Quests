@@ -32,6 +32,7 @@ public class Quest : GameElement
 
     private void OnEnable()
     {
+        Debug.Log("[Quest.cs:OnEnable] Initializing Quest");
         currQuest = StoryCardTransform.GetComponentInChildren<QuestCard>();
         players = new List<PlayerModel>();
         numStages = currQuest.stages;
@@ -41,12 +42,13 @@ public class Quest : GameElement
 
     public void addStages(SetupModel sponsorCards)
     {
-        Debug.Log(numStages + " stages were added to the Quest.");
+        Debug.Log("[Quest.cs:addStages] Adding sponsored cards to Quest");
         sponsorship = sponsorCards;
     }
     
     public void addPlayers(List<int> players)
     {
+        Debug.Log("[Quest.cs:addPlayers] Adding joined players to Quest");
         this.playerIds = players;
         this.numPlayers = players.Count;
     }
@@ -54,15 +56,15 @@ public class Quest : GameElement
     public void startQuest()
     {
         setUpPlayers();
-        
         giveAdventureCards();
         setNextStage();
         setNextPlayer();
-        
+        Debug.Log("[Quest.cs:startQuest] Initialization complete");
     }
 
     private void setUpPlayers()
     {
+        Debug.Log("[Quest.cs:setUpPlayers] Preparing players for quest");
         foreach(int i in playerIds)
         {
             PlayerModel tmp = game.players[i].GetComponent<PlayerModel>();
@@ -73,16 +75,19 @@ public class Quest : GameElement
 
     public void setNextStage()
     {
+        Debug.Log("[Quest.cs:setNextStage] Initializing stage " + (currStageId + 2));
         currStageId += 1;
         if (currStageId >= numStages) end();
         currStage = sponsorship.getStage(currStageId);
         if (currStage.containsFoe())
         {
+            Debug.Log("[Quest.cs:setNextStage] Stage " + (currStageId + 1)+" contains a Foe");
             currStageType = stageType.FOE;
             encounterText.text = "A Foe is encountered!";
         }
         else
         {
+            Debug.Log("[Quest.cs:setNextStage] Stage " + (currStageId + 1) + " contains a Test");
             currStageType = stageType.TEST;
             encounterText.text = "A Test is encountered!";
         }
@@ -94,23 +99,24 @@ public class Quest : GameElement
         {
             game.addCardsToPlayer(player, 1);
         }
+
+        Debug.Log("[Quest.cs:giveAdventureCards] added 1 adventure card to each player in Quest");
     }
 
     private void setNextPlayer()
     {
         activePlayer = (activePlayer + 1) % numPlayers;
+        Debug.Log("[Quest.cs:setNextPlayer] Setting active player to player " + (playerIds[activePlayer] + 1));
         game.setActivePlayer(playerIds[activePlayer]);
     }
 
     //Will clear the players Stage variable and move their allies to the variable in the player class
     //ONLY TO BE USED UPON QUESTS COMPLETION
-    public void clearPlayers(PlayerModel[] players)
+    public void clearPlayers()
     {
-        for (int i = 0; i < players.Length; i++)
+        Debug.Log("[Quest.cs:clearPlayers] Clearing players cards for end of Quest");
+        for (int i = 0; i < players.Count; i++)
         {
-            players[i].cardsPlayed4Quest.RemoveWeapons();
-            //players[i].cardsPlayed4Quest.Remove(AdventureCard Amour); This will remove the amour card played if they played one
-            players[i].addAllies(players[i].cardsPlayed4Quest.cardsPlayed); //At this point all that should be left in the list are allies
             players[i].cardsPlayed4Quest.Empty();
         }
     }
@@ -160,7 +166,10 @@ public class Quest : GameElement
         }
         PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
-        foreach(AdventureCard card in cardsPlayed)
+
+        Debug.Log("[Quest.cs:playCards] Player " + (game.activePlayer + 1) + " played " + cardsPlayed.Count + " cards in stage " + (currStageId + 1));
+
+        foreach (AdventureCard card in cardsPlayed)
         {
             currPlayerCtrl.hideCard(card.gameObject);
         }
@@ -172,12 +181,12 @@ public class Quest : GameElement
 
     public void endStage()
     {
-        Debug.Log("End of Stage " + (currStageId + 1));
+        Debug.Log("[Quest.cs:endStage] Stage " + (currStageId + 1) + " complete");
     }
 
     public void end()
     {
-        Debug.Log("Ended Quest");
+        Debug.Log("[Quest.cs:end] Quest Completed");
         game.view.EndQuest();
     }
     

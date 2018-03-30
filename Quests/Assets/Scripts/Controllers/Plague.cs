@@ -16,5 +16,7 @@ public class Plague : GameElement
     {
         PlayerModel p = game.players[game.currPlayer].GetComponent<PlayerModel>();
         p.removeShields(2);
+
+        Debug.Log("[Plague.cs:play] Plague complete -> Player " + (game.currPlayer + 1) + " lost 2 shields");
     }
 }

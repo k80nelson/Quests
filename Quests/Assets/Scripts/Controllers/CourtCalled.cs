@@ -28,5 +28,7 @@ public class CourtCalled : GameElement
         {
             players[i].removeAllies();
         }
+
+        Debug.Log("[CourtCalled.cs:play] Court Called to Camelot complete -> Every ally in play discarded");
     }
 }

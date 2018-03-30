@@ -4,15 +4,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DiscardController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class DiscardController : GameElement, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public AdventureDeckModel deck;
-    public Gameplay game;
     public GameObject toRemove;
     public GameObject tmpCard;
     public GameObject confirm;
     private Transform orig;
-    public Transform discard;
+    public Transform discardTransform;
     
     public virtual void OnPointerEnter(PointerEventData data)
     {
@@ -26,7 +25,7 @@ public class DiscardController : MonoBehaviour, IDropHandler, IPointerEnterHandl
         {
             toRemove = d.gameObject;
             confirm.SetActive(true);
-            tmpCard = Instantiate(toRemove, discard);
+            tmpCard = Instantiate(toRemove, discardTransform);
             tmpCard.transform.localPosition = new Vector2(0, 0);
 
         }

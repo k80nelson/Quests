@@ -22,6 +22,8 @@ public class Sponsor : GameElement {
 
 private void OnEnable()
     {
+        Debug.Log("[Sponsor.cs:OnEnable] Initializing Sponsor"); 
+
         if (storyCardTransform.GetChild(0) != null)
         {
             questCard = storyCardTransform.GetChild(0).gameObject;
@@ -40,12 +42,12 @@ private void OnEnable()
         {
             stageModels[i] = new StageModel();
         }
+
+        Debug.Log("[Sponsor.cs:OnEnable] Initialization complete");
     }
 
     public void promptUser(string message)
     {
-        Debug.Log("the message is: " + message);
-             
         promptText.text = message;
         promptBox.SetActive(true);
     }
@@ -90,7 +92,7 @@ private void OnEnable()
 
     public bool validateStages()
     {
-        Debug.Log("In the validate stage method");
+        Debug.Log("[Sponsor.cs:validateStages] Validating stage setup");
         bool valid = true;
 
         int currentStageBP = 0;
@@ -98,49 +100,31 @@ private void OnEnable()
 
         for (int i = 0; i < stages; i++)
         {
-            Debug.Log("Current value of I is : " + i);
+            Debug.Log("[Sponsor.cs:validateStages] Validating stage " + (i+1));
             if (!stageModels[i].validState())
             {
-                promptUser("There was a errer with stage " + (i + 1) + ". Please go back and fix it.");
+                Debug.Log("[Sponsor.cs:validateStages] Error in stage " + (i+1)+": not in valid state");
+                promptUser("Stage "+ (i+1) + " is in an invalid state. Weapons can only be placed with a Foe.");
                 valid = false;
                 break;
             }
-        }
 
+            if (stageModels[i].containsTest()) continue;
 
-        //This loops through all the stages and checks the BP total of the stage
-        //It skips tests and will only pass this check if the stages have increasing BP
-        for(int j = 0; j < stages; j++)
-        {
-            if (stageModels[j].containsTest())
+            currentStageBP = stageModels[i].totalBP();
+
+            if (currentStageBP <= lastStageBP)
             {
-                Debug.Log("TEST FOUND");
-                continue;
+                Debug.Log("[Sponsor.cs:validateStages] Error in stage " + (i + 1)+ ": stage not greater than stage" + i);
+                promptUser("Stage " + (i + 1) + " contains equal or less BP than stage " + i + ".");
+                valid = false;
             }
-            else
-            {
-                currentStageBP = stageModels[j].totalBP();
-                Debug.Log("Stage " + (j + 1) + " BP is " + currentStageBP);
-                Debug.Log("Last Combat Stage BP is" + lastStageBP);
-                if (j == 0)
-                {
-                    lastStageBP = currentStageBP;
-                    continue;
-                }
-
-                if (currentStageBP <= lastStageBP)
-                {
-                    promptUser("There was a errer with stage " + (j + 1) + ". Please go back and fix it.");
-                    valid = false;
-                }
-                else lastStageBP = currentStageBP;
-            }
+            else lastStageBP = currentStageBP;
         }
-
-
+        
        if (!valid)
        {
-            Debug.Log("Currently all stages did not pass");
+            Debug.Log("[Sponsor.cs:validateStages] Stage validation failed");
             for (int i=0; i<stages; i++)
             {
                 stageModels[i].RemoveAll();
@@ -151,8 +135,7 @@ private void OnEnable()
 
     public void End()
     {
-        Debug.Log("Currently in the sponsor end function, num stages is " + stages);
-
+        
         for(int i=0; i<stages; i++)
         {
             List<AdventureCard> tmp = new List<AdventureCard>(stagesObjects[i].GetComponentsInChildren<AdventureCard>());
@@ -161,7 +144,7 @@ private void OnEnable()
         
         if (validateStages())
         {
-            
+            Debug.Log("[Sponsor.cs:end] Validation passed");
             List<AdventureCard> allCards = new List<AdventureCard>();
             SetupModel sponsorship = new SetupModel();
             for (int i = 0; i < stages; i++)
@@ -176,15 +159,18 @@ private void OnEnable()
                 sponsorship.Add(stageModels[i]);
             }
 
-            if (game == null) Debug.Log("issue~");
+            Debug.Log("[Sponsor.cs:end] Removing sponsor's played cards");
             game.players[game.currPlayer].GetComponent<PlayerController>().removeCards(allCards);
             game.storeSponsors(sponsorship);
 
             questCard = null;
             stages = 0;
+
+            Debug.Log("[Sponsor.cs:end] Sponsorship complete");
             game.view.EndSponsor();
             game.PromptQuest();
             game.setNextPlayer();
+
         }
     }
 }

@@ -28,32 +28,41 @@ public class PlayerController : MonoBehaviour
         GameObject newCard = Instantiate(card, cardTransform);
         newCard.name = card.name;
         model.addCard(newCard);
+        Debug.Log("[PlayerController.cs:addCard] " + card.name + " added to player " + (model.index + 1));
     }
 
     public void discardCard(GameObject card)
     {
         model.removeCard(card.GetComponent<AdventureCard>());
+        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " discarded from player " + (model.index + 1));
         Destroy(card);
     }
 
     public void removeCard(AdventureCard card)
     {
         model.removeCard(card);
+        Debug.Log("[PlayerController.cs:removeCard] " + card.name + " discarded from player " + (model.index + 1));
     }
 
     public void hideCard(GameObject card)
     {
         view.holdCard(card);
+        Debug.Log("[PlayerController.cs:hideCard] " + card.name + " hidden in player " + (model.index + 1));
     }
 
     public void removeCards(List<AdventureCard> cards)
     {
+        if (cards == null) return;
+        Debug.Log("[PlayerController:removeCards] Removing " + cards.Count + " cards from player " + (model.index + 1));
         foreach (AdventureCard card in cards) removeCard(card);
     }
 
     public void addManyCards(List<GameObject> cards)
     {
-        foreach(GameObject prefab in cards)
+        if (cards == null) return;
+
+        Debug.Log("[PlayerController:addManyCards] Adding " + cards.Count + " cards to player " + (model.index + 1));
+        foreach (GameObject prefab in cards)
         {
             addCard(prefab);
         }

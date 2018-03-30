@@ -51,5 +51,7 @@ public class QueensFavor : GameElement
             }
                 
         }
+
+        Debug.Log("[QueensFavor:play] Queen's Favor complete -> lowest ranked players add 2 adventure cards");
     }
 }

@@ -46,10 +46,11 @@ public class Gameplay : MonoBehaviour
     public GameObject endTurn;
     public GameObject startTurn;
 
-    public SetupModel stageModels;
+    private SetupModel stageModels;
 
     private void Awake()
     {
+        Debug.Log("[Gameplay.cs:Awake] Starting game initialization...");
         // Get the settings from the main menu
         GameObject found = GameObject.FindGameObjectWithTag("Global");
         if (found != null)
@@ -71,6 +72,8 @@ public class Gameplay : MonoBehaviour
         initPlayers();
         setActivePlayer(nextPlayer());
         setCurrPlayer(nextPlayer());
+
+        Debug.Log("[Gameplay.cs:Start] Game initialization complete");
     }
 
     private void Update()
@@ -128,7 +131,7 @@ public class Gameplay : MonoBehaviour
     {
         for (int i = 0; i < numPlayers; i++)
         {
-            Debug.Log("Instantiating Player " + (i + 1));
+            
             GameObject player = Instantiate(playerPrefab, this.transform);
             GameObject stats = Instantiate(StatsPrefab, PlayerStats);
 
@@ -150,6 +153,7 @@ public class Gameplay : MonoBehaviour
             player.GetComponent<PlayerModel>().cardsPlayed4Quest = new StageModel();
 
             players.Add(player);
+            Debug.Log("[Gamplay.cs:initPlayers] Player " + (i + 1) + " initialized with 12 cards");
         }
 
     }
@@ -158,6 +162,7 @@ public class Gameplay : MonoBehaviour
     {
         PlayerController player = players[id].GetComponent<PlayerController>();
         player.addManyCards(AdventureDeck.drawMany(numCards));
+        Debug.Log("[Gameplay.cs:addCardsToPlayer] " + numCards + " cards added to player " + (id + 1));
     }
 
     public int nextPlayer()
@@ -171,17 +176,20 @@ public class Gameplay : MonoBehaviour
         activePlayer = player;
         players[player].GetComponent<PlayerView>().turnOn();
         view.ShowPlayerOverlay(player + 1);
+        Debug.Log("[Gameplay.cs:setActivePlayer] Active player set to player " + (player + 1));
     }
 
     public void setCurrPlayer(int player)
     {
         currPlayer = player;
+        Debug.Log("[Gameplay.cs:setCurrPlayer] Current player set to player " + (player + 1));
     }
 
     public void setNextPlayer()
     {
         setActivePlayer(nextPlayer());
         currPlayer = activePlayer;
+        Debug.Log("[Gameplay.cs:setNextPlayer] Current and Active player set to player " + (currPlayer + 1));
     }
 
     public void PlayStoryCard()
@@ -199,7 +207,6 @@ public class Gameplay : MonoBehaviour
 
     public void CreateSponsor(int sponsor)
     {
-        Debug.Log("The current active player is " + activePlayer + " in create sponsor");
         if (sponsor < 0)
         {
             StoryDeck.discard();
@@ -207,7 +214,6 @@ public class Gameplay : MonoBehaviour
         }
         else
         {
-            Debug.Log("Quest Sponsored by Player " + (sponsor + 1));
             view.LoadSponsor();
         }
     }
@@ -239,7 +245,6 @@ public class Gameplay : MonoBehaviour
         }
         else
         {
-            Debug.Log(players.Count + " Players in Quest");
             Quest quest = view.LoadQuest();
             quest.addStages(stageModels);
             quest.addPlayers(players);

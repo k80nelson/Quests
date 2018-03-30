@@ -27,7 +27,6 @@ public class StoryDeckController : GameElement {
 
     public void draw()
     {
-        
         GameObject prefab = model.draw();
         GameObject card = Instantiate(prefab, CardTransform);
         card.name = prefab.name;
@@ -43,12 +42,16 @@ public class StoryDeckController : GameElement {
             game.state.currCard = card.GetComponent<TournamentCard>();
         }
 
+        Debug.Log("[StoryDeckController.cs:draw] Story card drawn: " + card.name);
         game.PlayStoryCard();
     }
 
     public void discard()
     {
         if (CardTransform.transform.childCount == 0) return;
+
+
+        Debug.Log("[StoryDeckController.cs::discard] Story card discarded");
         Destroy(CardTransform.transform.GetChild(0).gameObject);
         game.state.currCard = null; 
     }
@@ -92,6 +95,5 @@ public class StoryDeckController : GameElement {
         }
 
         game.PlayStoryCard();
-
     }
 }

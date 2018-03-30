@@ -89,19 +89,22 @@ public class StageModel
 
     public bool validState()
     {
-        Debug.Log("in validate state");
-
-        Debug.Log("The current card count is " + cardsPlayed.Count);
         //makes sure that the stage is not empty
         if (cardsPlayed.Count == 0)
+        {
+            Debug.Log("[StageModel.cs:validState] Error in stage: No cards played");
             return false;
+        }
+            
 
         //if no foe and no test
         if (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) == null && cardsPlayed.Find(i => i.type == AdventureCard.Type.FOE) == null)
+        {
+            Debug.Log("[StageModel.cs:validState] Error in stage: Contains only weapons");
             return false;
+        }
 
-
-        Debug.Log("End validate state");
+        Debug.Log("[StageModel.cs:validState] Stage is in a valid state");
         return true;
     }
 

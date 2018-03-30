@@ -67,6 +67,8 @@ public class ChivalrousDeed : GameElement
                     lowest.Add(players[cur]);
                 }
             }
+
+            Debug.Log("[ChivalrousDeed.cs:play] Chivalrous Deed complete -> 3 shields added to lowest " + lowest.Count + " players");
         }
 
         //adds 3 shields to the lowest player

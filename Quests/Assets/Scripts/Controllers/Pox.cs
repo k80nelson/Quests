@@ -38,5 +38,7 @@ public class Pox : GameElement
                 players[i].removeShields(1);
             }
         }
+
+        Debug.Log("[Pox.cs:play] Pox complete -> All players except player " + (game.currPlayer + 1) + "lost 1 shield");
     }
 }
