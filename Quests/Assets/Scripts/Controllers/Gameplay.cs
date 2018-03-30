@@ -86,24 +86,21 @@ public class Gameplay : MonoBehaviour
             StoryDeck.gameRig('q');
         }
 
-<<<<<<< HEAD
+
         //Game Rigging to Spawn a Tournement card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
-=======
+
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "ActiveArea")
->>>>>>> dffb01286364161f421267c9d9f9cc8eab4a3fa8
         {
             StoryDeck.gameRig('t');
         }
 
-<<<<<<< HEAD
         //Game Rigging to Spawn a Event card instantly
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
-=======
+
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "ActiveArea")
->>>>>>> dffb01286364161f421267c9d9f9cc8eab4a3fa8
         {
             StoryDeck.gameRig('e');
         }
