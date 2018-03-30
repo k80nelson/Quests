@@ -13,7 +13,7 @@ public class GameElement : MonoBehaviour
         findGame();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         findGame();
     }
@@ -24,10 +24,6 @@ public class GameElement : MonoBehaviour
         else game = GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<Gameplay>();
     }
 
-    void Update()
-    {
-        if (game == null) findGame();
-    }
 }
 
 public class Gameplay : MonoBehaviour
@@ -85,19 +81,19 @@ public class Gameplay : MonoBehaviour
         }
 
         //Game Rigging to Spawn a Quest card instantly
-        if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "Game")
+        if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('q');
         }
 
         //Game Rigging to Spawn a Quest card instantly
-        if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
+        if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('t');
         }
 
         //Game Rigging to Spawn a Quest card instantly
-        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
+        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('e');
         }

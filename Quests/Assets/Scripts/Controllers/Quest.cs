@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Quest : MonoBehaviour  
+public class Quest : GameElement
 {
-
-    public Gameplay game;
-
+   
     public Transform StoryCardTransform;
     public QuestCard currQuest;
+    public Transform cardArea;
 
     private List<int> players;
     private int activePlayer;
@@ -61,6 +60,7 @@ public class Quest : MonoBehaviour
             players[i].cardsPlayed4Quest.Empty();
         }
     }
+    
 
     //Returns true for passing the stage, false for failing the stage
     public bool compareBP(StageModel sponsor, StageModel player)
@@ -71,6 +71,9 @@ public class Quest : MonoBehaviour
 
     public bool validateCard(AdventureCard card)
     {
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+
+
         return true;
     }
 
