@@ -42,6 +42,11 @@ public class SetupModel
         this.stageSetup.AddRange(stages);
     }
 
+    public StageModel getStage(int index)
+    {
+        return stageSetup[index];
+    }
+
     //Remove one stage from the list, this can be used to remove one player from the list of stages if they lose a quest
     public void Remove(StageModel stage)
     {

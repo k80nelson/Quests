@@ -75,12 +75,13 @@ public class PlayerModel : MonoBehaviour
 
     public void addAllies(AdventureCard card)
     {
-        if(card.type == AdventureCard.Type.ALLY)
-         allies.Add(card.GetComponent<AdventureCard>());
+        if (card == null) return;
+        if(card.type == AdventureCard.Type.ALLY) allies.Add(card.GetComponent<AdventureCard>());
     }
 
     public void addAllies(List<AdventureCard> cards)
     {
+        if (cards == null) return;
         for(int i = 0; i < cards.Count; ++i)
         {
             if (cards[i].type == AdventureCard.Type.ALLY)

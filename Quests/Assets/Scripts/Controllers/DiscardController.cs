@@ -9,7 +9,10 @@ public class DiscardController : MonoBehaviour, IDropHandler, IPointerEnterHandl
     public AdventureDeckModel deck;
     public Gameplay game;
     public GameObject toRemove;
+    public GameObject tmpCard;
     public GameObject confirm;
+    private Transform orig;
+    public Transform discard;
     
     public virtual void OnPointerEnter(PointerEventData data)
     {
@@ -23,6 +26,9 @@ public class DiscardController : MonoBehaviour, IDropHandler, IPointerEnterHandl
         {
             toRemove = d.gameObject;
             confirm.SetActive(true);
+            tmpCard = Instantiate(toRemove, discard);
+            tmpCard.transform.localPosition = new Vector2(0, 0);
+
         }
     }
 
@@ -40,12 +46,13 @@ public class DiscardController : MonoBehaviour, IDropHandler, IPointerEnterHandl
     public void yes()
     {
         discardCard();
+        Destroy(tmpCard);
         confirm.SetActive(false);
     }
 
     public void no()
     {
-        toRemove = null;
+        Destroy(tmpCard);
         confirm.SetActive(false);
     }
 

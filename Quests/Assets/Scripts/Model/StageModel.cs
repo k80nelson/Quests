@@ -32,6 +32,11 @@ public class StageModel
         return (cardsPlayed.Find(i => i.Name == name) != null);
     }
 
+    public bool containsAmour()
+    {
+        return (cardsPlayed.Find(i => i.type == AdventureCard.Type.AMOUR) != null);
+    }
+
     public bool containsTest()
     {
         return (cardsPlayed.Find(i => i.type == AdventureCard.Type.TEST) != null);

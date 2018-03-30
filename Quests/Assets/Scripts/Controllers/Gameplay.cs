@@ -129,6 +129,12 @@ public class Gameplay : MonoBehaviour
 
     }
 
+    public void addCardsToPlayer(int id, int numCards)
+    {
+        PlayerController player = players[id].GetComponent<PlayerController>();
+        player.addManyCards(AdventureDeck.drawMany(numCards));
+    }
+
     public int nextPlayer()
     {
         return (currPlayer + 1) % numPlayers;

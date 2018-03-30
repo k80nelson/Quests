@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         model.removeCard(card);
     }
 
+    public void hideCard(GameObject card)
+    {
+        view.holdCard(card);
+    }
+
     public void removeCards(List<AdventureCard> cards)
     {
         foreach (AdventureCard card in cards) removeCard(card);

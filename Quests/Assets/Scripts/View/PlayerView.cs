@@ -12,6 +12,7 @@ public class PlayerView : MonoBehaviour {
     public GameObject highlight;
 
     public GameObject cardView;
+    public Transform cardStorage;
     
 
     public void changeName(string name)
@@ -32,6 +33,11 @@ public class PlayerView : MonoBehaviour {
     public void updateCards(int cards)
     {
         if (cardsText != null) cardsText.text = "Cards:  " + cards;
+    }
+
+    public void holdCard(GameObject card)
+    {
+        card.transform.SetParent(cardStorage);
     }
 
     public void turnOn()
