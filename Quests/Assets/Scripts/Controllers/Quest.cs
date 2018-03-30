@@ -11,16 +11,19 @@ public class Quest : MonoBehaviour
     public Transform StoryCardTransform;
     public QuestCard currQuest;
 
+    private List<int> players;
+    private int activePlayer;
+    private int numPlayers;
 
     int stages;
     public SetupModel sponsorship;
     public Transform[] stageObjects;
-    
 
     private void OnEnable()
     {
         currQuest = StoryCardTransform.GetComponentInChildren<QuestCard>();
         stages = currQuest.stages;
+        activePlayer = -1;
     }
 
     public void addStages(SetupModel sponsorCards)
@@ -28,7 +31,23 @@ public class Quest : MonoBehaviour
         Debug.Log(stages + " stages were added to the Quest.");
         sponsorship = sponsorCards;
     }
+    
+    public void addPlayers(List<int> players)
+    {
+        this.players = players;
+        this.numPlayers = players.Count;
+    }
 
+    public void startQuest()
+    {
+        setNextPlayer();
+        game.setActivePlayer(players[activePlayer]);
+    }
+
+    private void setNextPlayer()
+    {
+        activePlayer = (activePlayer + 1) % numPlayers;
+    }
 
     //Will clear the players Stage variable and move their allies to the variable in the player class
     //ONLY TO BE USED UPON QUESTS COMPLETION
@@ -48,6 +67,16 @@ public class Quest : MonoBehaviour
     {
         if (player.totalBP() >= sponsor.totalBP()) return true;
         return false;
+    }
+
+    public bool validateCard(AdventureCard card)
+    {
+        return true;
+    }
+
+    public void end()
+    {
+        game.view.EndQuest();
     }
     
 }

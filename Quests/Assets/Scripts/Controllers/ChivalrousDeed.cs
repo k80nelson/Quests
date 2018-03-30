@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
-public class ChivalrousDeed : MonoBehaviour
+public class ChivalrousDeed : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
         play();
     }
 

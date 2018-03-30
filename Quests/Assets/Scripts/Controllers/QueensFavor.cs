@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Lowest ranked player(s) immediately recieve 2 Adventure Cards
-public class QueensFavor : MonoBehaviour
+public class QueensFavor : GameElement
 {
-    Gameplay game;
+   
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        
         play();
     }
 

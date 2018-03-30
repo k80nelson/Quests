@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoinTournament : MonoBehaviour
+public class JoinTournament : GameElement
 {
 
     public GameObject StoryCard;
     public GameObject card;
     public Transform parentTransform;
-    public Gameplay game;
 
     public List<int> players;
     public int counter;
 
     private void OnEnable()
     {
-        if (game == null) game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
 
         players = new List<int>();
         GameObject tmp = StoryCard.transform.GetChild(0).gameObject;

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sponsor : MonoBehaviour {
-
-    public Gameplay game;
+public class Sponsor : GameElement {
+    
 
     public Transform storyCardTransform;
     public GameObject questCard;
@@ -176,13 +175,14 @@ private void OnEnable()
                 stagesObjects[i].SetActive(false);
                 sponsorship.Add(stageModels[i]);
             }
-            
+
+            if (game == null) Debug.Log("issue~");
             game.players[game.currPlayer].GetComponent<PlayerController>().removeCards(allCards);
             game.storeSponsors(sponsorship);
 
             questCard = null;
             stages = 0;
-            gameObject.SetActive(false);
+            game.view.EndSponsor();
             game.PromptQuest();
             game.setNextPlayer();
         }

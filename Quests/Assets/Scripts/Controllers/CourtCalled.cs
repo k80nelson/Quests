@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //All Allies in play are discarded
-public class CourtCalled : MonoBehaviour
+public class CourtCalled : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        
         play();
     }
 

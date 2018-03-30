@@ -8,9 +8,25 @@ public class GameElement : MonoBehaviour
 {
     protected Gameplay game;
 
-    void Start()
+    void Awake()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        findGame();
+    }
+
+    private void OnEnable()
+    {
+        findGame();
+    }
+
+    void findGame()
+    {
+        if (GameObject.FindGameObjectWithTag("Game") != null) game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        else game = GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<Gameplay>();
+    }
+
+    void Update()
+    {
+        if (game == null) findGame();
     }
 }
 
@@ -181,6 +197,8 @@ public class Gameplay : MonoBehaviour
             Debug.Log(players.Count + " Players in Quest");
             Quest quest = view.LoadQuest();
             quest.addStages(stageModels);
+            quest.addPlayers(players);
+            quest.startQuest();
         }
     }
 

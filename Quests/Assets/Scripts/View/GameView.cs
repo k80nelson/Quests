@@ -17,12 +17,12 @@ public class GameView : MonoBehaviour {
 
     void unSetMainGame()
     {
-        gameObject.tag = "Untagged";
+        gameObject.tag = "Game";
     }
 
     void setMainGame()
     {
-        gameObject.tag = "Game";
+        gameObject.tag = "ActiveArea";
     }
 
     public void toggleMenu()
@@ -32,23 +32,30 @@ public class GameView : MonoBehaviour {
 
     public void LoadJoinSponsor()
     {
+        unSetMainGame();
         JoinSponsor.SetActive(true);
+        JoinSponsor.tag = "ActiveArea";
     }
 
     public void LoadJoinTournament()
     {
+        unSetMainGame();
         JoinTournament.SetActive(true);
+        JoinTournament.tag = "ActiveArea";
     }
 
     public void LoadJoinQuest()
     {
-
+        unSetMainGame();
         JoinQuest.SetActive(true);
+        JoinQuest.tag = "ActiveArea";
     }
 
     public Quest LoadQuest()
     {
+        unSetMainGame();
         quest.SetActive(true);
+        quest.tag = "ActiveArea";
         return quest.GetComponent<Quest>();
     }
 
@@ -56,7 +63,7 @@ public class GameView : MonoBehaviour {
     {
         unSetMainGame();
         Sponsor.SetActive(true);
-        Sponsor.tag = "Game";
+        Sponsor.tag = "ActiveArea";
     }
 
     public void EndSponsor()
@@ -68,17 +75,30 @@ public class GameView : MonoBehaviour {
 
     public void EndJoinSponsor()
     {
+        setMainGame();
+        JoinSponsor.tag = "Untagged";
         JoinSponsor.SetActive(false);
     }
 
     public void EndJoinTournament()
     {
+        setMainGame();
+        JoinTournament.tag = "Untagged";
         JoinTournament.SetActive(false);
     }
 
     public void EndJoinQuest()
     {
+        setMainGame();
+        JoinQuest.tag = "Untagged";
         JoinQuest.SetActive(false);
+    }
+
+    public void EndQuest()
+    {
+        setMainGame();
+        quest.tag = "Untagged";
+        quest.SetActive(false);
     }
 
     public void ShowPlayerOverlay(int player)

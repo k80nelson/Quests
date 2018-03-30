@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //All players can immediately draw 2 Adventure Cards
-public class ProsperityTtR : MonoBehaviour
+public class ProsperityTtR : GameElement
 {
-    Gameplay game;
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
+        
         play();
     }
 
