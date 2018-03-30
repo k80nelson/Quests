@@ -71,19 +71,19 @@ public class Gameplay : MonoBehaviour
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "Game")
         {
-            StoryDeck.getQuest();
+            StoryDeck.gameRig('q');
         }
 
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
         {
-            StoryDeck.getTournement();
+            StoryDeck.gameRig('t');
         }
 
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
         {
-            StoryDeck.getEvent();
+            StoryDeck.gameRig('e');
         }
     }
 
