@@ -9,6 +9,7 @@ public class StoryDeckController : GameElement {
     public StoryDeckModel model;
     public GameObject discardPrompt;
     public Button btn;
+    public static System.Random rng = new System.Random();
 
     public void tryDraw()
     {
@@ -50,5 +51,39 @@ public class StoryDeckController : GameElement {
         if (CardTransform.transform.childCount == 0) return;
         Destroy(CardTransform.transform.GetChild(0).gameObject);
         game.state.currCard = null; 
+    }
+
+    //Used only for Game Rigging
+    //Function is called whenever the Q key is pressed, it will put a random quest on the screen.
+    //Function is called whenever the T key is pressed, it will put a random Tournement on the screen.
+    //Function is called whenever the T key is pressed, it will put a random Tournement on the screen.
+    public void gameRig(char key)
+    {
+        int rand = 0;
+
+        if(key == 'q')  rand = rng.Next(0, 10); 
+        else if(key == 't')  rand = rng.Next(10, 14); 
+        else if (key == 'e')  rand = rng.Next(14, 22);
+
+        GameObject prefab = model.draw(rand);
+        GameObject card = Instantiate(prefab, CardTransform);
+        card.name = prefab.name;
+        card.tag = "CurrStory";
+
+        if (card.GetComponent<QuestCard>() != null)
+        {
+            game.state.currCard = card.GetComponent<QuestCard>();
+        }
+        else if (card.GetComponent<TournamentCard>() != null)
+        {
+            game.state.currCard = card.GetComponent<TournamentCard>();
+        }
+        else if (card != card.GetComponent<TournamentCard>() && card != card.GetComponent<QuestCard>())
+        {
+            game.state.currCard = card.GetComponent<StoryCard>();
+        }
+
+        game.PlayStoryCard();
+
     }
 }

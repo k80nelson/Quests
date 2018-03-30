@@ -83,6 +83,24 @@ public class Gameplay : MonoBehaviour
         {
             view.toggleMenu();
         }
+
+        //Game Rigging to Spawn a Quest card instantly
+        if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "Game")
+        {
+            StoryDeck.gameRig('q');
+        }
+
+        //Game Rigging to Spawn a Quest card instantly
+        if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
+        {
+            StoryDeck.gameRig('t');
+        }
+
+        //Game Rigging to Spawn a Quest card instantly
+        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
+        {
+            StoryDeck.gameRig('e');
+        }
     }
 
     private void initPlayers()
