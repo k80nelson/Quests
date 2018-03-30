@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestDropZone : MonoBehaviour {
+public class QuestDropZone : DropZone {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected override bool isValid(Draggable d)
+    {
+        return true;
+    }
 }
