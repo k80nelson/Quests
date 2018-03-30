@@ -80,23 +80,48 @@ public class Gameplay : MonoBehaviour
             view.toggleMenu();
         }
 
+        //Game Rigging to Spawn Boar Hunt card instantly
+        if (Input.GetKeyDown(KeyCode.B) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('b');
+        }
+
+        //Game Rigging to Spawn Chivalrous Deed (+3 shields) card instantly
+        if (Input.GetKeyDown(KeyCode.C) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('c');
+        }
+
+        //Game Rigging to Spawn an Event card instantly
+        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('e');
+        }
+
+        //Game Rigging to Spawn Prosperity Throughout the Kingdom card instantly
+        if (Input.GetKeyDown(KeyCode.P) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('p');
+        }
+
         //Game Rigging to Spawn a Quest card instantly
         if (Input.GetKeyDown(KeyCode.Q) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('q');
         }
 
-        //Game Rigging to Spawn a Quest card instantly
+        //Game Rigging to Spawn Slay the Dragon card instantly
+        if (Input.GetKeyDown(KeyCode.S) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('s');
+        }
+
+        //Game Rigging to Spawn a Tournement card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "ActiveArea")
         {
             StoryDeck.gameRig('t');
         }
 
-        //Game Rigging to Spawn a Quest card instantly
-        if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "ActiveArea")
-        {
-            StoryDeck.gameRig('e');
-        }
     }
 
     private void initPlayers()
