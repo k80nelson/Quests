@@ -61,9 +61,10 @@ public class StoryDeckController : GameElement {
     {
         int rand = 0;
 
-        if(key == 'q')  rand = rng.Next(0, 10); 
-        else if(key == 't')  rand = rng.Next(10, 14); 
-        else if (key == 'e')  rand = rng.Next(14, 22);
+        if (key == 'q') rand = rng.Next(0, 10);
+        else if (key == 't') rand = rng.Next(10, 14);
+        else if (key == 'e') rand = rng.Next(14, 22);
+        else if (key == 'c') rand = 14;
 
         GameObject prefab = model.draw(rand);
         GameObject card = Instantiate(prefab, CardTransform);

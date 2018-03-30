@@ -74,16 +74,22 @@ public class Gameplay : MonoBehaviour
             StoryDeck.gameRig('q');
         }
 
-        //Game Rigging to Spawn a Quest card instantly
+        //Game Rigging to Spawn a Tournement card instantly
         if (Input.GetKeyDown(KeyCode.T) && gameObject.tag == "Game")
         {
             StoryDeck.gameRig('t');
         }
 
-        //Game Rigging to Spawn a Quest card instantly
+        //Game Rigging to Spawn a Event card instantly
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Game")
         {
             StoryDeck.gameRig('e');
+        }
+
+        //Game Rigging to Spawn Chivalrous Deed (+3 shields) card instantly
+        if (Input.GetKeyDown(KeyCode.C) && gameObject.tag == "Game")
+        {
+            StoryDeck.gameRig('c');
         }
     }
 
