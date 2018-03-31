@@ -28,4 +28,9 @@ public class AdventureCard : BaseCard {
 
         return BP;
     }
+
+    public int getBids()
+    {
+        return Bids;
+    }
 }
