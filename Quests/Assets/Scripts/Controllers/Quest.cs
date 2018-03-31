@@ -26,6 +26,7 @@ public class Quest : GameElement
     private int activePlayer;
     private int numPlayers;
     private int counter;
+    private int highestPlayer;
 
 
     int numStages;
@@ -131,9 +132,9 @@ public class Quest : GameElement
 
     private void setNextPlayer()
     {
-
         if (numPlayers == 0) endFail();
         activePlayer = (activePlayer + 1) % numPlayers;
+        if (currStageType == stageType.TEST && playerIds[activePlayer] == highestPlayer) endBid();
         Debug.Log("[Quest.cs:setNextPlayer] Setting active player to player " + (playerIds[activePlayer] + 1) +" in stage " + (currStageId+1));
         game.setActivePlayer(playerIds[activePlayer]);
 
@@ -161,7 +162,6 @@ public class Quest : GameElement
             Debug.Log("[Quest.cs:setNextPlayer] Player " + (playerIds[activePlayer] + 1) + " has amour in play");
             GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
             objtmp.GetComponent<Draggable>().draggable = false;
-               
         } 
         
     }
@@ -327,6 +327,11 @@ public class Quest : GameElement
             giveAdventureCards();
             setNextPlayer();
         }
+    }
+
+    public void endBid()
+    {
+
     }
 
     public void endStage()
