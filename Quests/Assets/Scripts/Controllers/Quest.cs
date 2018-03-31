@@ -264,6 +264,18 @@ public class Quest : GameElement
         else setNextPlayer();
     }
 
+    //Called when you want to move on during a test.
+    /*
+     * First:  
+     *      gets the current player, the current players cards played, and the current Bids in play of that player
+     * 
+     * loops through cards played and adds bids accordingly
+     * 
+     * if not enough bids played then prompt user to play more or they can drop out
+     * 
+     * otherwise, sets the current player as the current highest player and hides the cards they played
+     * then moves on to the next player 
+     */
     public void continueTest()
     {
         PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
@@ -275,7 +287,7 @@ public class Quest : GameElement
             currentBid += card.getBids();
         }
 
-        if (currentBid < highestBid)
+        if (currentBid <= highestBid)
         { 
             promptUser("Not enough bids played. Current highest bid is " + highestBid + ". Your bid is " + currentBid + ".");
         }
@@ -287,18 +299,14 @@ public class Quest : GameElement
             {
                 currPlayerCtrl.hideCard(card.gameObject);
             }
+
+            highestPlayer = playerIds[activePlayer];
+
+            highestBid = currentBid;
+
             currPlayerCtrl.removeCards(cardsPlayed);
 
-
-            /* 
-             * 
-             * global called highest bidder thats an int
-             * highest player = playerIds[activePlayer]
-             * remove cards from hand
-             * go to next player
-             * 
-             * 
-             */
+            setNextPlayer();
         }
     }
 
