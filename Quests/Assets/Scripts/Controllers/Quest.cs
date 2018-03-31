@@ -274,11 +274,13 @@ public class Quest : GameElement
         }
 
         if (currentBid < highestBid)
+        { 
+            promptUser("Not enough bids played. Current highest bid is " + highestBid + ". Your bid is " + currentBid + ".");
+        }
+        else
         {
 
         }
-
-
     }
 
     public void findPassingPlayers()
