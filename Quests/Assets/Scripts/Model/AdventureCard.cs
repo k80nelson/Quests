@@ -11,6 +11,8 @@ public class AdventureCard : BaseCard {
     public int Bids;
     public int SpecialBP;
     public int SpecialBids;
+    public int MinBid;
+    public int specialMinBid;
     public List<string> SpecialCards;
 
     public int getBP()
@@ -32,5 +34,21 @@ public class AdventureCard : BaseCard {
     public int getBids()
     {
         return Bids;
+    }
+
+    public int getMinimumBid()
+    {
+        if (SpecialCards == null) return MinBid;
+
+        GameObject stryCard = GameObject.FindGameObjectWithTag("CurrStory");
+        if (stryCard != null)
+        {
+            if (SpecialCards.Contains(stryCard.name))
+            {
+                return specialMinBid;
+            }
+        }
+
+        return BP;
     }
 }
