@@ -266,6 +266,8 @@ public class Quest : GameElement
 
     public void continueTest()
     {
+        PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
         int currentBid = players[activePlayer].cardsPlayed4Quest.totalBids();
 
         foreach (AdventureCard card in players[game.activePlayer].cardsPlayed4Quest.cardsPlayed)
@@ -279,7 +281,24 @@ public class Quest : GameElement
         }
         else
         {
+            Debug.Log("[Quest.cs:continueTest] Player " + (game.activePlayer + 1) + " played " + cardsPlayed.Count + " cards in stage " + (currStageId + 1));
 
+            foreach (AdventureCard card in cardsPlayed)
+            {
+                currPlayerCtrl.hideCard(card.gameObject);
+            }
+            currPlayerCtrl.removeCards(cardsPlayed);
+
+
+            /* 
+             * 
+             * global called highest bidder thats an int
+             * highest player = playerIds[activePlayer]
+             * remove cards from hand
+             * go to next player
+             * 
+             * 
+             */
         }
     }
 
