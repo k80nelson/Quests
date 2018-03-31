@@ -17,6 +17,9 @@ public class Quest : GameElement
     public Transform testCard;
     public Transform inPlayTransform;
 
+    //Test variables
+    public Transform biddingCards;
+
     private List<int> playerIds;
     private List<PlayerModel> players;
     private int activePlayer;
@@ -211,6 +214,22 @@ public class Quest : GameElement
         return true;
     }
 
+    //Test Functions
+    public bool biddingValidity(AdventureCard card)
+    {
+        if (players[activePlayer].overMax())
+        {
+            promptUser("You are holding too many cards.");
+            return false;
+        }
+
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+
+
+        return true;
+    }
+
+
     public void promptUser(string message)
     {
         promptMessage.text = message;
@@ -338,6 +357,8 @@ public class Quest : GameElement
         discardSponsor();
         game.view.EndQuest();
     }
+
+    
 
 }
 
