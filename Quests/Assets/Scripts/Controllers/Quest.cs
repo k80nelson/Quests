@@ -16,7 +16,6 @@ public class Quest : GameElement
     public GameObject bidding;
     public Transform testCard;
     public Transform inPlayTransform;
-    public Transform bidInPlayTransform;
 
     //Test variables
     public Transform biddingCards;
@@ -115,7 +114,7 @@ public class Quest : GameElement
             stageObjects[currStageId].GetChild(0).SetParent(testCard);
             testCard.GetChild(0).localScale = new Vector3(1, 1, 1);
             testCard.GetChild(0).localPosition = new Vector3(1, 1, 1);
-            highestBid = testCard.GetChild(0).GetComponent<AdventureCard>.getMinimumBid();
+            highestBid = testCard.GetChild(0).GetComponent<AdventureCard>().getMinimumBid();
             bidding.SetActive(true);
         }
     }
@@ -274,7 +273,10 @@ public class Quest : GameElement
             currentBid += card.getBids();
         }
 
-        if (currentBid < highestBidse)
+        if (currentBid < highestBid)
+        {
+
+        }
 
 
     }
