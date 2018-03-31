@@ -264,6 +264,7 @@ public class Quest : GameElement
             else
             {
                 Debug.Log("[Quest.cs:findPassingPlayers] player " + (player.index + 1) + " failed stage " + (currStageId + 1));
+                promptUser("Player " + (player.index + 1) + " has failed stage " + (currStageId + 1));
                 players.Remove(player);
                 playerIds.Remove(player.index);
                 numPlayers -= 1;
@@ -309,6 +310,7 @@ public class Quest : GameElement
     public void endFail()
     {
         Debug.Log("[Quest.cs:endFail] All players have failed the Quest");
+        promptUser("All players have failed the Quest");
         end();
     }
 
