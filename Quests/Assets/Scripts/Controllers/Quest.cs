@@ -19,12 +19,14 @@ public class Quest : GameElement
 
     //Test variables
     public Transform biddingCards;
+    private int highestBid;
 
     private List<int> playerIds;
     private List<PlayerModel> players;
     private int activePlayer;
     private int numPlayers;
     private int counter;
+
 
     int numStages;
     public SetupModel sponsorship;
@@ -112,6 +114,7 @@ public class Quest : GameElement
             stageObjects[currStageId].GetChild(0).SetParent(testCard);
             testCard.GetChild(0).localScale = new Vector3(1, 1, 1);
             testCard.GetChild(0).localPosition = new Vector3(1, 1, 1);
+            highestBid = testCard.GetChild(0).GetComponent<AdventureCard>.getMinimumBid();
             bidding.SetActive(true);
         }
     }
@@ -214,7 +217,7 @@ public class Quest : GameElement
         return true;
     }
 
-    //Test Functions
+    //Validity function for Test
     public bool biddingValidity(AdventureCard card)
     {
         if (players[activePlayer].overMax())
@@ -222,9 +225,6 @@ public class Quest : GameElement
             promptUser("You are holding too many cards.");
             return false;
         }
-
-        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
-
 
         return true;
     }
@@ -265,6 +265,20 @@ public class Quest : GameElement
 
         }
         else setNextPlayer();
+    }
+
+    public void continueTest()
+    {
+        int currentBid = players[activePlayer].cardsPlayed4Quest.totalBids();
+
+        foreach (AdventureCard card in players[game.activePlayer].cardsPlayed4Quest.cardsPlayed)
+        {
+            currentBid += card.getBids();
+        }
+
+        if (currentBid < highestBidse)
+
+
     }
 
     public void findPassingPlayers()

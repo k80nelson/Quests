@@ -10667,6 +10667,7 @@ MonoBehaviour:
   bidding: {fileID: 208903980}
   testCard: {fileID: 1493530498}
   inPlayTransform: {fileID: 1558263902}
+  biddingCards: {fileID: 93670587}
   stageObjects:
   - {fileID: 1475278650}
   - {fileID: 959760623}

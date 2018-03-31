@@ -190,4 +190,16 @@ public class StageModel
 
         return total;
     }
+
+    public int totalBids()
+    {
+        int total = 0;
+
+        foreach(AdventureCard card in cardsPlayed)
+        {
+            total += card.getBids();
+        }
+
+        return total;
+    }
 }
