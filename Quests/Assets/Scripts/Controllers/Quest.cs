@@ -16,6 +16,7 @@ public class Quest : GameElement
     public GameObject bidding;
     public Transform testCard;
     public Transform inPlayTransform;
+    public Transform bidInPlayTransform;
 
     //Test variables
     public Transform biddingCards;
@@ -142,27 +143,24 @@ public class Quest : GameElement
 
         Debug.Log("[QUEST NEXT PLAYER] Player " + (game.activePlayer + 1) + " HAS CARDS " + tmp);
         Debug.Log("CONTAINS AMOUR?: " + game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.containsAmour());
-        if (currStageType == stageType.FOE)
+        foreach (Transform child in inPlayTransform)
         {
-            foreach (Transform child in inPlayTransform)
-            {
-                Destroy(child.gameObject);
-            }
-            List<GameObject> allies = game.players[game.activePlayer].GetComponent<PlayerController>().getAllies();
-            foreach (GameObject ally in allies)
-            {
-                Debug.Log("[Quest.cs:setNextPlayer] Player "+ (playerIds[activePlayer]+1)+" has allie(s) in play");
-                GameObject objtmp = Instantiate(ally, inPlayTransform);
-                objtmp.GetComponent<Draggable>().draggable = false;
-            }
-            if (game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.containsAmour())
-            {
-                Debug.Log("[Quest.cs:setNextPlayer] Player " + (playerIds[activePlayer] + 1) + " has amour in play");
-                GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
-                objtmp.GetComponent<Draggable>().draggable = false;
-               
-            } 
+            Destroy(child.gameObject);
         }
+        List<GameObject> allies = game.players[game.activePlayer].GetComponent<PlayerController>().getAllies();
+        foreach (GameObject ally in allies)
+        {
+            Debug.Log("[Quest.cs:setNextPlayer] Player "+ (playerIds[activePlayer]+1)+" has allie(s) in play");
+            GameObject objtmp = Instantiate(ally, inPlayTransform);
+            objtmp.GetComponent<Draggable>().draggable = false;
+        }
+        if (game.players[game.activePlayer].GetComponent<PlayerModel>().cardsPlayed4Quest.containsAmour())
+        {
+            Debug.Log("[Quest.cs:setNextPlayer] Player " + (playerIds[activePlayer] + 1) + " has amour in play");
+            GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
+            objtmp.GetComponent<Draggable>().draggable = false;
+               
+        } 
         
     }
 

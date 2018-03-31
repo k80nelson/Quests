@@ -84,8 +84,11 @@ MonoBehaviour:
   BP: 0
   Bids: 1
   SpecialBP: 0
-  SpecialBids: 4
-  SpecialCards: []
+  SpecialBids: 1
+  MinBid: 1
+  specialMinBid: 4
+  SpecialCards:
+  - Search for the Questing Beast
 --- !u!114 &114659384255224710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114740308130746258
 MonoBehaviour:
   m_ObjectHideFlags: 1

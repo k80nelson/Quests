@@ -69,6 +69,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 0
   SpecialBids: 1
+  MinBid: 1
+  specialMinBid: 1
   SpecialCards: []
 --- !u!114 &114322185100804774
 MonoBehaviour:
@@ -126,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222345334031684268
 CanvasRenderer:
   m_ObjectHideFlags: 1

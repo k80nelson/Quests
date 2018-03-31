@@ -63,9 +63,11 @@ MonoBehaviour:
   Name: Test of Morgan Le Fey
   type: 3
   BP: 0
-  Bids: 3
+  Bids: 1
   SpecialBP: 0
-  SpecialBids: 3
+  SpecialBids: 1
+  MinBid: 3
+  specialMinBid: 3
   SpecialCards: []
 --- !u!114 &114663513553347636
 MonoBehaviour:
@@ -80,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114729667494989660
 MonoBehaviour:
   m_ObjectHideFlags: 1
