@@ -107,6 +107,8 @@ public class Quest : GameElement
             currStageType = stageType.TEST;
             stageTextTest.text = "Stage " + (currStageId + 1);
             stageObjects[currStageId].GetChild(0).SetParent(testCard);
+            testCard.GetChild(0).localScale = new Vector3(1, 1, 1);
+            testCard.GetChild(0).localPosition = new Vector3(1, 1, 1);
             bidding.SetActive(true);
         }
     }
@@ -123,6 +125,8 @@ public class Quest : GameElement
 
     private void setNextPlayer()
     {
+
+        if (numPlayers == 0) endFail();
         activePlayer = (activePlayer + 1) % numPlayers;
         Debug.Log("[Quest.cs:setNextPlayer] Setting active player to player " + (playerIds[activePlayer] + 1) +" in stage " + (currStageId+1));
         game.setActivePlayer(playerIds[activePlayer]);
@@ -153,6 +157,7 @@ public class Quest : GameElement
                 Debug.Log("[Quest.cs:setNextPlayer] Player " + (playerIds[activePlayer] + 1) + " has amour in play");
                 GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
                 objtmp.GetComponent<Draggable>().draggable = false;
+               
             } 
         }
         
