@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114916136046459304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,9 +123,11 @@ MonoBehaviour:
   Name: Merlin
   type: 0
   BP: 0
-  Bids: 1
+  Bids: 0
   SpecialBP: 0
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!222 &222146916186946086
 CanvasRenderer:

@@ -93,9 +93,11 @@ MonoBehaviour:
   Name: Sir Gawain
   type: 0
   BP: 10
-  Bids: 1
+  Bids: 0
   SpecialBP: 20
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114679844922618568
 MonoBehaviour:
@@ -126,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222803455404412654
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114685572126059560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,9 +123,11 @@ MonoBehaviour:
   Name: Sir Tristan
   type: 0
   BP: 10
-  Bids: 1
+  Bids: 0
   SpecialBP: 20
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!222 &222737482916160126
 CanvasRenderer:

@@ -93,9 +93,11 @@ MonoBehaviour:
   Name: Sir Percival
   type: 0
   BP: 5
-  Bids: 1
+  Bids: 0
   SpecialBP: 20
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114621160963009910
 MonoBehaviour:
@@ -110,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114829569943972516
 MonoBehaviour:
   m_ObjectHideFlags: 1

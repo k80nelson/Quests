@@ -52,6 +52,7 @@ public class Quest : GameElement
         numStages = currQuest.stages;
         activePlayer = -1;
         currStageId = -1;
+        highestPlayer = -1;
     }
 
     public void addStages(SetupModel sponsorCards)
@@ -467,9 +468,7 @@ public class Quest : GameElement
         discardSponsor();
         game.view.EndQuest();
     }
-
     
-
 }
 
 

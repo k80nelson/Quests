@@ -47,9 +47,11 @@ MonoBehaviour:
   Name: King Arthur
   type: 0
   BP: 10
-  Bids: 1
+  Bids: 0
   SpecialBP: 10
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114360289593807406
 MonoBehaviour:
@@ -126,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222343704995317604
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114202052412012142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +64,8 @@ MonoBehaviour:
   Bids: 3
   SpecialBP: 0
   SpecialBids: 3
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114211411851006262
 MonoBehaviour:
