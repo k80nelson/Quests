@@ -116,6 +116,7 @@ public class Quest : GameElement
             testCard.GetChild(0).localScale = new Vector3(1, 1, 1);
             testCard.GetChild(0).localPosition = new Vector3(1, 1, 1);
             highestBid = testCard.GetChild(0).GetComponent<AdventureCard>().getMinimumBid();
+            Debug.Log("Just set test active highest bid is " + highestBid);
             bidding.SetActive(true);
         }
     }
@@ -282,9 +283,13 @@ public class Quest : GameElement
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
         int currentBid = players[activePlayer].cardsPlayed4Quest.totalBids();
 
+        Debug.Log("The current highest bid is " + highestBid);
+        Debug.Log("The current bids are " + currentBid);
+
+
         foreach (AdventureCard card in players[game.activePlayer].cardsPlayed4Quest.cardsPlayed)
         {
-            currentBid += card.getBids();
+            currentBid += card.getBids(); //Think this needs to change
         }
 
         if (currentBid <= highestBid)
@@ -345,9 +350,38 @@ public class Quest : GameElement
         if (numPlayers == 0) endFail();
     }
 
+    //Check this all with Katie later !**!*!*!*!*!*!*!*!*!*!*!
+    /*
+     * This will be called when the drop out button is pressed, shouls add their cards back into their hand and move on to the next player
+     */
+    public void dropOut()
+    {
+        PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
+        PlayerModel player = players[activePlayer].GetComponent<PlayerModel>();
+        PlayerView view = players[activePlayer].GetComponent<PlayerView>();
+
+
+        Debug.Log("[Quest.cs:dropOut] Player " + (game.activePlayer + 1) + " has dropped out of the Test");
+        promptUser("Player " + (game.activePlayer + 1) + " has dropped out at stage " + (currStageId + 1));
+
+        players.Remove(player);
+        playerIds.Remove(player.index);
+        numPlayers -= 1;
+
+        foreach (GameObject card in view.cardStorage)
+        {
+            player.addCard(card);
+        }
+
+        setNextPlayer();
+
+    }
+
+
     public void endCombat()
     {
         findPassingPlayers();
+        endStage();
         setNextStage();
         if (currStageId < numStages)
         {
@@ -356,9 +390,26 @@ public class Quest : GameElement
         }
     }
 
+    //Check this all with Katie later !**!*!*!*!*!*!*!*!*!*!*!
+    /*
+     * This is called once all but one player have dropped out, should remove the cards they played and move on to the next stage.
+     */
     public void endBid()
     {
+        PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
+        PlayerModel player = players[activePlayer].GetComponent<PlayerModel>();
 
+        promptUser("Player " + (game.activePlayer + 1) + " has passed the test in stage " + (currStageId + 1));
+
+        //remove their cards here
+
+        endStage();
+        setNextStage();
+        if (currStageId < numStages)
+        {
+            giveAdventureCards();
+            setNextPlayer();
+        }
     }
 
     public void endStage()
