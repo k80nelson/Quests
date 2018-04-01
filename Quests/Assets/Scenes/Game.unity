@@ -2516,7 +2516,7 @@ RectTransform:
   - {fileID: 546781321}
   - {fileID: 1567406740}
   m_Father: {fileID: 689915641}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3609,8 +3609,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 344558942}
-  - {fileID: 1801398854}
   - {fileID: 972963443}
+  - {fileID: 1801398854}
   m_Father: {fileID: 689915641}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4511,6 +4511,7 @@ RectTransform:
   - {fileID: 1972597998}
   - {fileID: 485204752}
   - {fileID: 208903981}
+  - {fileID: 1558263902}
   - {fileID: 343895317}
   m_Father: {fileID: 1693772486}
   m_RootOrder: 1
@@ -6288,7 +6289,7 @@ RectTransform:
   m_Children:
   - {fileID: 858023305}
   m_Father: {fileID: 485204752}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9712,13 +9713,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1693772486}
-  m_RootOrder: 2
+  m_Father: {fileID: 689915641}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -12.5, y: 382.5}
-  m_SizeDelta: {x: -355, y: 145}
+  m_AnchoredPosition: {x: -12.5, y: 237.49998}
+  m_SizeDelta: {x: -25, y: 145}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1558263903
 MonoBehaviour:
@@ -10648,7 +10649,6 @@ RectTransform:
   m_Children:
   - {fileID: 1972867920}
   - {fileID: 689915641}
-  - {fileID: 1558263902}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10673,6 +10673,7 @@ MonoBehaviour:
   StoryCardTransform: {fileID: 263686827}
   currQuest: {fileID: 0}
   cardArea: {fileID: 1801398854}
+  bidCardArea: {fileID: 93670587}
   combat: {fileID: 485204751}
   bidding: {fileID: 208903980}
   testCard: {fileID: 1493530498}
@@ -11542,7 +11543,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 485204752}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}

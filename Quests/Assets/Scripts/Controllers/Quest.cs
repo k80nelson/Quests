@@ -12,6 +12,7 @@ public class Quest : GameElement
     public Transform StoryCardTransform;
     public QuestCard currQuest;
     public Transform cardArea;
+    public Transform bidCardArea;
     public GameObject combat;
     public GameObject bidding;
     public Transform testCard;
@@ -280,16 +281,16 @@ public class Quest : GameElement
     public void continueTest()
     {
         PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
-        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(bidCardArea.GetComponentsInChildren<AdventureCard>());
         int currentBid = players[activePlayer].cardsPlayed4Quest.totalBids();
 
         Debug.Log("The current highest bid is " + highestBid);
         Debug.Log("The current bids are " + currentBid);
 
 
-        foreach (AdventureCard card in players[game.activePlayer].cardsPlayed4Quest.cardsPlayed)
+        foreach (AdventureCard card in cardsPlayed)
         {
-            currentBid += card.getBids(); //Think this needs to change
+            currentBid += 1; 
         }
 
         if (currentBid <= highestBid)
@@ -306,7 +307,6 @@ public class Quest : GameElement
             }
 
             highestPlayer = playerIds[activePlayer];
-
             highestBid = currentBid;
 
             currPlayerCtrl.removeCards(cardsPlayed);
@@ -364,17 +364,18 @@ public class Quest : GameElement
         Debug.Log("[Quest.cs:dropOut] Player " + (game.activePlayer + 1) + " has dropped out of the Test");
         promptUser("Player " + (game.activePlayer + 1) + " has dropped out at stage " + (currStageId + 1));
 
+        if (activePlayer == (numPlayers-1)) activePlayer -= 1;
         players.Remove(player);
         playerIds.Remove(player.index);
         numPlayers -= 1;
+        
 
-        foreach (GameObject card in view.cardStorage)
+        foreach (Transform card in view.cardStorage)
         {
-            player.addCard(card);
+            player.addCard(card.gameObject);
         }
 
         setNextPlayer();
-
     }
 
 
