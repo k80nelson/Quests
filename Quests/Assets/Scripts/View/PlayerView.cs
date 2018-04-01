@@ -58,6 +58,16 @@ public class PlayerView : MonoBehaviour {
         }
     }
 
+    public List<Transform> getHiddenCards()
+    {
+        List<Transform> hide = new List<Transform>();
+        foreach (Transform child in cardStorage)
+        {
+            hide.Add(child);
+        }
+        return hide;
+    }
+
     public void saveAlly(GameObject card)
     {
         card.transform.SetParent(allyStorage);

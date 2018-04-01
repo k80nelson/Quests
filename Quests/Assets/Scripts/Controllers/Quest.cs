@@ -116,7 +116,9 @@ public class Quest : GameElement
             stageObjects[currStageId].GetChild(0).SetParent(testCard);
             testCard.GetChild(0).localScale = new Vector3(1, 1, 1);
             testCard.GetChild(0).localPosition = new Vector3(1, 1, 1);
-            highestBid = testCard.GetChild(0).GetComponent<AdventureCard>().getMinimumBid();
+            if (numPlayers > 1) highestBid = testCard.GetChild(0).GetComponent<AdventureCard>().getMinimumBid();
+            else highestBid = 2;
+            
             Debug.Log("Just set test active highest bid is " + highestBid);
             bidding.SetActive(true);
         }
@@ -165,7 +167,16 @@ public class Quest : GameElement
             GameObject objtmp = Instantiate(amourPrefab, inPlayTransform);
             objtmp.GetComponent<Draggable>().draggable = false;
         } 
-        
+
+        if (currStageType == stageType.TEST)
+        {
+            List<Transform> hidden = players[activePlayer].GetComponent<PlayerController>().getHiddenCards();
+
+            for(int i=0; i<hidden.Count; i++)
+            {
+                hidden[i].SetParent(bidCardArea);
+            }
+        }
     }
 
     //Will clear the players Stage variable and move their allies to the variable in the player class
@@ -364,7 +375,7 @@ public class Quest : GameElement
         Debug.Log("[Quest.cs:dropOut] Player " + (game.activePlayer + 1) + " has dropped out of the Test");
         promptUser("Player " + (game.activePlayer + 1) + " has dropped out at stage " + (currStageId + 1));
 
-        if (activePlayer == (numPlayers-1)) activePlayer -= 1;
+        if (activePlayer > 0) activePlayer -= 1;
         players.Remove(player);
         playerIds.Remove(player.index);
         numPlayers -= 1;
@@ -400,9 +411,8 @@ public class Quest : GameElement
         PlayerController currPlayerCtrl = players[activePlayer].GetComponent<PlayerController>();
         PlayerModel player = players[activePlayer].GetComponent<PlayerModel>();
 
-        promptUser("Player " + (game.activePlayer + 1) + " has passed the test in stage " + (currStageId + 1));
-
-        //remove their cards here
+        promptUser("Player " + (highestPlayer + 1) + " has passed the test in stage " + (currStageId + 1));
+        
 
         endStage();
         setNextStage();

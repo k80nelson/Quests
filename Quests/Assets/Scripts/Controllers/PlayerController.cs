@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
         view.clearHiddenCards();
     }
 
+    public List<Transform> getHiddenCards()
+    {
+        return view.getHiddenCards();
+    }
+
     public void removeCards(List<AdventureCard> cards)
     {
         if (cards == null) return;
