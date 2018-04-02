@@ -40,9 +40,7 @@ public class Quest : GameElement
     public StageModel currStage;
     public Text stageTextFoe;
     public Text stageTextTest;
-
-    public GameObject prompt;
-    public Text promptMessage;
+    
 
     private void OnEnable()
     {
@@ -243,8 +241,7 @@ public class Quest : GameElement
 
     public void promptUser(string message)
     {
-        promptMessage.text = message;
-        prompt.SetActive(true);
+        game.view.promptUser(message);
     }
     
     public void playCards()
