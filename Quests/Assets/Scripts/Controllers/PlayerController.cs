@@ -20,7 +20,6 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        if (!isLocalPlayer) return;
         view.updateRank(((PlayerModel.Rank)(model.rank)).ToString());
         view.updateShields(model.shields);
         view.updateCards(model.numCards);
