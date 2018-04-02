@@ -14,9 +14,6 @@ public class Sponsor : GameElement {
     public Transform[] stagesTransforms;
     public static StageModel[] stageModels;
             
-    public GameObject promptBox;
-    public Text promptText;
-
     bool testFlag = false;
 
     public GameObject[] questStagesObjects;
@@ -49,8 +46,7 @@ private void OnEnable()
 
     public void promptUser(string message)
     {
-        promptText.text = message;
-        promptBox.SetActive(true);
+        game.view.promptUser(message);
     }
 
     public bool testValid(int id, Draggable d)

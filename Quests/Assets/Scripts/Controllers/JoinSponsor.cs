@@ -27,9 +27,18 @@ public class JoinSponsor : GameElement
 
     public void yes()
     {
-        Debug.Log("[JoinSponsor.cs:yes] Quest sponsored by player " + (game.activePlayer + 1));
-        sponsor = game.activePlayer;
-        end();
+        PlayerModel player = game.players[game.activePlayer].GetComponent<PlayerModel>();
+        if (player.enoughFoes((card.GetComponent<QuestCard>().stages)) || 
+            (player.enoughFoes((card.GetComponent<QuestCard>().stages-1)) && player.hasTest())){
+            Debug.Log("[JoinSponsor.cs:yes] Quest sponsored by player " + (game.activePlayer + 1));
+            sponsor = game.activePlayer;
+            end();
+        }
+
+        else
+        {
+            game.view.promptUser("You do not have enough cards to sponsor this quest.");
+        }
     }
 
     public void no()
