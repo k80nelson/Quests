@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 224525788698688910}
   - component: {fileID: 114487386577224736}
   - component: {fileID: 222678055682250088}
+  - component: {fileID: 114010591474801754}
   m_Layer: 5
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -130,6 +131,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114010591474801754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762788956567066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 43
+    i1: 244
+    i2: 200
+    i3: 60
+    i4: 38
+    i5: 199
+    i6: 51
+    i7: 52
+    i8: 235
+    i9: 249
+    i10: 118
+    i11: 4
+    i12: 179
+    i13: 75
+    i14: 110
+    i15: 163
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114167131467053258
 MonoBehaviour:
   m_ObjectHideFlags: 1
