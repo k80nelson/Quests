@@ -18,9 +18,10 @@ public class QuestController : GameElement {
         model.initialize();
     }
 
-    public void startQuest(List<int> players)
+    public void startQuest(List<int> players, SetupModel sponsorship)
     {
-        model.addPlayers(players); 
+        model.addPlayers(players);
+        model.sponsorship = sponsorship;
         nextStage();
     }
 
@@ -29,11 +30,13 @@ public class QuestController : GameElement {
         model.nextStage();
         if (model.currStageId >= model.numStages)
         {
-            // end successfully
+            endSuccess();
+            return;
         }
         if(model.numPlayers == 0)
         {
-            // end fail
+            endFail();
+            return;
         }
         model.giveAdventureCards();
         if (model.currStageType == QuestModel.stageType.COMBAT)
@@ -53,6 +56,7 @@ public class QuestController : GameElement {
     {
         // also ends up calling the CombatController.OnEnable() function
         view.showCombat();
+        combat.initiate();
     }
 
     void initializeTest()
@@ -102,6 +106,7 @@ public class QuestController : GameElement {
         {
             player.addShields(model.numStages);
             player.cardsPlayed4Quest.discardWeaponsNAmours();
+            player.addAllies(player.cardsPlayed4Quest.cardsPlayed);
             player.cardsPlayed4Quest.Empty();
         }
         end();
@@ -120,8 +125,9 @@ public class QuestController : GameElement {
 
     void end()
     {
-        game.EndQuest(model.numStages, model.sponsorship.totalNumCards());
+        destroySponsor();
         model.discardSponsor();
+        game.EndQuest(model.numStages, model.sponsorship.totalNumCards());
         game.view.EndQuest();
     }
 }

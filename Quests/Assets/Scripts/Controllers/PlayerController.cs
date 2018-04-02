@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void returnCards(List<Transform> cards)
+    {
+
+    }
+
     public void addManyCards(List<GameObject> cards)
     {
         if (cards == null) return;

@@ -14,9 +14,7 @@ public class BiddingController : GameElement {
     void OnEnable()
     {
         Debug.Log("[BiddingController.cs:OnEnable] Initializing Bidding");
-        
         view.setEncounterText(currQuest.currStageId + 1);
-        
     }
 
     public void giveCard(Transform card)
@@ -24,6 +22,7 @@ public class BiddingController : GameElement {
         int minBid = card.GetComponent<AdventureCard>().getMinimumBid();
         view.setEncounterCard(card);
         model.initialize(currQuest.numPlayers, minBid);
+        view.setBidText(model.highestBid + 1);
     }
 
     public bool testWin()
@@ -33,10 +32,11 @@ public class BiddingController : GameElement {
 
     public void restoreCards()
     {
-        List<Transform> hiddenCards = game.players[game.activePlayer].GetComponent<PlayerController>().getHiddenCards();
-        for (int i = 0; i < hiddenCards.Count; i++)
+        List<Transform> hidden = currQuest.players[currQuest.activePlayer].GetComponent<PlayerController>().getHiddenCards();
+
+        for (int i = 0; i < hidden.Count; i++)
         {
-            hiddenCards[i].SetParent(cardArea);
+            hidden[i].SetParent(cardArea);
         }
     }
 
@@ -55,20 +55,21 @@ public class BiddingController : GameElement {
     {
         PlayerController currPlayerCtrl = currQuest.players[currQuest.activePlayer].GetComponent<PlayerController>();
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
+
         int currentBid = currQuest.players[currQuest.activePlayer].cardsPlayed4Quest.totalBids();
-        
         foreach (AdventureCard card in cardsPlayed)
         {
             currentBid += 1;
         }
-
+        
         if (currentBid <= model.highestBid)
         {
-            game.view.promptUser("Not enough bids played. Current highest bid is " + model.highestBid + ". Your bid is " + currentBid + ".");
+            
+            game.view.promptUser("Not enough bids played. Minimim bid is " + (model.highestBid+1) + ". Your bid is " + currentBid + ".");
         }
         else
         {
-            Debug.Log("[BiddingController.cs:bid] Player " + (game.activePlayer + 1) + " played " + cardsPlayed.Count + " cards in stage " + (currStageId + 1));
+            Debug.Log("[BiddingController.cs:bid] Player " + (game.activePlayer + 1) + " played " + cardsPlayed.Count + " cards in stage " + (currQuest.currStageId + 1));
 
             foreach (AdventureCard card in cardsPlayed)
             {
@@ -77,6 +78,7 @@ public class BiddingController : GameElement {
 
             model.highestPlayer = currQuest.playerIds[currQuest.activePlayer];
             model.highestBid = currentBid;
+            view.setBidText(model.highestBid + 1);
 
             currPlayerCtrl.removeCards(cardsPlayed);
 
@@ -97,11 +99,15 @@ public class BiddingController : GameElement {
         if (currQuest.activePlayer > 0) currQuest.activePlayer -= 1;
         currQuest.removePlayer(player);
 
+        List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
 
-        foreach (Transform card in view.cardStorage)
+        foreach (AdventureCard card in cardsPlayed)
         {
-            player.addCard(card.gameObject);
+            currPlayerCtrl.hideCard(card.gameObject);
         }
+
+        view.restoreHiddenCards();
+
         controller.nextPlayer();
     }
 

@@ -183,6 +183,7 @@ MonoBehaviour:
   cardView: {fileID: 1502651535394538}
   cardStorage: {fileID: 224764989106883152}
   allyStorage: {fileID: 224149541072304586}
+  playersCards: {fileID: 224636260950277286}
 --- !u!114 &114066326246626952
 MonoBehaviour:
   m_ObjectHideFlags: 1

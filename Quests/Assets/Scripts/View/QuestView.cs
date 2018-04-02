@@ -14,14 +14,17 @@ public class QuestView : GameElement {
 
     public void showCombat()
     {
-        combatArea.SetActive(true);
+        combatArea.SetActive(false);
         testArea.SetActive(false);
+        combatArea.SetActive(true);
+
     }
 
     public void showTest()
     {
-        testArea.SetActive(true);
         combatArea.SetActive(false);
+        testArea.SetActive(false);
+        testArea.SetActive(true);
     }
 
     public void showCards()

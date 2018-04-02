@@ -26,7 +26,6 @@ public class QuestModel : GameElement
         numStages = currQuest.stages;
         activePlayer = -1;
         currStageId = -1;
-        sponsorship = game.stageModels;
         controller = gameObject.GetComponent<QuestController>();
     }
 
@@ -73,7 +72,7 @@ public class QuestModel : GameElement
     {
         activePlayer = -1;
         currStageId += 1;
-        if (currStageId > numStages)
+        if (currStageId < numStages)
         {
             currStage = sponsorship.getStage(currStageId);
             currStageType = (currStage.isCombat()) ? stageType.COMBAT : stageType.TEST;
@@ -89,6 +88,8 @@ public class QuestModel : GameElement
     {
         players.Remove(player);
         playerIds.Remove(player.index);
+        player.addAllies(player.cardsPlayed4Quest.cardsPlayed);
+        player.cardsPlayed4Quest.discardWeaponsNAmours();
         numPlayers -= 1;
     }
 

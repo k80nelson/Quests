@@ -49,6 +49,6 @@ public class AdventureCard : BaseCard {
             }
         }
 
-        return BP;
+        return MinBid;
     }
 }

@@ -10,7 +10,8 @@ public class BiddingModel : GameElement
     public void initialize(int numPlayers, int minBid)
     {
         highestPlayer = -1;
-        highestBid = (numPlayers == 1) ? 2 : minBid;
+        if (numPlayers == 1) highestBid = 2;
+        else highestBid = minBid - 1;
     }
     
 }

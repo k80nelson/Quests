@@ -14,6 +14,7 @@ public class PlayerView : MonoBehaviour {
     public GameObject cardView;
     public Transform cardStorage;
     public Transform allyStorage;
+    public Transform playersCards;
     
 
     public void changeName(string name)
@@ -39,6 +40,14 @@ public class PlayerView : MonoBehaviour {
     public void hideCard(GameObject card)
     {
         card.transform.SetParent(cardStorage);
+    }
+
+    public void restoreHiddenCards()
+    {
+        foreach(Transform child in cardStorage)
+        {
+            child.SetParent(playersCards);
+        }
     }
 
     public void saveHiddenAllies()
@@ -72,6 +81,7 @@ public class PlayerView : MonoBehaviour {
     {
         card.transform.SetParent(allyStorage);
     }
+
 
     public List<GameObject> getAllies()
     {

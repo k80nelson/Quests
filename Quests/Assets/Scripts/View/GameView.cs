@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameView : MonoBehaviour {
 
+    public GameObject Game;
     public GameObject JoinSponsor;
     public GameObject Sponsor;
     public GameObject JoinQuest;
@@ -27,12 +28,13 @@ public class GameView : MonoBehaviour {
 
     void unSetMainGame()
     {
-        gameObject.tag = "Game";
+        Debug.Log("HERE");
+        Game.tag = "Game";
     }
 
     void setMainGame()
     {
-        gameObject.tag = "ActiveArea";
+        Game.tag = "ActiveArea";
     }
 
     public void toggleMenu()
@@ -63,6 +65,7 @@ public class GameView : MonoBehaviour {
 
     public void LoadQuest()
     {
+        Debug.Log("ALMOST");
         unSetMainGame();
         quest.SetActive(true);
         quest.tag = "ActiveArea";
@@ -77,7 +80,7 @@ public class GameView : MonoBehaviour {
 
     public void removeSponsor()
     {
-        quest.GetComponent<Quest>().discardSponsor();
+        quest.GetComponent<QuestController>().destroySponsor();
     }
 
     public void EndSponsor()

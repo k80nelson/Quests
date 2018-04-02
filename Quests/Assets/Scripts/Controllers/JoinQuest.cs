@@ -61,7 +61,7 @@ public class JoinQuest : MonoBehaviour {
     {
         Debug.Log("[JoinQuest:end] Join Quest completed");
         Destroy(card);
-        game.CreateQuest(players);
         game.view.EndJoinQuest();
+        game.CreateQuest(players);
     }
 }

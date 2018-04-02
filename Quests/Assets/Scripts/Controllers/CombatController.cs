@@ -7,13 +7,13 @@ public class CombatController : GameElement
     public Transform cardArea;
     public QuestModel currQuest;
     public QuestController controller;
-
-    public CombatModel model;
+    
     public CombatView view;
 
     int counter;
 
-    void OnEnable()
+   
+    public void initiate()
     {
         Debug.Log("[CombatController.cs:OnEnable] Initializing Combat");
         view.setEncounterText(currQuest.currStageId + 1);
@@ -60,7 +60,7 @@ public class CombatController : GameElement
         currPlayerCtrl.removeCards(cardsPlayed);
 
         counter += 1;
-        if (counter == currQuest.numPlayers)
+        if (counter >= currQuest.numPlayers)
         {
             findPassingPlayers();
         }
@@ -69,8 +69,7 @@ public class CombatController : GameElement
 
     bool compareBP(StageModel sponsor, PlayerModel player)
     {
-        int playerBP = player.getBP() + player.cardsPlayed4Quest.totalBP();
-
+        int playerBP = player.getBP() + player.cardsPlayed4Quest.totalBP() + player.calculateAllyBP();
         if (playerBP >= sponsor.totalBP()) return true;
         return false;
     }
@@ -81,6 +80,8 @@ public class CombatController : GameElement
         foreach (PlayerModel player in models)
         {
             PlayerController ctrl = player.GetComponent<PlayerController>();
+            Debug.Log(currQuest.currStage);
+            Debug.Log(player);
             if (compareBP(currQuest.currStage, player))
             {
                 Debug.Log("[CombatController.cs:findPassingPlayers] player " + (player.index + 1) + " passed stage " + (currQuest.currStageId + 1));

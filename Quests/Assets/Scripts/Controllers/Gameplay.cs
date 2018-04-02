@@ -18,6 +18,11 @@ public class GameElement : MonoBehaviour
         findGame();
     }
 
+    private void Update()
+    {
+        if (game == null)findGame();
+    }
+
     void findGame()
     {
         if (GameObject.FindGameObjectWithTag("Game") != null) game = GameObject.FindGameObjectWithTag("Game").GetComponent<Gameplay>();
@@ -48,6 +53,7 @@ public class Gameplay : MonoBehaviour
 
     public SetupModel stageModels;
     private int sponsorId;
+    public QuestController quest;
 
     private void Awake()
     {
@@ -252,12 +258,13 @@ public class Gameplay : MonoBehaviour
             int stages = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<QuestCard>().stages;
             EndQuest(stages, stageModels.totalNumCards());
             view.removeSponsor();
+            stageModels.discardAll();
             StoryDeck.discard();
         }
         else
         {
             view.LoadQuest();
-            GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<QuestController>().startQuest(players);
+            quest.startQuest(players, stageModels);
         }
     }
 
