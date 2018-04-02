@@ -18,12 +18,14 @@ public class QuestController : GameElement {
         model.initialize();
     }
 
+    /* called by gameplay to initialize the quest & get the ball rollin */
     public void startQuest(List<int> players, SetupModel sponsorship)
     {
         model.addPlayers(players);
         model.sponsorship = sponsorship;
         nextStage();
     }
+
 
     public void nextStage()
     {
@@ -68,7 +70,11 @@ public class QuestController : GameElement {
 
     public void nextPlayer()
     {
-        if (model.numPlayers == 0) { } // end fail
+        if (model.numPlayers == 0)
+        {
+            endFail();
+            return;
+        }
         model.nextActivePlayer();
         if (model.currStageType == QuestModel.stageType.TEST && bidding.testWin()) endBid();
         else
@@ -80,6 +86,7 @@ public class QuestController : GameElement {
         }
     }
 
+    /* gotta properly discard those cards so they're back in rotation */
     void endBid()
     {
         PlayerController ctrl = model.players[model.activePlayer].GetComponent<PlayerController>();
@@ -109,6 +116,8 @@ public class QuestController : GameElement {
             player.addAllies(player.cardsPlayed4Quest.cardsPlayed);
             player.cardsPlayed4Quest.Empty();
         }
+
+        game.view.promptUser(model.numPlayers + " players have successfully completed the quest and are awarded " + model.numStages + " shields.");
         end();
     }
 

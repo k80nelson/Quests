@@ -50,7 +50,7 @@ public class CombatController : GameElement
     {
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
         PlayerController currPlayerCtrl = game.players[game.activePlayer].GetComponent<PlayerController>();
-
+        Debug.Log("[CombatController.cs:playCards] Player " + (currQuest.playerIds[currQuest.activePlayer] + 1) + " plays " + cardsPlayed.Count + " cards in stage " + (currQuest.currStageId + 1));
         // hide each card in the player
         foreach (AdventureCard card in cardsPlayed)
         {

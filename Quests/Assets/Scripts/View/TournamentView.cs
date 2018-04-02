@@ -7,6 +7,7 @@ public class TournamentView : GameElement {
     public GameObject amourPrefab;
     public Transform cardsInPlay;
 
+    /* shows the ally n amour cards already in play */
     public void showCards()
     {
         foreach (Transform child in cardsInPlay)

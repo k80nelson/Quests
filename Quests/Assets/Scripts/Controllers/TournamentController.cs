@@ -31,7 +31,6 @@ public class TournamentController : GameElement {
         if (counter >= model.numPlayers) checkWinner();
         else
         {
-            
             model.nextActivePlayer();
             game.setActivePlayer(model.playerIds[model.activePlayer]);
             view.showCards();
@@ -41,14 +40,17 @@ public class TournamentController : GameElement {
 
     void checkWinner()
     {
+        Debug.Log("[TournamentController.cs:checkWinner] Checking winners.. ");
         List<int> winners = model.findWinners();
         if (inTie && winners.Count > 1)
         {
+            Debug.Log("[TournamentController.cs:checkWinner] " + winners.Count + " players have won the tournament.");
             game.EndTournamentTie(winners, model.joined, model.numShields);
             end();
         }
         else if (winners.Count > 1)
         {
+            Debug.Log("[TournamentController.cs:checkWinner] " + winners.Count + " players have tied and continue the tournament.");
             inTie = true;
             counter = 0;
             model.activePlayer = -1;
@@ -58,6 +60,7 @@ public class TournamentController : GameElement {
         }
         else
         {
+            Debug.Log("[TournamentController.cs:checkWinner] player " + winners[0] + " won the tournament.");
             game.EndTournament(winners[0], model.joined,model.numShields);
             end();
         }
@@ -79,6 +82,7 @@ public class TournamentController : GameElement {
 
     public void play()
     {
+        
         List<AdventureCard> cardsPlayed = new List<AdventureCard>(cardArea.GetComponentsInChildren<AdventureCard>());
         model.players[model.activePlayer].cardsPlayed4Quest.addList(cardsPlayed);
         PlayerController currPlayerCtrl = game.players[game.activePlayer].GetComponent<PlayerController>();
@@ -91,6 +95,7 @@ public class TournamentController : GameElement {
         currPlayerCtrl.removeCards(cardsPlayed);
 
         counter += 1;
+        Debug.Log("[TournamentController.cs:play] player " + (model.playerIds[model.activePlayer] + 1) + " played " + cardsPlayed.Count + " cards in the Tournament");
         nextPlayer();
     }
 

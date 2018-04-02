@@ -18,6 +18,7 @@ public class TournamentModel : GameElement {
         numShields = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<TournamentCard>().BonusShields;
     }
 
+    /* called from TournamentController */
     public void initializePlayers(List<int> players)
     {
         playerIds = new List<int>(players);
@@ -65,15 +66,19 @@ public class TournamentModel : GameElement {
         }
         Debug.Log("[TournamentController.cs:findWinners] Found "+ (winners.Count) + " winner(s).");
         
+        /* after finding winners, remove the losers */
+
         List<PlayerModel> models = new List<PlayerModel>(players);
         foreach(PlayerModel player in models)
         {
             if (winners.Contains(player.index))
             {
+                // if player is a winner, discard their weapons n let them continue 
                 player.cardsPlayed4Quest.discardWeapons();
                 player.GetComponent<PlayerView>().saveHiddenAllies();
                 continue;
             }
+            // otherwise discard their weapons and amour if they have one and add the allies they played to their list
             Debug.Log("[TournamentController.cs:findWinners] Removing player " + (player.index + 1) + " from the tournament.");
             players.Remove(player);
             playerIds.Remove(player.index);

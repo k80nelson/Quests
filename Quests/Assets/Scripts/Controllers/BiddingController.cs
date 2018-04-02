@@ -17,6 +17,7 @@ public class BiddingController : GameElement {
         view.setEncounterText(currQuest.currStageId + 1);
     }
 
+    /* this grabs all the needed info from the test, including the image to put on the screen*/
     public void giveCard(Transform card)
     {
         int minBid = card.GetComponent<AdventureCard>().getMinimumBid();
@@ -25,11 +26,13 @@ public class BiddingController : GameElement {
         view.setBidText(model.highestBid + 1);
     }
 
+    /* returns true if you're in a winning state */
     public bool testWin()
     {
         return (currQuest.playerIds[currQuest.activePlayer] == model.highestPlayer);
     }
 
+    /* returns the hidden cards of the active player to the card area for bidding */
     public void restoreCards()
     {
         List<Transform> hidden = currQuest.players[currQuest.activePlayer].GetComponent<PlayerController>().getHiddenCards();
@@ -40,6 +43,7 @@ public class BiddingController : GameElement {
         }
     }
 
+    /* drop zone validate function*/
     public bool validate()
     {
         if (currQuest.players[currQuest.activePlayer].overMax())
@@ -51,6 +55,7 @@ public class BiddingController : GameElement {
         return true;
     }
 
+    /* called by the play cards button*/
     public void bid()
     {
         PlayerController currPlayerCtrl = currQuest.players[currQuest.activePlayer].GetComponent<PlayerController>();
@@ -69,7 +74,7 @@ public class BiddingController : GameElement {
         }
         else
         {
-            Debug.Log("[BiddingController.cs:bid] Player " + (game.activePlayer + 1) + " played " + cardsPlayed.Count + " cards in stage " + (currQuest.currStageId + 1));
+            Debug.Log("[BiddingController.cs:bid] Player " + (game.activePlayer + 1) + " discarded " + cardsPlayed.Count + " cards in stage " + (currQuest.currStageId + 1));
 
             foreach (AdventureCard card in cardsPlayed)
             {
@@ -107,7 +112,6 @@ public class BiddingController : GameElement {
         }
 
         view.restoreHiddenCards();
-
         controller.nextPlayer();
     }
 
