@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public PlayerView view;
     public PlayerModel model;
@@ -13,11 +14,13 @@ public class PlayerController : MonoBehaviour
     {
         view = gameObject.GetComponent<PlayerView>();
         model = gameObject.GetComponent<PlayerModel>();
+        this.gameObject.transform.SetParent(GameObject.Find("Gameplay").transform);
         view.changeName("P" + (model.index+1));
     }
 
     private void Update()
     {
+        if (!isLocalPlayer) return;
         view.updateRank(((PlayerModel.Rank)(model.rank)).ToString());
         view.updateShields(model.shields);
         view.updateCards(model.numCards);

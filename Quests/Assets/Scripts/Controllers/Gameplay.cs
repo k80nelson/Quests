@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 
@@ -26,7 +27,7 @@ public class GameElement : MonoBehaviour
 
 }
 
-public class Gameplay : MonoBehaviour
+public class Gameplay : NetworkBehaviour
 {
 
     public GameState state;
