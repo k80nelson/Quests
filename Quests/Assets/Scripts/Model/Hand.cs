@@ -52,6 +52,16 @@ public class Hand : MonoBehaviour
         List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.FOE).ToList();
         return ret;
     }
+
+    public bool containsFoes(int num)
+    {
+        return (cards.Where(i => i.type == AdventureCard.Type.FOE).ToList().Count >= num);
+    }
+
+    public bool containsTest()
+    {
+        return (cards.Find(i => i.type == AdventureCard.Type.TEST) != null);
+    }
     public List<AdventureCard> getTests()
     {
         List<AdventureCard> ret = cards.Where(i => i.type == AdventureCard.Type.TEST).ToList();

@@ -15,6 +15,16 @@ public class GameView : MonoBehaviour {
     public GameObject Menu;
     public Text PlayerOverlayText;
 
+    public GameObject prompt;
+    public Text promptText;
+
+
+    public void promptUser(string message)
+    {
+        promptText.text = message;
+        prompt.SetActive(true);
+    }
+
     void unSetMainGame()
     {
         gameObject.tag = "Game";

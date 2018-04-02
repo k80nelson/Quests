@@ -24,6 +24,16 @@ public class PlayerModel : MonoBehaviour
         cardsPlayed4Quest = new StageModel();
     }
 
+    public bool enoughFoes(int num)
+    {
+        return hand.containsFoes(num);
+    }
+
+    public bool hasTest()
+    {
+        return hand.containsTest();
+    }
+
     public int getBP()
     {
         int total = calculateAllyBP();
