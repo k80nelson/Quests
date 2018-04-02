@@ -87,4 +87,14 @@ public class TournamentModel : GameElement {
         return winners;
     }
 
+    public void giveAdventureCards()
+    {
+        foreach (int player in playerIds)
+        {
+            game.addCardsToPlayer(player, 1);
+        }
+
+        Debug.Log("[Tournament.cs:giveAdventureCards] added 1 adventure card to each player in Quest");
+    }
+
 }

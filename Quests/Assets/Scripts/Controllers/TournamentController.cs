@@ -22,6 +22,7 @@ public class TournamentController : GameElement {
     public void startTournament(List<int> players)
     {
         model.initializePlayers(players);
+        model.giveAdventureCards();
         nextPlayer();
     }
 
@@ -30,6 +31,7 @@ public class TournamentController : GameElement {
         if (counter >= model.numPlayers) checkWinner();
         else
         {
+            
             model.nextActivePlayer();
             game.setActivePlayer(model.playerIds[model.activePlayer]);
             view.showCards();
@@ -51,6 +53,7 @@ public class TournamentController : GameElement {
             counter = 0;
             model.activePlayer = -1;
             game.view.promptUser("There was a tie. Tournament will continue.");
+            model.giveAdventureCards();
             nextPlayer();
         }
         else
