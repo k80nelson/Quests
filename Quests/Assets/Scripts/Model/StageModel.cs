@@ -61,6 +61,16 @@ public class StageModel
         return (cardsPlayed.Count == 0);
     }
 
+    public bool isCombat()
+    {
+        return containsFoe();
+    }
+
+    public bool isTest()
+    {
+        return containsTest();
+    }
+
     public void discardWeaponsNAmours()
     {
         if (cardsPlayed == null) return;

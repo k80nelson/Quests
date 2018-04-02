@@ -10,7 +10,7 @@ public class Quest : GameElement
     public GameObject amourPrefab;
     
     public Transform StoryCardTransform;
-    public QuestCard currQuest;
+    
     public Transform cardArea;
     public Transform bidCardArea;
     public GameObject combat;
@@ -19,7 +19,6 @@ public class Quest : GameElement
     public Transform inPlayTransform;
 
     //Test variables
-    public Transform biddingCards;
     private int highestBid;
 
     private List<int> playerIds;
@@ -28,8 +27,7 @@ public class Quest : GameElement
     private int numPlayers;
     private int counter;
     private int highestPlayer;
-
-
+    
     int numStages;
     public SetupModel sponsorship;
     public Transform[] stageObjects;
@@ -40,7 +38,10 @@ public class Quest : GameElement
     public StageModel currStage;
     public Text stageTextFoe;
     public Text stageTextTest;
-    
+
+
+    [System.NonSerialized]
+    public QuestCard currQuest;
 
     private void OnEnable()
     {
@@ -429,7 +430,7 @@ public class Quest : GameElement
 
     public void discardSponsor()
     {
-        sponsorship.discardAll();
+        if (sponsorship != null) sponsorship.discardAll();
         foreach(Transform obj in stageObjects)
         {
             foreach(Transform child in obj)

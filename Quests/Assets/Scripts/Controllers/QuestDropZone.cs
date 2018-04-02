@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestDropZone : DropZone {
+public class CombatDropZone : DropZone {
 
-    public Quest quest;
+    public CombatController quest;
  
     protected override bool isValid(Draggable d)
     {
-        return quest.validateCard(d.GetComponent<AdventureCard>());
+        return quest.validate(d.GetComponent<AdventureCard>());
     }
 }

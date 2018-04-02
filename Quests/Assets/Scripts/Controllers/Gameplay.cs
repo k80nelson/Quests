@@ -46,7 +46,7 @@ public class Gameplay : MonoBehaviour
     public GameObject endTurn;
     public GameObject startTurn;
 
-    private SetupModel stageModels;
+    public SetupModel stageModels;
     private int sponsorId;
 
     private void Awake()
@@ -256,10 +256,8 @@ public class Gameplay : MonoBehaviour
         }
         else
         {
-            Quest quest = view.LoadQuest();
-            quest.addStages(stageModels);
-            quest.addPlayers(players);
-            quest.startQuest();
+            view.LoadQuest();
+            GameObject.FindGameObjectWithTag("ActiveArea").GetComponent<QuestController>().startQuest(players);
         }
     }
 

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TestDropZone : DropZone
 {
-
-    public Quest quest;
+    public BiddingController quest;
 
     protected override bool isValid(Draggable d)
     {
-        return quest.biddingValidity(d.GetComponent<AdventureCard>());
+        return quest.validate();
     }
 }

@@ -43,7 +43,6 @@ public class SetupModel
         {
             total += stage.Count;
         }
-
         return total;
     }
 

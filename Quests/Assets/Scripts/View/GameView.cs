@@ -61,12 +61,11 @@ public class GameView : MonoBehaviour {
         JoinQuest.tag = "ActiveArea";
     }
 
-    public Quest LoadQuest()
+    public void LoadQuest()
     {
         unSetMainGame();
         quest.SetActive(true);
         quest.tag = "ActiveArea";
-        return quest.GetComponent<Quest>();
     }
 
     public void LoadSponsor()
