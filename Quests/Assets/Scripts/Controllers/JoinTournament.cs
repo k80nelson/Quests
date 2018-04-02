@@ -65,7 +65,7 @@ public class JoinTournament : GameElement
         Debug.Log("[JoinTournament:end] Join Tournament complete");
 
         Destroy(card);
-        game.CreateTournament(players);
         game.view.EndJoinTournament();
+        game.CreateTournament(players);
     }
 }

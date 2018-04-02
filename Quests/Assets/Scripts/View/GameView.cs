@@ -78,6 +78,13 @@ public class GameView : MonoBehaviour {
         Sponsor.tag = "ActiveArea";
     }
 
+    public void LoadTournament()
+    {
+        unSetMainGame();
+        Tournament.SetActive(true);
+        Tournament.tag = "ActiveArea";
+    }
+
     public void removeSponsor()
     {
         quest.GetComponent<QuestController>().destroySponsor();
@@ -116,6 +123,13 @@ public class GameView : MonoBehaviour {
         setMainGame();
         quest.tag = "Untagged";
         quest.SetActive(false);
+    }
+
+    public void EndTournament()
+    {
+        setMainGame();
+        Tournament.tag = "Untagged";
+        Tournament.SetActive(false);
     }
 
     public void ShowPlayerOverlay(int player)

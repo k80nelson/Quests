@@ -55,6 +55,7 @@ public class Gameplay : NetworkBehaviour
     public SetupModel stageModels;
     private int sponsorId;
     public QuestController quest;
+    public TournamentController tournament;
 
     private void Awake()
     {
@@ -240,10 +241,33 @@ public class Gameplay : NetworkBehaviour
             StoryDeck.discard();
             setNextPlayer();
         }
+        else if (players.Count == 1)
+        {
+            int numShields = GameObject.FindGameObjectWithTag("CurrStory").GetComponent<TournamentCard>().BonusShields;
+            EndTournament(players[0], 1, numShields);
+        }
         else
         {
-            Debug.Log(players.Count + " Players in tournament");
+            view.LoadTournament();
+            tournament.startTournament(players);
         }
+    }
+
+    public void EndTournament(int playerId, int numPlayers, int numBonus)
+    {
+        players[playerId].GetComponent<PlayerModel>().addShields(numPlayers + numBonus);
+        view.promptUser("Player " + (playerId + 1) + " won the tournament and earned " + (numPlayers + numBonus) + " shields.");
+        setNextPlayer();
+    }
+
+    public void EndTournamentTie(List<int> winners, int numPlayers, int numBonus)
+    {
+        foreach(int player in winners)
+        {
+            players[player].GetComponent<PlayerModel>().addShields(numPlayers + numBonus);
+        }
+        view.promptUser(winners.Count + " players won the tournament and earned " + (numPlayers + numBonus) + " shields.");
+        setNextPlayer();
     }
 
     public void storeSponsors(SetupModel models)
