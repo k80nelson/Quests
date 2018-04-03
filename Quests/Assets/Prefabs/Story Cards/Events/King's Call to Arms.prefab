@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 225114699695236534}
   - component: {fileID: 114873230919935824}
   - component: {fileID: 114037954796992810}
+  - component: {fileID: 114192648939105024}
   m_Layer: 5
   m_Name: King's Call to Arms
   m_TagString: Untagged
@@ -44,6 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
+--- !u!114 &114192648939105024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319902947521598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efe1f504474085429aef3411b4ace21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114341675856561528
 MonoBehaviour:
   m_ObjectHideFlags: 1

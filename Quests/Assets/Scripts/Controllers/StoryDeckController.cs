@@ -75,6 +75,7 @@ public class StoryDeckController : GameElement {
         else if (key == 'b') rand = 0;
         else if (key == 'p') rand = 20;
         else if (key == 's') rand = 7;
+        else if (key == 'k') rand = 16;
 
         GameObject prefab = model.draw(rand);
         GameObject card = Instantiate(prefab, CardTransform);

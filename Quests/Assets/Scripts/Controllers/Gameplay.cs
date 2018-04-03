@@ -134,6 +134,12 @@ public class Gameplay : NetworkBehaviour
             StoryDeck.gameRig('t');
         }
 
+        //Game Rigging to Spawn King's Call card instantly, used for testing
+        if (Input.GetKeyDown(KeyCode.K) && gameObject.tag == "ActiveArea")
+        {
+            StoryDeck.gameRig('k');
+        }
+
     }
 
     private void initPlayers()
