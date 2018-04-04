@@ -21,6 +21,8 @@ public class KingsCall : GameElement
         bool hasFoe = false;
         int weaponCounter = 0;
         int foeCounter = 0;
+        int requiredWeaponCounter = 0;
+        int requiredFoeCounter = 0;
 
         //Loops through each game object and creates the list of models and controllers 
         foreach (GameObject player in game.players)
@@ -69,28 +71,44 @@ public class KingsCall : GameElement
         //if they have no weapon cards then they have to discard 2 foe cards
         //check to make sure the cards selected is a foe card
         //valid then remove it from players hand
-        
 
-
-        foreach(AdventureCard card in cards)
+        foreach (PlayerModel player in highestPlayerModel)
         {
-            if(card.type == AdventureCard.Type.WEAPON)
+
+            List<AdventureCard> cards = player.getCards();
+
+            foreach (AdventureCard card in cards)
             {
-                hasWeapon = true;
-                weaponCounter += 1;
+                if (card.type == AdventureCard.Type.WEAPON)
+                {
+                    hasWeapon = true;
+                    weaponCounter += 1;
+                }
+                if (card.type == AdventureCard.Type.FOE)
+                {
+                    hasFoe = true;
+                    foeCounter += 1;
+                }
             }
-            if (card.type == AdventureCard.Type.FOE)
+
+            if (hasWeapon)
             {
-                hasFoe = true;
-                foeCounter += 1;
+                game.view.promptUser("You must discard a Weapon card to continue");
+                requiredWeaponCounter = weaponCounter - 1;
             }
+            else if (!hasWeapon && hasFoe && foeCounter >= 2)
+            {
+                game.view.promptUser("You must discard two Foe cards to continue");
+                requiredFoeCounter = weaponCounter - 2;
+            }
+            else if (!hasWeapon && hasFoe && foeCounter < 2)
+            {
+                game.view.promptUser("You must discard a Foe card to continue");
+                requiredFoeCounter = weaponCounter - 1;
+            }
+
         }
-
-        if (hasWeapon) game.view.promptUser("You must discard a Weapon card to continue");
-        else if (!hasWeapon && hasFoe && foeCounter >= 2) game.view.promptUser("You must discard two Foe cards to continue");
-        else if (!hasWeapon && hasFoe && foeCounter < 2) game.view.promptUser("You must discard a Foe card to continue");
-
-
         Debug.Log("Kings Call");
+
     }
 }
