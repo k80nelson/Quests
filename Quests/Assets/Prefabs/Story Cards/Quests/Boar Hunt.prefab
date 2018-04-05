@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225903610480367766}
   - component: {fileID: 114104548442861100}
   - component: {fileID: 114841559914888110}
+  - component: {fileID: 114851893362115060}
   m_Layer: 5
   m_Name: Boar Hunt
   m_TagString: Untagged
@@ -104,6 +105,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
+--- !u!114 &114851893362115060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152487459517902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 129
+    i1: 89
+    i2: 124
+    i3: 144
+    i4: 11
+    i5: 165
+    i6: 48
+    i7: 244
+    i8: 10
+    i9: 89
+    i10: 182
+    i11: 107
+    i12: 19
+    i13: 107
+    i14: 191
+    i15: 246
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222748505059527318
 CanvasRenderer:
   m_ObjectHideFlags: 1

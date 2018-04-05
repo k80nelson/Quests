@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114002213045804696}
   - component: {fileID: 114827191099738842}
   - component: {fileID: 114132801548333474}
+  - component: {fileID: 114068230919185306}
   m_Layer: 5
   m_Name: Court Called to Camelot
   m_TagString: Untagged
@@ -51,6 +52,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114068230919185306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518585227386430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 118
+    i1: 189
+    i2: 206
+    i3: 251
+    i4: 163
+    i5: 228
+    i6: 168
+    i7: 212
+    i8: 217
+    i9: 42
+    i10: 128
+    i11: 89
+    i12: 103
+    i13: 107
+    i14: 142
+    i15: 120
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114132801548333474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222050257613971372
 CanvasRenderer:
   m_ObjectHideFlags: 1

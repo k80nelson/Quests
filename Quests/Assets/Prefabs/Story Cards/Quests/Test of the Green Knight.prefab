@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225302650042335388}
   - component: {fileID: 114187167732008520}
   - component: {fileID: 114513443995547270}
+  - component: {fileID: 114585758354956734}
   m_Layer: 5
   m_Name: Test of the Green Knight
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114542605474896178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,6 +79,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Test of the Green Knight
   stages: 4
+--- !u!114 &114585758354956734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662434523435976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 148
+    i1: 2
+    i2: 134
+    i3: 110
+    i4: 31
+    i5: 246
+    i6: 167
+    i7: 20
+    i8: 40
+    i9: 75
+    i10: 69
+    i11: 5
+    i12: 174
+    i13: 54
+    i14: 218
+    i15: 93
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114876989191982600
 MonoBehaviour:
   m_ObjectHideFlags: 1
