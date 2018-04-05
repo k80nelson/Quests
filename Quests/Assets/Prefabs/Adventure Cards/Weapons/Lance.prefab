@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225275772386773478}
   - component: {fileID: 114534787679112104}
   - component: {fileID: 114318430697024694}
+  - component: {fileID: 114572068006859134}
   m_Layer: 5
   m_Name: Lance
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114345652194169238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +94,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114572068006859134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695779773716604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 93
+    i1: 101
+    i2: 231
+    i3: 64
+    i4: 189
+    i5: 171
+    i6: 165
+    i7: 100
+    i8: 27
+    i9: 105
+    i10: 23
+    i11: 143
+    i12: 13
+    i13: 214
+    i14: 205
+    i15: 227
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114794568323368986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +143,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 20
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114884575786416524
 MonoBehaviour:

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225030760719699794}
   - component: {fileID: 114354245697240116}
   - component: {fileID: 114621160963009910}
+  - component: {fileID: 114314761012622250}
   m_Layer: 5
   m_Name: Sir Percival
   m_TagString: Untagged
@@ -60,6 +61,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114314761012622250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334488183343344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 180
+    i1: 67
+    i2: 41
+    i3: 11
+    i4: 176
+    i5: 84
+    i6: 193
+    i7: 100
+    i8: 121
+    i9: 87
+    i10: 169
+    i11: 255
+    i12: 58
+    i13: 28
+    i14: 244
+    i15: 92
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114354245697240116
 MonoBehaviour:
   m_ObjectHideFlags: 1

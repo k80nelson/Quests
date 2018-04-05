@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225719086158086656}
   - component: {fileID: 114040591991626000}
   - component: {fileID: 114598621808688220}
+  - component: {fileID: 114201725942476884}
   m_Layer: 5
   m_Name: Merlin
   m_TagString: Untagged
@@ -52,6 +53,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114201725942476884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504245822570334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 56
+    i1: 45
+    i2: 227
+    i3: 166
+    i4: 43
+    i5: 178
+    i6: 119
+    i7: 244
+    i8: 203
+    i9: 224
+    i10: 52
+    i11: 172
+    i12: 14
+    i13: 63
+    i14: 211
+    i15: 77
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114277842407591236
 MonoBehaviour:
   m_ObjectHideFlags: 1

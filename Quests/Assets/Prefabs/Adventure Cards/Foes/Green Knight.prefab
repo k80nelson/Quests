@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225855027700929356}
   - component: {fileID: 114198483279845668}
   - component: {fileID: 114673450511913320}
+  - component: {fileID: 114804989419635530}
   m_Layer: 5
   m_Name: Green Knight
   m_TagString: Untagged
@@ -112,6 +113,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 40
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards:
   - Test of the Green Knight
   - Search for the Holy Grail
@@ -129,6 +132,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
+--- !u!114 &114804989419635530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742659967237202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 23
+    i1: 182
+    i2: 85
+    i3: 226
+    i4: 75
+    i5: 105
+    i6: 217
+    i7: 68
+    i8: 91
+    i9: 241
+    i10: 25
+    i11: 246
+    i12: 71
+    i13: 63
+    i14: 242
+    i15: 57
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222076769836292670
 CanvasRenderer:
   m_ObjectHideFlags: 1

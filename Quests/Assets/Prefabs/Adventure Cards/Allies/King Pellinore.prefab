@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225479900083194062}
   - component: {fileID: 114221196554671384}
   - component: {fileID: 114721361755408926}
+  - component: {fileID: 114221906525541654}
   m_Layer: 5
   m_Name: King Pellinore
   m_TagString: Untagged
@@ -72,6 +73,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114221906525541654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650879436273194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 217
+    i1: 43
+    i2: 252
+    i3: 225
+    i4: 15
+    i5: 192
+    i6: 175
+    i7: 68
+    i8: 88
+    i9: 17
+    i10: 30
+    i11: 7
+    i12: 222
+    i13: 100
+    i14: 133
+    i15: 174
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114369860233310512
 MonoBehaviour:
   m_ObjectHideFlags: 1

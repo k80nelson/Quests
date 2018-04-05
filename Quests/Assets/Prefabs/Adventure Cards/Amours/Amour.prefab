@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225643871936579350}
   - component: {fileID: 114601086949014714}
   - component: {fileID: 114964313076140582}
+  - component: {fileID: 114387989669649610}
   m_Layer: 5
   m_Name: Amour
   m_TagString: Untagged
@@ -76,6 +77,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114387989669649610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772350449258990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 138
+    i1: 169
+    i2: 142
+    i3: 64
+    i4: 205
+    i5: 86
+    i6: 162
+    i7: 100
+    i8: 155
+    i9: 140
+    i10: 65
+    i11: 115
+    i12: 58
+    i13: 0
+    i14: 223
+    i15: 233
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114581580583540986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,6 +126,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 10
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114601086949014714
 MonoBehaviour:
@@ -126,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222878648364838380
 CanvasRenderer:
   m_ObjectHideFlags: 1

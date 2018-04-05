@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225551696116122902}
   - component: {fileID: 114104140518729204}
   - component: {fileID: 114839015640278770}
+  - component: {fileID: 114482388226010088}
   m_Layer: 5
   m_Name: Horse
   m_TagString: Untagged
@@ -50,6 +51,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 10
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114104140518729204
 MonoBehaviour:
@@ -97,6 +100,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114482388226010088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280155338706136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 138
+    i1: 151
+    i2: 200
+    i3: 4
+    i4: 96
+    i5: 173
+    i6: 178
+    i7: 4
+    i8: 11
+    i9: 51
+    i10: 87
+    i11: 34
+    i12: 130
+    i13: 218
+    i14: 2
+    i15: 237
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114523764930040890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222292870196986006
 CanvasRenderer:
   m_ObjectHideFlags: 1

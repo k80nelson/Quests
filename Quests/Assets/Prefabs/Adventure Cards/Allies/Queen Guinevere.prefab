@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225658742076069518}
   - component: {fileID: 114211411851006262}
   - component: {fileID: 114098829528493582}
+  - component: {fileID: 114050557270258822}
   m_Layer: 5
   m_Name: Queen Guinevere
   m_TagString: Untagged
@@ -33,6 +34,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114050557270258822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004926986100092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 34
+    i1: 123
+    i2: 42
+    i3: 15
+    i4: 181
+    i5: 240
+    i6: 141
+    i7: 84
+    i8: 91
+    i9: 44
+    i10: 221
+    i11: 89
+    i12: 14
+    i13: 218
+    i14: 8
+    i15: 231
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114098829528493582
 MonoBehaviour:
   m_ObjectHideFlags: 1

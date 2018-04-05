@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225409149922205146}
   - component: {fileID: 114090294456454074}
   - component: {fileID: 114984192003080512}
+  - component: {fileID: 114974431080729130}
   m_Layer: 5
   m_Name: Test of Temptation
   m_TagString: Untagged
@@ -115,6 +116,38 @@ MonoBehaviour:
   image: {fileID: 0}
   initialScale: {x: 0, y: 0, z: 0}
   bigScale: {x: 0, y: 0, z: 0}
+--- !u!114 &114974431080729130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917120087592992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 18
+    i1: 128
+    i2: 17
+    i3: 30
+    i4: 34
+    i5: 230
+    i6: 210
+    i7: 4
+    i8: 137
+    i9: 203
+    i10: 82
+    i11: 11
+    i12: 112
+    i13: 162
+    i14: 110
+    i15: 76
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114984192003080512
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225025876802191450}
   - component: {fileID: 114859515546483544}
   - component: {fileID: 114663513553347636}
+  - component: {fileID: 114620421497038432}
   m_Layer: 5
   m_Name: Test of Morgan Le Fey
   m_TagString: Untagged
@@ -69,6 +70,38 @@ MonoBehaviour:
   MinBid: 3
   specialMinBid: 3
   SpecialCards: []
+--- !u!114 &114620421497038432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172683812935382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 180
+    i1: 56
+    i2: 215
+    i3: 125
+    i4: 117
+    i5: 179
+    i6: 95
+    i7: 164
+    i8: 139
+    i9: 182
+    i10: 247
+    i11: 145
+    i12: 12
+    i13: 25
+    i14: 224
+    i15: 87
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114663513553347636
 MonoBehaviour:
   m_ObjectHideFlags: 1

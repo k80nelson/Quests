@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225400644701706934}
   - component: {fileID: 114431288752682916}
   - component: {fileID: 114819970538626394}
+  - component: {fileID: 114742285936223570}
   m_Layer: 5
   m_Name: Sir Lancelot
   m_TagString: Untagged
@@ -115,6 +116,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114742285936223570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387724644700882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 72
+    i1: 102
+    i2: 113
+    i3: 183
+    i4: 5
+    i5: 101
+    i6: 199
+    i7: 164
+    i8: 106
+    i9: 133
+    i10: 158
+    i11: 141
+    i12: 97
+    i13: 153
+    i14: 142
+    i15: 68
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114819970538626394
 MonoBehaviour:
   m_ObjectHideFlags: 1

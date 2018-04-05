@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225900524332205956}
   - component: {fileID: 114609432988933782}
   - component: {fileID: 114699392251707198}
+  - component: {fileID: 114146155335377632}
   m_Layer: 5
   m_Name: King Arthur
   m_TagString: Untagged
@@ -33,6 +34,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114146155335377632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449427176597088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 12
+    i1: 215
+    i2: 230
+    i3: 43
+    i4: 185
+    i5: 37
+    i6: 18
+    i7: 212
+    i8: 90
+    i9: 60
+    i10: 70
+    i11: 194
+    i12: 125
+    i13: 240
+    i14: 218
+    i15: 202
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114243334829363774
 MonoBehaviour:
   m_ObjectHideFlags: 1

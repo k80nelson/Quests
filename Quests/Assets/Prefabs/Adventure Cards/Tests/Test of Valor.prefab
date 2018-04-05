@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225070672839940806}
   - component: {fileID: 114152359468798130}
   - component: {fileID: 114807120447248814}
+  - component: {fileID: 114039517674043208}
   m_Layer: 5
   m_Name: Test of Valor
   m_TagString: Untagged
@@ -33,6 +34,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114039517674043208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902600670759210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 70
+    i1: 121
+    i2: 179
+    i3: 17
+    i4: 212
+    i5: 251
+    i6: 45
+    i7: 228
+    i8: 57
+    i9: 63
+    i10: 115
+    i11: 118
+    i12: 151
+    i13: 69
+    i14: 50
+    i15: 19
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114152359468798130
 MonoBehaviour:
   m_ObjectHideFlags: 1

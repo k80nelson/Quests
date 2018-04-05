@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225157352894603720}
   - component: {fileID: 114467815377861988}
   - component: {fileID: 114144982983365182}
+  - component: {fileID: 114432675419992718}
   m_Layer: 5
   m_Name: Dragon
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114332584604738134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,10 +65,44 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 70
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards:
   - Slay the Dragon
   - Defend the Queen's Honor
   - Search for the Holy Grail
+--- !u!114 &114432675419992718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638810942439284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 236
+    i1: 215
+    i2: 129
+    i3: 90
+    i4: 19
+    i5: 189
+    i6: 174
+    i7: 116
+    i8: 153
+    i9: 50
+    i10: 73
+    i11: 100
+    i12: 249
+    i13: 54
+    i14: 191
+    i15: 212
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114467815377861988
 MonoBehaviour:
   m_ObjectHideFlags: 1

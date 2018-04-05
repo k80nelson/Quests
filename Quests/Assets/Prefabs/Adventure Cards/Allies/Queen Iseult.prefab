@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225617800169136744}
   - component: {fileID: 114059379443231292}
   - component: {fileID: 114800318971517856}
+  - component: {fileID: 114604306564213000}
   m_Layer: 5
   m_Name: Queen Iseult
   m_TagString: Untagged
@@ -69,6 +70,8 @@ MonoBehaviour:
   Bids: 2
   SpecialBP: 0
   SpecialBids: 4
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114331434582355734
 MonoBehaviour:
@@ -113,6 +116,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114604306564213000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231845444443036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 188
+    i1: 155
+    i2: 176
+    i3: 35
+    i4: 198
+    i5: 51
+    i6: 59
+    i7: 52
+    i8: 233
+    i9: 74
+    i10: 159
+    i11: 104
+    i12: 174
+    i13: 103
+    i14: 103
+    i15: 77
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114800318971517856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222418057599995284
 CanvasRenderer:
   m_ObjectHideFlags: 1

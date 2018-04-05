@@ -413,8 +413,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 93256353}
-  - component: {fileID: 93256352}
   - component: {fileID: 93256351}
+  - component: {fileID: 93256352}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 93256350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -822479833, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 54bb4eeb1e9481b46aa0e31b7441a6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -464,8 +464,38 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1152682119006406, guid: d4946fe1f20f57045a57dfc87450eb6b, type: 2}
-  - {fileID: 1762788956567066, guid: 2bf4c83c26c73334ebf97604b34b6ea3, type: 2}
+  - {fileID: 1449427176597088, guid: 0cd7e62bb92512d45a3c46c27df0daca, type: 2}
+  - {fileID: 1650879436273194, guid: d92bfce10fc0af4458111e07de6485ae, type: 2}
+  - {fileID: 1504245822570334, guid: 382de3a62bb277f4cbe034ac0e3fd34d, type: 2}
+  - {fileID: 1004926986100092, guid: 227b2a0fb5f08d545b2cdd590eda08e7, type: 2}
+  - {fileID: 1231845444443036, guid: bc9bb023c6333b34e94a9f68ae67674d, type: 2}
+  - {fileID: 1760668180455364, guid: 57c61e9eb06a5e04884e9a116850187b, type: 2}
+  - {fileID: 1771486003133734, guid: 4d12bc7192a01bd4dbb280264ae023e0, type: 2}
+  - {fileID: 1387724644700882, guid: 486671b70565c7a46a859e8d61998e44, type: 2}
+  - {fileID: 1334488183343344, guid: b443290bb054c1647957a9ff3a1cf45c, type: 2}
+  - {fileID: 1158527533039096, guid: 09a2240a25e2365449b21d24888c8831, type: 2}
+  - {fileID: 1772350449258990, guid: 8aa98e40cd56a2649b8c41733a00dfe9, type: 2}
+  - {fileID: 1392404026999524, guid: 34c662c1afbcee543934581317f5cc8d, type: 2}
+  - {fileID: 1424068960310062, guid: a8d9e950f91d9bb48a155c8c6568f669, type: 2}
+  - {fileID: 1638810942439284, guid: ecd7815a13bdae7499324964f936bfd4, type: 2}
+  - {fileID: 1068443605645556, guid: 08c30b27184ea724ba5d2501da4cb06d, type: 2}
+  - {fileID: 1348593707281526, guid: 6cc74b0f36cd9c343804d4eb6d787b1e, type: 2}
+  - {fileID: 1742659967237202, guid: 17b655e24b69d9445bf119f6473ff239, type: 2}
+  - {fileID: 1320093046658438, guid: bf493d8d86c14354dad0d84ace0d12ec, type: 2}
+  - {fileID: 1795717326886648, guid: 6b254d0af13769a499923332e8ed8328, type: 2}
+  - {fileID: 1489090902692914, guid: c9113408ea3322246b7cf59dcb661748, type: 2}
+  - {fileID: 1471743574732860, guid: 27b56964544695940931fd4738b68fe8, type: 2}
+  - {fileID: 1878995825122886, guid: 1b26d09c92c4e44459b7428da62ce42f, type: 2}
+  - {fileID: 1172683812935382, guid: b438d77d75b35fa48bb6f7910c19e057, type: 2}
+  - {fileID: 1917120087592992, guid: 1280111e22e6d20489cb520b70a26e4c, type: 2}
+  - {fileID: 1865642915760868, guid: 307e1ee103ca35e4992ee58e5825b36c, type: 2}
+  - {fileID: 1902600670759210, guid: 4679b311d4fb2de4393f737697453213, type: 2}
+  - {fileID: 1799246745727736, guid: 2d86e77a2c839794f80513ac0548c115, type: 2}
+  - {fileID: 1375135449348874, guid: 7ecd35aee695c6c4388c3abe47256977, type: 2}
+  - {fileID: 1622050412961656, guid: eec28c979c9cec94587770fc55effa75, type: 2}
+  - {fileID: 1280155338706136, guid: 8a97c80460adb2040b33572282da02ed, type: 2}
+  - {fileID: 1695779773716604, guid: 5d65e740bdaba5641b69178f0dd6cde3, type: 2}
+  - {fileID: 1158329937029766, guid: 36e63a2075c0f774991210ad8435077c, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

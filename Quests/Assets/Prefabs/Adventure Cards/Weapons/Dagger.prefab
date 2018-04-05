@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225124906606053242}
   - component: {fileID: 114646639571261530}
   - component: {fileID: 114723115485859078}
+  - component: {fileID: 114363222704490418}
   m_Layer: 5
   m_Name: Dagger
   m_TagString: Untagged
@@ -33,6 +34,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114363222704490418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375135449348874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 205
+    i2: 53
+    i3: 174
+    i4: 230
+    i5: 149
+    i6: 198
+    i7: 196
+    i8: 56
+    i9: 140
+    i10: 58
+    i11: 190
+    i12: 71
+    i13: 37
+    i14: 105
+    i15: 119
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114585205649060714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +99,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 5
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!114 &114646639571261530
 MonoBehaviour:
@@ -99,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114894160072147946
 MonoBehaviour:
   m_ObjectHideFlags: 1

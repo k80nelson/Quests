@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameElement : MonoBehaviour
 {
+
     protected Gameplay game;
 
     void Awake()
@@ -34,6 +35,12 @@ public class GameElement : MonoBehaviour
 
 public class Gameplay : NetworkBehaviour
 {
+    #region Singleton
+
+    public static Gameplay instance;
+
+    #endregion
+
 
     public GameState state;
     public int currPlayer;
@@ -61,11 +68,8 @@ public class Gameplay : NetworkBehaviour
     {
         Debug.Log("[Gameplay.cs:Awake] Starting game initialization...");
         // Get the settings from the main menu
-        GameObject found = GameObject.FindGameObjectWithTag("Global");
-        if (found != null)
-        {
-            numPlayers = found.GetComponent<Globals>().numPlayers;
-        }
+
+        numPlayers = 0;
 
         // Declare values
         players = new List<GameObject>();
@@ -73,16 +77,46 @@ public class Gameplay : NetworkBehaviour
 
         currPlayer = -1;
         activePlayer = -1;
+        instance = this;
+    }
+
+    public GameObject makePlayer()
+    {
+        numPlayers += 1;
+
+        GameObject player = Instantiate(playerPrefab, this.transform);
+        GameObject stats = Instantiate(StatsPrefab, PlayerStats);
+
+        player.name = "Player " + numPlayers;
+        stats.name = "Player " + numPlayers + " Stats";
+
+        player.GetComponent<PlayerModel>().index = (numPlayers-1);
+
+        PlayerView tmp = player.GetComponent<PlayerView>();
+        tmp.nameText = stats.transform.Find("Name").GetComponent<Text>();
+        tmp.rankText = stats.transform.Find("Rank").GetComponent<Text>();
+        tmp.shieldText = stats.transform.Find("Shields").GetComponent<Text>();
+        tmp.cardsText = stats.transform.Find("Num Cards").GetComponent<Text>();
+        tmp.highlight = stats.transform.Find("Highlight").gameObject;
+
+        player.GetComponent<PlayerController>().addManyCards(AdventureDeck.drawMany(12));
+
+        //Instantiate the stageModel for each player that will hold the cards they play for each stage on a quest.
+        player.GetComponent<PlayerModel>().cardsPlayed4Quest = new StageModel();
+
+        players.Add(player);
+        Debug.Log("[Gamplay.cs:initPlayers] Player " + numPlayers + " initialized with 12 cards");
+        return player;
     }
 
     private void Start()
     {
         // Initialize players with 12 cards
-        initPlayers();
+        /*initPlayers();
         setActivePlayer(nextPlayer());
         setCurrPlayer(nextPlayer());
 
-        Debug.Log("[Gameplay.cs:Start] Game initialization complete");
+        Debug.Log("[Gameplay.cs:Start] Game initialization complete");*/
     }
 
     private void Update()

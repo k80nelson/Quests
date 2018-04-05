@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225106299511330106}
   - component: {fileID: 114377832801842092}
   - component: {fileID: 114264719346318460}
+  - component: {fileID: 114842477629878190}
   m_Layer: 5
   m_Name: Sir Galahad
   m_TagString: Untagged
@@ -129,6 +130,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114842477629878190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760668180455364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 87
+    i1: 198
+    i2: 30
+    i3: 158
+    i4: 176
+    i5: 106
+    i6: 94
+    i7: 4
+    i8: 136
+    i9: 78
+    i10: 154
+    i11: 17
+    i12: 104
+    i13: 80
+    i14: 24
+    i15: 123
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222463273746998570
 CanvasRenderer:
   m_ObjectHideFlags: 1

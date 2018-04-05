@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225078212067964478}
   - component: {fileID: 114113209557467360}
   - component: {fileID: 114432827319092738}
+  - component: {fileID: 114123235390141904}
   m_Layer: 5
   m_Name: Saxon Knight
   m_TagString: Untagged
@@ -50,6 +51,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 25
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards:
   - Repel the Saxon Raiders
   - Defend the Queen's Honor
@@ -73,6 +76,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114123235390141904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489090902692914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 201
+    i1: 17
+    i2: 52
+    i3: 8
+    i4: 234
+    i5: 51
+    i6: 34
+    i7: 36
+    i8: 107
+    i9: 124
+    i10: 245
+    i11: 157
+    i12: 203
+    i13: 102
+    i14: 23
+    i15: 72
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114131711841123510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222027463806434454
 CanvasRenderer:
   m_ObjectHideFlags: 1

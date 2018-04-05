@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225064827396307372}
   - component: {fileID: 114685572126059560}
   - component: {fileID: 114616132063502584}
+  - component: {fileID: 114053498087088394}
   m_Layer: 5
   m_Name: Sir Tristan
   m_TagString: Untagged
@@ -33,6 +34,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114053498087088394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158527533039096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 9
+    i1: 162
+    i2: 36
+    i3: 10
+    i4: 37
+    i5: 226
+    i6: 54
+    i7: 84
+    i8: 73
+    i9: 178
+    i10: 29
+    i11: 36
+    i12: 136
+    i13: 140
+    i14: 136
+    i15: 49
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114165179537555238
 MonoBehaviour:
   m_ObjectHideFlags: 1

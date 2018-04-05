@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 225928390570670560}
   - component: {fileID: 114247598996399796}
   - component: {fileID: 114642772790567820}
+  - component: {fileID: 114589974433374412}
   m_Layer: 5
   m_Name: Battle-ax
   m_TagString: Untagged
@@ -68,6 +69,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114589974433374412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799246745727736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 45
+    i1: 134
+    i2: 231
+    i3: 122
+    i4: 44
+    i5: 131
+    i6: 151
+    i7: 148
+    i8: 248
+    i9: 5
+    i10: 19
+    i11: 172
+    i12: 5
+    i13: 72
+    i14: 193
+    i15: 21
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114642772790567820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114670680194162560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +159,8 @@ MonoBehaviour:
   Bids: 1
   SpecialBP: 15
   SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
   SpecialCards: []
 --- !u!222 &222819186464711754
 CanvasRenderer:
