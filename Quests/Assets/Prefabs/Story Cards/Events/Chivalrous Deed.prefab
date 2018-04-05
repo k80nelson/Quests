@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114410500537504792}
   - component: {fileID: 114670757531448444}
   - component: {fileID: 114125981177578354}
+  - component: {fileID: 114273286715286884}
   m_Layer: 5
   m_Name: Chivalrous Deed
   m_TagString: Untagged
@@ -43,6 +44,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a781e46a3e5d2054aa1dfa83392ae05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114273286715286884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152548884307332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 163
+    i1: 72
+    i2: 131
+    i3: 76
+    i4: 26
+    i5: 156
+    i6: 233
+    i7: 116
+    i8: 139
+    i9: 124
+    i10: 0
+    i11: 199
+    i12: 72
+    i13: 165
+    i14: 203
+    i15: 195
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114311906723248072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222995797326791078
 CanvasRenderer:
   m_ObjectHideFlags: 1

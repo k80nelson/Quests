@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225372844553902284}
   - component: {fileID: 114107207025442162}
   - component: {fileID: 114798683931119066}
+  - component: {fileID: 114455706262917116}
   m_Layer: 5
   m_Name: Slay the Dragon
   m_TagString: Untagged
@@ -51,6 +52,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114455706262917116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307484428631440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 233
+    i1: 252
+    i2: 220
+    i3: 6
+    i4: 157
+    i5: 86
+    i6: 49
+    i7: 84
+    i8: 58
+    i9: 114
+    i10: 119
+    i11: 70
+    i12: 92
+    i13: 61
+    i14: 47
+    i15: 247
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114562785582148514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114819569186802300
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114977540198829088}
   - component: {fileID: 114936197359175832}
   - component: {fileID: 114915801482824688}
+  - component: {fileID: 114687653167494178}
   m_Layer: 5
   m_Name: Pox
   m_TagString: Untagged
@@ -32,6 +33,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114687653167494178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612257418166100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 98
+    i1: 174
+    i2: 52
+    i3: 173
+    i4: 44
+    i5: 166
+    i6: 110
+    i7: 164
+    i8: 136
+    i9: 35
+    i10: 171
+    i11: 110
+    i12: 205
+    i13: 208
+    i14: 252
+    i15: 1
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114821165197109158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114977540198829088
 MonoBehaviour:
   m_ObjectHideFlags: 1

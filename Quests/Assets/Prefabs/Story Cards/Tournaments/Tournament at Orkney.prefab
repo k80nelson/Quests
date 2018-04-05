@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225618571043962134}
   - component: {fileID: 114301131586925922}
   - component: {fileID: 114172581095508100}
+  - component: {fileID: 114785579607491514}
   m_Layer: 5
   m_Name: Tournament at Orkney
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114301131586925922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +93,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114785579607491514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509245768475960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 187
+    i1: 25
+    i2: 194
+    i3: 126
+    i4: 149
+    i5: 51
+    i6: 84
+    i7: 148
+    i8: 27
+    i9: 29
+    i10: 74
+    i11: 159
+    i12: 131
+    i13: 221
+    i14: 250
+    i15: 29
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114990514912989328
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114467504449417004}
   - component: {fileID: 114923679713309122}
   - component: {fileID: 114755859819484420}
+  - component: {fileID: 114648451001933304}
   m_Layer: 5
   m_Name: Queen's Recognition
   m_TagString: Untagged
@@ -78,6 +79,38 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &114648451001933304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117482424581872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 51
+    i1: 145
+    i2: 247
+    i3: 132
+    i4: 245
+    i5: 115
+    i6: 8
+    i7: 228
+    i8: 59
+    i9: 199
+    i10: 209
+    i11: 113
+    i12: 248
+    i13: 135
+    i14: 152
+    i15: 215
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114755859819484420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!222 &222805448669484368
 CanvasRenderer:
   m_ObjectHideFlags: 1

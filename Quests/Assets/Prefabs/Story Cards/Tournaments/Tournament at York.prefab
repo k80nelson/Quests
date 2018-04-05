@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225733468083445460}
   - component: {fileID: 114333436259069586}
   - component: {fileID: 114269679223891620}
+  - component: {fileID: 114937423569374220}
   m_Layer: 5
   m_Name: Tournament at York
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114333436259069586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +106,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114937423569374220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412820644290858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 117
+    i1: 47
+    i2: 78
+    i3: 183
+    i4: 169
+    i5: 70
+    i6: 209
+    i7: 244
+    i8: 72
+    i9: 191
+    i10: 34
+    i11: 133
+    i12: 192
+    i13: 123
+    i14: 126
+    i15: 25
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222663831254225154
 CanvasRenderer:
   m_ObjectHideFlags: 1

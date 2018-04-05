@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 225698442657033012}
   - component: {fileID: 114759597253242614}
   - component: {fileID: 114683968000384774}
+  - component: {fileID: 114244139555959024}
   m_Layer: 5
   m_Name: Rescue the Fair Maiden
   m_TagString: Untagged
@@ -32,6 +33,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114244139555959024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581929072716458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 199
+    i1: 115
+    i2: 227
+    i3: 221
+    i4: 152
+    i5: 188
+    i6: 93
+    i7: 132
+    i8: 154
+    i9: 193
+    i10: 147
+    i11: 47
+    i12: 142
+    i13: 178
+    i14: 198
+    i15: 10
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114683968000384774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
 --- !u!114 &114686889783207332
 MonoBehaviour:
   m_ObjectHideFlags: 1

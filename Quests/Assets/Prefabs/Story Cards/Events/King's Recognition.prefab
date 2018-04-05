@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114992016451678544}
   - component: {fileID: 114242769077276704}
   - component: {fileID: 114027915112463174}
+  - component: {fileID: 114519881120950162}
   m_Layer: 5
   m_Name: King's Recognition
   m_TagString: Untagged
@@ -83,6 +84,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
+--- !u!114 &114519881120950162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071525501365076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 209
+    i1: 18
+    i2: 126
+    i3: 134
+    i4: 174
+    i5: 244
+    i6: 24
+    i7: 212
+    i8: 24
+    i9: 84
+    i10: 84
+    i11: 66
+    i12: 244
+    i13: 63
+    i14: 120
+    i15: 39
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114992016451678544
 MonoBehaviour:
   m_ObjectHideFlags: 1

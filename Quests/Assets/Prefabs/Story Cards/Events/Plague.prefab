@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114416842097187386}
   - component: {fileID: 114435559982823034}
   - component: {fileID: 114202586311075456}
+  - component: {fileID: 114908016634965460}
   m_Layer: 5
   m_Name: Plague
   m_TagString: Untagged
@@ -102,6 +103,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
+  draggable: 1
+--- !u!114 &114908016634965460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478014222327332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 148
+    i1: 138
+    i2: 42
+    i3: 144
+    i4: 188
+    i5: 112
+    i6: 227
+    i7: 68
+    i8: 41
+    i9: 118
+    i10: 68
+    i11: 154
+    i12: 25
+    i13: 214
+    i14: 19
+    i15: 8
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222084326918044294
 CanvasRenderer:
   m_ObjectHideFlags: 1
