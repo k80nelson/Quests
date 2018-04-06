@@ -3,6 +3,8 @@ using UnityEngine.Networking;
 
 public class PlayerModel : NetworkBehaviour
 {
+    // all values here should be controlled mostly by the server
+
     public PlayerRank rank = PlayerRank.Squire;
     public Hand hand;
     [SyncVar]

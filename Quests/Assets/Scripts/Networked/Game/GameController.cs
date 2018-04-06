@@ -9,35 +9,30 @@ public class GameController : NetworkBehaviour {
     public static GameController instance;
     #endregion
 
+    public GameView view;
+
     public Transform activeArea;
     public int numPlayers = 0;
     public List<PlayerController> players;
-    public GameView view;
-    
-    public void addPlayer(PlayerController player)
-    {
-        if (!isServer) return;
-        player.model.index = numPlayers;
-        numPlayers += 1;
-        player.model.registered = true;
-        players.Add(player);
-        view.CreatePlayerStats(player);
-        player.onCardsChangedCallback += UpdatePlayerStats;
-    }
+    public CardDictionary cardDict;
 
-    [Server]
-    public void UpdatePlayerStats()
+    void Start()
     {
-        view.updateStats();
-    }
-
-
-    public void Start()
-    {
+        Debug.Log("GameController Initialized");
         instance = this;
         this.activeArea = this.transform;
         players = new List<PlayerController>();
+    }
 
+    public void makePlayer(PlayerController player)
+    {
+        if (!isServer) return;
+        numPlayers += 1;
+        player.gameObject.name = "Player " + numPlayers;
+        player.model.index = numPlayers - 1;
+        players.Add(player);
+        view.makeStat();
+        player.onCardsChangedCallback += view.pollStats;
     }
     
 }

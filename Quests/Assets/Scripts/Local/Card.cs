@@ -2,29 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
-public class Card : NetworkBehaviour {
+public class Card : MonoBehaviour {
     
-    [SyncVar]
-    public string cardPath;
-
-    public Image image;
+    [SerializeField]
+    Image image;
     public BaseCard card;
-    public bool loaded = false;
+
+    string cardPath;
 
     private void Start()
     {
-        if (!loaded && cardPath != null)
-        {
-            loadCard();
-        }
+
     }
 
     public void registerCard(string cardPath)
     {
         this.cardPath = cardPath;
         loadCard();
+    }
+
+    public void setCard(BaseCard card)
+    {
+        this.card = card;
+        updateImage();
     }
 
     public void loadCard()
@@ -34,9 +35,12 @@ public class Card : NetworkBehaviour {
         updateImage();
     }
 
-    public void updateImage()
+    void updateImage()
     {
-        if (card != null) image.sprite = card.image;
+        if (card != null)
+        {
+            image.sprite = card.image;
+        }
     }
     
 }

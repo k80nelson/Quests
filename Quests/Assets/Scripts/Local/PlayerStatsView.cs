@@ -6,51 +6,75 @@ using UnityEngine.UI;
 
 public class PlayerStatsView : NetworkBehaviour {
 
-    public PlayerController player;
+    public PlayerController connectedPlayer;
 
     public Text RankObj;
     public Text ShieldObj;
     public Text CardsObj;
     public Text PlayerObj;
-    
-    [SyncVar]
+
+    [SyncVar(hook ="OnRankChange")]
     public string rankstr = "Rank: ";
-    [SyncVar]
+    [SyncVar(hook = "OnShieldChange")]
     public string shieldstr = "Shields: ";
-    [SyncVar]
+    [SyncVar(hook = "OnCardChange")]
     public string cardsstr = "Cards: ";
+    [SyncVar(hook = "OnPlayerChange")]
+    public string playerstr = "P";
+    [SyncVar]
+    public int index;
 
     public void setPlayerText(int index)
     {
-        PlayerObj.text = "P" + (index + 1);
-    }
-    
-    [Server]
-    public void setValues()
-    {
-        this.rankstr = "Rank: " + player.model.rank.ToString();
-        this.shieldstr = "Shields: " + player.model.shields;
-        this.cardsstr = "Cards: " + player.model.hand.Count;
+        if (!isServer) return;
+        playerstr = "P" + index;
     }
 
-    [Server]
-    public void updateValues()
+    public void setValues(string rank, string shield, string cards)
     {
-        setValues();
-        RpcUpdateValues();
-    }
-    
-    [Server]
-    public void addPlayer(PlayerController player)
-    {
-        this.player = player;
+        if (!isServer) return;
+        rankstr = rank;
+        shieldstr = shield;
+        cardsstr = cards;
     }
 
-    [ClientRpc]
-    public void RpcUpdateValues()
+    public void setRank(string rank)
     {
-        RankObj.text = rankstr;
-        ShieldObj.text = shieldstr;
-        CardsObj.text = cardsstr;
+        if (!isServer) return;
+        rankstr = rank;
     }
+
+    public void setShield(string shield)
+    {
+        if (!isServer) return;
+        shieldstr = shield;
+    }
+
+    public void setCards(string cards)
+    {
+        if (!isServer) return;
+        cardsstr = cards;
+    }
+
+    void OnRankChange(string rank)
+    {
+        RankObj.text = rank;
+    }
+
+    void OnPlayerChange(string player)
+    {
+        PlayerObj.text = player;
+    }
+
+    void OnShieldChange(string shield)
+    {
+        ShieldObj.text = shield;
+    }
+
+    void OnCardChange(string cards)
+    {
+        CardsObj.text = cards;
+    }
+
+   
 }

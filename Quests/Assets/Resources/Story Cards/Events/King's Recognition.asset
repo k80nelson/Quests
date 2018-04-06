@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27d89aa54bc3a640aced20a07c243ba, type: 3}
+  m_Name: King's Recognition
+  m_EditorClassIdentifier: 
+  name: King's Recognition
+  image: {fileID: 21300000, guid: 55e1c459d02830149b2f653eb750877c, type: 3}

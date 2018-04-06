@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour {
 
+    
     public PlayerView view;
+
+    // ONLY CHANGE MODEL ON THE SERVER !!!!!
     public PlayerModel model;
 
     public delegate void OnCardsChanged();
@@ -16,13 +20,64 @@ public class PlayerController : NetworkBehaviour {
         view = GetComponent<PlayerView>();
         model = GetComponent<PlayerModel>();
     }
+
+    // used to initialize anything the LOCAL PLAYER needs BEFORE SCENE IS LOADED
+    public override void OnStartLocalPlayer()
+    {
+        
+    }
+
+
+
+    // used to instantiate 
     void Start()
     {
-        gameObject.transform.SetParent(GameController.instance.transform);
-        gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(0, 200);
-        gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        if (isLocalPlayer && isClient)
+        {
+            // here is where you initialize anything the LOCAL PLAYER needs WHEN SCENE IS LOADED
+            view.makeCardArea();
+            CmdDrawAdv(12);
+        }
+    }
+
+    [Command]
+    void CmdDrawAdv(int num)
+    {
+        List<int> indices = DeckController.instance.drawAdvCards(12);
+        foreach(int index in indices)
+        {
+            model.hand.Add(GameController.instance.cardDict.findCard(index) as AdventureCard);
+            RpcAddCard(index);
+            if (onCardsChangedCallback != null)
+            {
+                onCardsChangedCallback.Invoke();
+                Debug.Log("Doing Callback");
+            }
+        }
+    }
+
+
+
+    [ClientRpc]
+    void RpcAddCard(int index)
+    {
+        if (onCardsChangedCallback != null)
+        {
+            onCardsChangedCallback.Invoke();
+            Debug.Log("Doing Callback");
+        }
+        if (!isLocalPlayer) return;
+        AdventureCard card = GameController.instance.cardDict.findCard(index) as AdventureCard;
+        view.createCard(card);
     }
     
+
+    public void drawAdvCards(int num)
+    {
+
+    }
+    
+    /*
     [Command]
     void CmdDrawAdvCards(int numToDraw)
     {
@@ -62,6 +117,6 @@ public class PlayerController : NetworkBehaviour {
     {
         view.showCardArea();
         CmdDrawAdvCards(12);
-    }
+    }*/
     
 }

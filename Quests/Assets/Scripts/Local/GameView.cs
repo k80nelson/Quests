@@ -5,40 +5,53 @@ using UnityEngine.Networking;
 
 public class GameView : NetworkBehaviour {
 
-    public GameObject playerStatsPrefab;
-    public Transform playerStatsContainer;
+    public GameObject StatsPrefab;
+    public Transform statsTransform;
 
-    public List<PlayerStatsView> playerStats;
+    public List<PlayerStatsView> statsList = new List<PlayerStatsView>();
 
-    [Server]
-    public void CreatePlayerStats(PlayerController player)
+    public void makeStat()
     {
-        GameObject stats = Instantiate(playerStatsPrefab, playerStatsContainer);
-        stats.GetComponent<PlayerStatsView>().addPlayer(player);
-        playerStats.Add(stats.GetComponent<PlayerStatsView>());
-        stats.GetComponent<PlayerStatsView>().setPlayerText(player.model.index);
-        NetworkServer.Spawn(stats);
-        RpcAddStats();
+        if (!isServer) return;
+        PlayerStatsView stats = Instantiate(StatsPrefab, statsTransform).GetComponent<PlayerStatsView>();
+        NetworkServer.Spawn(stats.gameObject);
+        stats.index = statsList.Count;
+        statsList.Add(stats);
+        setNames();
+        pollStats();
+        RpcFindStats();
+    }
+
+    void setNames()
+    {
+        if (!isServer) return;
+        foreach(PlayerStatsView stats in statsList)
+        {
+            stats.playerstr = "P" + (stats.index + 1);
+        }
+    }
+
+    public void pollStats()
+    {
+        if (!isServer) return;
+        foreach(PlayerStatsView stats in statsList)
+        {
+            stats.rankstr = "Rank: " + GameController.instance.players[stats.index].model.rank.ToString();
+            stats.shieldstr = "Shields: " + GameController.instance.players[stats.index].model.shields;
+            stats.cardsstr = "Cards: " + GameController.instance.players[stats.index].model.hand.Count;
+        }
     }
 
     [ClientRpc]
-    public void RpcAddStats()
+    void RpcFindStats()
     {
         GameObject[] stats = GameObject.FindGameObjectsWithTag("PlayerStats");
         foreach (GameObject stat in stats)
         {
-            stat.transform.SetParent(playerStatsContainer);
+            stat.transform.SetParent(statsTransform);
         }
     }
 
-    [Server] 
-    public void updateStats()
-    {
-        Debug.Log("Updating stats");
 
-        foreach(PlayerStatsView stat in playerStats)
-        {
-            stat.updateValues();
-        }
-    }
+
 }
