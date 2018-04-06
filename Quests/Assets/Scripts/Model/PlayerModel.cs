@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
-
-public class PlayerModel : MonoBehaviour
+public class PlayerModel : NetworkBehaviour
 {
 
     public enum Rank { Squire, Knight, Champion }
 
+    [SyncVar]
     public int index;
+    [SyncVar]
     public int rank;
+    [SyncVar]
     public int shields;
+    [SyncVar]
     public int bp;
+    [SyncVar]
     public Hand hand;
 
+    [SyncVar]
     public StageModel cardsPlayed4Quest;
+    [SyncVar]
     public List<AdventureCard> allies;
 
     private void Awake()
@@ -65,12 +72,16 @@ public class PlayerModel : MonoBehaviour
 
     public void addShields(int num)
     {
+        if (!isServer)
+            return;
         shields += num;
         if (canUpgrade(0)) rankUp();
     }
 
     public void removeShields(int numToRemove)
     {
+        if (!isServer)
+            return;
         this.shields -= numToRemove;
         if (this.shields < 0)
         {
@@ -82,15 +93,20 @@ public class PlayerModel : MonoBehaviour
     {
         return new List<AdventureCard>(allies);
     }
+    
 
     public void addAlly(AdventureCard card)
     {
+        if (!isServer)
+            return;
         if (card == null) return;
         if(card.type == AdventureCard.Type.ALLY) allies.Add(card.GetComponent<AdventureCard>());
     }
 
     public void addAllies(List<AdventureCard> cards)
     {
+        if (!isServer)
+            return;
         if (cards == null) return;
         for(int i = 0; i < cards.Count; ++i)
         {
