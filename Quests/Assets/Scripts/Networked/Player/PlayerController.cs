@@ -6,6 +6,9 @@ public class PlayerController : NetworkBehaviour {
 
     public PlayerView view;
     public PlayerModel model;
+
+    public delegate void OnCardsChanged();
+    public OnCardsChanged onCardsChangedCallback;
     
     // used for initialization
     private void Awake()
@@ -19,15 +22,6 @@ public class PlayerController : NetworkBehaviour {
         gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(0, 200);
         gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
     }
-
-    [Command]
-    void CmdRegisterSelf()
-    {
-        if (!model.registered)
-            GameController.instance.addPlayer(this);
-        RpcSetName();
-    }
-
     
     [Command]
     void CmdDrawAdvCards(int numToDraw)
@@ -40,12 +34,16 @@ public class PlayerController : NetworkBehaviour {
             NetworkServer.Spawn(card);
             RpcAddCard(card);
         }
+        if (onCardsChangedCallback != null)
+            onCardsChangedCallback.Invoke();
     }
 
     [ClientRpc]
     void RpcAddCard(GameObject card)
     {
+        Debug.Log("Adding card to " + model.index);
         card.transform.SetParent(view.cardSpawnPoint);
+        model.hand.Add(card.GetComponent<Card>().card as AdventureCard);
     }
 
     [ClientRpc]
@@ -62,9 +60,8 @@ public class PlayerController : NetworkBehaviour {
     // Local player only initialization
     public override void OnStartLocalPlayer()
     {
-        CmdDrawAdvCards(12);
         view.showCardArea();
-        CmdRegisterSelf();
+        CmdDrawAdvCards(12);
     }
     
 }

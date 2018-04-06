@@ -10,17 +10,25 @@ public class GameController : NetworkBehaviour {
     #endregion
 
     public Transform activeArea;
-    
     public int numPlayers = 0;
-
     public List<PlayerController> players;
+    public GameView view;
     
     public void addPlayer(PlayerController player)
     {
+        if (!isServer) return;
         player.model.index = numPlayers;
         numPlayers += 1;
         player.model.registered = true;
         players.Add(player);
+        view.CreatePlayerStats(player);
+        player.onCardsChangedCallback += UpdatePlayerStats;
+    }
+
+    [Server]
+    public void UpdatePlayerStats()
+    {
+        view.updateStats();
     }
 
 

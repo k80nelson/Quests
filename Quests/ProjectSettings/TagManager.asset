@@ -26,6 +26,7 @@ TagManager:
   - ActiveArea
   - Discard
   - Prompt
+  - PlayerStats
   layers:
   - Default
   - TransparentFX

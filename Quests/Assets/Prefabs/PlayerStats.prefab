@@ -89,10 +89,11 @@ GameObject:
   - component: {fileID: 224525788698688910}
   - component: {fileID: 114487386577224736}
   - component: {fileID: 222678055682250088}
-  - component: {fileID: 114010591474801754}
+  - component: {fileID: 114450417284617672}
+  - component: {fileID: 114888024625158714}
   m_Layer: 5
   m_Name: PlayerStats
-  m_TagString: Untagged
+  m_TagString: PlayerStats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,38 +132,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114010591474801754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1762788956567066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 43
-    i1: 244
-    i2: 200
-    i3: 60
-    i4: 38
-    i5: 199
-    i6: 51
-    i7: 52
-    i8: 235
-    i9: 249
-    i10: 118
-    i11: 4
-    i12: 179
-    i13: 75
-    i14: 110
-    i15: 163
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114167131467053258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +198,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Num Cards:'
+--- !u!114 &114450417284617672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762788956567066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 43
+    i1: 244
+    i2: 200
+    i3: 60
+    i4: 38
+    i5: 199
+    i6: 51
+    i7: 52
+    i8: 235
+    i9: 249
+    i10: 118
+    i11: 4
+    i12: 179
+    i13: 75
+    i14: 110
+    i15: 163
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114487386577224736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +369,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114888024625158714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762788956567066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ec1b168d528e146bfc23e739ebbe05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  RankObj: {fileID: 114167131467053258}
+  ShieldObj: {fileID: 114735495211620456}
+  CardsObj: {fileID: 114337887420672472}
+  PlayerObj: {fileID: 114763484484251586}
+  rankstr: 'Rank: '
+  shieldstr: 'Shields: '
+  cardsstr: 'Cards: '
 --- !u!222 &222057766418328836
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -444,7 +464,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -25}
-  m_SizeDelta: {x: 135, y: 30}
+  m_SizeDelta: {x: 145, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224310346538699310
 RectTransform:
@@ -462,7 +482,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 110}
+  m_SizeDelta: {x: 170, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224318482596581232
 RectTransform:
@@ -480,7 +500,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -75}
-  m_SizeDelta: {x: 135, y: 30}
+  m_SizeDelta: {x: 145, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224465381020186420
 RectTransform:
@@ -498,7 +518,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -50}
-  m_SizeDelta: {x: 135, y: 30}
+  m_SizeDelta: {x: 145, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224525788698688910
 RectTransform:
@@ -522,7 +542,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 110}
+  m_SizeDelta: {x: 180, y: 110}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224696140618787960
 RectTransform:
@@ -540,5 +560,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 150, y: 24}
+  m_SizeDelta: {x: 170, y: 24}
   m_Pivot: {x: 0, y: 1}

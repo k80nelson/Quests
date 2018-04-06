@@ -13,6 +13,8 @@ public class GameNetworkManager : NetworkManager
     {
         numActivePlayers += 1;
         GameObject player = (GameObject)Instantiate(playerPrefab,GameController.instance.transform);
+        player.name = "Player " + numActivePlayers;
+        GameController.instance.addPlayer(player.GetComponent<PlayerController>());
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     }
 }

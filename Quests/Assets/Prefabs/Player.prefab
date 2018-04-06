@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 224818627385955248}
   - component: {fileID: 114429312610719992}
   - component: {fileID: 114345590844078090}
-  - component: {fileID: 114957007931928020}
   m_Layer: 0
   m_Name: Cards
   m_TagString: Untagged
@@ -421,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 0
   hand: {fileID: 0}
+  registered: 0
   index: 0
   shields: 0
   bp: 5
@@ -550,38 +550,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardContainer: {fileID: 224818627385955248}
   direction: 0
---- !u!114 &114957007931928020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1014715591332566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 115
-    i1: 233
-    i2: 46
-    i3: 32
-    i4: 26
-    i5: 217
-    i6: 149
-    i7: 164
-    i8: 10
-    i9: 191
-    i10: 20
-    i11: 161
-    i12: 162
-    i13: 5
-    i14: 118
-    i15: 252
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!222 &222069943525049490
 CanvasRenderer:
   m_ObjectHideFlags: 1
