@@ -4,5 +4,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewTournamentCard", menuName = "Tournament Card")]
 class TournamentCard : StoryCard
 {
-    public int shields;
+    public int shields = 0;
 }

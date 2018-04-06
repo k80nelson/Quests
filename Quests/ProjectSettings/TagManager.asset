@@ -25,6 +25,7 @@ TagManager:
   - Global
   - ActiveArea
   - Discard
+  - Prompt
   layers:
   - Default
   - TransparentFX

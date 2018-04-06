@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 224818627385955248}
   - component: {fileID: 114429312610719992}
   - component: {fileID: 114345590844078090}
+  - component: {fileID: 114957007931928020}
   m_Layer: 0
   m_Name: Cards
   m_TagString: Untagged
@@ -91,6 +92,8 @@ GameObject:
   - component: {fileID: 224612472584487714}
   - component: {fileID: 114068550123223676}
   - component: {fileID: 114870425366498980}
+  - component: {fileID: 114624227025297310}
+  - component: {fileID: 114687870266170288}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -131,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1505801409936850
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +143,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224684615649688140}
+  - component: {fileID: 114212510367864450}
   m_Layer: 0
   m_Name: Hidden Cards
   m_TagString: Untagged
@@ -155,6 +159,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224797843149090014}
+  - component: {fileID: 114044561476122656}
   m_Layer: 0
   m_Name: Allies
   m_TagString: Untagged
@@ -189,6 +194,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114044561476122656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703056467560334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 115
+    i1: 233
+    i2: 46
+    i3: 32
+    i4: 26
+    i5: 217
+    i6: 149
+    i7: 164
+    i8: 10
+    i9: 191
+    i10: 20
+    i11: 161
+    i12: 162
+    i13: 5
+    i14: 118
+    i15: 252
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114068550123223676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +258,38 @@ MonoBehaviour:
     i15: 252
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114212510367864450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505801409936850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 115
+    i1: 233
+    i2: 46
+    i3: 32
+    i4: 26
+    i5: 217
+    i6: 149
+    i7: 164
+    i8: 10
+    i9: 191
+    i10: 20
+    i11: 161
+    i12: 162
+    i13: 5
+    i14: 118
+    i15: 252
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114345590844078090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +395,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114624227025297310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135347093848274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3cfc8abc1343047aeddc550f907b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 0}
+  model: {fileID: 0}
+--- !u!114 &114687870266170288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135347093848274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfd179c11e1bab4ea5e0f2912a79f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rank: 0
+  hand: {fileID: 0}
+  index: 0
+  shields: 0
+  bp: 5
 --- !u!114 &114701786675884172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,6 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cbd5c79c8228347af7440d0b946034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardArea: {fileID: 1431481018807008}
+  cardSpawnPoint: {fileID: 224818627385955248}
 --- !u!114 &114876538490909160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,6 +550,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardContainer: {fileID: 224818627385955248}
   direction: 0
+--- !u!114 &114957007931928020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014715591332566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 115
+    i1: 233
+    i2: 46
+    i3: 32
+    i4: 26
+    i5: 217
+    i6: 149
+    i7: 164
+    i8: 10
+    i9: 191
+    i10: 20
+    i11: 161
+    i12: 162
+    i13: 5
+    i14: 118
+    i15: 252
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!222 &222069943525049490
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -526,7 +658,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -555,7 +687,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1135347093848274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -605,7 +737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &224797843149090014
