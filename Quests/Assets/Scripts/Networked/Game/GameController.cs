@@ -34,5 +34,4 @@ public class GameController : NetworkBehaviour {
         view.makeStat();
         player.onCardsChangedCallback += view.pollStats;
     }
-    
 }
