@@ -13,6 +13,7 @@ public class DeckController : NetworkBehaviour, IDropHandler//, IPointerEnterHan
     #endregion
 
     public Deck advDeck;
+    public Deck storyDeck;
 
     public GameObject toRemove;
     public GameObject tmpCard;
@@ -37,7 +38,7 @@ public class DeckController : NetworkBehaviour, IDropHandler//, IPointerEnterHan
         if (d != null)
         {
             Debug.Log("d was not null");
-            Debug.Log("The name of the to discard is " + d.gameObject.);
+            Debug.Log("The name of the to discard is " + d.gameObject.name);
             toRemove = d.gameObject;
             //confirm.SetActive(true);
             tmpCard = Instantiate(toRemove, discardTransform);
