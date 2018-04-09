@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52d8fc129478884f8414bdd9cff697a, type: 3}
+  m_Name: Amour
+  m_EditorClassIdentifier: 
+  name: Amour
+  image: {fileID: 21300000, guid: bc05642d43f52f14793cf1940521849d, type: 3}
+  index: 31
+  BP: 10
+  Bids: 1
+  SpecialBP: 10
+  SpecialBids: 1
+  MinBid: 0
+  specialMinBid: 0
+  SpecialCards: []
+  type: 4
