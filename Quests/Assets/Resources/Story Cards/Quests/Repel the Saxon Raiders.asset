@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Repel the Saxon Raiders
   image: {fileID: 21300000, guid: f6680c993d79fa04c9cba862dc294ff0, type: 3}
+  index: 43
   stages: 2

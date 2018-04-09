@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Queen Iseult
   image: {fileID: 21300000, guid: 9b5aaf91c111c044181669f42fbeb252, type: 3}
+  index: 4
   BP: 0
   Bids: 2
   SpecialBP: 0

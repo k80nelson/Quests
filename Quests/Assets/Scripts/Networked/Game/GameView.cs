@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class GameView : NetworkBehaviour {
 
-    public GameObject StatsPrefab;
-    public Transform statsTransform;
+    // Player Stats things
+    [SerializeField]
+    GameObject StatsPrefab;
+    [SerializeField]
+    Transform statsTransform;
+    List<PlayerStatsView> statsList = new List<PlayerStatsView>();
 
-    public List<PlayerStatsView> statsList = new List<PlayerStatsView>();
+    [SerializeField]
+    GameObject overlay;
 
-    public void makeStat()
+    // -- PLAYER STATS -- //
+    public void makeStat(PlayerController player)
     {
         if (!isServer) return;
         PlayerStatsView stats = Instantiate(StatsPrefab, statsTransform).GetComponent<PlayerStatsView>();
         NetworkServer.Spawn(stats.gameObject);
         stats.index = statsList.Count;
-        pollStat(stats);
+        pollStat(stats, player);
         statsList.Add(stats);
+        FindStats();
         Rpc_FindStats();
     }
 
@@ -30,13 +38,13 @@ public class GameView : NetworkBehaviour {
         }
     }
 
-    public void pollStat(PlayerStatsView stat)
+    public void pollStat(PlayerStatsView stat, PlayerController player)
     {
         if (!isServer) return;
         stat.setValues(
-            GameController.instance.players[stat.index].model.rank.ToString(),
-            GameController.instance.players[stat.index].model.shields,
-            GameController.instance.players[stat.index].model.hand.Count);
+            player.model.rank.ToString(),
+            player.model.shields,
+            player.model.hand.Count);
         stat.setPlayerText(stat.index + 1);
     }
 
@@ -45,20 +53,21 @@ public class GameView : NetworkBehaviour {
         if (!isServer) return;
         foreach(PlayerStatsView stats in statsList)
         {
-            stats.setRank(GameController.instance.players[stats.index].model.rank.ToString());
-            stats.setShield(GameController.instance.players[stats.index].model.shields);
-            stats.setCards(GameController.instance.players[stats.index].model.hand.Count);
+            stats.setRank(GameModel.instance.getPlayer(stats.index).model.rank.ToString());
+            stats.setShield(GameModel.instance.getPlayer(stats.index).model.shields);
+            stats.setCards(GameModel.instance.getPlayer(stats.index).model.hand.Count);
         }
     }
 
-    [Command]
-    void Cmd_FindStats()
+    public void FindStats()
     {
+        if (!isServer) return;
         foreach (PlayerStatsView stats in statsList)
         {
             stats.Rpc_PlayerUI();
             stats.Rpc_ValueUI();
         }
+        
     }
 
     [ClientRpc]
@@ -69,7 +78,11 @@ public class GameView : NetworkBehaviour {
         {
             stat.transform.SetParent(statsTransform);
         }
-        Cmd_FindStats();
+    }
+
+    public void showOverlay()
+    {
+        overlay.SetActive(true);
     }
     
 }

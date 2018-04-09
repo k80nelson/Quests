@@ -14,13 +14,13 @@ public class PlayerStatsView : NetworkBehaviour {
     public Text PlayerObj;
 
     [SyncVar]
-    string rankstr = "Rank: ";
+    public string rankstr = "Rank: ";
     [SyncVar]
     string shieldstr = "Shields: ";
     [SyncVar]
     string cardsstr = "Cards: ";
     [SyncVar]
-    string playerstr;
+    public string playerstr;
     [SyncVar]
     public int index;
     
@@ -92,6 +92,4 @@ public class PlayerStatsView : NetworkBehaviour {
     {
         CardsObj.text = cardsstr;
     }
-
-   
 }

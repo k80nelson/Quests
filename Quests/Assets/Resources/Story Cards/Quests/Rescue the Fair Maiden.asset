@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rescue the Fair Maiden
   image: {fileID: 21300000, guid: c0ce3599b0616ff44a2ec848344cc052, type: 3}
+  index: 44
   stages: 3

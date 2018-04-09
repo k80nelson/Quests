@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tournament at Tintagel
   image: {fileID: 21300000, guid: 7a930678fdb4e2143a78bda341927466, type: 3}
+  index: 52
   shields: 1

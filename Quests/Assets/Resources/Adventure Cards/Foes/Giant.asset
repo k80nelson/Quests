@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Giant
   image: {fileID: 21300000, guid: a13e7b4dc1de34c4f983a21209818830, type: 3}
+  index: 14
   BP: 40
   Bids: 0
   SpecialBP: 40

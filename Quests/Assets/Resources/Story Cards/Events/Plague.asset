@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Plague
   image: {fileID: 21300000, guid: af7f047a7d694b048bd3e2b12a85fda9, type: 3}
+  index: 36

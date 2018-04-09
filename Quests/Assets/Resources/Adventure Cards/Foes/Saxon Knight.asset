@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Saxon Knight
   image: {fileID: 21300000, guid: 03846380576c6714baca75cb510a41e7, type: 3}
+  index: 18
   BP: 15
   Bids: 0
   SpecialBP: 25

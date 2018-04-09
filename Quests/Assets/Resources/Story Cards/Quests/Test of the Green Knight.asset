@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Test of the Green Knight
   image: {fileID: 21300000, guid: f532ef895f82bd14f9ae19f2fb228705, type: 3}
+  index: 48
   stages: 4

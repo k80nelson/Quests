@@ -2,12 +2,16 @@
 
 public class PlayerView : MonoBehaviour{
 
-    public GameObject cardArea;
-    public Transform cardSpawnPoint;
+    
+    GameObject cardArea;
+    Transform cardSpawnPoint;
 
-    public GameObject cardContainerPrefab;
+    [SerializeField]
+    GameObject cardContainerPrefab;
 
-    public GameObject advCardPrefab;
+
+    [SerializeField]
+    GameObject advCardPrefab;
     
 
     public void makeCardArea()
@@ -21,10 +25,12 @@ public class PlayerView : MonoBehaviour{
     {
         Card newCard = Instantiate(advCardPrefab, cardSpawnPoint).GetComponent<Card>();
         newCard.setCard(card);
+        newCard.name = card.name;
     }
 
     public void destroyCard(GameObject card)
     {
         Destroy(card);
     }
+    
 }

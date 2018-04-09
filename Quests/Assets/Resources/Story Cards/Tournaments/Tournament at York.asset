@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tournament at York
   image: {fileID: 21300000, guid: b24f3db8e07d9ab46bf7dd1b44544d52, type: 3}
+  index: 53
   shields: 0

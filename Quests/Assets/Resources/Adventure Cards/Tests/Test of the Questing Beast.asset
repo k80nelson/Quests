@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Test of the Questing Beast
   image: {fileID: 21300000, guid: 017be82f31a1029469757e139d8e9fd3, type: 3}
+  index: 23
   BP: 0
   Bids: 0
   SpecialBP: 0

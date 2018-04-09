@@ -12,7 +12,7 @@ public class PlayerController : NetworkBehaviour {
 
     public delegate void OnCardsChanged();
     public OnCardsChanged onCardsChangedCallback;
-    
+
     // used for initialization
     private void Awake()
     {
@@ -34,28 +34,56 @@ public class PlayerController : NetworkBehaviour {
         {
             // here is where you initialize anything the LOCAL PLAYER needs WHEN SCENE IS LOADED
             view.makeCardArea();
-            CmdDrawAdv(12);
+            GameController.instance.playerLoaded();
+            StartCoroutine(waitForLoad());
         }
     }
 
+    IEnumerator waitForLoad()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Cmd_getStats();
+    }
+
     [Command]
-    void CmdDrawAdv(int num)
+    void Cmd_getStats()
+    {
+        GameController.instance.view.pollStats();
+        GameController.instance.view.FindStats();
+    }
+
+    public void readyPlayer()
+    {
+        Cmd_readyPlayer();
+        Cmd_DrawAdv(12);
+        StartCoroutine(waitForLoad());
+    }
+
+    [Command]
+    void Cmd_readyPlayer()
+    {
+        GameController.instance.addReady();
+    }
+    
+    // Called on client, runs on server
+    [Command]
+    void Cmd_DrawAdv(int num)
     {
         List<int> indices = DeckController.instance.drawAdvCards(12);
         foreach(int index in indices)
         {
             model.hand.Add(GameController.instance.cardDict.findCard(index) as AdventureCard);
-            RpcAddCard(index);
-            if (onCardsChangedCallback != null)
-            {
-                onCardsChangedCallback.Invoke();
-            }
+            Rpc_AddCard(index);
+        }
+        if (onCardsChangedCallback != null)
+        {
+            onCardsChangedCallback.Invoke();
         }
     }
     
-
+    // Called on server, runs on client
     [ClientRpc]
-    void RpcAddCard(int index)
+    void Rpc_AddCard(int index)
     {
         if (!isLocalPlayer) return;
         AdventureCard card = GameController.instance.cardDict.findCard(index) as AdventureCard;
@@ -66,12 +94,13 @@ public class PlayerController : NetworkBehaviour {
         }
     }
     
-
+    // public add cards method
     public void drawAdvCards(int num)
     {
-        CmdDrawAdv(12);
+        Cmd_DrawAdv(12);
     }
 
+    // public method to discard a card GameObject
     public void discardCard(GameObject card)
     {
         if (!isLocalPlayer) return;
@@ -79,6 +108,7 @@ public class PlayerController : NetworkBehaviour {
         Cmd_discardCard(card.GetComponent<Card>().card.index);
     }
 
+    // Runs on the server using card's global index
     [Command]
     void Cmd_discardCard(int num)
     {
@@ -88,48 +118,17 @@ public class PlayerController : NetworkBehaviour {
             onCardsChangedCallback.Invoke();
         }
         DeckController.instance.discardAdvCard(num);
+        Rpc_discardCard();
     }
-    
-    /*
-    [Command]
-    void CmdDrawAdvCards(int numToDraw)
+
+    // just calls the update cards callbacks
+    [ClientRpc]
+    void Rpc_discardCard()
     {
-        Transform parent = view.cardSpawnPoint;
-        List<GameObject> cards = DeckController.instance.drawAdvCards(numToDraw, parent);
-        foreach(GameObject card in cards)
-        {
-            Debug.Log(card.name);
-            NetworkServer.Spawn(card);
-            RpcAddCard(card);
-        }
         if (onCardsChangedCallback != null)
+        {
             onCardsChangedCallback.Invoke();
+        }
     }
-
-    [ClientRpc]
-    void RpcAddCard(GameObject card)
-    {
-        Debug.Log("Adding card to " + model.index);
-        card.transform.SetParent(view.cardSpawnPoint);
-        model.hand.Add(card.GetComponent<Card>().card as AdventureCard);
-    }
-
-    [ClientRpc]
-    void RpcSetName()
-    {
-        setName();
-    }
-
-    void setName()
-    {
-        gameObject.name = "Player " + (model.index + 1);
-    }
-
-    // Local player only initialization
-    public override void OnStartLocalPlayer()
-    {
-        view.showCardArea();
-        CmdDrawAdvCards(12);
-    }*/
     
 }

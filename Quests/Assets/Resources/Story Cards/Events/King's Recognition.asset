@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: King's Recognition
   image: {fileID: 21300000, guid: 55e1c459d02830149b2f653eb750877c, type: 3}
+  index: 35

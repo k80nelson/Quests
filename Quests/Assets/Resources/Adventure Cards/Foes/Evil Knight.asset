@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Evil Knight
   image: {fileID: 21300000, guid: 4a4bd7edd643ebd449d09b9be4315003, type: 3}
+  index: 13
   BP: 20
   Bids: 0
   SpecialBP: 30

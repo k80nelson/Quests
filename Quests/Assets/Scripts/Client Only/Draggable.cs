@@ -24,7 +24,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (!draggable) return;
         returnParent = this.transform.parent;
         setPlaceHolder();
-        this.transform.SetParent(GameController.instance.activeArea);
+        this.transform.SetParent(GameController.instance.getActiveArea());
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
