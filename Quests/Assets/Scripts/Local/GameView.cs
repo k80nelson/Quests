@@ -16,10 +16,9 @@ public class GameView : NetworkBehaviour {
         PlayerStatsView stats = Instantiate(StatsPrefab, statsTransform).GetComponent<PlayerStatsView>();
         NetworkServer.Spawn(stats.gameObject);
         stats.index = statsList.Count;
+        pollStat(stats);
         statsList.Add(stats);
-        setNames();
-        pollStats();
-        RpcFindStats();
+        Rpc_FindStats();
     }
 
     void setNames()
@@ -27,8 +26,18 @@ public class GameView : NetworkBehaviour {
         if (!isServer) return;
         foreach(PlayerStatsView stats in statsList)
         {
-            stats.playerstr = "P" + (stats.index + 1);
+            stats.setPlayerText(stats.index+1);
         }
+    }
+
+    public void pollStat(PlayerStatsView stat)
+    {
+        if (!isServer) return;
+        stat.setValues(
+            GameController.instance.players[stat.index].model.rank.ToString(),
+            GameController.instance.players[stat.index].model.shields,
+            GameController.instance.players[stat.index].model.hand.Count);
+        stat.setPlayerText(stat.index + 1);
     }
 
     public void pollStats()
@@ -36,20 +45,31 @@ public class GameView : NetworkBehaviour {
         if (!isServer) return;
         foreach(PlayerStatsView stats in statsList)
         {
-            stats.rankstr = "Rank: " + GameController.instance.players[stats.index].model.rank.ToString();
-            stats.shieldstr = "Shields: " + GameController.instance.players[stats.index].model.shields;
-            stats.cardsstr = "Cards: " + GameController.instance.players[stats.index].model.hand.Count;
+            stats.setRank(GameController.instance.players[stats.index].model.rank.ToString());
+            stats.setShield(GameController.instance.players[stats.index].model.shields);
+            stats.setCards(GameController.instance.players[stats.index].model.hand.Count);
+        }
+    }
+
+    [Command]
+    void Cmd_FindStats()
+    {
+        foreach (PlayerStatsView stats in statsList)
+        {
+            stats.Rpc_PlayerUI();
+            stats.Rpc_ValueUI();
         }
     }
 
     [ClientRpc]
-    void RpcFindStats()
+    void Rpc_FindStats()
     {
         GameObject[] stats = GameObject.FindGameObjectsWithTag("PlayerStats");
         foreach (GameObject stat in stats)
         {
             stat.transform.SetParent(statsTransform);
         }
+        Cmd_FindStats();
     }
 
 

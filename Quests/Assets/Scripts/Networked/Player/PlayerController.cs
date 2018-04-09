@@ -55,8 +55,7 @@ public class PlayerController : NetworkBehaviour {
             }
         }
     }
-
-
+    
 
     [ClientRpc]
     void RpcAddCard(int index)

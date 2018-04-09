@@ -8,8 +8,12 @@ public class GameNetworkManager : NetworkManager
     {
         Debug.Log("Player is Joining on the Server");
         GameObject player = (GameObject)Instantiate(playerPrefab,GameController.instance.transform);
+
+        // calls PlayerController.OnStartLocalPlayer() for the new player
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        // once completed, calls PlayerController.Start() for each player
+
+        // calls this on the Server
         GameController.instance.makePlayer(player.GetComponent<PlayerController>());
-        player.GetComponent<PlayerController>().drawAdvCards(12);
     }
 }

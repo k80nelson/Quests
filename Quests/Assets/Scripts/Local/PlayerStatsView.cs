@@ -13,67 +13,84 @@ public class PlayerStatsView : NetworkBehaviour {
     public Text CardsObj;
     public Text PlayerObj;
 
-    [SyncVar(hook ="OnRankChange")]
-    public string rankstr = "Rank: ";
-    [SyncVar(hook = "OnShieldChange")]
-    public string shieldstr = "Shields: ";
-    [SyncVar(hook = "OnCardChange")]
-    public string cardsstr = "Cards: ";
-    [SyncVar(hook = "OnPlayerChange")]
-    public string playerstr = "P";
+    [SyncVar]
+    string rankstr = "Rank: ";
+    [SyncVar]
+    string shieldstr = "Shields: ";
+    [SyncVar]
+    string cardsstr = "Cards: ";
+    [SyncVar]
+    string playerstr;
     [SyncVar]
     public int index;
-
-    public void setPlayerText(int index)
+    
+    public void setPlayerText(int playerNum)
     {
         if (!isServer) return;
-        playerstr = "P" + index;
+        playerstr = "P" + playerNum;
+        Rpc_PlayerUI();
     }
 
-    public void setValues(string rank, string shield, string cards)
+    public void setValues(string rank, int shields, int cards)
     {
         if (!isServer) return;
-        rankstr = rank;
-        shieldstr = shield;
-        cardsstr = cards;
+        rankstr = "Rank: " + rank;
+        shieldstr = "Shields: " + shields;
+        cardsstr = "Cards: " + cards;
+        Rpc_ValueUI();
     }
 
     public void setRank(string rank)
     {
         if (!isServer) return;
-        rankstr = rank;
+        rankstr = "Rank: " + rank;
+        Rpc_RankUI();
     }
 
-    public void setShield(string shield)
+    public void setShield(int shields)
     {
         if (!isServer) return;
-        shieldstr = shield;
+        shieldstr = "Shields: " + shields;
+        Rpc_ShieldUI();
     }
 
-    public void setCards(string cards)
+    public void setCards(int cards)
     {
         if (!isServer) return;
-        cardsstr = cards;
+        cardsstr = "Cards: " + cards;
+        Rpc_CardUI();
     }
 
-    void OnRankChange(string rank)
+    [ClientRpc]
+    public void Rpc_ValueUI()
     {
-        RankObj.text = rank;
+        RankObj.text = rankstr;
+        ShieldObj.text = shieldstr;
+        CardsObj.text = cardsstr;
     }
 
-    void OnPlayerChange(string player)
+    [ClientRpc]
+    void Rpc_RankUI()
     {
-        PlayerObj.text = player;
+        RankObj.text = rankstr;
     }
 
-    void OnShieldChange(string shield)
+    [ClientRpc]
+    public void Rpc_PlayerUI()
     {
-        ShieldObj.text = shield;
+        PlayerObj.text = playerstr;
     }
 
-    void OnCardChange(string cards)
+    [ClientRpc]
+    void Rpc_ShieldUI()
     {
-        CardsObj.text = cards;
+        ShieldObj.text = shieldstr;
+    }
+
+    [ClientRpc]
+    void Rpc_CardUI()
+    {
+        CardsObj.text = cardsstr;
     }
 
    
