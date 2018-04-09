@@ -9,9 +9,7 @@ public class PlayerController : NetworkBehaviour {
 
     // ONLY CHANGE MODEL ON THE SERVER !!!!!
     public PlayerModel model;
-
-    public delegate void OnCardsChanged();
-    public OnCardsChanged onCardsChangedCallback;
+    
 
     // used for initialization
     private void Awake()
@@ -41,8 +39,11 @@ public class PlayerController : NetworkBehaviour {
 
     IEnumerator waitForLoad()
     {
-        yield return new WaitForSeconds(0.2f);
-        Cmd_getStats();
+        for (;;)
+        {
+            yield return new WaitForSeconds(0.3f);
+            Cmd_getStats();
+        }
     }
 
     [Command]
@@ -56,7 +57,6 @@ public class PlayerController : NetworkBehaviour {
     {
         Cmd_readyPlayer();
         Cmd_DrawAdv(12);
-        StartCoroutine(waitForLoad());
     }
 
     [Command]
@@ -75,10 +75,6 @@ public class PlayerController : NetworkBehaviour {
             model.hand.Add(GameController.instance.cardDict.findCard(index) as AdventureCard);
             Rpc_AddCard(index);
         }
-        if (onCardsChangedCallback != null)
-        {
-            onCardsChangedCallback.Invoke();
-        }
     }
     
     // Called on server, runs on client
@@ -88,10 +84,6 @@ public class PlayerController : NetworkBehaviour {
         if (!isLocalPlayer) return;
         AdventureCard card = GameController.instance.cardDict.findCard(index) as AdventureCard;
         view.createCard(card);
-        if (onCardsChangedCallback != null)
-        {
-            onCardsChangedCallback.Invoke();
-        }
     }
     
     // public add cards method
@@ -113,22 +105,7 @@ public class PlayerController : NetworkBehaviour {
     void Cmd_discardCard(int num)
     {
         model.hand.remove(GameController.instance.cardDict.findCard(num) as AdventureCard);
-        if (onCardsChangedCallback != null)
-        {
-            onCardsChangedCallback.Invoke();
-        }
         DeckController.instance.discardAdvCard(num);
-        Rpc_discardCard();
-    }
-
-    // just calls the update cards callbacks
-    [ClientRpc]
-    void Rpc_discardCard()
-    {
-        if (onCardsChangedCallback != null)
-        {
-            onCardsChangedCallback.Invoke();
-        }
     }
     
 }

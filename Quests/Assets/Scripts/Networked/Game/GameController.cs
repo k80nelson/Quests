@@ -42,7 +42,6 @@ public class GameController : NetworkBehaviour {
         player.gameObject.name = "Player " + (index+1);
         player.model.index = index;
         view.makeStat(player);
-        player.onCardsChangedCallback += view.pollStats;
 
     }
 
