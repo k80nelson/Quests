@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Vanquish King Arthur's Enemies
   image: {fileID: 21300000, guid: 162c1094a39f42b4bbf1ec8631074c4a, type: 3}
+  index: 49
   stages: 3

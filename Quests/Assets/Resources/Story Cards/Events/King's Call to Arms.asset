@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: King's Call to Arms
   image: {fileID: 21300000, guid: b6565d64359c11a4485e07bd669fc690, type: 3}
+  index: 34

@@ -71,7 +71,5 @@ public class GameView : NetworkBehaviour {
         }
         Cmd_FindStats();
     }
-
-
-
+    
 }

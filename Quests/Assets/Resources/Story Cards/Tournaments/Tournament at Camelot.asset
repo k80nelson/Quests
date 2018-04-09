@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tournament at Camelot
   image: {fileID: 21300000, guid: 2a3be9f2727c1614083a7baa5ba3f112, type: 3}
+  index: 50
   shields: 3

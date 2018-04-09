@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Queen's Favor
   image: {fileID: 21300000, guid: 3db6687a138852744935eb6d88bbd653, type: 3}
+  index: 39

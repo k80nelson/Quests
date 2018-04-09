@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Search for the Holy Grail
   image: {fileID: 21300000, guid: 79e6f6a39069ebf4db2c0adc6d9db80a, type: 3}
+  index: 45
   stages: 5

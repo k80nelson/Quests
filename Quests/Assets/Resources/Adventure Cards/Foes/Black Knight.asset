@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Black Knight
   image: {fileID: 21300000, guid: fea391e8a09c1234ab76d57dbdc4111b, type: 3}
+  index: 10
   BP: 25
   Bids: 0
   SpecialBP: 35

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dragon
   image: {fileID: 21300000, guid: b19e02631caf11840873b3e5841827a6, type: 3}
+  index: 12
   BP: 50
   Bids: 0
   SpecialBP: 70

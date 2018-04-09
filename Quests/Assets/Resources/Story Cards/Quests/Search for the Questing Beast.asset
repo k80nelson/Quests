@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Search for the Questing Beast
   image: {fileID: 21300000, guid: 3e4a02ac31b415848bb52826a18a8450, type: 3}
+  index: 46
   stages: 4

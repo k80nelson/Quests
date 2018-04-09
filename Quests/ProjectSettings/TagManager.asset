@@ -27,6 +27,7 @@ TagManager:
   - Discard
   - Prompt
   - PlayerStats
+  - LocalPlayer
   layers:
   - Default
   - TransparentFX

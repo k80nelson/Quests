@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour {
-
     
     public PlayerView view;
 
@@ -24,11 +23,10 @@ public class PlayerController : NetworkBehaviour {
     // used to initialize anything the LOCAL PLAYER needs BEFORE SCENE IS LOADED
     public override void OnStartLocalPlayer()
     {
-        
+        base.OnStartLocalPlayer();
+        gameObject.tag = "LocalPlayer";
     }
-
-
-
+    
     // used to instantiate 
     void Start()
     {
@@ -51,7 +49,6 @@ public class PlayerController : NetworkBehaviour {
             if (onCardsChangedCallback != null)
             {
                 onCardsChangedCallback.Invoke();
-                Debug.Log("Doing Callback");
             }
         }
     }
@@ -60,20 +57,37 @@ public class PlayerController : NetworkBehaviour {
     [ClientRpc]
     void RpcAddCard(int index)
     {
-        if (onCardsChangedCallback != null)
-        {
-            onCardsChangedCallback.Invoke();
-            Debug.Log("Doing Callback");
-        }
         if (!isLocalPlayer) return;
         AdventureCard card = GameController.instance.cardDict.findCard(index) as AdventureCard;
         view.createCard(card);
+        if (onCardsChangedCallback != null)
+        {
+            onCardsChangedCallback.Invoke();
+        }
     }
     
 
     public void drawAdvCards(int num)
     {
+        CmdDrawAdv(12);
+    }
 
+    public void discardCard(GameObject card)
+    {
+        if (!isLocalPlayer) return;
+        view.destroyCard(card);
+        Cmd_discardCard(card.GetComponent<Card>().card.index);
+    }
+
+    [Command]
+    void Cmd_discardCard(int num)
+    {
+        model.hand.remove(GameController.instance.cardDict.findCard(num) as AdventureCard);
+        if (onCardsChangedCallback != null)
+        {
+            onCardsChangedCallback.Invoke();
+        }
+        DeckController.instance.discardAdvCard(num);
     }
     
     /*

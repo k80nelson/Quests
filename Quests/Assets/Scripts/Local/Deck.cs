@@ -31,7 +31,7 @@ public class Deck : MonoBehaviour {
     static System.Random rng = new System.Random();
 
     // discard pile
-    List<int> discard = new List<int>();
+    List<int> discardList = new List<int>();
 
     void initialize()
     {
@@ -46,6 +46,11 @@ public class Deck : MonoBehaviour {
     private void Start()
     {
         initialize();
+    }
+
+    public void discard(int num)
+    {
+        discardList.Add(num);
     }
 
     public int draw()
@@ -110,13 +115,13 @@ public class Deck : MonoBehaviour {
 
     public void emptyDeck()
     {
-        foreach (int index in discard)
+        foreach (int index in discardList)
         {
             if (!validCards.Contains(index)) validCards.Add(index);
             numCards[index] += 1;
         }
 
-        discard.Clear();
+        discardList.Clear();
     }
 
 }

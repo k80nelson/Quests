@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Boar
   image: {fileID: 21300000, guid: a917d43a42dbde54486894a1c1dc9c52, type: 3}
+  index: 11
   BP: 5
   Bids: 0
   SpecialBP: 15

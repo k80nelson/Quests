@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tournament at Orkney
   image: {fileID: 21300000, guid: a224fb0409c107d49a52c8a3e75176f0, type: 3}
+  index: 51
   shields: 2

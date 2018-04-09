@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Defend the Queen's Honor
   image: {fileID: 21300000, guid: 80c3229402e1cfc42af69b363c731b2f, type: 3}
+  index: 41
   stages: 4

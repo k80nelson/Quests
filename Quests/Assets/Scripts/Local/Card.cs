@@ -8,6 +8,7 @@ public class Card : MonoBehaviour {
     [SerializeField]
     Image image;
     public BaseCard card;
+    
 
     string cardPath;
 

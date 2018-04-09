@@ -22,4 +22,9 @@ public class PlayerView : MonoBehaviour{
         Card newCard = Instantiate(advCardPrefab, cardSpawnPoint).GetComponent<Card>();
         newCard.setCard(card);
     }
+
+    public void destroyCard(GameObject card)
+    {
+        Destroy(card);
+    }
 }

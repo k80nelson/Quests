@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Slay the Dragon
   image: {fileID: 21300000, guid: bb22e61f5e088444f9a65f25008f862e, type: 3}
+  index: 47
   stages: 3

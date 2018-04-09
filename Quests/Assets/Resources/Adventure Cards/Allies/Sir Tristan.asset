@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sir Tristan
   image: {fileID: 21300000, guid: 53f65577f4f9a2f4bb1393542c6f21b9, type: 3}
+  index: 9
   BP: 10
   Bids: 0
   SpecialBP: 20

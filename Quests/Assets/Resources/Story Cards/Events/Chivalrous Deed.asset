@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chivalrous Deed
   image: {fileID: 21300000, guid: 3bea3f7bce8e6254ba7f58ab4d68299f, type: 3}
+  index: 32

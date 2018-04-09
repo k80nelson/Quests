@@ -13,10 +13,6 @@ public class DeckController : MonoBehaviour
     public Deck advDeck;
     public Deck storyDeck;
 
-    public GameObject toRemove;
-    public GameObject tmpCard;
-    public Transform discardTransform;
-
     private void Start()
     {
         instance = this;
@@ -25,5 +21,10 @@ public class DeckController : MonoBehaviour
     public List<int> drawAdvCards(int num)
     {
         return advDeck.drawMany(num);
+    }
+
+    public void discardAdvCard(int num)
+    {
+        advDeck.discard(num);
     }
 }
