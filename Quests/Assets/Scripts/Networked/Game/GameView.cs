@@ -67,7 +67,6 @@ public class GameView : NetworkBehaviour {
             stats.Rpc_PlayerUI();
             stats.Rpc_ValueUI();
         }
-        
     }
 
     [ClientRpc]
