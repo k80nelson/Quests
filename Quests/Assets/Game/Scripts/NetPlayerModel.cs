@@ -24,11 +24,12 @@ public class NetPlayerModel : NetworkBehaviour {
     [SyncVar]
     public int bp = 5;
 
-    public Hand hand = ScriptableObject.CreateInstance<Hand>();
+    Hand _hand;
 
     private void Awake()
     {
         _view = GetComponent<PlayerView>();
+        _hand = ScriptableObject.CreateInstance<Hand>();
     }
 
     // -- SyncVar hooks
