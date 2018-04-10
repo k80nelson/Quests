@@ -54,6 +54,13 @@ public class PlayerView : MonoBehaviour {
         NewCard.setCard(card);
     }
 
+    public void destroyAllies()
+    {
+        foreach(Transform child in allies)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     public void destroyCard(GameObject card)
     {
         Destroy(card);

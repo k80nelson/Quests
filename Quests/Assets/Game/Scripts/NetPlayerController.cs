@@ -26,6 +26,8 @@ public class NetPlayerController : NetworkBehaviour {
 
     protected bool _wasInit = false;     // fixes a race condition
 
+
+    // ------------ INITIALIZATION ----------------- 
     private void Awake()
     {
         GameManager.players.Add(this);
@@ -45,7 +47,7 @@ public class NetPlayerController : NetworkBehaviour {
             StartCoroutine(waitAndAddCards());  // Need to wait in case things aren't fully initialized
         }
     }
-
+    
     public void Init()
     {
         if (_wasInit) return;  // return if already initialized
@@ -61,17 +63,11 @@ public class NetPlayerController : NetworkBehaviour {
 
         if (!isServer)  // NON-HOST clients only
         {
-            _view.updateRankText(_model.rankInt); 
+            _view.updateRankText(_model.rankInt);
             _view.updateShieldText(_model.shields);
             _view.updateCardText(_model.cards);
         }
         _wasInit = true;
-    }
-
-    // returns true when players have more cards than they should
-    public bool isOverMax()
-    {
-        return (_model.cards > NetPlayerModel.maxCards);
     }
 
     // Model should only ever be changed on the server
@@ -100,6 +96,98 @@ public class NetPlayerController : NetworkBehaviour {
         GameManager.instance.addReady();
     }
 
+    // ------------- STATE MANIPULATION ------------------
+
+    // ----- CARDS AND ALLIES -----
+
+    #region Cards
+    // -- HAND --
+
+    // public draw card method -> only runs on local player
+    public void drawAdvCards(int num)
+    {
+        if (!isLocalPlayer)
+            return;
+        Cmd_DrawAdv(num);
+    }
+
+    // draw adv needs to run on the SERVER -> deck controller and both
+    // decks are on the server only
+    [Command]
+    void Cmd_DrawAdv(int num)
+    {
+        List<int> indices = DeckController.instance.drawAdvCards(num);
+        foreach (int index in indices)
+        {
+            _model.AddCard(GameManager.instance.dict.findCard(index) as AdventureCard);
+            Rpc_AddCard(index);
+        }
+    }
+
+    // Called on server, runs on client
+    [ClientRpc]
+    void Rpc_AddCard(int index)
+    {
+        if (!isLocalPlayer) return;
+        AdventureCard card = GameManager.instance.dict.findCard(index) as AdventureCard;
+        _view.addCard(card);
+    }
+
+    // Only runs on the local client
+    public void discard(GameObject card)
+    {
+        if (!isLocalPlayer) return;
+        _view.destroyCard(card);
+        Cmd_discard(card.GetComponent<Card>().card.index);
+    }
+
+    // Runs on the server
+    [Command]
+    void Cmd_discard(int index)
+    {
+        _model.removeCard(GameManager.instance.dict.findCard(index) as AdventureCard);
+        DeckController.instance.discardAdvCard(index);
+    }
+
+    // -- ALLIES --
+
+    // TO BE IMPLEMENTED
+    public void addAlly()
+    {
+        if (!isLocalPlayer)
+            return;
+
+    }
+
+    // discards and destroys all allies
+    public void discardAllies()
+    {
+        if (!isLocalPlayer)
+            return;
+        _view.destroyAllies();
+        Cmd_discardAllies();
+    }
+
+    // removes allies from model n discards them
+    [Command]
+    void Cmd_discardAllies()
+    {
+        List<AdventureCard> allies = _model.removeAllies();
+        foreach(AdventureCard ally in allies)
+        {
+            DeckController.instance.discardAdvCard(ally.index);
+        }
+    }
+
+    #endregion
+
+    // ----- SHIELDS AND RANK -----
+    // returns true when players have more cards than they should
+    public bool isOverMax()
+    {
+        return (_model.cards > NetPlayerModel.maxCards);
+    }
+    
     // Called from TurnHandler.cs -> tells the player it is their turn to draw a card
     public void setStartTurn()
     {
@@ -154,45 +242,51 @@ public class NetPlayerController : NetworkBehaviour {
         }
     }
     
-    // draw adv needs to run on the SERVER -> deck controller and both
-    // decks are on the server only
-    [Command]
-    void Cmd_DrawAdv(int num)
+
+
+    public void removeShields(int num)
     {
-        List<int> indices = DeckController.instance.drawAdvCards(num);
-        foreach (int index in indices)
+        if (!isLocalPlayer)
+            return;
+        Cmd_removeShields(num);
+    }
+    
+    // removes shields 
+    public void removeShields(bool forCurrentPlayer, int num)
+    {
+        if (!isLocalPlayer)
+            return;
+        if (forCurrentPlayer && isTurn)
         {
-            _model.AddCard(GameManager.instance.dict.findCard(index) as AdventureCard);
-            Rpc_AddCard(index);
+            // if forCurrentPlayer is true, remove if this.isTurn is true -> plague removes for current player
+            removeShields(num);
+        } 
+        else if (!forCurrentPlayer && !isTurn)
+        {
+            // if forCurrentPlayer is false, remove if this.isTurn is false -> pox removes for all but the current player
+            removeShields(num);
         }
     }
 
-    // Called on server, runs on client
-    [ClientRpc]
-    void Rpc_AddCard(int index)
+    public void addShield(int num)
     {
-        if (!isLocalPlayer) return;
-        AdventureCard card = GameManager.instance.dict.findCard(index) as AdventureCard;
-        _view.addCard(card);
+        if (!isLocalPlayer)
+            return;
+        _model.addShields(num);
     }
 
-    // Only runs on the local client
-    public void discard(GameObject card)
-    {
-        if (!isLocalPlayer) return;
-        _view.destroyCard(card);
-        Cmd_discard(card.GetComponent<Card>().card.index);
-    }
-
-    // Runs on the server
     [Command]
-    void Cmd_discard(int index)
+    void Cmd_removeShields(int num)
     {
-        _model.removeCard(GameManager.instance.dict.findCard(index) as AdventureCard);
-        DeckController.instance.discardAdvCard(index);
+        _model.removeShields(num);
     }
 
+    public int getRank()
+    {
+        return _model.rankInt;
+    }
 
+    
     private void OnDestroy()
     {
         GameManager.players.Remove(this);

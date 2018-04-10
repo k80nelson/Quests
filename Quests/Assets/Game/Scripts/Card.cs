@@ -12,6 +12,10 @@ public class Card : MonoBehaviour
     {
         this.card = card;
         updateImage();
+        if (card is StoryCard)
+        {
+            ((StoryCard)card).Apply();
+        }
     }
 
     void updateImage()
