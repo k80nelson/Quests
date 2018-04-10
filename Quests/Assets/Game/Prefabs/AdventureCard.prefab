@@ -23,9 +23,8 @@ GameObject:
   - component: {fileID: 114166983118323738}
   - component: {fileID: 225465275612871280}
   - component: {fileID: 114279616035308302}
-  - component: {fileID: 114342050794325234}
-  - component: {fileID: 114730541243155564}
-  - component: {fileID: 114218769624946400}
+  - component: {fileID: 114576274281063620}
+  - component: {fileID: 114333082781368292}
   m_Layer: 5
   m_Name: AdventureCard
   m_TagString: Untagged
@@ -60,38 +59,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114218769624946400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1152682119006406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 212
-    i1: 148
-    i2: 111
-    i3: 225
-    i4: 242
-    i5: 15
-    i6: 87
-    i7: 4
-    i8: 90
-    i9: 87
-    i10: 223
-    i11: 200
-    i12: 116
-    i13: 80
-    i14: 235
-    i15: 107
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114279616035308302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +78,7 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!114 &114342050794325234
+--- !u!114 &114333082781368292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -119,14 +86,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152682119006406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44dac7f882dc54744b54c9a1ca5a10af, type: 3}
+  m_Script: {fileID: 11500000, guid: 9971846e75d83ed42b806d89f9edc4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   returnParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
   draggable: 1
   direction: 0
---- !u!114 &114730541243155564
+--- !u!114 &114576274281063620
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152682119006406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0058d5a78699874e8f330422b0984f7, type: 3}
+  m_Script: {fileID: 11500000, guid: a2f5083b57f59bb429e0bf25bf7134a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 114166983118323738}

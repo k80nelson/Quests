@@ -11,7 +11,6 @@ public class GameLobbyHook : LobbyHook {
         LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
         NetPlayerController player = gamePlayer.GetComponent<NetPlayerController>();
 
-        player.name = lobby.playerName;
-        
+        player.playerName = lobby.playerName;
     }
 }
