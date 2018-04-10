@@ -8,8 +8,13 @@ public class GameManager : NetworkBehaviour {
 
 	static public List<NetPlayerController> players = new List<NetPlayerController>();
     static public GameManager instance = null;
-
+    
     public Transform statsUIZone;
+    public Transform activeArea;
+    public CardDictionary dict;
+
+    int _numReady;
+    public int numPlayers;
 
     private void Awake()
     {
@@ -25,11 +30,24 @@ public class GameManager : NetworkBehaviour {
         for (int i=0; i<players.Count; i++)
         {
             players[i].Init();
+            players[i].index = i;
         }
     }
 
     public Transform getActiveArea()
     {
-        return this.transform;
+        return activeArea;
+    }
+
+    [Server]
+    public void addReady()
+    {
+        _numReady += 1;
+        Debug.Log(_numReady + " Player(s) ready.");
+        if (_numReady >= players.Count)
+        {
+            numPlayers = players.Count;
+            TurnHandler.instance.Init();
+        }
     }
 }

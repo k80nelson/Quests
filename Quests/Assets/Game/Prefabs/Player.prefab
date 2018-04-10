@@ -35,9 +35,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224658095338425312}
   - component: {fileID: 114478692636477100}
-  - component: {fileID: 114755217682170590}
   - component: {fileID: 114972560788171866}
   - component: {fileID: 114214651068577454}
+  - component: {fileID: 114646028662943318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -71,6 +71,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d944f5d1f03b26c4d8a1d5080d6825c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StatsPrefab: {fileID: 1762788956567066, guid: 2bf4c83c26c73334ebf97604b34b6ea3,
+    type: 2}
+  cardAreaPrefab: {fileID: 1546439952855376, guid: 43923eed41cb380469935aa2e5e28693,
+    type: 2}
+  allies: {fileID: 1901849123685178}
+  hidden: {fileID: 1340797703498556}
+  cardPrefab: {fileID: 1152682119006406, guid: d4946fe1f20f57045a57dfc87450eb6b, type: 2}
 --- !u!114 &114478692636477100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +110,7 @@ MonoBehaviour:
     i15: 252
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114755217682170590
+--- !u!114 &114646028662943318
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9c2da6ca801c345bbcad6a5f958fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
 --- !u!114 &114972560788171866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c27ef42eee8941b0c23a8852603a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankInt: 0
+  shields: 0
+  cards: 0
+  bp: 5
 --- !u!224 &224181567591557916
 RectTransform:
   m_ObjectHideFlags: 1
