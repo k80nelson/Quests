@@ -62,5 +62,4 @@ public class GameController : NetworkBehaviour {
     {
         view.showOverlay();
     }
-
 }

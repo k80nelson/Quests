@@ -27,4 +27,14 @@ public class DeckController : MonoBehaviour
     {
         advDeck.discard(num);
     }
+
+    public int drawStoryCard()
+    {
+        return storyDeck.draw();
+    }
+
+    public void discardStoryCard(int num)
+    {
+        storyDeck.discard(num);
+    }
 }
