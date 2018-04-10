@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class VolumeScript : MonoBehaviour
-{
+public class VolumeController : MonoBehaviour {
 
     // Use this for initialization
-    public UnityEngine.UI.Slider volumeSlider;
+    public Slider volumeSlider;
     public AudioSource volumeAudio;
 
     // Update is called once per frame
@@ -14,5 +12,5 @@ public class VolumeScript : MonoBehaviour
     {
         volumeAudio.volume = volumeSlider.value;
     }
-        
+    
 }

@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_GamePlayerPrefab: {fileID: 1583654086014546, guid: 73e92e201ad995a40abf14a1a20576fc,
     type: 2}
   m_LobbyScene: Lobby
-  m_PlayScene: TmpGame
+  m_PlayScene: GameScene
   lobbySlots: []
   prematchCountdown: 3
   topPanel: {fileID: 981002108}
