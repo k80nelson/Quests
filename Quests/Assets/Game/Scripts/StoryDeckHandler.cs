@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
+using UnityEngine.UI;
 
 public class StoryDeckHandler : NetworkBehaviour {
 
@@ -46,8 +47,14 @@ public class StoryDeckHandler : NetworkBehaviour {
 
     [SerializeField] Transform storyCardSpawnPos;
     [SerializeField] GameObject storyCardPrefab;
+    [SerializeField] Button btn;
 
     GameObject currCard;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -60,6 +67,21 @@ public class StoryDeckHandler : NetworkBehaviour {
         if (isClient)
         {
             client.RegisterHandler(StoryMsg, ClientRcvStoryCard);
+            
+        }
+    }
+
+    [Client]
+    public void DrawCard()
+    {
+        if (NetPlayerController.LocalPlayer.isOverMax())
+        {
+            PromptHandler.instance.localPrompt("Story Deck", "You must discard some cards.");
+        }
+        else
+        {
+            btn.interactable = false;
+            SendAskStoryCardMsg();
         }
     }
 

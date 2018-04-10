@@ -63,6 +63,11 @@ public class NetPlayerController : NetworkBehaviour {
         _wasInit = true;
     }
 
+    public bool isOverMax()
+    {
+        return (_model.cards > NetPlayerModel.maxCards);
+    }
+
     [Command]
     void Cmd_initModel()
     {
@@ -94,7 +99,7 @@ public class NetPlayerController : NetworkBehaviour {
     public void unsetTurn()
     {
         if (!isLocalPlayer) return;
-        if (!isActive) return;
+        if (!isTurn) return;
         Cmd_UnsetTurn();
     }
 
@@ -141,7 +146,7 @@ public class NetPlayerController : NetworkBehaviour {
     [Command]
     void Cmd_DrawAdv(int num)
     {
-        List<int> indices = DeckController.instance.drawAdvCards(12);
+        List<int> indices = DeckController.instance.drawAdvCards(num);
         foreach (int index in indices)
         {
             _model.AddCard(GameManager.instance.dict.findCard(index) as AdventureCard);

@@ -17,6 +17,8 @@ public class NetPlayerModel : NetworkBehaviour {
     [SyncVar(hook = "OnCardsChanged")]
     public int cards = 0;
 
+    public const int maxCards = 12;
+
     [SyncVar]
     public int bp = 5;
 
