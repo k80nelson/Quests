@@ -7,6 +7,9 @@ public class PlayerView : MonoBehaviour {
 
     [SerializeField] GameObject StatsPrefab;
     [SerializeField] GameObject cardAreaPrefab;
+    [SerializeField] GameObject allies;
+    [SerializeField] GameObject hidden;
+    [SerializeField] GameObject cardPrefab;
 
     Transform cardSpawnPos;
     PlayerStatView _stats;
@@ -14,6 +17,7 @@ public class PlayerView : MonoBehaviour {
     public void initStats(bool isLocalPlayer)
     {
         _stats = Instantiate(StatsPrefab, GameManager.instance.statsUIZone).GetComponent<PlayerStatView>();
+        _stats.setName(gameObject.name);
         if (isLocalPlayer) _stats.setHighlight();
         else _stats.unsetHighlight();
     }
@@ -23,23 +27,32 @@ public class PlayerView : MonoBehaviour {
         cardSpawnPos = Instantiate(cardAreaPrefab, GameManager.instance.getActiveArea()).GetComponent<DropZone>().CardContainer;
     }
 
-    public void updatePlayerText(string player)
-    {
-        _stats.setName(player);
-    }
-
     public void updateRankText(int rank)
     {
-        _stats.setRank(rank);
+        if (_stats != null)
+            _stats.setRank(rank);
     }
 
     public void updateShieldText(int shields)
     {
-        _stats.setShields(shields);
+        if (_stats != null)
+            _stats.setShields(shields);
     }
 
     public void updateCardText(int cards)
     {
-        _stats.setCards(cards);
+        if (_stats != null)
+            _stats.setCards(cards);
+    }
+
+    public void addCard(AdventureCard card)
+    {
+        Card NewCard = Instantiate(cardPrefab, cardSpawnPos).GetComponent<Card>();
+        NewCard.setCard(card);
+    }
+
+    public void destroyCard(GameObject card)
+    {
+        Destroy(card);
     }
 }
