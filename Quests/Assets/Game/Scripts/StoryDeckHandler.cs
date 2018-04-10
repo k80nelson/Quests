@@ -11,38 +11,11 @@ public class StoryDeckHandler : NetworkBehaviour {
     public static StoryDeckHandler instance;
     #endregion
 
-    #region Message
+    #region  Message           // To communicate w the server
+
     const short StoryMsg = MsgType.Highest + 2;
     NetworkClient client;
 
-    [Client]
-    public void SendAskStoryCardMsg()
-    {
-        EmptyMessage msg = new EmptyMessage();
-        client.Send(StoryMsg, msg);
-    }
-
-    [Server]
-    public void SendStoryCard(int index)
-    {
-        IntegerMessage msg = new IntegerMessage(index);
-        NetworkServer.SendToAll(StoryMsg,msg);
-    }
-
-    [Client]
-    public void ClientRcvStoryCard(NetworkMessage msg)
-    {
-        IntegerMessage data = msg.ReadMessage<IntegerMessage>();
-        Debug.Log("Got card " + data.value);
-        spawnCard(data.value);
-    }
-
-    [Server]
-    public void ServerRcvAskStoryCard(NetworkMessage msg)
-    {
-        int card = DeckController.instance.drawStoryCard();
-        SendStoryCard(card);
-    }
     #endregion
 
     [SerializeField] Transform storyCardSpawnPos;
@@ -71,6 +44,8 @@ public class StoryDeckHandler : NetworkBehaviour {
         }
     }
 
+
+    // Calls SendAskStoryCardMsg() which asks the server for a card
     [Client]
     public void DrawCard()
     {
@@ -84,7 +59,41 @@ public class StoryDeckHandler : NetworkBehaviour {
             SendAskStoryCardMsg();
         }
     }
+    
+    // Asks the server for a card index
+    [Client]
+    public void SendAskStoryCardMsg()
+    {
+        EmptyMessage msg = new EmptyMessage();
+        client.Send(StoryMsg, msg);
+    }
 
+    // Called when the server recieves a request for a card
+    [Server]
+    public void ServerRcvAskStoryCard(NetworkMessage msg)
+    {
+        int card = DeckController.instance.drawStoryCard();
+        SendStoryCard(card);
+    }
+
+    // Sends a card index to all clients
+    [Server]
+    public void SendStoryCard(int index)
+    {
+        IntegerMessage msg = new IntegerMessage(index);
+        NetworkServer.SendToAll(StoryMsg, msg);
+    }
+
+    // Called when a client recieves a card index from the server
+    [Client]
+    public void ClientRcvStoryCard(NetworkMessage msg)
+    {
+        IntegerMessage data = msg.ReadMessage<IntegerMessage>();
+        Debug.Log("Got card " + data.value);
+        spawnCard(data.value);
+    }
+
+    // Called from ClientRcvStoryCard when a client gets a card index from the server
     [Client]
     void spawnCard(int num)
     {

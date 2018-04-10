@@ -11,34 +11,21 @@ public class TurnHandler : NetworkBehaviour {
     public static TurnHandler instance;
     #endregion
 
-    #region Message
+    #region Message            // To communicate w the server
 
     const short EndTurnMsg = MsgType.Highest + 1;
 
     NetworkClient client;
 
-    public void SendEndTurnMsg()
-    {
-        EmptyMessage msg = new EmptyMessage();
-        client.Send(EndTurnMsg, msg);
-    }
-
-    [Server]
-    public void OnServerRcvEndTurn(NetworkMessage msg)
-    {
-        Debug.Log("END OF TURN");
-        setNextPlayer();
-    }
-
     #endregion
     
-    [SyncVar(hook = "OnCurrPlayerChg")] public int currPlayer = -1;
-    [SyncVar] public int totalPlayers = 0;
-    [SyncVar(hook = "OnActiveChg")] public int numActive;
-    public SyncListInt activePlayers = new SyncListInt();
+    [SyncVar(hook = "OnCurrPlayerChg")] public int currPlayer = -1;  // The player drawing the current story card
+    [SyncVar] public int totalPlayers = 0;                 // total num players
+    [SyncVar(hook = "OnActiveChg")] public int numActive;  // the number of currently 'active' players
+    public SyncListInt activePlayers = new SyncListInt();  // list of active players
 
-    [SerializeField] Button storyBtn;
-    [SerializeField] Button endTurnBtn;
+    [SerializeField] Button storyBtn;      // the story deck btn
+    [SerializeField] Button endTurnBtn;    // the end turn btn
     
     private void Awake()
     {
@@ -52,19 +39,23 @@ public class TurnHandler : NetworkBehaviour {
         NetworkServer.RegisterHandler(EndTurnMsg, OnServerRcvEndTurn);
     }
 
+    // Called every time currPlayer changes
     void OnCurrPlayerChg(int newVal)
     {
         currPlayer = newVal;
         if (NetPlayerController.LocalPlayer.index == currPlayer)
         {
+            // local player is the current player
             NetPlayerController.LocalPlayer.setStartTurn();
         }
         else
         {
+            // local player is not the current player
             NetPlayerController.LocalPlayer.unsetTurn();
         }
     }
     
+    // called every time activeplayers is changed
     void OnActiveChg(int num)
     {
         numActive = num;
@@ -73,15 +64,32 @@ public class TurnHandler : NetworkBehaviour {
         {
             if (activePlayers.Contains(player.index))
             {
+                // activePlayers contains this player, set them active
                 player.setActive();
             }
             else
             {
+                // deactivate them
                 player.unSetActive();
             }
         }
     }
-    
+
+    // called when a player presses end turn from the client to the server
+    public void SendEndTurnMsg()
+    {
+        EmptyMessage msg = new EmptyMessage();
+        client.Send(EndTurnMsg, msg);   // sends the end turn msg to the server
+    }
+
+    // called when the server recieves an end turn msg
+    [Server]
+    public void OnServerRcvEndTurn(NetworkMessage msg)
+    {
+        setNextPlayer();
+    }
+
+    // shows local turn ui (makes story btn interactable n activates end turn btn)
     [Client]
     public void showTurnUI()
     {
@@ -89,6 +97,8 @@ public class TurnHandler : NetworkBehaviour {
         endTurnBtn.gameObject.SetActive(true);
     }
 
+
+    // hides local ui (story btn is no longer interactable, end turn btn disappears)
     [Client]
     public void unShowTurnUI()
     {
@@ -96,7 +106,7 @@ public class TurnHandler : NetworkBehaviour {
         endTurnBtn.gameObject.SetActive(false);
     }
 
-    // CALLED TO BEGIN A TURN COMPLETELY
+    // CALLED TO CHANGE A TURN COMPLETELY -> expects the next move to be currplayer drawing an adventure card
     [Server]
     public void setNextPlayer()
     {
@@ -105,6 +115,7 @@ public class TurnHandler : NetworkBehaviour {
         SetCurrPlayer(nextPlayer());    // Calls setStartTurn() on NextPlayer
     }
 
+    
     [Server]
     public void addActivePlayer(int player)
     {
@@ -137,11 +148,13 @@ public class TurnHandler : NetworkBehaviour {
         numActive = 0;
     }
 
+    // shouldn't be called directly
     [Server]
     public void SetCurrPlayer(int player)
     {
         currPlayer = player;
     }
+
 
     [Server]
     public int nextPlayer()

@@ -30,6 +30,7 @@ public class NetPlayerModel : NetworkBehaviour {
         _view = GetComponent<PlayerView>();
     }
 
+    // calls OnCardsChanged() through the syncVar hook
     [Server]
     public void AddCard(AdventureCard card)
     {
@@ -38,6 +39,7 @@ public class NetPlayerModel : NetworkBehaviour {
         cards += 1;
     }
 
+    // _allies only exists on the server 
     [Server]
     public void AddAlly(AdventureCard card)
     {
@@ -64,6 +66,7 @@ public class NetPlayerModel : NetworkBehaviour {
         return ret;
     }
 
+
     [Server]
     public void removeShields(int num)
     {
@@ -71,6 +74,7 @@ public class NetPlayerModel : NetworkBehaviour {
         if (num < 0)
             shields = 0;
     }
+
 
     [Server]
     public bool hasTest()
@@ -84,6 +88,7 @@ public class NetPlayerModel : NetworkBehaviour {
         return _hand.containsFoes(num);
     }
 
+    // _allies only exists on the server
     [Server]
     public int calculateAllyBP()
     {
@@ -111,6 +116,7 @@ public class NetPlayerModel : NetworkBehaviour {
         bp = 5;
     }
 
+
     bool canUpgrade(int additionalShields)
     {
         bool upgrade = false;
@@ -129,6 +135,7 @@ public class NetPlayerModel : NetworkBehaviour {
         return upgrade;
     }
 
+    // modifies rankInt, so must be called on the server
     [Server]
     public bool rankUp()
     {
@@ -166,6 +173,7 @@ public class NetPlayerModel : NetworkBehaviour {
         }
     }
 
+    // calls PromptHandler to prompt every player that another player has ranked up
     [Server]
     public void addShields(int num)
     {
@@ -178,6 +186,8 @@ public class NetPlayerModel : NetworkBehaviour {
     } 
 
     // -- SyncVar hooks
+
+    // THIS FUNCTION ENDS THE GAME!!!!!!!
     void OnRankChanged(int newVal)
     {
         rankInt = newVal;

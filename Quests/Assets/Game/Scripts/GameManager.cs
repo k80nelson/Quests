@@ -6,27 +6,27 @@ using Lobby;
 
 public class GameManager : NetworkBehaviour {
 
-	static public List<NetPlayerController> players = new List<NetPlayerController>();
-    static public GameManager instance = null;
-    
-    public Transform statsUIZone;
-    public Transform activeArea;
-    public CardDictionary dict;
+    #region Singleton
+    static public GameManager instance = null;  // Singleton
+    #endregion
 
-    int _numReady;
-    public int numPlayers;
+    static public List<NetPlayerController> players = new List<NetPlayerController>();  // STATIC -> list of all players
+    
+    public Transform statsUIZone;  // To instantiate player stats
+    public Transform activeArea;   // For Draggable.cs -> the current game canvas
+    public CardDictionary dict;    // Translates a card index into a card object
+
+    int _numReady;                 // Number of players fully instantiated with 12 cards drawn
+    public int numPlayers;         // Num players in the game
 
     private void Awake()
     {
         instance = this;
     }
 
+    // initializes all players
     private void Start()
     {
-        if (isServer)
-        {
-
-        }
         for (int i=0; i<players.Count; i++)
         {
             players[i].Init();
@@ -34,11 +34,14 @@ public class GameManager : NetworkBehaviour {
         }
     }
 
+    // called in Draggable.cs
     public Transform getActiveArea()
     {
         return activeArea;
     }
 
+
+    // Starts the game when all players are fully initialized
     [Server]
     public void addReady()
     {

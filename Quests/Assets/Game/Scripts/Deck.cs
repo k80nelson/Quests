@@ -6,7 +6,7 @@ public enum CardType { ADV, STORY };
 public class Deck : MonoBehaviour
 {
 
-    public CardType deckType;
+    public CardType deckType;                 // Story or Adv
     
     [SerializeField] List<int> cardIndex;     // The original and untouched list of card indices
     [SerializeField] List<int> initialCards;  // initial numbers of each card
@@ -116,5 +116,4 @@ public class Deck : MonoBehaviour
 
         discardList.Clear();
     }
-
 }

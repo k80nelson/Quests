@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Transform returnParent = null;
+    public Transform returnParent = null;      
     public Transform placeHolderParent = null;
     GameObject placeHolder = null;
     LayoutElement layout = null;
     RectTransform rect = null;
-    public bool draggable = true;
-    public DropZone.ScrollType direction = DropZone.ScrollType.HORIZONTAL;
+    public bool draggable = true; 
+    public DropZone.ScrollType direction = DropZone.ScrollType.HORIZONTAL; // For placeholder placement
 
     void Awake()
     {
@@ -43,10 +43,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         transform.SetSiblingIndex(placeHolder.transform.GetSiblingIndex());
 
         Destroy(placeHolder);
-        //OR: on drop in dropzone
-
-        //List<RaycastResult> results = new List<RaycastResult>();
-        //EventSystem.current.RaycastAll(data, results);
     }
 
     void setPlaceHolder()

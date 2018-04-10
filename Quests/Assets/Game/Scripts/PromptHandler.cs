@@ -11,7 +11,7 @@ public class PromptHandler : NetworkBehaviour {
     public static PromptHandler instance;
     #endregion
 
-    #region Message
+    #region Message           // To communicate w the server 
     NetworkClient client;
 
     public class promptMsgType
@@ -25,7 +25,7 @@ public class PromptHandler : NetworkBehaviour {
         public string body;
     };
 
-    #endregion
+    #endregion   
 
     [SerializeField] Text promptHeader;
     [SerializeField] Text promptMsg;
@@ -38,7 +38,6 @@ public class PromptHandler : NetworkBehaviour {
 
     private void Start()
     {
-        
         Lobby.LobbyManager mgr = GameObject.FindObjectOfType<Lobby.LobbyManager>();
         client = mgr.client;
 
@@ -48,6 +47,8 @@ public class PromptHandler : NetworkBehaviour {
         }
     }
 
+
+    // Callback for recieving a prompt from the server
     [Client]
     void ClientOnPromptRcv(NetworkMessage msg)
     {
@@ -55,6 +56,7 @@ public class PromptHandler : NetworkBehaviour {
         localPrompt(data.header, data.body);
     }
 
+    // Sends a prompt to all clients
     [Server]
     public void SendPromptToAll(string header, string body)
     {
@@ -64,6 +66,7 @@ public class PromptHandler : NetworkBehaviour {
         NetworkServer.SendToAll(promptMsgType.MSG, msg);
     }
 
+    // Sends a prompt to a specific client
     [Server]
     public void SendPromptToClient(GameObject player, string header, string body)
     {
@@ -73,6 +76,7 @@ public class PromptHandler : NetworkBehaviour {
         NetworkServer.SendToClientOfPlayer(player,promptMsgType.MSG, msg);
     }
     
+    // Non-networked local client prompt
     [Client]
     public void localPrompt(string header, string message)
     {

@@ -23,6 +23,7 @@ public class DiscardHandler : MonoBehaviour, IDropHandler
         }
     }
 
+    // Attached to yes btn
     public void yes()
     {
         Destroy(tmpCard);
@@ -30,6 +31,7 @@ public class DiscardHandler : MonoBehaviour, IDropHandler
         confirm.SetActive(false);
     }
 
+    // Attached to no btn
     public void no()
     {
         Destroy(tmpCard);

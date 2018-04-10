@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerView : MonoBehaviour {
 
-    [SerializeField] GameObject StatsPrefab;
-    [SerializeField] GameObject cardAreaPrefab;
-    [SerializeField] GameObject allies;
-    [SerializeField] GameObject hidden;
-    [SerializeField] GameObject cardPrefab;
+    [SerializeField] GameObject StatsPrefab;     // used to initialize playerstats
+    [SerializeField] GameObject cardAreaPrefab;  // player dropzone at the bottom of screen
+    [SerializeField] Transform allies;           // the Transform holding ally cards
+    [SerializeField] Transform hidden;           // the Transform holding hidden cards
+    [SerializeField] GameObject cardPrefab;      // used to show cards on the screen
 
-    Transform cardSpawnPos;
-    PlayerStatView _stats;
+    Transform cardSpawnPos;      // where to spawn player cards (in cardArea)
+    PlayerStatView _stats;       // reference to the players playerStats object
+
+
 
     public void initStats(bool isLocalPlayer)
     {
@@ -45,6 +47,7 @@ public class PlayerView : MonoBehaviour {
             _stats.setCards(cards);
     }
 
+    // instantiates the card on the screen
     public void addCard(AdventureCard card)
     {
         Card NewCard = Instantiate(cardPrefab, cardSpawnPos).GetComponent<Card>();

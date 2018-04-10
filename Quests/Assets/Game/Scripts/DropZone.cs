@@ -54,6 +54,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 
+    // Overload this to change functionality
     protected virtual bool isValid(Draggable d)
     {
         return true;
