@@ -14,7 +14,10 @@ public class NetPlayerController : NetworkBehaviour {
 
 
     [SyncVar (hook = "OnTurnChg")]
-    public bool isActive = false; // true when it is that player's turn. Allows things to be interacted with
+    public bool isTurn = false;       // true when they are the currPlayer
+
+    [SyncVar]
+    public bool isActive = false;     // true when they are an active player
 
     [SyncVar] public string playerName;
     [SyncVar] public int index;
@@ -82,7 +85,7 @@ public class NetPlayerController : NetworkBehaviour {
         GameManager.instance.addReady();
     }
 
-    public void setTurn()
+    public void setStartTurn()
     {
         if (!isLocalPlayer) return;
         Cmd_SetTurn();
@@ -95,28 +98,42 @@ public class NetPlayerController : NetworkBehaviour {
         Cmd_UnsetTurn();
     }
 
+    [Server]
+    public void setActive()
+    {
+        isActive = true;
+    }
+
+    [Server]
+    public void unSetActive()
+    {
+        isActive = false;
+    }
+
     [Command]
     void Cmd_SetTurn()
     {
-        this.isActive = true;
+        this.isTurn = true;
     }
     
     [Command]
     void Cmd_UnsetTurn()
     {
-        this.isActive = false;
+        this.isTurn = false;
     }
     
+    // This is called when the MAIN GAME LOOP changes CURRENT PLAYER. 
+    // Should only be called when its their turn to draw a card
     void OnTurnChg(bool newVal)
     {
-        this.isActive = newVal;
-        if (isLocalPlayer && isActive)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
+        this.isTurn = newVal;
+        if (isLocalPlayer && isTurn)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
         {
-            Debug.Log("ENABLE SHIT");
+            TurnHandler.instance.showTurnUI();
         }
-        if (isLocalPlayer && !isActive)   // THIS CLIENTS TURN HAS JUST ENDED -> DISABLE THEIR UI
+        if (isLocalPlayer && !isTurn)   // THIS CLIENTS TURN HAS JUST ENDED -> DISABLE THEIR UI
         {
-            Debug.Log("DISABLE SHIT");
+            TurnHandler.instance.unShowTurnUI();
         }
     }
     
