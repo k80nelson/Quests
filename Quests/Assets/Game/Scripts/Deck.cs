@@ -26,6 +26,9 @@ public class Deck : MonoBehaviour
     // discard pile
     List<int> discardList = new List<int>();
 
+    // for drawing boar hunt first
+    [SerializeField] bool startWithBoarHunt = false;
+ 
     void initialize()
     {
         validCards.AddRange(cardIndex);
@@ -48,6 +51,12 @@ public class Deck : MonoBehaviour
 
     public int draw()
     {
+        if (startWithBoarHunt)
+        {
+            startWithBoarHunt = false;
+            return draw(40);
+        }
+
         if (cardsRemaining == 0) emptyDeck();
         int rand = rng.Next(0, cardsRemaining);
         int selected = -1;

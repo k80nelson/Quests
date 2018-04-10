@@ -26,6 +26,11 @@ public class TurnHandler : NetworkBehaviour {
 
     [SerializeField] Button storyBtn;      // the story deck btn
     [SerializeField] Button endTurnBtn;    // the end turn btn
+
+
+    // THESE ARE ONLY ON THE SERVER !!!
+    public GameObject currPlayerObject;
+    public List<GameObject> activePlayerObjects = new List<GameObject>();
     
     private void Awake()
     {
@@ -121,6 +126,7 @@ public class TurnHandler : NetworkBehaviour {
     {
         activePlayers.Add(player);
         numActive += 1;
+        activePlayerObjects.Add(GameManager.players[player].gameObject);
     }
 
     [Server]
@@ -130,6 +136,7 @@ public class TurnHandler : NetworkBehaviour {
         foreach(int player in players)
         {
             activePlayers.Add(player);
+            activePlayerObjects.Add(GameManager.players[player].gameObject);
         }
         numActive = players.Count;
     }
@@ -139,6 +146,7 @@ public class TurnHandler : NetworkBehaviour {
     {
         activePlayers.Remove(player);
         numActive -= 1;
+        activePlayerObjects.Remove(GameManager.players[player].gameObject);
     }
 
     [Server]
@@ -146,6 +154,7 @@ public class TurnHandler : NetworkBehaviour {
     {
         activePlayers.Clear();
         numActive = 0;
+        activePlayerObjects.Clear();
     }
 
     // shouldn't be called directly
@@ -153,6 +162,7 @@ public class TurnHandler : NetworkBehaviour {
     public void SetCurrPlayer(int player)
     {
         currPlayer = player;
+        currPlayerObject = GameManager.players[player].gameObject;
     }
 
 

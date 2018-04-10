@@ -7,7 +7,7 @@ public class StoryCard : BaseCard {
 
     public virtual void Apply()
     {
-
+        Debug.Log("Applying card " + name);
     }
 }
 

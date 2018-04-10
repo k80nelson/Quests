@@ -6,5 +6,10 @@ using UnityEngine;
 class QuestCard : StoryCard
 {
     public int stages = 0;
+
+    public override void Apply()
+    {
+        QuestHandler.instance.SendServerSponsorStartMsg(stages, index);
+    }
 }
 
