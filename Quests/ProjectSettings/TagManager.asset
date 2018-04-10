@@ -25,6 +25,9 @@ TagManager:
   - Global
   - ActiveArea
   - Discard
+  - Prompt
+  - PlayerStats
+  - LocalPlayer
   layers:
   - Default
   - TransparentFX
@@ -34,10 +37,10 @@ TagManager:
   - UI
   - 
   - 
-  - Cards
-  - Menufg
-  - Menubg
-  - True Background
+  - Background
+  - 
+  - 
+  - 
   - 
   - 
   - 
