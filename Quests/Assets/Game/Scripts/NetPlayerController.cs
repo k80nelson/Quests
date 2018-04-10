@@ -28,6 +28,9 @@ public class NetPlayerController : NetworkBehaviour {
 
 
     // ------------ INITIALIZATION ----------------- 
+
+    #region Initialization
+
     private void Awake()
     {
         GameManager.players.Add(this);
@@ -96,9 +99,72 @@ public class NetPlayerController : NetworkBehaviour {
         GameManager.instance.addReady();
     }
 
-    // ------------- STATE MANIPULATION ------------------
+    #endregion
 
-    // ----- CARDS AND ALLIES -----
+    // ------------- STATE MANIPULATION ------------
+
+    // --- TURNS ---
+
+    #region Turns
+
+    // Called from TurnHandler.cs -> tells the player it is their turn to draw a card
+    public void setStartTurn()
+    {
+        if (!isLocalPlayer) return;
+        Cmd_SetTurn();
+    }
+
+    // called when you press end turn
+    public void unsetTurn()
+    {
+        if (!isLocalPlayer) return;
+        if (!isTurn) return;
+        Cmd_UnsetTurn();
+    }
+
+    [Server]
+    public void setActive()
+    {
+        isActive = true;
+    }
+
+    [Server]
+    public void unSetActive()
+    {
+        isActive = false;
+    }
+
+    [Command]
+    void Cmd_SetTurn()
+    {
+        this.isTurn = true;
+    }
+
+    [Command]
+    void Cmd_UnsetTurn()
+    {
+        this.isTurn = false;
+    }
+
+    // This is called when the MAIN GAME LOOP changes CURRENT PLAYER. 
+    // Should only be called when its their turn to draw a card
+    void OnTurnChg(bool newVal)
+    {
+        this.isTurn = newVal;
+        if (isLocalPlayer && isTurn)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
+        {
+            TurnHandler.instance.showTurnUI();
+        }
+        if (isLocalPlayer && !isTurn)   // THIS CLIENTS TURN HAS JUST ENDED -> DISABLE THEIR UI
+        {
+            TurnHandler.instance.unShowTurnUI();
+        }
+    }
+
+
+    #endregion
+
+    // --- CARDS AND ALLIES ---
 
     #region Cards
     // -- HAND --
@@ -181,77 +247,33 @@ public class NetPlayerController : NetworkBehaviour {
 
     #endregion
 
-    // ----- SHIELDS AND RANK -----
-    // returns true when players have more cards than they should
-    public bool isOverMax()
-    {
-        return (_model.cards > NetPlayerModel.maxCards);
-    }
-    
-    // Called from TurnHandler.cs -> tells the player it is their turn to draw a card
-    public void setStartTurn()
-    {
-        if (!isLocalPlayer) return;
-        Cmd_SetTurn();
-    }
+    // --- SHIELDS ---
 
-    // called when you press end turn
-    public void unsetTurn()
-    {
-        if (!isLocalPlayer) return;
-        if (!isTurn) return;
-        Cmd_UnsetTurn();
-    }
-    
-    [Server]
-    public void setActive()
-    {
-        isActive = true;
-    }
+    #region Shields
 
-    [Server]
-    public void unSetActive()
+    // public add shields to local player
+    public void addShield(int num)
     {
-        isActive = false;
+        if (!isLocalPlayer)
+            return;
+        Cmd_addShields(num);
     }
 
     [Command]
-    void Cmd_SetTurn()
+    void Cmd_addShields(int num)
     {
-        this.isTurn = true;
+        _model.addShields(num);
     }
     
-    [Command]
-    void Cmd_UnsetTurn()
-    {
-        this.isTurn = false;
-    }
-    
-    // This is called when the MAIN GAME LOOP changes CURRENT PLAYER. 
-    // Should only be called when its their turn to draw a card
-    void OnTurnChg(bool newVal)
-    {
-        this.isTurn = newVal;
-        if (isLocalPlayer && isTurn)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
-        {
-            TurnHandler.instance.showTurnUI();
-        }
-        if (isLocalPlayer && !isTurn)   // THIS CLIENTS TURN HAS JUST ENDED -> DISABLE THEIR UI
-        {
-            TurnHandler.instance.unShowTurnUI();
-        }
-    }
-    
-
-
+    // public remove shields function
     public void removeShields(int num)
     {
         if (!isLocalPlayer)
             return;
         Cmd_removeShields(num);
     }
-    
-    // removes shields 
+
+    // public removes shields function that checks if its your turn
     public void removeShields(bool forCurrentPlayer, int num)
     {
         if (!isLocalPlayer)
@@ -260,19 +282,12 @@ public class NetPlayerController : NetworkBehaviour {
         {
             // if forCurrentPlayer is true, remove if this.isTurn is true -> plague removes for current player
             removeShields(num);
-        } 
+        }
         else if (!forCurrentPlayer && !isTurn)
         {
             // if forCurrentPlayer is false, remove if this.isTurn is false -> pox removes for all but the current player
             removeShields(num);
         }
-    }
-
-    public void addShield(int num)
-    {
-        if (!isLocalPlayer)
-            return;
-        _model.addShields(num);
     }
 
     [Command]
@@ -281,12 +296,35 @@ public class NetPlayerController : NetworkBehaviour {
         _model.removeShields(num);
     }
 
+    #endregion
+    
+    // ------------- STATE VIEWING -----------------
+
+    #region Getters
+    // returns true when players have more cards than they should
+    public bool isOverMax()
+    {
+        return (_model.cards > NetPlayerModel.maxCards);
+    }
+
     public int getRank()
     {
         return _model.rankInt;
     }
 
+    public int getShields()
+    {
+        return _model.shields;
+    }
+
+    public int getNumCards()
+    {
+        return _model.cards;
+    }
     
+    #endregion
+
+  
     private void OnDestroy()
     {
         GameManager.players.Remove(this);
