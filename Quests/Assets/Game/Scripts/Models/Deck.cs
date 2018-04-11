@@ -5,7 +5,9 @@ using UnityEngine;
 public enum CardType { ADV, STORY };
 public class Deck : MonoBehaviour
 {
+    // ----- ATTRIBUTES -----
 
+    #region Attributes
     public CardType deckType;                 // Story or Adv
     
     [SerializeField] List<int> cardIndex;     // The original and untouched list of card indices
@@ -28,7 +30,18 @@ public class Deck : MonoBehaviour
 
     // for drawing boar hunt first
     [SerializeField] bool startWithBoarHunt = false;
- 
+
+    #endregion
+
+    // ----- INITIALIZATION -----
+
+    #region initialization
+
+    private void Awake()
+    {
+        initialize();
+    }
+
     void initialize()
     {
         validCards.AddRange(cardIndex);
@@ -39,15 +52,11 @@ public class Deck : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        initialize();
-    }
+    #endregion
 
-    public void discard(int num)
-    {
-        discardList.Add(num);
-    }
+    // ----- DRAWING & REMOVING CARDS -----
+
+    #region Drawing
 
     public int draw()
     {
@@ -115,6 +124,17 @@ public class Deck : MonoBehaviour
         return ret;
     }
 
+    #endregion
+
+    // ----- DISCARDING AND RESHUFFLING DECK ---
+
+    #region discarding
+
+    public void discard(int num)
+    {
+        discardList.Add(num);
+    }
+
     public void emptyDeck()
     {
         foreach (int index in discardList)
@@ -125,4 +145,7 @@ public class Deck : MonoBehaviour
 
         discardList.Clear();
     }
+
+    #endregion
+
 }

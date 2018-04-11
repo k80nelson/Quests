@@ -11,18 +11,18 @@ public class StoryDeckHandler : NetworkBehaviour {
     public static StoryDeckHandler instance;
     #endregion
 
-    #region  Message           // To communicate w the server
+    // ---- ATTRIBUTES ----
 
-    const short StoryMsg = MsgType.Highest + 2;
     NetworkClient client;
-
-    #endregion
+    const short StoryMsg = MsgType.Highest + 2;
 
     [SerializeField] Transform storyCardSpawnPos;
     [SerializeField] GameObject storyCardPrefab;
     [SerializeField] Button btn;
 
     GameObject currCard;
+
+    // ---- INITIALIZATION ----
 
     private void Awake()
     {
@@ -43,12 +43,12 @@ public class StoryDeckHandler : NetworkBehaviour {
             
         }
     }
+    
+    // ---- CLIENT NON NETWORKED METHODS ----
 
-
-    // Calls SendAskStoryCardMsg() which asks the server for a card
-    [Client]
-    public void DrawCard()
+    [Client] public void DrawCard()
     {
+        // Calls SendAskStoryCardMsg() which asks the server for a card
         if (NetPlayerController.LocalPlayer.isOverMax())
         {
             PromptHandler.instance.localPrompt("Story Deck", "You must discard some cards.");
@@ -59,46 +59,47 @@ public class StoryDeckHandler : NetworkBehaviour {
             SendAskStoryCardMsg();
         }
     }
-    
-    // Asks the server for a card index
-    [Client]
-    public void SendAskStoryCardMsg()
+
+    [Client] void spawnCard(int num)
     {
+        // Called from ClientRcvStoryCard when a client gets a card index from the server
+        currCard = Instantiate(storyCardPrefab, storyCardSpawnPos);
+        Card card = currCard.GetComponent<Card>();
+        card.setCard(GameManager.instance.dict.findCard(num));
+        if (isServer)
+            card.applyCard();
+
+    }
+
+    // ---- NETWORKING ----
+
+    [Client]  public void SendAskStoryCardMsg()
+    {
+        // Asks the server for a card index
         EmptyMessage msg = new EmptyMessage();
         client.Send(StoryMsg, msg);
     }
 
-    // Called when the server recieves a request for a card
-    [Server]
-    public void ServerRcvAskStoryCard(NetworkMessage msg)
+    [Server] public void ServerRcvAskStoryCard(NetworkMessage msg)
     {
+        // Called when the server recieves a request for a card
         int card = DeckController.instance.drawStoryCard();
         SendStoryCard(card);
     }
 
-    // Sends a card index to all clients
-    [Server]
-    public void SendStoryCard(int index)
+    [Server] public void SendStoryCard(int index)
     {
+        // Sends a card index to all clients
         IntegerMessage msg = new IntegerMessage(index);
         NetworkServer.SendToAll(StoryMsg, msg);
     }
 
-    // Called when a client recieves a card index from the server
-    [Client]
-    public void ClientRcvStoryCard(NetworkMessage msg)
+    [Client] public void ClientRcvStoryCard(NetworkMessage msg)
     {
+        // Called when a client recieves a card index from the server
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
         Debug.Log("Got card " + data.value);
         spawnCard(data.value);
     }
-
-    // Called from ClientRcvStoryCard when a client gets a card index from the server
-    [Client]
-    void spawnCard(int num)
-    {
-        currCard = Instantiate(storyCardPrefab, storyCardSpawnPos);
-        currCard.GetComponent<Card>().setCard(GameManager.instance.dict.findCard(num));
-    }
-
+    
 }

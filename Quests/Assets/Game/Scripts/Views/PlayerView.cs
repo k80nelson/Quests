@@ -13,7 +13,7 @@ public class PlayerView : MonoBehaviour {
 
     Transform cardSpawnPos;      // where to spawn player cards (in cardArea)
     PlayerStatView _stats;       // reference to the players playerStats object
-
+    GameObject cardArea;
 
 
     public void initStats(bool isLocalPlayer)
@@ -26,7 +26,8 @@ public class PlayerView : MonoBehaviour {
 
     public void initLocal()
     {
-        cardSpawnPos = Instantiate(cardAreaPrefab, GameManager.instance.getActiveArea()).GetComponent<DropZone>().CardContainer;
+        cardArea = Instantiate(cardAreaPrefab, GameManager.instance.getActiveArea());
+        cardSpawnPos = cardArea.GetComponent<DropZone>().CardContainer;
     }
 
     public void updateRankText(int rank)
@@ -61,6 +62,16 @@ public class PlayerView : MonoBehaviour {
             Destroy(child.gameObject);
         }
     }
+
+    public void destroyView()
+    {
+        foreach(Transform child in cardSpawnPos)
+        {
+            Destroy(child.gameObject);
+        }
+        Destroy(_stats);
+    }
+
     public void destroyCard(GameObject card)
     {
         Destroy(card);

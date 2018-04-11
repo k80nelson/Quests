@@ -6,13 +6,17 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class QuestHandler : NetworkBehaviour {
 
+    // ---- SINGLETON ----
+
     #region Singleton
 
     public static QuestHandler instance;
 
     #endregion
 
-    NetworkClient client;
+    // ---- MESSAGE TYPES ----
+
+    #region Codes
 
     public class SponsorStartMsgType
     {
@@ -54,21 +58,39 @@ public class QuestHandler : NetworkBehaviour {
         public static short CODE = MsgType.Highest + 11;
     };
 
+    #endregion
+
+    #region Messages
+
     public class SponsorMessage : MessageBase
     {
         public int numStages;
         public int index;
     };
-    
-    // Set up singleton
+
+    #endregion
+
+    // ---- ATTRIBUTES ----
+
+    #region Networking
+
+    NetworkClient client;
+
+    #endregion
+
+    // ---- INITIALIZATION ----
+
+    #region initialization
+
     private void Awake()
     {
+        // Set up singleton
         instance = this;
     }
 
-    // Set up callbacks
     private void Start()
     {
+        // Set up callbacks
         Lobby.LobbyManager mgr = GameObject.FindObjectOfType<Lobby.LobbyManager>();
         client = mgr.client;
         if (isClient)
@@ -81,10 +103,15 @@ public class QuestHandler : NetworkBehaviour {
         }
     }
 
-    // Tell server to start sponsorship
-    [Client]
-    public void SendServerSponsorStartMsg(int stages, int index)
+    #endregion
+
+    // ---- COMMUNICATION ----
+
+    #region Sponsor Messaging
+
+    [Client] public void SendServerSponsorStartMsg(int stages, int index)
     {
+        // Tell server to start sponsorship
         Debug.Log("Sending server start sponsorship for card " + index);
         SponsorMessage msg = new SponsorMessage();
         msg.numStages = stages;
@@ -92,10 +119,9 @@ public class QuestHandler : NetworkBehaviour {
         client.Send(SponsorStartMsgType.CODE, msg);
     }
 
-    // called when server recieves the message send from SendServerSponsorStartMsg
-    [Server]
-    void OnServerRcvSponsorStartMsg(NetworkMessage msg)
+    [Server]  void OnServerRcvSponsorStartMsg(NetworkMessage msg)
     {
+        // called when server recieves the message send from SendServerSponsorStartMsg
         SponsorMessage data = msg.ReadMessage<SponsorMessage>();
         int stages = data.numStages;
         int index = data.index;
@@ -106,10 +132,9 @@ public class QuestHandler : NetworkBehaviour {
         }
     }
 
-    // Sends start sponsor message to specific client
-    [Server]
-    void SendClientStartSponsorMsg(GameObject sponsor, int stages, int index)
+    [Server] void SendClientStartSponsorMsg(GameObject sponsor, int stages, int index)
     {
+        // Sends start sponsor message to specific client
         Debug.Log("Sending start sponsorship to client " + sponsor.name);
         SponsorMessage msg = new SponsorMessage();
         msg.numStages = stages;
@@ -117,15 +142,14 @@ public class QuestHandler : NetworkBehaviour {
         NetworkServer.SendToClientOfPlayer(sponsor, SponsorStartMsgType.CODE, msg);
     }
     
-    // called when cient recieves the message from SendClientStartSponsorMsg
-    [Client]
-    void OnClientRcvStartSponsor(NetworkMessage msg)
+    [Client] void OnClientRcvStartSponsor(NetworkMessage msg)
     {
+        // called when cient recieves the message from SendClientStartSponsorMsg
         SponsorMessage data = msg.ReadMessage<SponsorMessage>();
         Debug.Log("Got Start Sponsor message for quest " + data.index + " with " + data.numStages + " stages.");
     }
 
-
+    #endregion
 }
 
 

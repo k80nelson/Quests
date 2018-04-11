@@ -7,25 +7,25 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(PlayerView))]
 public class NetPlayerController : NetworkBehaviour {
 
+    // ----------- ATTRIBUTES ----------------------
+
+    #region Attributes
+
     // Static variable. Calling NetPlayerController.LocalPlayer 
     // from any script will always find the local PlayerController
     public static NetPlayerController LocalPlayer;  
 
+
     protected PlayerView _view;      
     protected NetPlayerModel _model;
-
-
-    [SyncVar (hook = "OnTurnChg")]
-    public bool isTurn = false;          // true when they are the currPlayer
-
-    [SyncVar]
-    public bool isActive = false;        // true when they are an active player
-
     [SyncVar] public string playerName;
     [SyncVar] public int index;
-
     protected bool _wasInit = false;     // fixes a race condition
 
+    [SyncVar (hook = "OnTurnChg")] public bool isTurn = false; // true when they are the currPlayer
+    [SyncVar] public bool isActive = false;        // true when they are an active player
+
+    #endregion
 
     // ------------ INITIALIZATION ----------------- 
 
@@ -73,16 +73,15 @@ public class NetPlayerController : NetworkBehaviour {
         _wasInit = true;
     }
 
-    // Model should only ever be changed on the server
-    [Command]
-    void Cmd_initModel()
+    [Command] void Cmd_initModel()
     {
+        // Model should only ever be changed on the server
         _model.Init();
     }
 
-    // Waiting coroutine
     IEnumerator waitAndAddCards()
     {
+        // Waiting coroutine
         if (!isLocalPlayer) yield break;
         yield return new WaitForSeconds(0.5f);
         if (isLocalPlayer && isClient)
@@ -92,10 +91,10 @@ public class NetPlayerController : NetworkBehaviour {
         }
     }
 
-    // Called when everything is fully instantiated. Lets the server start the game
-    [Command]
-    void Cmd_Ready()
+    
+    [Command] void Cmd_Ready()
     {
+        // Called when everything is fully instantiated. Lets the server start the game
         GameManager.instance.addReady();
     }
 
@@ -106,50 +105,46 @@ public class NetPlayerController : NetworkBehaviour {
     // --- TURNS ---
 
     #region Turns
-
-    // Called from TurnHandler.cs -> tells the player it is their turn to draw a card
+        
     public void setStartTurn()
     {
+        // Called from TurnHandler.cs -> tells the player it is their turn to draw a card
         if (!isLocalPlayer) return;
         Cmd_SetTurn();
     }
 
-    // called when you press end turn
     public void unsetTurn()
     {
+        // called when you press end turn
         if (!isLocalPlayer) return;
         if (!isTurn) return;
         Cmd_UnsetTurn();
     }
 
-    [Server]
-    public void setActive()
+    [Server] public void setActive()
     {
         isActive = true;
     }
 
-    [Server]
-    public void unSetActive()
+    [Server] public void unSetActive()
     {
         isActive = false;
     }
 
-    [Command]
-    void Cmd_SetTurn()
+    [Command] void Cmd_SetTurn()
     {
         this.isTurn = true;
     }
 
-    [Command]
-    void Cmd_UnsetTurn()
+    [Command] void Cmd_UnsetTurn()
     {
         this.isTurn = false;
     }
 
-    // This is called when the MAIN GAME LOOP changes CURRENT PLAYER. 
-    // Should only be called when its their turn to draw a card
     void OnTurnChg(bool newVal)
     {
+        // This is called when the MAIN GAME LOOP changes CURRENT PLAYER. 
+        // Should only be called when its their turn to draw a card
         this.isTurn = newVal;
         if (isLocalPlayer && isTurn)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
         {
@@ -161,27 +156,26 @@ public class NetPlayerController : NetworkBehaviour {
         }
     }
 
-
     #endregion
 
     // --- CARDS AND ALLIES ---
 
     #region Cards
+
     // -- HAND --
 
-    // public draw card method -> only runs on local player
     public void drawAdvCards(int num)
     {
+        // public draw card method -> only runs on local player
         if (!isLocalPlayer)
             return;
         Cmd_DrawAdv(num);
     }
 
-    // draw adv needs to run on the SERVER -> deck controller and both
-    // decks are on the server only
-    [Command]
-    void Cmd_DrawAdv(int num)
+    [Command] void Cmd_DrawAdv(int num)
     {
+        // draw adv needs to run on the SERVER -> deck controller and both
+        // decks are on the server only
         List<int> indices = DeckController.instance.drawAdvCards(num);
         foreach (int index in indices)
         {
@@ -189,55 +183,51 @@ public class NetPlayerController : NetworkBehaviour {
             Rpc_AddCard(index);
         }
     }
-
-    // Called on server, runs on client
-    [ClientRpc]
-    void Rpc_AddCard(int index)
+    
+    [ClientRpc] void Rpc_AddCard(int index)
     {
+        // Called on server, runs on client
         if (!isLocalPlayer) return;
         AdventureCard card = GameManager.instance.dict.findCard(index) as AdventureCard;
         _view.addCard(card);
     }
-
-    // Only runs on the local client
+    
     public void discard(GameObject card)
     {
+        // Only runs on the local client
         if (!isLocalPlayer) return;
         _view.destroyCard(card);
         Cmd_discard(card.GetComponent<Card>().card.index);
     }
-
-    // Runs on the server
-    [Command]
-    void Cmd_discard(int index)
-    {
+    
+    [Command] void Cmd_discard(int index)
+    {   
+        // Runs on the server
         _model.removeCard(GameManager.instance.dict.findCard(index) as AdventureCard);
         DeckController.instance.discardAdvCard(index);
     }
 
     // -- ALLIES --
-
-    // TO BE IMPLEMENTED
+    
     public void addAlly()
     {
+        // TO BE IMPLEMENTED
         if (!isLocalPlayer)
             return;
-
     }
 
-    // discards and destroys all allies
     public void discardAllies()
     {
+        // discards and destroys all allies
         if (!isLocalPlayer)
             return;
         _view.destroyAllies();
         Cmd_discardAllies();
     }
 
-    // removes allies from model n discards them
-    [Command]
-    void Cmd_discardAllies()
+    [Command] void Cmd_discardAllies()
     {
+        // removes allies from model n discards them
         List<AdventureCard> allies = _model.removeAllies();
         foreach(AdventureCard ally in allies)
         {
@@ -251,31 +241,30 @@ public class NetPlayerController : NetworkBehaviour {
 
     #region Shields
 
-    // public add shields to local player
     public void addShield(int num)
     {
+        // public add shields to local player
         if (!isLocalPlayer)
             return;
         Cmd_addShields(num);
     }
 
-    [Command]
-    void Cmd_addShields(int num)
+    [Command] void Cmd_addShields(int num)
     {
         _model.addShields(num);
     }
     
-    // public remove shields function
     public void removeShields(int num)
     {
+        // public remove shields function
         if (!isLocalPlayer)
             return;
         Cmd_removeShields(num);
     }
 
-    // public removes shields function that checks if its your turn
     public void removeShields(bool forCurrentPlayer, int num)
     {
+        // public removes shields function that checks if its your turn
         if (!isLocalPlayer)
             return;
         if (forCurrentPlayer && isTurn)
@@ -290,8 +279,7 @@ public class NetPlayerController : NetworkBehaviour {
         }
     }
 
-    [Command]
-    void Cmd_removeShields(int num)
+    [Command] void Cmd_removeShields(int num)
     {
         _model.removeShields(num);
     }
@@ -301,9 +289,9 @@ public class NetPlayerController : NetworkBehaviour {
     // ------------- STATE VIEWING -----------------
 
     #region Getters
-    // returns true when players have more cards than they should
     public bool isOverMax()
     {
+        // returns true when players have more cards than they should
         return (_model.cards > NetPlayerModel.maxCards);
     }
 
@@ -321,13 +309,17 @@ public class NetPlayerController : NetworkBehaviour {
     {
         return _model.cards;
     }
-    
+
     #endregion
 
-  
+    // ------------ DESTRUCTION --------------------
+
+    #region Destruction
     private void OnDestroy()
     {
         GameManager.players.Remove(this);
+        if(isLocalPlayer)
+            _view.destroyView();
     }
-    
+    #endregion
 }

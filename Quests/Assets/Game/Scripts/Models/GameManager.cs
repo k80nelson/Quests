@@ -24,9 +24,9 @@ public class GameManager : NetworkBehaviour {
         instance = this;
     }
 
-    // initializes all players
     private void Start()
     {
+        // initializes all players
         for (int i=0; i<players.Count; i++)
         {
             players[i].Init();
@@ -34,17 +34,15 @@ public class GameManager : NetworkBehaviour {
         }
     }
 
-    // called in Draggable.cs
     public Transform getActiveArea()
     {
+        // called in Draggable.cs
         return activeArea;
     }
-
-
-    // Starts the game when all players are fully initialized
-    [Server]
-    public void addReady()
+    
+    [Server]  public void addReady()
     {
+        // Starts the game when all players are fully initialized
         _numReady += 1;
         Debug.Log(_numReady + " Player(s) ready.");
         if (_numReady >= players.Count)
