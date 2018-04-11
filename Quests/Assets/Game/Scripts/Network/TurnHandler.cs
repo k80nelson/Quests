@@ -26,6 +26,7 @@ public class TurnHandler : NetworkBehaviour {
     [SyncVar(hook = "OnCurrPlayerChg")] public int currPlayer = -1;       // The player drawing the current story card
     [SyncVar(hook = "OnActiveChg")] public int numActive;                 // the number of currently 'active' players
     [SyncVar] public int totalPlayers = 0;                                // total num players
+    [SyncVar] bool _isNewTurn = true;                                     // true when we need to draw another story card
 
     // NETWORKING 
     
@@ -95,6 +96,8 @@ public class TurnHandler : NetworkBehaviour {
     [Client] public void showTurnUI()
     {
         // shows local turn ui (makes story btn interactable n activates end turn btn)
+        if (!_isNewTurn)
+            return;
         storyBtn.interactable = true;
         endTurnBtn.gameObject.SetActive(true);
     }
@@ -158,6 +161,11 @@ public class TurnHandler : NetworkBehaviour {
     [Server] public int nextPlayer()
     {
         return (currPlayer + 1) % totalPlayers;
+    }
+
+    [Server] public int playerAfter(int index)
+    {
+        return (index + 1) % totalPlayers;
     }
 
     // ---- NETWORKING ----

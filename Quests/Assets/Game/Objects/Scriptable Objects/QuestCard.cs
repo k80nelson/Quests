@@ -9,7 +9,7 @@ class QuestCard : StoryCard
 
     public override void Apply()
     {
-        QuestHandler.instance.SendServerSponsorStartMsg(stages, index);
+        SponsorHandler.instance.SendServerSponsorStartMsg(index);
     }
 }
 

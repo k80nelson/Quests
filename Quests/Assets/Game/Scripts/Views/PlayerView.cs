@@ -65,11 +65,7 @@ public class PlayerView : MonoBehaviour {
 
     public void destroyView()
     {
-        foreach(Transform child in cardSpawnPos)
-        {
-            Destroy(child.gameObject);
-        }
-        Destroy(_stats);
+       
     }
 
     public void destroyCard(GameObject card)
