@@ -8,7 +8,7 @@ public class KingsRecognition : BaseEvent
     
     public override void apply()
     {
-        //throw new System.NotImplementedException();
-        List<NetPlayerController> players = GameManager.players;
+        Debug.Log("Sorry King's Recognition has Not been Implemented yet");
+        //List<NetPlayerController> players = GameManager.players;
     }
 }
