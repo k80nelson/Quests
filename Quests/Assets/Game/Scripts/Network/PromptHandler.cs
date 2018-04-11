@@ -11,8 +11,7 @@ public class PromptHandler : NetworkBehaviour {
     public static PromptHandler instance;
     #endregion
 
-    #region Message           // To communicate w the server 
-    NetworkClient client;
+    // ---- NETWORKING TYPES ----
 
     public class promptMsgType
     {
@@ -25,11 +24,15 @@ public class PromptHandler : NetworkBehaviour {
         public string body;
     };
 
-    #endregion   
+    // ---- ATTRIBUTES ----
 
+    NetworkClient client;
+    
     [SerializeField] Text promptHeader;
     [SerializeField] Text promptMsg;
     [SerializeField] GameObject prompt;
+
+    // ---- INITIALIZATION ----
 
     private void Awake()
     {
@@ -47,39 +50,36 @@ public class PromptHandler : NetworkBehaviour {
         }
     }
 
+    // ---- COMMUNICATION ----
 
-    // Callback for recieving a prompt from the server
-    [Client]
-    void ClientOnPromptRcv(NetworkMessage msg)
+    [Client] void ClientOnPromptRcv(NetworkMessage msg)
     {
+        // Callback for recieving a prompt from the server
         PromptMsg data = msg.ReadMessage<PromptMsg>();
         localPrompt(data.header, data.body);
     }
 
-    // Sends a prompt to all clients
-    [Server]
-    public void SendPromptToAll(string header, string body)
+    [Server] public void SendPromptToAll(string header, string body)
     {
+        // Sends a prompt to all clients
         PromptMsg msg = new PromptMsg();
         msg.header = header;
         msg.body = body;
         NetworkServer.SendToAll(promptMsgType.MSG, msg);
     }
 
-    // Sends a prompt to a specific client
-    [Server]
-    public void SendPromptToClient(GameObject player, string header, string body)
+    [Server] public void SendPromptToClient(GameObject player, string header, string body)
     {
+        // Sends a prompt to a specific client
         PromptMsg msg = new PromptMsg();
         msg.header = header;
         msg.body = body;
         NetworkServer.SendToClientOfPlayer(player,promptMsgType.MSG, msg);
     }
     
-    // Non-networked local client prompt
-    [Client]
-    public void localPrompt(string header, string message)
+    [Client] public void localPrompt(string header, string message)
     {
+        // Non-networked local client prompt
         promptHeader.text = header;
         promptMsg.text = message;
         prompt.SetActive(true);

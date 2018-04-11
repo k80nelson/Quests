@@ -6,50 +6,84 @@ using UnityEngine.Networking;
 public enum Rank { Squire, Knight, Champion, RoundTable };
 public class NetPlayerModel : NetworkBehaviour {
 
-    protected PlayerView _view;
-    
-    [SyncVar(hook = "OnRankChanged")]
-    public int rankInt = 0;
-
-    [SyncVar(hook = "OnShieldsChanged")]
-    public int shields = 0;
-
-    [SyncVar(hook = "OnCardsChanged")]
-    public int cards = 0;
-
     public const int maxCards = 12;
 
-    [SyncVar]
-    public int bp = 5;
+    protected PlayerView _view;
+    
+    [SyncVar(hook = "OnRankChanged")] public int rankInt = 0;
+    [SyncVar(hook = "OnShieldsChanged")] public int shields = 0;
+    [SyncVar(hook = "OnCardsChanged")]  public int cards = 0;
+    [SyncVar] public int bp = 5;
 
     Hand _hand;
     List<AdventureCard> _allies;
+
+    // ---- INITIALIZATION ----
 
     private void Awake()
     {
         _view = GetComponent<PlayerView>();
     }
 
-    // calls OnCardsChanged() through the syncVar hook
-    [Server]
-    public void AddCard(AdventureCard card)
+    [Server]  public void Init()
     {
+        rankInt = 0;
+        shields = 0;
+        cards = 0;
+        bp = 5;
+    }
+
+    // ---- HOOKS ----
+
+    #region SyncVar Hooks
+    void OnRankChanged(int newVal)
+    {
+        // THIS FUNCTION ENDS THE GAME!!!!!!!
+        rankInt = newVal;
+        _view.updateRankText(newVal);
+        if (newVal == 3)
+        {
+            // GAME IS OVER
+        }
+    }
+
+    void OnShieldsChanged(int newVal)
+    {
+        shields = newVal;
+        _view.updateShieldText(newVal);
+    }
+
+    void OnCardsChanged(int newVal)
+    {
+        cards = newVal;
+        _view.updateCardText(newVal);
+    }
+    #endregion
+
+    // ---- CARD MANIPULATION ----
+
+    [Server] public void AddCard(AdventureCard card)
+    {
+        // calls OnCardsChanged() through the syncVar hook
         if (_hand == null) _hand = ScriptableObject.CreateInstance<Hand>();
         _hand.Add(card);
         cards += 1;
     }
-
-    // _allies only exists on the server 
-    [Server]
-    public void AddAlly(AdventureCard card)
+    [Server] public void removeCard(AdventureCard card)
     {
+        _hand.remove(card);
+        cards -= 1;
+    }
+
+    [Server] public void AddAlly(AdventureCard card)
+    {
+        // _allies only exists on the server 
         if (card == null) return;
         if (_allies == null) _allies = new List<AdventureCard>();
         if (card.type == AdventureCardType.ALLY) _allies.Add(card);
     }
 
-    [Server]
-    public void AddAllies(List<AdventureCard> cards)
+    [Server] public void AddAllies(List<AdventureCard> cards)
     {
         if (cards == null) return;
         foreach (AdventureCard card in cards)
@@ -58,64 +92,32 @@ public class NetPlayerModel : NetworkBehaviour {
         }
     }
 
-    [Server]
-    public List<AdventureCard> removeAllies()
+    [Server] public List<AdventureCard> removeAllies()
     {
         List<AdventureCard> ret = new List<AdventureCard>(_allies);
         _allies.Clear();
         return ret;
     }
 
+    // ---- SHIELD AND RANK MANIPULATION ----
 
-    [Server]
-    public void removeShields(int num)
+    [Server] public void removeShields(int num)
     {
         this.shields -= num;
         if (num < 0)
             shields = 0;
     }
 
-
-    [Server]
-    public bool hasTest()
+    [Server]  public void addShields(int num)
     {
-        return _hand.containsTest();
-    }
-
-    [Server]
-    public bool enoughFoes(int num)
-    {
-        return _hand.containsFoes(num);
-    }
-
-    // _allies only exists on the server
-    [Server]
-    public int calculateAllyBP()
-    {
-        int total = 0;
-        foreach (AdventureCard ally in _allies)
+        // calls PromptHandler to prompt every player that another player has ranked up
+        shields += num;
+        if (canUpgrade(0))
         {
-            total += ally.getBP();
+            rankUp();
+            PromptHandler.instance.SendPromptToAll("Rank Up!", name + " has ranked up to " + ((Rank)rankInt).ToString() + ".");
         }
-        return total;
     }
-
-    [Server]
-    public void removeCard(AdventureCard card)
-    {
-        _hand.remove(card);
-        cards -= 1;
-    }
-
-    [Server]
-    public void Init()
-    {
-        rankInt = 0;
-        shields = 0;
-        cards = 0;
-        bp = 5;
-    }
-
 
     bool canUpgrade(int additionalShields)
     {
@@ -135,10 +137,9 @@ public class NetPlayerModel : NetworkBehaviour {
         return upgrade;
     }
 
-    // modifies rankInt, so must be called on the server
-    [Server]
-    public bool rankUp()
+    [Server]  public bool rankUp()
     {
+        // modifies rankInt, so must be called on the server
         switch (this.rankInt)
         {
             case 0:
@@ -173,41 +174,28 @@ public class NetPlayerModel : NetworkBehaviour {
         }
     }
 
-    // calls PromptHandler to prompt every player that another player has ranked up
-    [Server]
-    public void addShields(int num)
+
+    // ---- CARD GETTERS ----
+
+    [Server] public bool hasTest()
     {
-        shields += num;
-        if (canUpgrade(0))
+        return _hand.containsTest();
+    }
+
+    [Server] public bool enoughFoes(int num)
+    {
+        return _hand.containsFoes(num);
+    }
+
+    [Server] public int calculateAllyBP()
+    {
+        // _allies only exists on the server
+        int total = 0;
+        foreach (AdventureCard ally in _allies)
         {
-            rankUp();
-            PromptHandler.instance.SendPromptToAll("Rank Up!", name + " has ranked up to " + ((Rank)rankInt).ToString() +".");
+            total += ally.getBP();
         }
-    } 
-
-    // -- SyncVar hooks
-
-    // THIS FUNCTION ENDS THE GAME!!!!!!!
-    void OnRankChanged(int newVal)
-    {
-        rankInt = newVal;
-        _view.updateRankText(newVal);
-        if (newVal == 3)
-        {
-            // GAME IS OVER
-        }
+        return total;
     }
-
-    void OnShieldsChanged(int newVal)
-    {
-        shields = newVal;
-        _view.updateShieldText(newVal);
-    }
-
-    void OnCardsChanged(int newVal)
-    {
-        cards = newVal;
-        _view.updateCardText(newVal);
-    }
-
+    
 }

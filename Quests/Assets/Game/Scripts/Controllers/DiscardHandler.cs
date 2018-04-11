@@ -23,17 +23,17 @@ public class DiscardHandler : MonoBehaviour, IDropHandler
         }
     }
 
-    // Attached to yes btn
     public void yes()
     {
+        // Attached to yes btn
         Destroy(tmpCard);
         NetPlayerController.LocalPlayer.discard(toRemove);
         confirm.SetActive(false);
     }
 
-    // Attached to no btn
     public void no()
     {
+        // Attached to no btn
         Destroy(tmpCard);
         confirm.SetActive(false);
     }

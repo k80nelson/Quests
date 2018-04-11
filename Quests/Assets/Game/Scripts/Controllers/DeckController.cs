@@ -19,33 +19,40 @@ public class DeckController : MonoBehaviour
         instance = this;
     }
 
-    // returns a list of card indices to instantiate
-    public List<int> drawAdvCards(int num) 
+    // ----- ADVENTURE DECK -----
+    
+        
+    public List<int> drawAdvCards(int num)
     {
+        // returns a list of card indices to instantiate
         return advDeck.drawMany(num);
     }
 
-    // returns a single index
     public int drawAdvCard()
     {
+        // returns a single index
         return advDeck.draw();
     }
-
-    // returns a single index
-    public int drawStoryCard()
-    {
-        return storyDeck.draw();
-    }
-
-    // MUST be called if you discard a card to keep the card in circulation
+    
     public void discardAdvCard(int num)
     {
+        // MUST be called if you discard a card to keep the card in circulation
         advDeck.discard(num);
     }
 
-    // MUST be called if you discard a card to keep the card in circulation
+    // ----- STORY DECK -----
+    
+        
+    public int drawStoryCard()
+    {
+        // returns a single index
+        return storyDeck.draw();
+    }
+
+   
     public void discardStoryCard(int num)
     {
+        // MUST be called if you discard a card to keep the card in circulation
         storyDeck.discard(num);
     }
 }

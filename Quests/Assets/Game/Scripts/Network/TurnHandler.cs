@@ -11,27 +11,29 @@ public class TurnHandler : NetworkBehaviour {
     public static TurnHandler instance;
     #endregion
 
-    #region Message            // To communicate w the server
+    // ---- ATTRIBUTES ----
 
-    const short EndTurnMsg = MsgType.Highest + 1;
-
-    NetworkClient client;
-
-    #endregion
-    
-    [SyncVar(hook = "OnCurrPlayerChg")] public int currPlayer = -1;  // The player drawing the current story card
-    [SyncVar] public int totalPlayers = 0;                 // total num players
-    [SyncVar(hook = "OnActiveChg")] public int numActive;  // the number of currently 'active' players
-    public SyncListInt activePlayers = new SyncListInt();  // list of active players
+    // UI
 
     [SerializeField] Button storyBtn;      // the story deck btn
     [SerializeField] Button endTurnBtn;    // the end turn btn
 
+    // PLAYERS 
 
-    // THESE ARE ONLY ON THE SERVER !!!
-    public GameObject currPlayerObject;
-    public List<GameObject> activePlayerObjects = new List<GameObject>();
+    public GameObject currPlayerObject;                                   // SERVER ONLY current player GameObjecy
+    public List<GameObject> activePlayerObjects = new List<GameObject>(); // SERVER ONLY list of active playero GameObjects
+    public SyncListInt activePlayers = new SyncListInt();                 // list of active players
+    [SyncVar(hook = "OnCurrPlayerChg")] public int currPlayer = -1;       // The player drawing the current story card
+    [SyncVar(hook = "OnActiveChg")] public int numActive;                 // the number of currently 'active' players
+    [SyncVar] public int totalPlayers = 0;                                // total num players
+
+    // NETWORKING 
     
+    const short EndTurnMsg = MsgType.Highest + 1;  // Message code
+    NetworkClient client;  // Networking client
+
+    // ---- INITIALIZATION ----
+
     private void Awake()
     {
         instance = this;
@@ -43,10 +45,18 @@ public class TurnHandler : NetworkBehaviour {
         client = mgr.client;
         NetworkServer.RegisterHandler(EndTurnMsg, OnServerRcvEndTurn);
     }
+    
+    [Server] public void Init()
+    {
+        totalPlayers = GameManager.instance.numPlayers;
+        setNextPlayer();
+    }
 
-    // Called every time currPlayer changes
+    // ---- SYNCVAR HOOKS ----
+
     void OnCurrPlayerChg(int newVal)
     {
+        // Called every time currPlayer changes
         currPlayer = newVal;
         if (NetPlayerController.LocalPlayer.index == currPlayer)
         {
@@ -60,9 +70,9 @@ public class TurnHandler : NetworkBehaviour {
         }
     }
     
-    // called every time activeplayers is changed
     void OnActiveChg(int num)
     {
+        // called every time activeplayers is changed
         numActive = num;
         if (!isServer) return;
         foreach(NetPlayerController player in GameManager.players)
@@ -80,60 +90,43 @@ public class TurnHandler : NetworkBehaviour {
         }
     }
 
-    // called when a player presses end turn from the client to the server
-    public void SendEndTurnMsg()
+    // ---- CLIENT PUBLIC LOCAL METHODS ----
+    
+    [Client] public void showTurnUI()
     {
-        EmptyMessage msg = new EmptyMessage();
-        client.Send(EndTurnMsg, msg);   // sends the end turn msg to the server
-    }
-
-    // called when the server recieves an end turn msg
-    [Server]
-    public void OnServerRcvEndTurn(NetworkMessage msg)
-    {
-        setNextPlayer();
-    }
-
-    // shows local turn ui (makes story btn interactable n activates end turn btn)
-    [Client]
-    public void showTurnUI()
-    {
+        // shows local turn ui (makes story btn interactable n activates end turn btn)
         storyBtn.interactable = true;
         endTurnBtn.gameObject.SetActive(true);
     }
-
-
-    // hides local ui (story btn is no longer interactable, end turn btn disappears)
-    [Client]
-    public void unShowTurnUI()
+    
+    [Client] public void unShowTurnUI()
     {
+        // hides local ui (story btn is no longer interactable, end turn btn disappears)
         storyBtn.interactable = false;
         endTurnBtn.gameObject.SetActive(false);
     }
 
-    // CALLED TO CHANGE A TURN COMPLETELY -> expects the next move to be currplayer drawing an adventure card
-    [Server]
-    public void setNextPlayer()
+    // ---- SERVER METHODS ----
+
+    [Server] public void setNextPlayer()
     {
+        // CALLED TO CHANGE A TURN COMPLETELY -> expects the next move to be currplayer drawing an adventure card
         clearActive();                  // Calls UnSetActive() on all playercontrollers
         addActivePlayer(nextPlayer());  // Calls setActive() on NextPlayer
         SetCurrPlayer(nextPlayer());    // Calls setStartTurn() on NextPlayer
     }
 
-    
-    [Server]
-    public void addActivePlayer(int player)
+    [Server] public void addActivePlayer(int player)
     {
         activePlayers.Add(player);
         numActive += 1;
         activePlayerObjects.Add(GameManager.players[player].gameObject);
     }
 
-    [Server]
-    public void setActivePlayers(List<int> players)
+    [Server]  public void setActivePlayers(List<int> players)
     {
         clearActive();
-        foreach(int player in players)
+        foreach (int player in players)
         {
             activePlayers.Add(player);
             activePlayerObjects.Add(GameManager.players[player].gameObject);
@@ -141,41 +134,46 @@ public class TurnHandler : NetworkBehaviour {
         numActive = players.Count;
     }
 
-    [Server]
-    public void removeActivePlayer(int player)
+    [Server] public void removeActivePlayer(int player)
     {
         activePlayers.Remove(player);
         numActive -= 1;
         activePlayerObjects.Remove(GameManager.players[player].gameObject);
     }
 
-    [Server]
-    public void clearActive()
+    [Server] public void clearActive()
     {
         activePlayers.Clear();
         numActive = 0;
         activePlayerObjects.Clear();
     }
 
-    // shouldn't be called directly
-    [Server]
-    public void SetCurrPlayer(int player)
+    [Server] public void SetCurrPlayer(int player)
     {
+        // shouldn't be called directly
         currPlayer = player;
         currPlayerObject = GameManager.players[player].gameObject;
     }
 
-
-    [Server]
-    public int nextPlayer()
+    [Server] public int nextPlayer()
     {
         return (currPlayer + 1) % totalPlayers;
     }
-    
-    [Server]
-    public void Init()
+
+    // ---- NETWORKING ----
+
+    public void SendEndTurnMsg()
     {
-        totalPlayers = GameManager.instance.numPlayers;
+        // called when a player presses end turn from the client to the server
+        EmptyMessage msg = new EmptyMessage();
+        client.Send(EndTurnMsg, msg);   // sends the end turn msg to the server
+    }
+
+    [Server] public void OnServerRcvEndTurn(NetworkMessage msg)
+    {
+        // called when the server recieves an end turn msg
         setNextPlayer();
     }
+
+
 }
