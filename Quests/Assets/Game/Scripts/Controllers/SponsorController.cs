@@ -12,19 +12,21 @@ public class SponsorController : MonoBehaviour
     QuestCard currCard;
     NetPlayerController sponsor;
     List<Transform> stages = new List<Transform>();
-    List<StageModel> stageModels = new List<StageModel>();
+    StageModel[] stageModels;
 
     public void Init(int cardIndex)
     {
         UI.SetActive(true);
         currCard = GameManager.instance.dict.findCard(cardIndex) as QuestCard;
+        stageModels = new StageModel[currCard.stages];
         for (int i=0; i<currCard.stages; i++)
         {
             GameObject newObj = Instantiate(StagePrefab, stageSpawnPos);
             stages.Add(newObj.GetComponent<SponsorDropZone>().CardContainer);
             newObj.GetComponentInChildren<Text>().text = "Stage " + (i + 1);
+            stageModels[i] = new StageModel();
         }
-        List<StageModel> stageModels = new List<StageModel>(currCard.stages);
+        
     }
 
     bool validateStages()
@@ -79,7 +81,21 @@ public class SponsorController : MonoBehaviour
         }
         if (validateStages())
         {
-            PromptHandler.instance.localPrompt("Sponsorship", "ALL GOOD.");
+            NetSponsorModel.instance.ClearStages();
+            NetPlayerController.LocalPlayer.playCardsForSponsor(stageModels);
+            SponsorHandler.instance.SendServerEndSponsorship();
+            foreach(Transform stage in stages)
+            {
+                foreach(Transform card in stage)
+                {
+                    Destroy(card.gameObject);
+                }
+            }
+            foreach(Transform child in stageSpawnPos)
+            {
+                Destroy(child.gameObject);
+            }
+            UI.SetActive(false);
         }
     }
 

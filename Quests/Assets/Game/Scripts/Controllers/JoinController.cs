@@ -61,7 +61,7 @@ public class JoinController : MonoBehaviour {
 
     void questYes()
     {
-        Debug.Log("Quest yes");
+        SponsorHandler.instance.SendServerAcceptQuest(NetPlayerController.LocalPlayer.index);
     }
 
     void tourYes()
@@ -94,7 +94,7 @@ public class JoinController : MonoBehaviour {
 
     void questNo()
     {
-        Debug.Log("quest no");
+        SponsorHandler.instance.SendServerRefuseQuest(NetPlayerController.LocalPlayer.index);
     }
 
     void tourNo()

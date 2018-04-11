@@ -75,8 +75,8 @@ MonoBehaviour:
     type: 2}
   cardAreaPrefab: {fileID: 1546439952855376, guid: 43923eed41cb380469935aa2e5e28693,
     type: 2}
-  allies: {fileID: 1901849123685178}
-  hidden: {fileID: 1340797703498556}
+  allies: {fileID: 224291656870079822}
+  hidden: {fileID: 224181567591557916}
   cardPrefab: {fileID: 1152682119006406, guid: d4946fe1f20f57045a57dfc87450eb6b, type: 2}
 --- !u!114 &114478692636477100
 MonoBehaviour:
@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
+  index: 0
+  isTurn: 0
+  isActive: 0
 --- !u!114 &114972560788171866
 MonoBehaviour:
   m_ObjectHideFlags: 1

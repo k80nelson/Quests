@@ -207,6 +207,11 @@ public class NetPlayerController : NetworkBehaviour {
         DeckController.instance.discardAdvCard(index);
     }
 
+    [Command] void Cmd_removeCard(int index)
+    {
+        _model.removeCard(GameManager.instance.dict.findCard(index) as AdventureCard);
+    }
+
     // -- ALLIES --
     
     public void addAlly()
@@ -311,6 +316,27 @@ public class NetPlayerController : NetworkBehaviour {
     }
 
     #endregion
+
+    // ------------ QUESTS, SPONSORSHIPS -----------
+
+
+    public void playCardsForSponsor(StageModel[] cardsPlayed)
+    {
+        foreach(StageModel stage in cardsPlayed)
+        {
+            Cmd_sponsorStage(stage.getIndexList().ToArray());
+            foreach(int index in stage.getIndexList())
+            {
+                Cmd_removeCard(index);
+            }
+            
+        }
+    }
+
+    [Command] void Cmd_sponsorStage(int[] stage)
+    {
+        NetSponsorModel.instance.AddStage(stage);
+    } 
 
     // ------------ DESTRUCTION --------------------
 

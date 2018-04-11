@@ -13,6 +13,15 @@ public class StageModel
         cardsPlayed = new List<AdventureCard>();
     }
 
+    public StageModel(int[] cards)
+    {
+        cardsPlayed = new List<AdventureCard>();
+        foreach(int card in cards)
+        {
+            cardsPlayed.Add(GameManager.instance.dict.findCard(card) as AdventureCard);
+        }
+    }
+
     //Returns the number of cards for that stage
     public int Count
     {

@@ -15,7 +15,7 @@ public class StoryDeckHandler : NetworkBehaviour {
 
     NetworkClient client;
     const short StoryMsg = MsgType.Highest + 2;
-    const short EndStoryMsg = MsgType.Highest + 12;
+    const short EndStoryMsg = MsgType.Highest + 13;
 
     [SerializeField] Transform storyCardSpawnPos;
     [SerializeField] GameObject storyCardPrefab;
@@ -69,8 +69,13 @@ public class StoryDeckHandler : NetworkBehaviour {
         currCard = Instantiate(storyCardPrefab, storyCardSpawnPos);
         Card card = currCard.GetComponent<Card>();
         card.setCard(GameManager.instance.dict.findCard(num));
+        currCard.tag = "CurrStory";
         if (isServer)
             card.applyCard();
+        else if (!isServer && card.card is EventCard)
+        {
+            card.applyCard();
+        }
     }
 
     [Client] void destroyCard()
