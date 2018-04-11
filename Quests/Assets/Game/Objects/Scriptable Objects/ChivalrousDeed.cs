@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
-public class ChivalrousDeed : BaseEvent {
+[CreateAssetMenu(menuName = "Chivalrous")]
+public class ChivalrousDeed : EventCard {
 
-    public override void apply()
+    public override void Apply()
     {
         //throw new System.NotImplementedException();
         List<NetPlayerController> players = GameManager.players;

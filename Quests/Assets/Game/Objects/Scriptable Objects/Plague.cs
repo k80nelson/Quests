@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Drawer loses 2 shields, if possible
-public class Plague : BaseEvent
+[CreateAssetMenu(menuName = "Plague")]
+public class Plague : EventCard
 {
 
-    public override void apply()
+    public override void Apply()
     {
         //throw new System.NotImplementedException();
         List<NetPlayerController> players = GameManager.players;

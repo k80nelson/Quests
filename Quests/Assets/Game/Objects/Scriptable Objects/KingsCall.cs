@@ -4,10 +4,11 @@ using UnityEngine;
 
 //Highest ranked player(s) must place 1 weapon in the discard
 //If unable to do so, 2 foe cards must be discarded
-public class KingsCall : BaseEvent
+[CreateAssetMenu(menuName = "KingsCall")] 
+public class KingsCall : EventCard
 {
-
-    public override void apply()
+    
+    public override void Apply()
     {
         Debug.Log("Sorry King's Call has Not been Implemented yet");
         /*

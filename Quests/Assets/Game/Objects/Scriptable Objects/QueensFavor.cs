@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Lowest ranked player(s) immediately recieve 2 Adventure Cards
-public class QueensFavor : BaseEvent
+[CreateAssetMenu(menuName = "QueensFav")]
+public class QueensFavor : EventCard
 {
     
-    public override void apply()
+    public override void Apply()
     {
         //throw new System.NotImplementedException();
         List<NetPlayerController> players = GameManager.players;
