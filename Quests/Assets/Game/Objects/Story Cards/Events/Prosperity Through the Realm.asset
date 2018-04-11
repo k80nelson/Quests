@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Prosperity Through the Realm
   m_EditorClassIdentifier: 
   name: Prosperity Throughout the Realm
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 7b41306ca9d201341b6110af18ba48f6, type: 3}
   index: 38
