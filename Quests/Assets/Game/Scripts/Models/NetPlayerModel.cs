@@ -104,7 +104,7 @@ public class NetPlayerModel : NetworkBehaviour {
     [Server] public void removeShields(int num)
     {
         this.shields -= num;
-        if (num < 0)
+        if (this.shields < 0)
             shields = 0;
     }
 
