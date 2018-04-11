@@ -15,12 +15,14 @@ public class StoryDeckHandler : NetworkBehaviour {
 
     NetworkClient client;
     const short StoryMsg = MsgType.Highest + 2;
+    const short EndStoryMsg = MsgType.Highest + 12;
 
     [SerializeField] Transform storyCardSpawnPos;
     [SerializeField] GameObject storyCardPrefab;
     [SerializeField] Button btn;
 
     GameObject currCard;
+    int currIndex;
 
     // ---- INITIALIZATION ----
 
@@ -40,6 +42,7 @@ public class StoryDeckHandler : NetworkBehaviour {
         if (isClient)
         {
             client.RegisterHandler(StoryMsg, ClientRcvStoryCard);
+            client.RegisterHandler(EndStoryMsg, OnEndStoryRcv);
             
         }
     }
@@ -68,7 +71,11 @@ public class StoryDeckHandler : NetworkBehaviour {
         card.setCard(GameManager.instance.dict.findCard(num));
         if (isServer)
             card.applyCard();
+    }
 
+    [Client] void destroyCard()
+    {
+        Destroy(currCard);
     }
 
     // ---- NETWORKING ----
@@ -83,8 +90,8 @@ public class StoryDeckHandler : NetworkBehaviour {
     [Server] public void ServerRcvAskStoryCard(NetworkMessage msg)
     {
         // Called when the server recieves a request for a card
-        int card = DeckController.instance.drawStoryCard();
-        SendStoryCard(card);
+        currIndex = DeckController.instance.drawStoryCard();
+        SendStoryCard(currIndex);
     }
 
     [Server] public void SendStoryCard(int index)
@@ -100,6 +107,18 @@ public class StoryDeckHandler : NetworkBehaviour {
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
         Debug.Log("Got card " + data.value);
         spawnCard(data.value);
+    }
+
+    [Server] public void SendEndStoryCard()
+    {
+        DeckController.instance.discardStoryCard(currIndex);
+        EmptyMessage msg = new EmptyMessage();
+        NetworkServer.SendToAll(EndStoryMsg, msg);
+    }
+
+    [Client] void OnEndStoryRcv(NetworkMessage msg)
+    {
+        destroyCard();
     }
     
 }

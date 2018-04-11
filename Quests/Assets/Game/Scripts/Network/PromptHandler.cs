@@ -68,6 +68,16 @@ public class PromptHandler : NetworkBehaviour {
         NetworkServer.SendToAll(promptMsgType.MSG, msg);
     }
 
+    [Server] public void SendPromptToAllExcept(List<GameObject> players, string header, string body)
+    {
+        if (players == null) return;
+        foreach (NetPlayerController player in GameManager.players)
+        {
+            if (players.Contains(player.gameObject)) continue;
+            SendPromptToClient(player.gameObject, header, body);
+        }
+    }
+
     [Server] public void SendPromptToClient(GameObject player, string header, string body)
     {
         // Sends a prompt to a specific client
