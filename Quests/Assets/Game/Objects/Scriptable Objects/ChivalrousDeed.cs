@@ -37,9 +37,9 @@ public class ChivalrousDeed : BaseEvent {
             }
             else if (players[cur].getRank() == lowestPlayer.getRank())
             {
-                /*
+        
                 //if the ranks are the same then you have to find out who has the lowest Rank
-                if (players[cur].getSheilds() < lowestPlayer.getshields())
+                if (players[cur].getShields() < lowestPlayer.getShields())
                 {
 
                     //replaces the lowest player with the one with lowest rank and shields
@@ -51,10 +51,10 @@ public class ChivalrousDeed : BaseEvent {
                 }
 
                 //If the shields are also the same then append them to the list 
-                else if (players[cur].shields == lowestPlayer.shields)
+                else if (players[cur].getShields() == lowestPlayer.getShields())
                 {
                     lowest.Add(players[cur]);
-                }*/
+                }
             }
 
             Debug.Log("[ChivalrousDeed.cs:play] Chivalrous Deed complete -> 3 shields added to lowest " + lowest.Count + " players");
@@ -63,7 +63,7 @@ public class ChivalrousDeed : BaseEvent {
         //adds 3 shields to the lowest player
         for (int i = 0; i < lowest.Count; i++)
         {
-            //lowest[i].addShields(3);
+            lowest[i].addShield(3);
         }
 
     }
