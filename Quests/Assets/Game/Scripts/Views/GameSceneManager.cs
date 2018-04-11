@@ -14,6 +14,7 @@ public class GameSceneManager : MonoBehaviour {
 
     [SerializeField] JoinController joinPrompt;
     [SerializeField] SponsorController sponsorship;
+    [SerializeField] QuestController quest;
 
     // ---- INITIALIZATION ----
 
@@ -34,9 +35,36 @@ public class GameSceneManager : MonoBehaviour {
         joinPrompt.Init(PlayType.QUEST, GameManager.instance.dict.findCard(cardIndex).image);
     }
 
-    public void showQuest()
+    public void showQuest(int cardIndex)
     {
-        PromptHandler.instance.localPrompt("Quest", "THIS IS A QUEST");
+        quest.Init(cardIndex);
+    }
+
+    public void setStageBid(int minBid)
+    {
+        quest.startBid(minBid);
+    }
+
+    public void winBid()
+    {
+        quest.winBid();
+    }
+
+    public void EndQuest()
+    {
+        quest.end();
+        SponsorHandler.instance.SendServerEndQuest();
+    }
+
+    public void failQuest()
+    {
+        quest.fail();
+    }
+
+    public void startQuestStage(int stageIndex)
+    {
+        Debug.Log("Gamestate startin");
+        quest.startStage(stageIndex);
     }
 
     public void showSponsorship(int cardIndex)

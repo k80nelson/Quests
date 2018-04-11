@@ -11,7 +11,7 @@ public class PlayerView : MonoBehaviour {
     [SerializeField] Transform hidden;           // the Transform holding hidden cards
     [SerializeField] GameObject cardPrefab;      // used to show cards on the screen
 
-    Transform cardSpawnPos;      // where to spawn player cards (in cardArea)
+    public Transform cardSpawnPos;      // where to spawn player cards (in cardArea)
     PlayerStatView _stats;       // reference to the players playerStats object
     GameObject cardArea;
 

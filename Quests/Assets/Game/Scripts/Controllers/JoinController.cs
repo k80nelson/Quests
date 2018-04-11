@@ -56,11 +56,13 @@ public class JoinController : MonoBehaviour {
 
     void sponsorYes()
     {
+        
         SponsorHandler.instance.SendServerAcceptSponsor();
     }
 
     void questYes()
     {
+        NetPlayerController.LocalPlayer.drawAdvCards(1);
         SponsorHandler.instance.SendServerAcceptQuest(NetPlayerController.LocalPlayer.index);
     }
 

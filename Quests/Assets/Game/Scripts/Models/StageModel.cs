@@ -75,6 +75,58 @@ public class StageModel
         return containsFoe();
     }
 
+    public List<AdventureCard> getAllies()
+    {
+        return (cardsPlayed.FindAll(i => i.type == AdventureCardType.ALLY));
+    }
+
+    public List<AdventureCard> getFoes()
+    {
+        return (cardsPlayed.FindAll(i => i.type == AdventureCardType.FOE));
+    }
+
+    public List<AdventureCard> getAmours()
+    {
+        return (cardsPlayed.FindAll(i => i.type == AdventureCardType.AMOUR));
+    }
+
+    public List<AdventureCard> getWeapons()
+    {
+        return (cardsPlayed.FindAll(i => i.type == AdventureCardType.WEAPON));
+    }
+
+    public List<AdventureCard> getTests()
+    {
+        return (cardsPlayed.FindAll(i => i.type == AdventureCardType.TEST));
+    }
+
+    public List<AdventureCard> removeAllies()
+    {
+        List<AdventureCard> ret = getAllies();
+        if (ret == null) return new List<AdventureCard>();
+        foreach (AdventureCard card in ret)
+        {
+            cardsPlayed.Remove(card);
+        }
+        return ret;
+    }
+
+    public List<AdventureCard> removeAmours()
+    {
+        List<AdventureCard> ret = getAmours();
+        if (ret == null) return new List<AdventureCard>();
+        foreach (AdventureCard card in ret)
+        {
+            cardsPlayed.Remove(card);
+        }
+        return ret;
+    }
+
+    public StageType stageType()
+    {
+        return (isCombat()) ? StageType.COMBAT : StageType.BIDDING;
+    }
+
     public bool isTest()
     {
         return containsTest();
@@ -103,16 +155,15 @@ public class StageModel
     }
 
     //Will remove all weapons cards from the list, this can be used for removing the weapons at the end of each stage
-    public void RemoveWeapons()
+    public List<AdventureCard> RemoveWeapons()
     {
-        if (cardsPlayed == null) return;
+        if (cardsPlayed == null) return new List<AdventureCard>();
         List<AdventureCard> toRemove = new List<AdventureCard>();
 
         for (int i = 0; i < cardsPlayed.Count; i++)
         {
             if (cardsPlayed[i].type == AdventureCardType.WEAPON)
             {
-
                 toRemove.Add(cardsPlayed[i]);
             }
         }
@@ -121,6 +172,7 @@ public class StageModel
         {
             cardsPlayed.Remove(card);
         }
+        return toRemove;
     }
 
     public bool validState()
@@ -160,6 +212,11 @@ public class StageModel
         }
 
         return total;
+    }
+
+    public AdventureCard getTest()
+    {
+        return cardsPlayed.Find(i => i.type == AdventureCardType.TEST);
     }
 
     public int totalBids()

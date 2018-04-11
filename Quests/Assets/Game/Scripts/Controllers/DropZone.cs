@@ -34,6 +34,11 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = data.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
+            if (NetPlayerController.LocalPlayer.isOverMax())
+            {
+                PromptHandler.instance.localPrompt("Discard", "You must discard some cards.");
+                return;
+            }
             if (isValid(d))
             {
                 d.returnParent = CardContainer;

@@ -17,6 +17,7 @@ public class NetPlayerModel : NetworkBehaviour {
 
     Hand _hand;
     List<AdventureCard> _allies;
+    SyncListInt allies = new SyncListInt();
 
     // ---- INITIALIZATION ----
 
@@ -79,8 +80,19 @@ public class NetPlayerModel : NetworkBehaviour {
     {
         // _allies only exists on the server 
         if (card == null) return;
-        if (_allies == null) _allies = new List<AdventureCard>();
-        if (card.type == AdventureCardType.ALLY) _allies.Add(card);
+        if (_allies == null)
+        {
+            _allies = new List<AdventureCard>();
+        }
+        if(allies == null)
+        {
+            allies = new SyncListInt();
+        }
+        if (card.type == AdventureCardType.ALLY)
+        {
+            _allies.Add(card);
+            allies.Add(card.index);
+        }
     }
 
     [Server] public void AddAllies(List<AdventureCard> cards)
@@ -94,9 +106,24 @@ public class NetPlayerModel : NetworkBehaviour {
 
     [Server] public List<AdventureCard> removeAllies()
     {
+        if (_allies == null)
+        {
+            _allies = new List<AdventureCard>();
+        }
+        if (allies == null)
+        {
+            allies = new SyncListInt();
+        }
         List<AdventureCard> ret = new List<AdventureCard>(_allies);
+        if (_allies.Count == 0) return ret;
         _allies.Clear();
+        allies.Clear();
         return ret;
+    }
+
+    public List<int> getAllies()
+    {
+        return new List<int>(allies);
     }
 
     // ---- SHIELD AND RANK MANIPULATION ----

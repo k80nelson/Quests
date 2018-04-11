@@ -57,15 +57,18 @@ public class TurnHandler : NetworkBehaviour {
 
     void OnCurrPlayerChg(int newVal)
     {
+        Debug.Log("Current player changed");
         // Called every time currPlayer changes
         currPlayer = newVal;
         if (NetPlayerController.LocalPlayer.index == currPlayer)
         {
+            Debug.Log("Here");
             // local player is the current player
             NetPlayerController.LocalPlayer.setStartTurn();
         }
         else
         {
+            Debug.Log("NOT ME");
             // local player is not the current player
             NetPlayerController.LocalPlayer.unsetTurn();
         }

@@ -17,6 +17,7 @@ public class SponsorController : MonoBehaviour
     public void Init(int cardIndex)
     {
         UI.SetActive(true);
+        stages = new List<Transform>();
         currCard = GameManager.instance.dict.findCard(cardIndex) as QuestCard;
         stageModels = new StageModel[currCard.stages];
         for (int i=0; i<currCard.stages; i++)
@@ -26,7 +27,6 @@ public class SponsorController : MonoBehaviour
             newObj.GetComponentInChildren<Text>().text = "Stage " + (i + 1);
             stageModels[i] = new StageModel();
         }
-        
     }
 
     bool validateStages()
@@ -95,6 +95,8 @@ public class SponsorController : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
+
+            stages.Clear();
             UI.SetActive(false);
         }
     }

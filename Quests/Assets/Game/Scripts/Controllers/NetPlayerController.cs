@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent(typeof(NetPlayerModel))]
 [RequireComponent(typeof(PlayerView))]
@@ -24,6 +26,7 @@ public class NetPlayerController : NetworkBehaviour {
 
     [SyncVar (hook = "OnTurnChg")] public bool isTurn = false; // true when they are the currPlayer
     [SyncVar] public bool isActive = false;        // true when they are an active player
+    public Transform cardArea;
 
     #endregion
 
@@ -61,6 +64,7 @@ public class NetPlayerController : NetworkBehaviour {
         if (isLocalPlayer)
         {
             _view.initLocal();  // makes the bottom card area
+            cardArea = _view.cardSpawnPos;
             Cmd_initModel();    // initializes the Model
         }
 
@@ -196,8 +200,32 @@ public class NetPlayerController : NetworkBehaviour {
     {
         // Only runs on the local client
         if (!isLocalPlayer) return;
-        _view.destroyCard(card);
         Cmd_discard(card.GetComponent<Card>().card.index);
+        _view.destroyCard(card);
+        
+    }
+
+    public void discardBid(GameObject card)
+    {
+        if (!isLocalPlayer) return;
+        Cmd_discard(card.GetComponent<Card>().card.index);
+        Destroy(card);
+        
+    }
+
+    public void removeCard(int card)
+    {
+        Cmd_removeCard(card);
+    }
+
+    public void discardCard(int card)
+    {
+        Cmd_discard(card);
+    }
+
+    public int getBP()
+    {
+        return _model.bp;
     }
     
     [Command] void Cmd_discard(int index)
@@ -214,11 +242,17 @@ public class NetPlayerController : NetworkBehaviour {
 
     // -- ALLIES --
     
-    public void addAlly()
+    public void addAlly(AdventureCard ally)
     {
         // TO BE IMPLEMENTED
         if (!isLocalPlayer)
             return;
+        Cmd_AddAlly(ally.index);
+    }
+
+    [Command] void Cmd_AddAlly(int index)
+    {
+        _model.AddAlly(GameManager.instance.dict.findCard(index) as AdventureCard);
     }
 
     public void discardAllies()
@@ -313,6 +347,11 @@ public class NetPlayerController : NetworkBehaviour {
     public int getNumCards()
     {
         return _model.cards;
+    }
+
+    public List<int> getAllies()
+    {
+        return _model.getAllies();
     }
 
     #endregion
