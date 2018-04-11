@@ -12,6 +12,7 @@ public class SponsorController : MonoBehaviour
     QuestCard currCard;
     NetPlayerController sponsor;
     List<Transform> stages = new List<Transform>();
+    List<StageModel> stageModels = new List<StageModel>();
 
     public void Init(int cardIndex)
     {
@@ -23,7 +24,63 @@ public class SponsorController : MonoBehaviour
             stages.Add(newObj.GetComponent<SponsorDropZone>().CardContainer);
             newObj.GetComponentInChildren<Text>().text = "Stage " + (i + 1);
         }
-        
+        List<StageModel> stageModels = new List<StageModel>(currCard.stages);
+    }
+
+    bool validateStages()
+    {
+        bool valid = true;
+
+        int currentStageBP = 0;
+        int lastStageBP = -1;
+
+        for (int i = 0; i < stages.Count; i++)
+        {
+            if (!stageModels[i].validState())
+            {
+                Debug.Log("[Sponsor.cs:validateStages] Error in stage " + (i + 1) + ": not in valid state");
+                PromptHandler.instance.localPrompt("Sponsorship","Stage " + (i + 1) + " is in an invalid state. Weapons can only be placed with a Foe.");
+                valid = false;
+                break;
+            }
+
+            if (stageModels[i].containsTest()) continue;
+
+            currentStageBP = stageModels[i].totalBP();
+
+            if (currentStageBP <= lastStageBP)
+            {
+                PromptHandler.instance.localPrompt("Sponsorship", "Stage " + (i + 1) + " contains equal or less BP than stage " + i + ".");
+                valid = false;
+            }
+            else lastStageBP = currentStageBP;
+        }
+
+        if (!valid)
+        {
+            for (int i = 0; i < stages.Count; i++)
+            {
+                stageModels[i].RemoveAll();
+            }
+        }
+        return valid;
+    }
+
+    public void playCards()
+    {
+        for(int i=0; i<stages.Count; i++)
+        {
+            List<AdventureCard> tmp = new List<AdventureCard>();
+            foreach(Card card in stages[i].GetComponentsInChildren<Card>())
+            {
+                tmp.Add(card.card as AdventureCard);
+            }
+            stageModels[i].addList(tmp);
+        }
+        if (validateStages())
+        {
+            PromptHandler.instance.localPrompt("Sponsorship", "ALL GOOD.");
+        }
     }
 
     public bool testValid(AdventureCard currCard, List<AdventureCard> currStage)
@@ -52,8 +109,6 @@ public class SponsorController : MonoBehaviour
         }
 
         if ((currCard.type == AdventureCardType.TEST) && ((currStage.Count > 0) || testFlag)) return false;
-        
         return true;
     }
-
 }
