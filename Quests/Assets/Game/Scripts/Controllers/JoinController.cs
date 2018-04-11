@@ -56,7 +56,6 @@ public class JoinController : MonoBehaviour {
 
     void sponsorYes()
     {
-        
         SponsorHandler.instance.SendServerAcceptSponsor();
     }
 
@@ -68,7 +67,7 @@ public class JoinController : MonoBehaviour {
 
     void tourYes()
     {
-        Debug.Log("tour yes");
+        TourHandler.instance.SendServerAcceptTour(NetPlayerController.LocalPlayer.index);
     }
 
     public void no()
@@ -101,6 +100,6 @@ public class JoinController : MonoBehaviour {
 
     void tourNo()
     {
-        Debug.Log("tour no");
+        TourHandler.instance.SendServerRefuseTour(NetPlayerController.LocalPlayer.index);
     }
 }

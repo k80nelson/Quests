@@ -15,6 +15,7 @@ public class GameSceneManager : MonoBehaviour {
     [SerializeField] JoinController joinPrompt;
     [SerializeField] SponsorController sponsorship;
     [SerializeField] QuestController quest;
+    [SerializeField] TournamentController tour;
 
     // ---- INITIALIZATION ----
 
@@ -30,6 +31,11 @@ public class GameSceneManager : MonoBehaviour {
         joinPrompt.Init(PlayType.SPONSOR, GameManager.instance.dict.findCard(cardIndex).image);
     }
 
+    public void showJoinTour(int cardIndex)
+    {
+        joinPrompt.Init(PlayType.TOURNAMENT, GameManager.instance.dict.findCard(cardIndex).image);
+    }
+
     public void showJoinQuest(int cardIndex)
     {
         joinPrompt.Init(PlayType.QUEST, GameManager.instance.dict.findCard(cardIndex).image);
@@ -38,6 +44,25 @@ public class GameSceneManager : MonoBehaviour {
     public void showQuest(int cardIndex)
     {
         quest.Init(cardIndex);
+    }
+
+    public void showTour(int cardIndex)
+    {
+        tour.Init(cardIndex);
+    }
+
+    public void startTourTie()
+    {
+        tour.setTie();
+    }
+
+    public void tourWin()
+    {
+        tour.win();
+    }
+    public void tourFail()
+    {
+        tour.fail();
     }
 
     public void setStageBid(int minBid)

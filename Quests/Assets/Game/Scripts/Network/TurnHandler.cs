@@ -175,14 +175,18 @@ public class TurnHandler : NetworkBehaviour {
 
     public void SendEndTurnMsg()
     {
+        Debug.Log("Endinf turn");
         // called when a player presses end turn from the client to the server
         EmptyMessage msg = new EmptyMessage();
-        client.Send(EndTurnMsg, msg);   // sends the end turn msg to the server
+        client.Send(EndTurnMsg, msg);                 // sends the end turn msg to the server
     }
 
     [Server] public void OnServerRcvEndTurn(NetworkMessage msg)
     {
+        Debug.Log("Server ending");
+
         // called when the server recieves an end turn msg
+        StoryDeckHandler.instance.SendEndStoryCard();
         setNextPlayer();
     }
 

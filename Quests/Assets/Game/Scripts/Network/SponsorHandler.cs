@@ -327,7 +327,7 @@ public class SponsorHandler : NetworkBehaviour {
         PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest", GameManager.players[currentIndex].name + " has declined the quest.");
         currentIndex = TurnHandler.instance.playerAfter(currentIndex);
         if (currentIndex == firstAsked)
-            Debug.Log("Done asking quests");
+            startQuest();
         else
         {
             currObj = GameManager.players[currentIndex].gameObject;
@@ -579,7 +579,7 @@ public class SponsorHandler : NetworkBehaviour {
     {
         StageMessage data = msg.ReadMessage<StageMessage>();
 
-        PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { GameManager.players[data.PlayerIndex].gameObject }, "Quest", GameManager.players[data.PlayerIndex] + " has dropped out of bidding.");
+        PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { GameManager.players[data.PlayerIndex].gameObject }, "Quest", GameManager.players[data.PlayerIndex].name + " has dropped out of bidding.");
         
         questPlayers.Remove(data.PlayerIndex);
         if (questPlayers.Count == 1)

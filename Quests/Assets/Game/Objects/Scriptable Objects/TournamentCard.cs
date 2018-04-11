@@ -5,4 +5,9 @@ using UnityEngine;
 class TournamentCard : StoryCard
 {
     public int shields = 0;
+
+    public override void Apply()
+    {
+        TourHandler.instance.SendServerTourStartMsg(index);
+    }
 }

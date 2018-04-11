@@ -30,6 +30,10 @@ public class Deck : MonoBehaviour
 
     // for drawing boar hunt first
     [SerializeField] bool startWithBoarHunt = false;
+    [SerializeField] bool startWithChivalrous = false;
+    [SerializeField] bool startWithProperity = false;
+    [SerializeField] bool startWithTour = false;
+    [SerializeField] bool startWithSlay = false;
 
     #endregion
 
@@ -64,6 +68,26 @@ public class Deck : MonoBehaviour
         {
             startWithBoarHunt = false;
             return draw(40);
+        }
+        if (startWithChivalrous)
+        {
+            startWithChivalrous = false;
+            return draw(32);
+        }
+        if (startWithProperity)
+        {
+            startWithProperity = false;
+            return draw(38);
+        }
+        if (startWithTour)
+        {
+            startWithTour = false;
+            return draw(51);
+        }
+        if (startWithTour)
+        {
+            startWithSlay = false;
+            return draw(47);
         }
 
         if (cardsRemaining == 0) emptyDeck();
@@ -132,18 +156,18 @@ public class Deck : MonoBehaviour
 
     public void discard(int num)
     {
-        discardList.Add(num);
+    discardList.Add(num);
     }
 
     public void emptyDeck()
     {
-        foreach (int index in discardList)
-        {
-            if (!validCards.Contains(index)) validCards.Add(index);
-            numCards[index] += 1;
-        }
+    foreach (int index in discardList)
+    {
+        if (!validCards.Contains(index)) validCards.Add(index);
+        numCards[index] += 1;
+    }
 
-        discardList.Clear();
+    discardList.Clear();
     }
 
     #endregion
