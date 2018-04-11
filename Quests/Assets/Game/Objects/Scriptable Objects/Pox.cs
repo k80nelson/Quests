@@ -13,7 +13,7 @@ public class Pox : EventCard
         List<NetPlayerController> players = GameManager.players;
 
         foreach (NetPlayerController player in players)
-            player.removeShields(false, 2);
+            player.removeShields(false, 1);
 
         Debug.Log("[Pox.cs:play] Pox complete -> All players except local player loses 1 shield");
     }
