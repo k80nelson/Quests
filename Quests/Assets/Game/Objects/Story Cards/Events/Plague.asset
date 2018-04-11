@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27d89aa54bc3a640aced20a07c243ba, type: 3}
+  m_Script: {fileID: 11500000, guid: a42a40bac03349f43a22af9be9c6aaaf, type: 3}
   m_Name: Plague
   m_EditorClassIdentifier: 
   name: Plague

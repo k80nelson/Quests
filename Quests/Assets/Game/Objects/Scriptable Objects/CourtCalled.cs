@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //All Allies in play are discarded
-public class CourtCalled : BaseEvent
+[CreateAssetMenu(menuName = "CourtsCalled")]
+public class CourtCalled : EventCard
 {
 
-    public override void apply()
+    public override void Apply()
     {
         //throw new System.NotImplementedException();
         List<NetPlayerController> players = GameManager.players;

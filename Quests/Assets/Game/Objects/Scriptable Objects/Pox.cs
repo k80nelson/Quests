@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- //All other players lose one shield(if possible), drawer of this card is exempt
-public class Pox : BaseEvent{
-   
-    public override void apply()
+//All other players lose one shield(if possible), drawer of this card is exempt
+[CreateAssetMenu(menuName = "Pox")]
+public class Pox : EventCard
+{
+    
+    public override void Apply()
     {
         //throw new System.NotImplementedException(); 
         List<NetPlayerController> players = GameManager.players;

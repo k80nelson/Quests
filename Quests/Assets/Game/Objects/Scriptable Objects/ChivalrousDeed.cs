@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(menuName ="Chivalrous")]
 //obj: Player(s) with lowest rank and least amount of shields gains 3 shields
+[CreateAssetMenu(menuName = "Chivalrous")]
 public class ChivalrousDeed : EventCard {
 
     public override void Apply()
