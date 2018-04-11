@@ -17,7 +17,6 @@ public class SponsorHandler : NetworkBehaviour {
     // ---- MESSAGE TYPES ----
 
     #region Codes
-
     public class SponsorStartMsgType
     {
         public static short CODE = MsgType.Highest + 4;
@@ -53,19 +52,14 @@ public class SponsorHandler : NetworkBehaviour {
         public static short CODE = MsgType.Highest + 10;
     };
 
-    public class QuestEndMsgType
+    public class QuestInitMsgType
     {
         public static short CODE = MsgType.Highest + 11;
-    };
+    }
 
-    #endregion
-
-    #region Messages
-
-    public class SponsorMessage : MessageBase
+    public class QuestEndMsgType
     {
-        public int numStages;
-        public int index;
+        public static short CODE = MsgType.Highest + 12;
     };
 
     #endregion
@@ -85,6 +79,9 @@ public class SponsorHandler : NetworkBehaviour {
     int currentIndex;
     GameObject currObj;
 
+    public SyncListInt questPlayers = new SyncListInt(); 
+
+
     // ---- INITIALIZATION ----
 
     #region initialization
@@ -103,12 +100,18 @@ public class SponsorHandler : NetworkBehaviour {
         if (isClient)
         {
             client.RegisterHandler(SponsorStartMsgType.CODE, OnClientRcvStartSponsor);
+            client.RegisterHandler(QuestStartMsgType.CODE, OnRcvStartQuestMsg);
+            client.RegisterHandler(QuestInitMsgType.CODE, OnRcvInitQuest);
         }
         if (isServer)
         {
             NetworkServer.RegisterHandler(SponsorStartMsgType.CODE, OnServerRcvSponsorStartMsg);
             NetworkServer.RegisterHandler(SponsorDeclineMsgType.CODE, OnServerRcvRefuseSponsor);
             NetworkServer.RegisterHandler(SponsorAcceptMsgType.CODE, OnServerRcvAcceptSponsor);
+            NetworkServer.RegisterHandler(SponsorEndMsgType.CODE, OnRcvEndSponsorship);
+            NetworkServer.RegisterHandler(QuestAcceptMsgType.CODE, OnRcvAcceptQuest);
+            NetworkServer.RegisterHandler(QuestDeclineMsgType.CODE, OnRcvRefuseQuest);
+            NetworkServer.RegisterHandler(QuestEndMsgType.CODE, OnRcvEndQuest);
         }
     }
 
@@ -121,6 +124,7 @@ public class SponsorHandler : NetworkBehaviour {
     [Client] public void SendServerSponsorStartMsg(int index)
     {
         // Tell server to start sponsorship
+        questPlayers.Clear();
         Debug.Log("Sending server start sponsorship for card " + index);
         IntegerMessage msg = new IntegerMessage(index);
         client.Send(SponsorStartMsgType.CODE, msg);
@@ -195,16 +199,133 @@ public class SponsorHandler : NetworkBehaviour {
     {
         PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest Sponsorship", currObj.name + " accepted sponsorship of " + card.name);
     }
-    
+
     #endregion
 
-    // ---- OTHER ----
+    #region End Sponsor Messaging
 
-    [Server] void startSponsor()
+    [Client] public void SendServerEndSponsorship()
+    {
+        EmptyMessage msg = new EmptyMessage();
+        client.Send(SponsorEndMsgType.CODE, msg);
+    }
+
+    [Server] public void OnRcvEndSponsorship(NetworkMessage msg)
+    {
+        PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest Sponsorship", currObj.name + " Finished sponsoring " + card.name);
+        firstAsked = currentIndex;
+        currentIndex = TurnHandler.instance.playerAfter(currentIndex);
+        currObj = GameManager.players[currentIndex].gameObject;
+        SendClientStartQuestMsg(currObj);
+    }
+
+    #endregion
+
+    #region Join Quest Messaging
+
+    [Server] void SendClientStartQuestMsg(GameObject player)
+    {
+        EmptyMessage msg = new EmptyMessage();
+        NetworkServer.SendToClientOfPlayer(player, QuestStartMsgType.CODE, msg);
+    }
+
+    [Client] void OnRcvStartQuestMsg(NetworkMessage msg)
+    {
+        GameSceneManager.instance.showJoinQuest(CurrQuestIndex);
+    }
+
+    [Client] public void SendServerAcceptQuest(int index)
+    {
+        IntegerMessage msg = new IntegerMessage(index);
+        client.Send(QuestAcceptMsgType.CODE, msg);
+    }
+
+    [Server] void OnRcvAcceptQuest(NetworkMessage msg)
+    {
+        IntegerMessage data = msg.ReadMessage<IntegerMessage>();
+        Debug.Log(data.value + "Accepts quest");
+        questPlayers.Add(data.value);
+        PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest", GameManager.players[currentIndex].name + " has accepted the quest.");
+        currentIndex = TurnHandler.instance.playerAfter(currentIndex);
+        if (currentIndex == firstAsked)
+        {
+            startQuest();
+        }
+        else
+        {
+            currObj = GameManager.players[currentIndex].gameObject;
+            SendClientStartQuestMsg(currObj);
+        }
+            
+    }
+
+    [Client] public void SendServerRefuseQuest(int index)
+    {
+        IntegerMessage msg = new IntegerMessage(index);
+        client.Send(QuestDeclineMsgType.CODE, msg);
+        
+    }
+
+    [Server] void OnRcvRefuseQuest(NetworkMessage msg)
+    {
+        IntegerMessage data = msg.ReadMessage<IntegerMessage>();
+        Debug.Log(data.value + "Declines quest");
+        PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest", GameManager.players[currentIndex].name + " has declined the quest.");
+        currentIndex = TurnHandler.instance.playerAfter(currentIndex);
+        if (currentIndex == firstAsked)
+            Debug.Log("Done asking quests");
+        else
+        {
+            currObj = GameManager.players[currentIndex].gameObject;
+            SendClientStartQuestMsg(currObj);
+        }
+    }
+    #endregion
+
+
+    [Server] void sendInitQuest()
+    {
+        EmptyMessage msg = new EmptyMessage();
+        NetworkServer.SendToAll(QuestInitMsgType.CODE, msg);
+    }
+
+    [Client] void OnRcvInitQuest(NetworkMessage msg)
+    {
+        if (questPlayers.Contains(NetPlayerController.LocalPlayer.index))
+        {
+            GameSceneManager.instance.showQuest();
+        }
+        else
+        {
+            PromptHandler.instance.localPrompt("Quest", "Quest is in progress.");
+        }
+    }
+
+    [Client] public void SendServerEndQuest()
     {
 
     }
 
+    [Server] void OnRcvEndQuest(NetworkMessage msg)
+    {
+
+    }
+    
+
+    // ---- OTHER ----
+
+    [Server] void startQuest()
+    {
+        if (questPlayers.Count == 0)
+        {
+            //end
+        }
+        else
+        {
+            sendInitQuest();
+        }
+    }
+    
     [Server] void destroySponsor()
     {
         CurrQuestIndex = -1;

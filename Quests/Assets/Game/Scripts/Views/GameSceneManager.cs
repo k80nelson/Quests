@@ -29,8 +29,19 @@ public class GameSceneManager : MonoBehaviour {
         joinPrompt.Init(PlayType.SPONSOR, GameManager.instance.dict.findCard(cardIndex).image);
     }
 
+    public void showJoinQuest(int cardIndex)
+    {
+        joinPrompt.Init(PlayType.QUEST, GameManager.instance.dict.findCard(cardIndex).image);
+    }
+
+    public void showQuest()
+    {
+        PromptHandler.instance.localPrompt("Quest", "THIS IS A QUEST");
+    }
+
     public void showSponsorship(int cardIndex)
     {
         sponsorship.Init(cardIndex);
     }
+    
 }

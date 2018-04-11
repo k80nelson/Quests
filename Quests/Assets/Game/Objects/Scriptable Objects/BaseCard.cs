@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using System;
 
-
+[Serializable]
 public class BaseCard : ScriptableObject {
 
     new public string name = "Card";
