@@ -27,6 +27,8 @@ public class TournamentController : MonoBehaviour {
             spawnInPlayCard(ally);
         }
         UI.SetActive(true);
+        playArea.gameObject.SetActive(true);
+        playArea.gameObject.SetActive(true);
     }
 
     public void spawnInPlayCard(int index)

@@ -40,7 +40,7 @@ public class TourHandler : NetworkBehaviour {
     int firstAsked;
     int currentIndex;
     GameObject currPlayerObj;
-    SyncListInt tourPlayers = new SyncListInt();
+    public SyncListInt tourPlayers = new SyncListInt();
 
 
     Dictionary<int, int> playerTotals;
@@ -85,6 +85,7 @@ public class TourHandler : NetworkBehaviour {
 
     [Server] void OnRcvTourStartMsg(NetworkMessage msg)
     {
+
         numJoined = 0;
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
         tourPlayers.Clear();
@@ -176,6 +177,8 @@ public class TourHandler : NetworkBehaviour {
         }
     }
 
+
+
     [Client] public void SendServerPlayedCards(int player, int total)
     {
         TourMessage msg = new TourMessage();
@@ -205,6 +208,7 @@ public class TourHandler : NetworkBehaviour {
 
         foreach (int player in tourPlayers)
         {
+            Debug.Log("Finding Winners");
             int playerBP = playerTotals[player];
             if (playerBP > highestBp)
             {
@@ -229,8 +233,11 @@ public class TourHandler : NetworkBehaviour {
                 losers.Remove(player);
                 continue;
             }
+            else
+            {
+                tourPlayers.Remove(player);
+            }
             
-            tourPlayers.Remove(player);
         }
         if (_isTie && tourPlayers.Count > 1)
         {
@@ -284,6 +291,7 @@ public class TourHandler : NetworkBehaviour {
     }
     [Server] void promptTie()
     {
+        playerTotals.Clear();
         string winners = "Tour tie: " + GameManager.players[tourPlayers[0]].name;
         for (int i = 1; i < tourPlayers.Count; i++)
         {
@@ -295,9 +303,11 @@ public class TourHandler : NetworkBehaviour {
 
     [Server] void EndTour()
     {
-        foreach(int player in tourPlayers)
+        Debug.Log("TourEnd");
+        foreach (int player in tourPlayers)
         {
-            GameManager.players[player].addShield(currCard.shields + numJoined);
+            Debug.Log("Adding shields to " + GameManager.players[player].name);
+            GameManager.players[player].addShields(currCard.shields + numJoined);
         }
         numJoined = 0;
         destroyTour();

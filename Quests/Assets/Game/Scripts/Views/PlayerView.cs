@@ -38,6 +38,7 @@ public class PlayerView : MonoBehaviour {
 
     public void updateShieldText(int shields)
     {
+        Debug.Log("Updating shield tezt");
         if (_stats != null)
             _stats.setShields(shields);
     }

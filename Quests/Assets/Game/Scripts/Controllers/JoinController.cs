@@ -18,6 +18,7 @@ public class JoinController : MonoBehaviour {
 
     public void Init(PlayType type, Sprite sprite)
     {
+        Debug.Log("[JoinController.cs:Init] Initializing join prompt for " + type.ToString());
         joinType = type;
         switch (joinType)
         {

@@ -112,10 +112,12 @@ public class SponsorHandler : NetworkBehaviour {
     BaseCard card;
 
     [SyncVar]int firstAsked;
+    [SyncVar] int sponsor;
     int currentIndex;
     GameObject currObj;
 
     public SyncListInt questPlayers = new SyncListInt();
+    public SyncListInt questPlayersRefused = new SyncListInt();
 
     int playersFinished = 0;
     int stagesComplete = 0;
@@ -124,6 +126,7 @@ public class SponsorHandler : NetworkBehaviour {
     int lastBidderPlayer;
     int lastBidder;
     int highestBidderPlayer;
+    bool onlyBidder = false;
 
 
 
@@ -244,13 +247,14 @@ public class SponsorHandler : NetworkBehaviour {
 
     [Client] public void SendServerAcceptSponsor()
     {
-        EmptyMessage msg = new EmptyMessage();
+        IntegerMessage msg = new IntegerMessage(NetPlayerController.LocalPlayer.index);
         client.Send(SponsorAcceptMsgType.CODE, msg);
         GameSceneManager.instance.showSponsorship(CurrQuestIndex);
     }
 
     [Server] void OnServerRcvAcceptSponsor(NetworkMessage msg)
     {
+        sponsor = msg.ReadMessage<IntegerMessage>().value;
         PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest Sponsorship", currObj.name + " accepted sponsorship of " + card.name);
     }
 
@@ -325,9 +329,13 @@ public class SponsorHandler : NetworkBehaviour {
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
         Debug.Log(data.value + "Declines quest");
         PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { currObj }, "Quest", GameManager.players[currentIndex].name + " has declined the quest.");
+        questPlayersRefused.Add(data.value);
         currentIndex = TurnHandler.instance.playerAfter(currentIndex);
         if (currentIndex == firstAsked)
+        {
             startQuest();
+        }
+            
         else
         {
             currObj = GameManager.players[currentIndex].gameObject;
@@ -341,6 +349,7 @@ public class SponsorHandler : NetworkBehaviour {
     {
         EmptyMessage msg = new EmptyMessage();
         NetworkServer.SendToAll(QuestInitMsgType.CODE, msg);
+        
     }
 
     [Client] void OnRcvInitQuest(NetworkMessage msg)
@@ -433,7 +442,7 @@ public class SponsorHandler : NetworkBehaviour {
 
     [Server] void passPrompt()
     {
-        PromptHandler.instance.SendPromptToAll("Quest", "All players passed the quest.");
+        PromptHandler.instance.SendPromptToAll("Quest", "All players passed the stage.");
     }
 
     [Server] void SendBeginStage(int stageIndex)
@@ -449,8 +458,11 @@ public class SponsorHandler : NetworkBehaviour {
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
 
         int playerIndex = NetPlayerController.LocalPlayer.index;
+        if (questPlayersRefused.Contains(playerIndex))
+        {
 
-        if (playerIndex == firstAsked)
+        }
+        else if (playerIndex == sponsor)
         {
             // sponsor
         }
@@ -489,7 +501,8 @@ public class SponsorHandler : NetworkBehaviour {
     {
         if (questPlayers.Count == 1)
         {
-            return -1;
+            onlyBidder = true;
+            return questPlayers[0];
         }
         else
         {
@@ -556,6 +569,11 @@ public class SponsorHandler : NetworkBehaviour {
         int index = data.PlayerIndex;
 
         PromptHandler.instance.SendPromptToAllExcept(new List<GameObject>() { GameManager.players[index].gameObject }, "Quest", GameManager.players[index].name + " has bid" + bid+" cards.");
+
+        if (onlyBidder)
+        {
+            sendWinBid(GameManager.players[lastBidderPlayer].gameObject);
+        }
 
         highestBidderPlayer = index;
         
@@ -638,9 +656,9 @@ public class SponsorHandler : NetworkBehaviour {
 
         int playerIndex = NetPlayerController.LocalPlayer.index;
 
-        if (playerIndex == firstAsked)
+        if (playerIndex == sponsor)
         {
-            NetPlayerController.LocalPlayer.drawAdvCards(data.cards );
+            NetPlayerController.LocalPlayer.drawAdvCards(data.cards);
         }
         else if (!(questPlayers.Contains(playerIndex)))
         {
@@ -670,6 +688,7 @@ public class SponsorHandler : NetworkBehaviour {
     {
         if (questPlayers.Count == 0)
         {
+            NoEnter();
             destroySponsor();
         }
         else
@@ -679,6 +698,17 @@ public class SponsorHandler : NetworkBehaviour {
             playerStage.Clear();
             sendInitQuest();
         }
+    }
+
+    [Server] void NoEnter()
+    {
+        QuestMessage msg = new QuestMessage();
+        int shields = 0;
+        int cards = NetSponsorModel.instance.numCards + ((QuestCard)GameManager.instance.dict.findCard(CurrQuestIndex)).stages;
+        msg.cards = cards;
+        msg.shields = shields;
+
+        NetworkServer.SendToClientOfPlayer(GameManager.players[sponsor].gameObject, QuestEndMsgType.CODE, msg);
     }
 
     [Server] void EndQuest()
@@ -709,5 +739,3 @@ public class SponsorHandler : NetworkBehaviour {
         
     }
 }
-
-

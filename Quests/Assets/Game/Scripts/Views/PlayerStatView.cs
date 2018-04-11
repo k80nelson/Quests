@@ -23,11 +23,13 @@ public class PlayerStatView : MonoBehaviour {
 
     public void setShields(int shields)
     {
+        Debug.Log("Setting shields in view");
         _shields.text = "Shields: " + shields;
     }
 
     public void setCards(int cards)
     {
+        Debug.Log("Setting cards in view");
         _cards.text = "Cards: " + cards;
     }
 

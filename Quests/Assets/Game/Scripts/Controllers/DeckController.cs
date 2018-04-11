@@ -25,18 +25,21 @@ public class DeckController : MonoBehaviour
     public List<int> drawAdvCards(int num)
     {
         // returns a list of card indices to instantiate
+        Debug.Log("[DeckController.cs:drawAdvCards] Retrieving "+num+" adventure cards");
         return advDeck.drawMany(num);
     }
 
     public int drawAdvCard()
     {
         // returns a single index
+        Debug.Log("[DeckController.cs:drawAdvCard] Retrieving adventure card");
         return advDeck.draw();
     }
     
     public void discardAdvCard(int num)
     {
         // MUST be called if you discard a card to keep the card in circulation
+        Debug.Log("[DeckController.cs:discardAdvCard] Discarding adventure card " + num);
         advDeck.discard(num);
     }
 
@@ -46,6 +49,7 @@ public class DeckController : MonoBehaviour
     public int drawStoryCard()
     {
         // returns a single index
+        Debug.Log("[DeckController.cs:drawStorycard] Drawing story card.");
         return storyDeck.draw();
     }
 
@@ -53,6 +57,7 @@ public class DeckController : MonoBehaviour
     public void discardStoryCard(int num)
     {
         // MUST be called if you discard a card to keep the card in circulation
+        Debug.Log("[DeckController.cs:discardStoryCard] Discarding active story card");
         storyDeck.discard(num);
     }
 }

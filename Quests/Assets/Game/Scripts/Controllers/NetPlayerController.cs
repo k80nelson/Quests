@@ -49,6 +49,7 @@ public class NetPlayerController : NetworkBehaviour {
         }
         if (isLocalPlayer && isClient)
         {
+            Debug.Log("[NetPlayerController.cs:Start] Initializing local player");
             LocalPlayer = this;
             StartCoroutine(waitAndAddCards());  // Need to wait in case things aren't fully initialized
         }
@@ -80,6 +81,7 @@ public class NetPlayerController : NetworkBehaviour {
     [Command] void Cmd_initModel()
     {
         // Model should only ever be changed on the server
+        Debug.Log("[NetPlayerController.cs:initModel] Server side player model initialization for player " + gameObject.name);
         _model.Init();
     }
 
@@ -99,6 +101,7 @@ public class NetPlayerController : NetworkBehaviour {
     [Command] void Cmd_Ready()
     {
         // Called when everything is fully instantiated. Lets the server start the game
+        Debug.Log("[NetPlayerController.cs:Cmd_Ready] " + name + " initialzation complete.");
         GameManager.instance.addReady();
     }
 
@@ -152,10 +155,12 @@ public class NetPlayerController : NetworkBehaviour {
         this.isTurn = newVal;
         if (isLocalPlayer && isTurn)    // IT IS THIS CLIENTS TURN -> ACTIVATE THEIR UI
         {
+            Debug.Log("[NetPlayerController.cs:OnTurnChg] Activating player turn UI for player " + playerName);
             TurnHandler.instance.showTurnUI();
         }
         if (isLocalPlayer && !isTurn)   // THIS CLIENTS TURN HAS JUST ENDED -> DISABLE THEIR UI
         {
+            Debug.Log("[NetPlayerController.cs:OnTurnChg] Dectivating player turn UI for player " + playerName);
             TurnHandler.instance.unShowTurnUI();
         }
     }
@@ -173,7 +178,18 @@ public class NetPlayerController : NetworkBehaviour {
         // public draw card method -> only runs on local player
         if (!isLocalPlayer)
             return;
+        Debug.Log("[NetPlayerController.cs:drawAdvCards] drawing cards for player " + playerName);
         Cmd_DrawAdv(num);
+    }
+
+    public void giveCards(int num)
+    {
+        List<int> indices = DeckController.instance.drawAdvCards(num);
+        foreach (int index in indices)
+        {
+            _model.AddCard(GameManager.instance.dict.findCard(index) as AdventureCard);
+            Rpc_AddCard(index);
+        }
     }
 
     [Command] void Cmd_DrawAdv(int num)
@@ -183,6 +199,7 @@ public class NetPlayerController : NetworkBehaviour {
         List<int> indices = DeckController.instance.drawAdvCards(num);
         foreach (int index in indices)
         {
+            Debug.Log("[NetPlayerController.cs:Cmd_DrawAdv] Adding adventure cards to player " + playerName);
             _model.AddCard(GameManager.instance.dict.findCard(index) as AdventureCard);
             Rpc_AddCard(index);
         }
@@ -202,7 +219,6 @@ public class NetPlayerController : NetworkBehaviour {
         if (!isLocalPlayer) return;
         Cmd_discard(card.GetComponent<Card>().card.index);
         _view.destroyCard(card);
-        
     }
 
     public void discardBid(GameObject card)
@@ -229,8 +245,9 @@ public class NetPlayerController : NetworkBehaviour {
     }
     
     [Command] void Cmd_discard(int index)
-    {   
+    {
         // Runs on the server
+        Debug.Log("[NetPlayerController.cs:Cmd_discard] discarding adventure card from player " + playerName);
         _model.removeCard(GameManager.instance.dict.findCard(index) as AdventureCard);
         DeckController.instance.discardAdvCard(index);
     }
@@ -244,7 +261,6 @@ public class NetPlayerController : NetworkBehaviour {
     
     public void addAlly(AdventureCard ally)
     {
-        // TO BE IMPLEMENTED
         if (!isLocalPlayer)
             return;
         Cmd_AddAlly(ally.index);
@@ -252,6 +268,7 @@ public class NetPlayerController : NetworkBehaviour {
 
     [Command] void Cmd_AddAlly(int index)
     {
+        Debug.Log("[NetPlayerController.cs:Cmd_AddAlly] Adding ally to player " + playerName);
         _model.AddAlly(GameManager.instance.dict.findCard(index) as AdventureCard);
     }
 
@@ -285,11 +302,18 @@ public class NetPlayerController : NetworkBehaviour {
         // public add shields to local player
         if (!isLocalPlayer)
             return;
+        Debug.Log("[NetPlayerController.cs:addShield] adding shield to local player " + playerName);
         Cmd_addShields(num);
+    }
+
+    [Server] public void addShields(int num)
+    {
+        _model.addShields(num);
     }
 
     [Command] void Cmd_addShields(int num)
     {
+        Debug.Log("Adding shields");
         _model.addShields(num);
     }
     

@@ -26,6 +26,7 @@ public class DiscardHandler : MonoBehaviour, IDropHandler
     public void yes()
     {
         // Attached to yes btn
+        Debug.Log("[DiscardHandler.cs:yes] Client request discard " + toRemove.name);
         Destroy(tmpCard);
         NetPlayerController.LocalPlayer.discard(toRemove);
         confirm.SetActive(false);

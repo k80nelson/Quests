@@ -50,6 +50,7 @@ public class NetPlayerModel : NetworkBehaviour {
 
     void OnShieldsChanged(int newVal)
     {
+        Debug.Log("Shields changed!!!");
         shields = newVal;
         _view.updateShieldText(newVal);
     }
