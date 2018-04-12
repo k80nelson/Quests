@@ -62,13 +62,11 @@ public class TurnHandler : NetworkBehaviour {
         currPlayer = newVal;
         if (NetPlayerController.LocalPlayer.index == currPlayer)
         {
-            Debug.Log("Here");
             // local player is the current player
             NetPlayerController.LocalPlayer.setStartTurn();
         }
         else
         {
-            Debug.Log("NOT ME");
             // local player is not the current player
             NetPlayerController.LocalPlayer.unsetTurn();
         }
@@ -175,7 +173,6 @@ public class TurnHandler : NetworkBehaviour {
 
     public void SendEndTurnMsg()
     {
-        Debug.Log("Endinf turn");
         // called when a player presses end turn from the client to the server
         EmptyMessage msg = new EmptyMessage();
         client.Send(EndTurnMsg, msg);                 // sends the end turn msg to the server
@@ -183,7 +180,6 @@ public class TurnHandler : NetworkBehaviour {
 
     [Server] public void OnServerRcvEndTurn(NetworkMessage msg)
     {
-        Debug.Log("Server ending");
 
         // called when the server recieves an end turn msg
         StoryDeckHandler.instance.SendEndStoryCard();

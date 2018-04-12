@@ -313,7 +313,7 @@ public class NetPlayerController : NetworkBehaviour {
 
     [Command] void Cmd_addShields(int num)
     {
-        Debug.Log("Adding shields");
+        Debug.Log("[NetPlayerController.cs:Cmd_AddShields] adding shields to player model");
         _model.addShields(num);
     }
     

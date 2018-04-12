@@ -18,6 +18,7 @@ public class AdventureCard : BaseCard {
 
     public int getBP()
     {
+        
         if (SpecialCards == null) return BP;
 
         GameObject stryCard = GameObject.FindGameObjectWithTag("CurrStory");
@@ -25,8 +26,10 @@ public class AdventureCard : BaseCard {
         {
             if (SpecialCards.Contains(stryCard.GetComponent<Card>().card))
             {
+                Debug.Log("[AdventureCard.cs:getBP] Getting BP for card " + name + " in Quest " + stryCard.GetComponent<Card>().card.name + ": " + SpecialBP);
                 return SpecialBP;
             }
+            Debug.Log("[AdventureCard.cs:getBP] Getting BP for card " + name + " in Quest " + stryCard.GetComponent<Card>().card.name + ": " + BP);
         }
 
         return BP;
@@ -46,8 +49,10 @@ public class AdventureCard : BaseCard {
         {
             if (SpecialCards.Contains(stryCard.GetComponent<Card>().card))
             {
+                Debug.Log("[AdventureCard.cs:getMinimumBid] Getting MinBid for card " + name + " in Quest " + stryCard.GetComponent<Card>().card.name + ": " + specialMinBid);
                 return specialMinBid;
             }
+            Debug.Log("[AdventureCard.cs:getMinimumBid] Getting MinBid for card " + name + " in Quest " + stryCard.GetComponent<Card>().card.name + ": " + MinBid);
         }
 
         return MinBid;

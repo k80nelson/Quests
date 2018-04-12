@@ -17,6 +17,7 @@ public class TournamentController : MonoBehaviour {
     
     public void Init(int cardIndex)
     {
+        Debug.Log("[TournamentController.cs:Init] Initializing tournament");
         amourPlayed = false;
         inPlay = new StageModel();
         playerCards = new StageModel();
@@ -65,6 +66,7 @@ public class TournamentController : MonoBehaviour {
 
     public void setTie()
     {
+        Debug.Log("[TournamentController.cs:setTir] Player ties in tournament");
         NetPlayerController.LocalPlayer.drawAdvCards(1);
         playArea.gameObject.SetActive(true);
         playCards.gameObject.SetActive(true);
@@ -73,12 +75,16 @@ public class TournamentController : MonoBehaviour {
 
     public void play()
     {
+        
         foreach (Card child in playArea.GetComponentsInChildren<Card>())
         {
             playerCards.Add(child.card as AdventureCard);
         }
 
+
         int totalBp = playerCards.totalBP() + NetPlayerController.LocalPlayer.getBP() + inPlay.totalBP();
+
+        Debug.Log("[TournamentController.cs:Init] Playing player cards. Total BP: " + totalBp);
         List<AdventureCard> allies = playerCards.removeAllies();
         foreach (AdventureCard ally in allies)
         {
@@ -111,7 +117,7 @@ public class TournamentController : MonoBehaviour {
 
     public void fail()
     {
-        
+        Debug.Log("[TournamentController.cs:Fail] Player has failed tournament");
         playArea.gameObject.SetActive(false);
         playCards.gameObject.SetActive(false);
         end();
@@ -119,6 +125,7 @@ public class TournamentController : MonoBehaviour {
 
     public void win()
     {
+        Debug.Log("[TournamentController.cs:Win] Player wins the tournament");
         playArea.gameObject.SetActive(false);
         playCards.gameObject.SetActive(false);
         end();
@@ -126,6 +133,7 @@ public class TournamentController : MonoBehaviour {
     
     public void end()
     {
+        Debug.Log("[TournamentController.cs:End] Ending tournament");
         if (amourPlayed)
         {
             NetPlayerController.LocalPlayer.discardCard(31);

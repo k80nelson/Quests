@@ -110,7 +110,7 @@ public class StoryDeckHandler : NetworkBehaviour {
     {
         // Called when a client recieves a card index from the server
         IntegerMessage data = msg.ReadMessage<IntegerMessage>();
-        Debug.Log("Got card " + data.value);
+        Debug.Log("[StoryDeckHandler.cs] Recieved story card: " + GameManager.instance.dict.findCard(data.value));
         spawnCard(data.value);
     }
 

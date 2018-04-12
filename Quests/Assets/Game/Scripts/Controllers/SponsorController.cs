@@ -16,6 +16,7 @@ public class SponsorController : MonoBehaviour
 
     public void Init(int cardIndex)
     {
+        Debug.Log("[SponsorController.cs:Init] Sponsorship initialization");
         UI.SetActive(true);
         stages = new List<Transform>();
         currCard = GameManager.instance.dict.findCard(cardIndex) as QuestCard;
@@ -40,7 +41,7 @@ public class SponsorController : MonoBehaviour
         {
             if (!stageModels[i].validState())
             {
-                Debug.Log("[Sponsor.cs:validateStages] Error in stage " + (i + 1) + ": not in valid state");
+                Debug.Log("[SponsorController.cs:validateStages] Error in stage " + (i + 1) + ": not in valid state");
                 PromptHandler.instance.localPrompt("Sponsorship","Stage " + (i + 1) + " is in an invalid state. Weapons can only be placed with a Foe.");
                 valid = false;
                 break;
@@ -52,6 +53,7 @@ public class SponsorController : MonoBehaviour
 
             if (currentStageBP <= lastStageBP)
             {
+                Debug.Log("[SponsorController.cs:validateStages] Error in stage " + (i + 1) + ": contains equal or less BP than stage " + i + ".");
                 PromptHandler.instance.localPrompt("Sponsorship", "Stage " + (i + 1) + " contains equal or less BP than stage " + i + ".");
                 valid = false;
             }
@@ -70,6 +72,7 @@ public class SponsorController : MonoBehaviour
 
     public void playCards()
     {
+        Debug.Log("[SponsorController.cs:playCards] Playing sponsored cards and initializing quest");
         for(int i=0; i<stages.Count; i++)
         {
             List<AdventureCard> tmp = new List<AdventureCard>();

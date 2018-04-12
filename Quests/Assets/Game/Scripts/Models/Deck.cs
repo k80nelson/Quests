@@ -84,7 +84,7 @@ public class Deck : MonoBehaviour
             startWithTour = false;
             return draw(51);
         }
-        if (startWithTour)
+        if (startWithSlay)
         {
             startWithSlay = false;
             return draw(47);

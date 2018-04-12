@@ -57,17 +57,20 @@ public class JoinController : MonoBehaviour {
 
     void sponsorYes()
     {
+        Debug.Log("[JoinController.cs:sponsorYes] " + NetPlayerController.LocalPlayer.name + " accepts sponsorship.");
         SponsorHandler.instance.SendServerAcceptSponsor();
     }
 
     void questYes()
     {
+        Debug.Log("[JoinController.cs:questYes] " + NetPlayerController.LocalPlayer.name + " accepts quest.");
         NetPlayerController.LocalPlayer.drawAdvCards(1);
         SponsorHandler.instance.SendServerAcceptQuest(NetPlayerController.LocalPlayer.index);
     }
 
     void tourYes()
     {
+        Debug.Log("[JoinController.cs:tourYes] " + NetPlayerController.LocalPlayer.name + " accepts tounament.");
         TourHandler.instance.SendServerAcceptTour(NetPlayerController.LocalPlayer.index);
     }
 
@@ -91,16 +94,19 @@ public class JoinController : MonoBehaviour {
 
     void sponsorNo()
     {
+        Debug.Log("[JoinController.cs:Sponsorno] " + NetPlayerController.LocalPlayer.name + " declines sponsorship.");
         SponsorHandler.instance.SendServerRefuseSponsor();
     }
 
     void questNo()
     {
+        Debug.Log("[JoinController.cs:questno] " + NetPlayerController.LocalPlayer.name + " declines quest.");
         SponsorHandler.instance.SendServerRefuseQuest(NetPlayerController.LocalPlayer.index);
     }
 
     void tourNo()
     {
+        Debug.Log("[JoinController.cs:Tourno] " + NetPlayerController.LocalPlayer.name + " declines tournament.");
         TourHandler.instance.SendServerRefuseTour(NetPlayerController.LocalPlayer.index);
     }
 }

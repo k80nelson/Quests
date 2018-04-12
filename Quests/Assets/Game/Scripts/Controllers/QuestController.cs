@@ -44,6 +44,7 @@ public class QuestController : MonoBehaviour {
 
     public void Init(int cardIndex)
     {
+        Debug.Log("[QuestController.cs:Init] Initializing Quest " + GameManager.instance.dict.findCard(cardIndex).name);
         amourPlayed = false;
         failed = false;
         card = GameManager.instance.dict.findCard(cardIndex) as QuestCard;
@@ -60,6 +61,7 @@ public class QuestController : MonoBehaviour {
 
     public void startStage(int index)
     {
+        
         stopStage();
         currStage = index;
         if (index == 0)
@@ -122,14 +124,17 @@ public class QuestController : MonoBehaviour {
 
     public void setStage(int index)
     {
+        
         if (currStage > 0) NetPlayerController.LocalPlayer.drawAdvCards(1);
         playArea.gameObject.SetActive(true);
         playCards.gameObject.SetActive(true);
         sponsorCards = NetSponsorModel.instance.getStage(index);
         playerCards = new StageModel();
         currStageType = sponsorCards.stageType();
+        Debug.Log("[QuestController.cs:startStage] starting stage " + (index + 1) + ": " + currStageType);
         if (currStageType == StageType.COMBAT)
         {
+            
             initCombat();
         }
         else
@@ -145,6 +150,7 @@ public class QuestController : MonoBehaviour {
 
     void initBidding()
     {
+        Debug.Log("[QuestController.cs:initBidding] Bidding started");
         testImage.sprite =  sponsorCards.getTest().image;
         minBid = sponsorCards.getTest().getMinimumBid();
         bidding.SetActive(true);
@@ -155,6 +161,7 @@ public class QuestController : MonoBehaviour {
 
     public void startBid(int bid)
     {
+        Debug.Log("[QuestController.cs:startBid] Recieved start bid from server. Current min bid: " + bid);
         playArea.gameObject.SetActive(true);
         playCards.gameObject.SetActive(true);
         minBid = bid;
@@ -201,7 +208,18 @@ public class QuestController : MonoBehaviour {
 
         previousStage = new StageModel();
         
+        
         bool passedStage = checkPass(playerCards);
+        if (passedStage)
+        {
+            Debug.Log("[QuestController.cs:playCombat] Player passes stage. Player BP: " + (playerCards.totalBP() + inPlay.totalBP() + NetPlayerController.LocalPlayer.getBP()) + ", Sponsor BP: " + minBP);
+        }
+        else
+        {
+            Debug.Log("[QuestController.cs:playCombat] Player fails stage. Player BP: " + (playerCards.totalBP() + inPlay.totalBP() + NetPlayerController.LocalPlayer.getBP()) + ", Sponsor BP: " + minBP);
+        }
+        
+
 
         List<AdventureCard> allies = playerCards.removeAllies();
         foreach(AdventureCard ally in allies)
@@ -253,7 +271,7 @@ public class QuestController : MonoBehaviour {
         }
         if (playerBid >= minBid)
         {
-            Debug.Log("BID " + playerBid);
+            Debug.Log("[QuestController.cs:playBid] Player bids " + playerBid + " cards.");
             playArea.gameObject.SetActive(false);
             playCards.gameObject.SetActive(false);
             SponsorHandler.instance.sendBid(playerBid);
@@ -266,7 +284,8 @@ public class QuestController : MonoBehaviour {
 
     public void dropOut()
     {
-        foreach(Transform child in playArea)
+        Debug.Log("[QuestController.cs:playBid] Player drops out of bid and fails quest.");
+        foreach (Transform child in playArea)
         {
             child.SetParent(NetPlayerController.LocalPlayer.cardArea);
         }
@@ -277,10 +296,12 @@ public class QuestController : MonoBehaviour {
 
     public void winBid()
     {
+        Debug.Log("[QuestController.cs:playBid] Player wins bid and discards cards.");
+        PromptHandler.instance.localPrompt("Quest", "You've won the bid");
         foreach (Transform child in playArea)
         {
             NetPlayerController.LocalPlayer.discardBid(child.gameObject);
-            PromptHandler.instance.localPrompt("Quest", "You've won the bid");
+            
         }
         playArea.gameObject.SetActive(false);
         playCards.gameObject.SetActive(false);
@@ -288,6 +309,7 @@ public class QuestController : MonoBehaviour {
 
     public void end()
     {
+        Debug.Log("[QuestController.cs:end] Ending quest");
         if (amourPlayed)
         {
             NetPlayerController.LocalPlayer.discardCard(31);
