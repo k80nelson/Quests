@@ -29,7 +29,7 @@ public class TournamentController : MonoBehaviour {
         }
         UI.SetActive(true);
         playArea.gameObject.SetActive(true);
-        playArea.gameObject.SetActive(true);
+        playCards.gameObject.SetActive(true);
     }
 
     public void spawnInPlayCard(int index)
